@@ -18,7 +18,6 @@ class Restaurant {
   }
 
   static async findBySearch(filter) {
-    console.log(filter);
     const restaurant = await RestaurantModel.find(filter);
     return restaurant;
   }

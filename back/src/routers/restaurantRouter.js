@@ -36,10 +36,6 @@ restaurantRouter.get("/:id", async function (req, res, next) {
       restaurant_id,
     });
 
-    if (restaurant.errorMessage) {
-      throw new Error(restaurant.errorMessage);
-    }
-
     res.status(200).send(restaurant);
   } catch (error) {
     next(error);
