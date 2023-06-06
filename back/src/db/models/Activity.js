@@ -1,16 +1,15 @@
 import { ActivityModel } from "../schemas/activity";
 
 class Activity {
-  static async findAll() {
-    const activity = await ActivityModel.find();
+  static async findAll({ category }) {
+    const activity = await ActivityModel.find({ category });
 
-    // region, category 값 가져오기
-    let category;
-    category = await ActivityModel.distinct("category").exec();
+    // category 값 가져오기
+    let categoryAll;
+    categoryAll = await ActivityModel.distinct("category").exec();
 
-    return { category, activity };
+    return { categoryAll, activity };
   }
-
 }
 
 export { Activity };

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Restaurant } from "../db/models/Restaurant";
+import { restaurantService } from "../services/restaurantService";
 
 const restaurantRouter = Router();
 
@@ -7,11 +7,16 @@ const restaurantRouter = Router();
 restaurantRouter.get("/search", async function (req, res, next) {
   try {
     const { region, category } = req.query;
-    const filter = {};
-    if (region) filter.region = region;
-    if (category) filter.category = category;
 
-    const data = await Restaurant.findBySearch(filter);
+    const data = await restaurantService.getFilteredRestaurant({
+      region,
+      category,
+    });
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
     res.status(200).send(data);
   } catch (error) {
     next(error);
@@ -21,7 +26,14 @@ restaurantRouter.get("/search", async function (req, res, next) {
 // 전체 식당 리스트
 restaurantRouter.get("", async function (req, res, next) {
   try {
-    const data = await Restaurant.findAll();
+    const { page } = req.query;
+
+    const data = await restaurantService.getRestaurants(page);
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
     res.status(200).send(data);
   } catch (error) {
     next(error);
@@ -32,11 +44,13 @@ restaurantRouter.get("", async function (req, res, next) {
 restaurantRouter.get("/:id", async function (req, res, next) {
   try {
     const restaurant_id = req.params.id;
-    const restaurant = await Restaurant.findById({
-      restaurant_id,
-    });
+    const data = await restaurantService.getRestaurant(restaurant_id);
 
-    res.status(200).send(restaurant);
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
+    res.status(200).send(data);
   } catch (error) {
     next(error);
   }

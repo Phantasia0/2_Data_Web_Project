@@ -1,8 +1,11 @@
 import { RestaurantModel } from "../schemas/restaurant";
 
 class Restaurant {
-  static async findAll() {
-    const restaurant = await RestaurantModel.find();
+  static async findAll(page) {
+    const limit = 5; // 페이지당 보여줄 항목 수
+    const skip = (page - 1) * limit;
+
+    const restaurant = await RestaurantModel.find().skip(skip).limit(limit);
 
     // region, category 값 가져오기
     let region, category;
@@ -13,13 +16,11 @@ class Restaurant {
   }
 
   static async findById(restaurantId) {
-    const restaurant = await RestaurantModel.findOne({ restaurantId });
-    return restaurant;
+    return await RestaurantModel.findOne({ _id: restaurantId });
   }
 
   static async findBySearch(filter) {
-    const restaurant = await RestaurantModel.find(filter);
-    return restaurant;
+    return await RestaurantModel.find(filter);
   }
 }
 
