@@ -11,6 +11,8 @@ import AboutGreenService from "./components/AboutGreenService";
 import AboutGreenResult from "./components/AboutGreenResult";
 import Restaurant from "./components/Restaurant";
 import Park from "./components/Park";
+import RestaurantVeganDetail from "./components/RestaurantVeganDetail";
+import RestaurantKeywordDetail from "./components/RestaurantKeywordDetail";
 
 const Layout = () => {
   return (
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "restaurant",
         element: <Restaurant />,
+      },
+      {
+        path: "restaurant/detail/:restaurantId",
+        element: <RestaurantVeganDetail />,
+      },
+      {
+        path: "restaurant/keyword/:restaurantId",
+        element: <RestaurantKeywordDetail />,
       },
       {
         path: "park",
