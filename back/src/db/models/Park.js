@@ -1,8 +1,11 @@
 import { ParkModel } from "../schemas/park";
 
 class Park {
-  static async findAll() {
-    const park = await ParkModel.find();
+  static async findAll(page) {
+    const limit = 5; // 페이지당 보여줄 항목 수
+    const skip = (page - 1) * limit;
+
+    const park = await ParkModel.find().skip(skip).limit(limit);
 
     // region, category 값 가져오기
     let region, category;
@@ -13,7 +16,7 @@ class Park {
   }
 
   static async findById(parkId) {
-    const park = await ParkModel.findOne({ parkId });
+    const park = await ParkModel.findOne({ _id: parkId });
     return park;
   }
 
