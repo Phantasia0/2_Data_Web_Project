@@ -2,6 +2,7 @@ export interface RestaurantData {
   region: string[];
   category: string[];
   restaurant: Restaurant[];
+  total: number;
 }
 
 export interface Restaurant {

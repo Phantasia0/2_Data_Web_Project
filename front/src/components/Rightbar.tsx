@@ -50,7 +50,7 @@ const Rightbar = () => {
         }}
       >
         <Typography variant="h6" fontWeight={100} mt={2}>
-          너에게 추천할께
+          <center>너에게 추천할께</center>
         </Typography>
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}

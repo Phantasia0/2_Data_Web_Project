@@ -6,6 +6,8 @@ export interface RestaurantState {
   data?: any;
   region?: string | null;
   foodCategory?: string | null;
+  filtered?: boolean;
+  pageNumber?: number;
 }
 
 const initialState: RestaurantState = {
@@ -13,6 +15,8 @@ const initialState: RestaurantState = {
   data: null,
   region: null,
   foodCategory: null,
+  filtered: false,
+  pageNumber: 1,
 };
 
 const restaurantSlice = createSlice({
@@ -36,9 +40,11 @@ const restaurantSlice = createSlice({
       if (action?.payload !== null) {
         if (action.payload.region) {
           state.region = action.payload.region;
+          state.filtered = true;
         }
         if (action.payload.foodCategory) {
           state.foodCategory = action.payload.foodCategory;
+          state.filtered = true;
         }
       }
     },
@@ -46,10 +52,19 @@ const restaurantSlice = createSlice({
       state.keyword = null;
       state.region = null;
       state.foodCategory = null;
+      state.filtered = false;
+    },
+    goPage: (state, action: PayloadAction<RestaurantState | null>) => {
+      state.pageNumber = action?.payload?.pageNumber;
     },
   },
 });
 
-export const { searchKeyword, updateData, filterBySelected, resetData } =
-  restaurantSlice.actions;
+export const {
+  searchKeyword,
+  updateData,
+  filterBySelected,
+  resetData,
+  goPage,
+} = restaurantSlice.actions;
 export default restaurantSlice.reducer;

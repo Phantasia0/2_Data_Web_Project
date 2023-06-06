@@ -3,8 +3,6 @@ import KaKaoMap from "./KaKaoMap";
 import Sidebar from "./Sidebar";
 import { Box, Stack } from "@mui/material";
 import Rightbar from "./Rightbar";
-import Feed from "./Feed";
-import Add from "./Add";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import RightbarVegan from "./RightbarVegan";
 import { shallowEqual, useSelector } from "react-redux";
@@ -80,7 +78,6 @@ const Restaurant = () => {
           </Box>
           {whatToDisplay()}
         </Stack>
-        <Add />
       </Box>
     </div>
   );

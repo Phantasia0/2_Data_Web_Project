@@ -5,8 +5,8 @@ export const restaurantsApi = createApi({
   reducerPath: "restaurantsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001/" }),
   endpoints: (builder) => ({
-    getRestaurantsData: builder.query<RestaurantData, void>({
-      query: () => "/restaurant",
+    getRestaurantsData: builder.query<RestaurantData, number>({
+      query: (page: number) => `/restaurant?page=${page}`,
     }),
     getRestaurantsFilteredData: builder.query<
       Restaurant[],
