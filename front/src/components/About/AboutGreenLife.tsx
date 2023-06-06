@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Button, Link } from "@mui/material";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 const AboutGreenLife = () => {
   const { width } = useWindowDimensions();
@@ -24,7 +24,10 @@ const AboutGreenLife = () => {
           justifyContent: "center",
         }}
       >
-        <img src={require("../assets/images/flowers.jpg")} alt="Home Image" />
+        <img
+          src={require("../../assets/images/flowers.jpg")}
+          alt="Home Image"
+        />
         <div
           style={{
             position: "absolute",
@@ -133,7 +136,7 @@ const AboutGreenLife = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
@@ -187,7 +190,7 @@ const AboutGreenLife = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
@@ -237,7 +240,7 @@ const AboutGreenLife = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
@@ -285,7 +288,7 @@ const AboutGreenLife = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
@@ -334,7 +337,7 @@ const AboutGreenLife = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"

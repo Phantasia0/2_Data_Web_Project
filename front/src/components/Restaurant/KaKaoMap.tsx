@@ -12,15 +12,15 @@ import {
   ZoomControl,
 } from "react-kakao-maps-sdk";
 
-import "../common/styles/all.css";
+import "../../common/styles/all.css";
 import { Box, useTheme } from "@mui/material";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { RootState } from "../features/configureStore";
-import { updateData } from "../features/RestaurantReducer";
+import { RootState } from "../../features/configureStore";
+import { updateData } from "../../features/RestaurantReducer";
 import {
   useGetRestaurantsDataQuery,
   useGetRestaurantsFilteredDataQuery,
-} from "../services/restaurantsApi";
+} from "../../services/restaurantsApi";
 
 const { kakao }: any = window;
 

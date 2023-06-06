@@ -14,9 +14,9 @@ import {
 import React from "react";
 
 import { shallowEqual, useSelector } from "react-redux";
-import { RootState } from "../features/configureStore";
+import { RootState } from "../../features/configureStore";
 import RestaurantItem from "./RestaurantItem";
-import { RestaurantState } from "../features/RestaurantReducer";
+import { RestaurantState } from "../../features/RestaurantReducer";
 
 const Rightbar = () => {
   const { data } = useSelector(

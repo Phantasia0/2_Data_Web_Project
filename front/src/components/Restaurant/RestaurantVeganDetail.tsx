@@ -9,7 +9,7 @@ import {
   Avatar,
   Grid,
 } from "@mui/material";
-import { useGetRestaurantDetailDataQuery } from "../services/restaurantsApi";
+import { useGetRestaurantDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
 
 const RestaurantVeganDetail = () => {

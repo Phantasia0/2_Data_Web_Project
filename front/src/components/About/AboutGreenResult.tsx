@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Button, Link } from "@mui/material";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 const AboutGreenResult = () => {
   const { width } = useWindowDimensions();
@@ -24,7 +24,10 @@ const AboutGreenResult = () => {
           justifyContent: "center",
         }}
       >
-        <img src={require("../assets/images/flowers.jpg")} alt="Home Image" />
+        <img
+          src={require("../../assets/images/flowers.jpg")}
+          alt="Home Image"
+        />
         <div
           style={{
             position: "absolute",
@@ -108,7 +111,7 @@ const AboutGreenResult = () => {
           }}
         >
           <img
-            src={require("../assets/images/GraphSample.png")}
+            src={require("../../assets/images/GraphSample.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
@@ -156,7 +159,7 @@ const AboutGreenResult = () => {
         }}
       >
         <img
-          src={require("../assets/images/eirthday.jpg")}
+          src={require("../../assets/images/eirthday.jpg")}
           alt="VeganRestaurant"
           width="100%"
           height="100%"

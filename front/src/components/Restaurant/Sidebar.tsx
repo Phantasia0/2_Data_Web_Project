@@ -16,10 +16,10 @@ import {
   filterBySelected,
   resetData,
   searchKeyword,
-} from "../features/RestaurantReducer";
+} from "../../features/RestaurantReducer";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
-import { RootState } from "../features/configureStore";
+import { RootState } from "../../features/configureStore";
 import { CustomTypography } from "./Navbar";
 import Paper from "@mui/material/Paper";
 

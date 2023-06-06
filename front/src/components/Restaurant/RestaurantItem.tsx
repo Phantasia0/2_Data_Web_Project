@@ -9,7 +9,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { useGetDetailDataQuery } from "../services/restaurantsApi";
+import { useGetDetailDataQuery } from "../../services/restaurantsApi";
 
 interface RestaurantItemProps {
   data: any;

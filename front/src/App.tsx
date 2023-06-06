@@ -3,16 +3,16 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ThemeProvider, Box } from "@mui/material";
 import { theme } from "./theme/theme";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import AboutGreenLife from "./components/AboutGreenLife";
-import AboutGreenService from "./components/AboutGreenService";
-import AboutGreenResult from "./components/AboutGreenResult";
-import Restaurant from "./components/Restaurant";
-import Park from "./components/Park";
-import RestaurantVeganDetail from "./components/RestaurantVeganDetail";
-import RestaurantKeywordDetail from "./components/RestaurantKeywordDetail";
+import Navbar from "./components/Restaurant/Navbar";
+import Footer from "./components/common/Footer";
+import Home from "./components/common/Home";
+import AboutGreenLife from "./components/About/AboutGreenLife";
+import AboutGreenService from "./components/About/AboutGreenService";
+import AboutGreenResult from "./components/About/AboutGreenResult";
+import Restaurant from "./components/Restaurant/Restaurant";
+import Park from "./components/Park/Park";
+import RestaurantVeganDetail from "./components/Restaurant/RestaurantVeganDetail";
+import RestaurantKeywordDetail from "./components/Restaurant/RestaurantKeywordDetail";
 
 const Layout = () => {
   return (

@@ -11,7 +11,7 @@ import {
   Link,
 } from "@mui/material";
 
-import { useGetDetailDataQuery } from "../services/restaurantsApi";
+import { useGetDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
 import Rating from "./Rating";
 

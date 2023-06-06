@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Button, Link } from "@mui/material";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 const Home = () => {
   const { width } = useWindowDimensions();
@@ -24,7 +24,10 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <img src={require("../assets/images/HomeImage.jpg")} alt="Home Image" />
+        <img
+          src={require("../../assets/images/HomeImage.jpg")}
+          alt="Home Image"
+        />
         <div
           style={{
             position: "absolute",
@@ -102,7 +105,7 @@ const Home = () => {
               }}
             >
               <Link
-                href="/restaurant"
+                href="/front/src/components/Restaurant/Restaurant"
                 underline="none"
                 sx={{ color: "secondary.main" }}
               >
@@ -184,7 +187,7 @@ const Home = () => {
       >
         <div>
           <img
-            src={require("../assets/images/VeganRestaurant.jpg")}
+            src={require("../../assets/images/VeganRestaurant.jpg")}
             alt="VeganRestaurant"
             width={500}
             height={200}
@@ -203,7 +206,7 @@ const Home = () => {
             }}
           >
             <Link
-              href="/restaurant"
+              href="/front/src/components/Restaurant/Restaurant"
               underline="none"
               sx={{ color: "info.main" }}
             >
@@ -213,7 +216,7 @@ const Home = () => {
         </div>
         <div>
           <img
-            src={require("../assets/images/Park.jpg")}
+            src={require("../../assets/images/Park.jpg")}
             alt="VeganRestaurant"
             width={500}
             height={200}
@@ -232,7 +235,7 @@ const Home = () => {
             }}
           >
             <Link
-              href="/restaurant"
+              href="/front/src/components/Restaurant/Restaurant"
               underline="none"
               sx={{ color: "info.main" }}
             >

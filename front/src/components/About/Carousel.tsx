@@ -17,27 +17,27 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const images = [
   {
     label: "Bridge",
-    imgPath: require("../assets/images/grbridge.jpg"),
+    imgPath: require("../../assets/images/grbridge.jpg"),
   },
   {
     label: "Park",
-    imgPath: require("../assets/images/Park.jpg"),
+    imgPath: require("../../assets/images/Park.jpg"),
   },
   {
     label: "food",
-    imgPath: require("../assets/images/salad.jpg"),
+    imgPath: require("../../assets/images/salad.jpg"),
   },
   {
     label: "Social",
-    imgPath: require("../assets/images/social.jpg"),
+    imgPath: require("../../assets/images/social.jpg"),
   },
   {
     label: "Jungle",
-    imgPath: require("../assets/images/brigewood.jpg"),
+    imgPath: require("../../assets/images/brigewood.jpg"),
   },
   {
     label: "Garden",
-    imgPath: require("../assets/images/garden.jpg"),
+    imgPath: require("../../assets/images/garden.jpg"),
   },
 ];
 

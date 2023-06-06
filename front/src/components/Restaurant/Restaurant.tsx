@@ -3,10 +3,10 @@ import KaKaoMap from "./KaKaoMap";
 import Sidebar from "./Sidebar";
 import { Box, Stack } from "@mui/material";
 import Rightbar from "./Rightbar";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import RightbarVegan from "./RightbarVegan";
 import { shallowEqual, useSelector } from "react-redux";
-import { RootState } from "../features/configureStore";
+import { RootState } from "../../features/configureStore";
 
 const Restaurant = () => {
   const { width } = useWindowDimensions();
