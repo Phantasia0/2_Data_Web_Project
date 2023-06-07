@@ -3,7 +3,9 @@ import { RestaurantData, Restaurant } from "../models/restaurant.model";
 
 export const restaurantsApi = createApi({
   reducerPath: "restaurantsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `http://${window.location.hostname}:5001/`,
+  }),
   endpoints: (builder) => ({
     getRestaurantsData: builder.query<RestaurantData, number>({
       query: (page: number) => `/restaurant?page=${page}`,
@@ -42,7 +44,7 @@ export const restaurantsApi = createApi({
 export const kakaoApi = createApi({
   reducerPath: "kakaoApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5001/",
+    baseUrl: `http://${window.location.hostname}:5001/`,
   }),
   endpoints: (builder) => ({
     getDetailData: builder.query<any, string>({
