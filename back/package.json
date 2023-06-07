@@ -20,8 +20,11 @@
   "homepage": "https://github.com/",
   "dependencies": {
     "@sindresorhus/is": "^4.2.0",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "is": "^3.3.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.2.1",
     "npm": "^9.6.7",
     "run": "^1.4.0",

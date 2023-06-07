@@ -2,7 +2,12 @@ import cors from "cors";
 import express from "express";
 import { db } from "./db";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
-import { restaurantRouter, parkRouter, activityRouter } from "./routers";
+import {
+  userRouter,
+  restaurantRouter,
+  parkRouter,
+  activityRouter,
+} from "./routers";
 
 const app = express();
 
@@ -21,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 // router, service 구현
+app.use("/user", userRouter);
 app.use("/restaurant", restaurantRouter);
 app.use("/park", parkRouter);
 app.use("/activity", activityRouter);
