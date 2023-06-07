@@ -1,16 +1,5 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
-import {
-  CustomOverlayMap,
-  CustomOverlayRoadview,
-  Map,
-  MapMarker,
-  MapTypeControl,
-  MapTypeId,
-  MarkerClusterer,
-  Roadview,
-  useMap,
-  ZoomControl,
-} from "react-kakao-maps-sdk";
+import { Map, MapMarker, MarkerClusterer } from "react-kakao-maps-sdk";
 
 import "../../common/styles/all.css";
 import { Box, useTheme } from "@mui/material";
@@ -112,11 +101,12 @@ const KeywordSearchMap = () => {
 
 const TotalSearchMap = () => {
   const mapRef = useRef<any>();
-  const { region, foodCategory, pageNumber } = useSelector(
+  const { region, foodCategory, pageNumber, filtered } = useSelector(
     ({ restaurant }: RootState) => ({
       region: restaurant.region,
       foodCategory: restaurant.foodCategory,
       pageNumber: restaurant.pageNumber,
+      filtered: restaurant.filtered,
     }),
     shallowEqual
   );
@@ -136,6 +126,26 @@ const TotalSearchMap = () => {
       refetchOnArgChange: true,
     }
   );
+
+  const calCenter = () => {
+    let centerLat,
+      centerLng = null;
+    if (mapRef?.current?.getLevel() >= 12) {
+      centerLat = 36.2683;
+      centerLng = 127.6358;
+    } else {
+      centerLat =
+        (filtered && filteredData?.[0]?.latitude) ||
+        data?.restaurant?.[0]?.latitude ||
+        36.2683;
+      centerLng =
+        (filtered && filteredData?.[0]?.longitude) ||
+        data?.restaurant?.[0]?.longitude ||
+        127.6358;
+    }
+
+    return { centerLat, centerLng };
+  };
 
   const onClusterclick = (_target: any, cluster: any) => {
     const map = mapRef.current;
@@ -193,9 +203,8 @@ const TotalSearchMap = () => {
   return (
     <Map // 지도를 표시할 Container
       center={{
-        // 지도의 중심좌표
-        lat: 36.2683,
-        lng: 127.6358,
+        lat: calCenter().centerLat,
+        lng: calCenter().centerLng,
       }}
       style={{
         width: "100%",
@@ -203,6 +212,7 @@ const TotalSearchMap = () => {
       }}
       level={13} // 지도의 확대 레벨
       ref={mapRef}
+      isPanto={true}
     >
       {showData()}
     </Map>

@@ -2,36 +2,36 @@ import React, { useMemo, useState } from "react";
 import { Box, List, Typography, Button, Stack } from "@mui/material";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { useGetRestaurantsDataQuery } from "../../services/restaurantsApi";
-import { useGetRestaurantsFilteredDataQuery } from "../../services/restaurantsApi";
-import RestaurantVeganItem from "./RestaurantVeganItem";
+import {
+  useGetParksDataQuery,
+  useGetParksFilteredDataQuery,
+} from "../../services/parksApi";
+import ParkItem from "./ParkItem";
 import { RootState } from "../../features/configureStore";
 
-import { goPage } from "../../features/RestaurantReducer";
+import { goPage } from "../../features/ParkReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
-const RightbarVegan = () => {
-  const { region, foodCategory, filtered, pageNumber } = useSelector(
-    ({ restaurant }: RootState) => ({
-      region: restaurant.region,
-      foodCategory: restaurant.foodCategory,
-      filtered: restaurant.filtered,
-      pageNumber: restaurant.pageNumber,
+const RightbarPark = () => {
+  const { region, filtered, pageNumber } = useSelector(
+    ({ park }: RootState) => ({
+      region: park.region,
+      filtered: park.filtered,
+      pageNumber: park.pageNumber,
     }),
     shallowEqual
   );
 
-  const { data, error, isLoading, isSuccess } = useGetRestaurantsDataQuery(
+  const { data, error, isLoading, isSuccess } = useGetParksDataQuery(
     pageNumber as number
   );
 
-  const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
+  const { data: filteredData } = useGetParksFilteredDataQuery(
     {
       region: region,
-      foodCategory: foodCategory,
     },
     {
-      skip: !region && !foodCategory,
+      skip: !region,
       // @ts-ignore
       refetchOnArgChange: true,
     }
@@ -41,13 +41,13 @@ const RightbarVegan = () => {
     if (filtered) {
       return filteredData?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem data={item} />
+          <ParkItem data={item} />
         </div>
       ));
     } else {
-      return data?.restaurant?.map((item: any) => (
+      return data?.park?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem data={item} />
+          <ParkItem data={item} />
         </div>
       ));
     }
@@ -79,6 +79,14 @@ const RightbarVegan = () => {
             bgcolor: "background.paper",
             overflow: "auto",
             maxHeight: "70%",
+            scrollbarWidth: "thin",
+            "&::-webkit-scrollbar": {
+              width: "6px",
+              backgroundColor: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "transparent",
+            },
           }}
         >
           <Typography variant="h6" fontWeight={100} mt={2}>
@@ -118,4 +126,4 @@ const RightbarVegan = () => {
   );
 };
 
-export default RightbarVegan;
+export default RightbarPark;

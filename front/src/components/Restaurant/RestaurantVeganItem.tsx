@@ -62,19 +62,6 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                 </Typography>
                 {data?.address ? data?.address : "주소가 등록되지 않았습니다."}
               </div>
-              {/*<div>*/}
-              {/*  <Typography*/}
-              {/*    sx={{ display: "inline" }}*/}
-              {/*    component="span"*/}
-              {/*    variant="body2"*/}
-              {/*    color="text.primary"*/}
-              {/*  >*/}
-              {/*    menu*/}
-              {/*  </Typography>*/}
-              {/*  {data?.description*/}
-              {/*    ? data?.description*/}
-              {/*    : "메뉴가 등록되지 않았습니다."}*/}
-              {/*</div>*/}
               <div>
                 <Typography
                   sx={{ display: "inline" }}

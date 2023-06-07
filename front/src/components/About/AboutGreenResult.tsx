@@ -111,7 +111,7 @@ const AboutGreenResult = () => {
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/graphXC2.png")}
             alt="VeganRestaurant"
             width="40%"
             height="40%"
