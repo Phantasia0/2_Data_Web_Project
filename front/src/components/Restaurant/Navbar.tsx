@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppBar, Typography, Stack, Menu, MenuItem, Link } from "@mui/material";
 import { styled } from "@mui/system";
 
-const CustomTypography = styled(Typography)(({ theme }) => ({
+export const CustomTypography = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
   color: "#000",
   transition: "color 0.15s ease-in-out",
@@ -11,7 +11,7 @@ const CustomTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
+export const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "transparent",
   },

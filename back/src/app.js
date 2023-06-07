@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import { db } from "./db";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
-import { restaurantRouter, parkRouter, activityRouter } from "./routers";
+import { restaurantRouter, parkRouter, activityRouter, kakaoRouter } from "./routers";
 
 const app = express();
 
@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 app.use("/restaurant", restaurantRouter);
 app.use("/park", parkRouter);
 app.use("/activity", activityRouter);
+app.use("/kakao", kakaoRouter);
 
 // 순서 중요 (router 에서 next() 시 아래의 에러 핸들링  middleware로 전달됨)
 app.use(errorMiddleware);
