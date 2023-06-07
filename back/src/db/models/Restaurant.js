@@ -6,13 +6,14 @@ class Restaurant {
     const skip = (page - 1) * limit;
 
     const restaurant = await RestaurantModel.find().skip(skip).limit(limit);
+    const total = await RestaurantModel.countDocuments();
 
     // region, category 값 가져오기
     let region, category;
     region = await RestaurantModel.distinct("region").exec();
     category = await RestaurantModel.distinct("category").exec();
 
-    return { region, category, restaurant };
+    return { region, category, restaurant, total };
   }
 
   static async findById(restaurantId) {

@@ -24,6 +24,10 @@ html, body {
       box-sizing: border-box;
 }
 
+.restaurant-container {
+
+}
+
 .footer {
       display: flex;
       flex-direction: column;

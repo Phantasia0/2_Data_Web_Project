@@ -1,4 +1,5 @@
 import { ParkModel } from "../schemas/park";
+import {RestaurantModel} from "../schemas/restaurant";
 
 class Park {
   static async findAll(page) {
@@ -6,13 +7,15 @@ class Park {
     const skip = (page - 1) * limit;
 
     const park = await ParkModel.find().skip(skip).limit(limit);
+    const total = await ParkModel.countDocuments();
+
 
     // region, category 값 가져오기
     let region, category;
     region = await ParkModel.distinct("region").exec();
     category = await ParkModel.distinct("category").exec();
 
-    return { region, category, park };
+    return { region, category, park ,total};
   }
 
   static async findById(parkId) {
