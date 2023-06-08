@@ -7,9 +7,10 @@ const LikeSchema = new Schema(
       ref: "User",
       required: true,
     },
-    content: {
-      type: String,
+    value: {
+      type: Number,
       required: true,
+      default: 1,
     },
   },
   {
@@ -17,6 +18,4 @@ const LikeSchema = new Schema(
   }
 );
 
-const LikeModel = model("Like", LikeSchema);
-
-export { LikeModel };
+export { LikeSchema };

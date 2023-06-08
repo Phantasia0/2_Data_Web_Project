@@ -8,6 +8,7 @@ import {
   parkRouter,
   activityRouter,
   kakaoRouter,
+  postRouter,
 } from "./routers";
 
 const app = express();
@@ -32,6 +33,7 @@ app.use("/restaurant", restaurantRouter);
 app.use("/park", parkRouter);
 app.use("/activity", activityRouter);
 app.use("/kakao", kakaoRouter);
+app.use("/post", postRouter);
 
 // 순서 중요 (router 에서 next() 시 아래의 에러 핸들링  middleware로 전달됨)
 app.use(errorMiddleware);

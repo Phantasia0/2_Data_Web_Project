@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
-const LikeSchema = require("./like");
-const CommentSchema = require("./comment");
+import { LikeSchema } from "./like";
+import { CommentSchema } from "./comment";
 
 const postSchema = new Schema(
   {
@@ -13,8 +13,8 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    like: [LikeSchema],
-    comment: [CommentSchema],
+    likes: [LikeSchema],
+    comments: [CommentSchema],
   },
   {
     timestamps: true,
