@@ -4,6 +4,8 @@ import { restaurantsApi } from "../services/restaurantsApi";
 import { kakaoApi } from "../services/restaurantsApi";
 import parkReducer from "./ParkReducer";
 import { parksApi } from "../services/parksApi";
+import activityReducer from "./ActivityReducer";
+import { activitysApi } from "../services/activityApi";
 
 export const rootReducer = combineReducers({
   restaurant: restaurantReducer,
@@ -11,4 +13,6 @@ export const rootReducer = combineReducers({
   [kakaoApi.reducerPath]: kakaoApi.reducer,
   park: parkReducer,
   [parksApi.reducerPath]: parksApi.reducer,
+  activity: activityReducer,
+  [activitysApi.reducerPath]: activitysApi.reducer,
 });

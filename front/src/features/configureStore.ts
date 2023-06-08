@@ -3,6 +3,7 @@ import { rootReducer } from "./AppState";
 import { restaurantsApi } from "../services/restaurantsApi";
 import { kakaoApi } from "../services/restaurantsApi";
 import { parksApi } from "../services/parksApi";
+import { activitysApi } from "../services/activityApi";
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -10,7 +11,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       restaurantsApi.middleware,
       kakaoApi.middleware,
-      parksApi.middleware
+      parksApi.middleware,
+      activitysApi.middleware
     ),
 });
 

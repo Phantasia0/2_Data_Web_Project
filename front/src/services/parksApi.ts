@@ -3,7 +3,9 @@ import { ParkData, Park } from "../models/park.model";
 
 export const parksApi = createApi({
   reducerPath: "parksApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `http://${window.location.hostname}:5001/`,
+  }),
   endpoints: (builder) => ({
     getParksData: builder.query<ParkData, number>({
       query: (page: number) => `/park?page=${page}`,
