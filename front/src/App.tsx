@@ -14,6 +14,7 @@ import Park from "./components/Park/Park";
 import RestaurantVeganDetail from "./components/Restaurant/RestaurantVeganDetail";
 import RestaurantKeywordDetail from "./components/Restaurant/RestaurantKeywordDetail";
 import ParkDetail from "./components/Park/ParkDetail";
+import Activity from "./components/Activity/Activity";
 
 const Layout = () => {
   return (
@@ -22,7 +23,7 @@ const Layout = () => {
       <div className="contents-container">
         <Outlet />
       </div>
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 };
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "park/detail/:parkId",
         element: <ParkDetail />,
+      },
+      {
+        path: "activity",
+        element: <Activity />,
       },
     ],
   },

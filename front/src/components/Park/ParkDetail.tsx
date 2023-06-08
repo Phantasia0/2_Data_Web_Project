@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { useGetParkDetailDataQuery } from "../../services/parksApi";
 import { useParams } from "react-router-dom";
+import KaKaoParkRoadView from "./KaKaoParkRoadView";
+import { Park } from "../../models/park.model";
 
 const ParkDetail = () => {
   const { parkId } = useParams() as { parkId: string };
@@ -24,7 +26,8 @@ const ParkDetail = () => {
   return (
     <Card sx={{ maxWidth: 800, margin: "auto", marginTop: 4 }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
+          <KaKaoParkRoadView data={data as Park} />
           <CardHeader title={data?.name} />
           <CardContent>
             <Typography variant="body1">{data?.region}</Typography>

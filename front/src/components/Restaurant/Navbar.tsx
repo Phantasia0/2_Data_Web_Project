@@ -116,6 +116,9 @@ const Navbar = () => {
         <Link href={"/park"} underline="none">
           <CustomTypography>Park</CustomTypography>
         </Link>
+        <Link href={"/activity"} underline="none">
+          <CustomTypography>Activity</CustomTypography>
+        </Link>
       </Stack>
     </AppBar>
   );

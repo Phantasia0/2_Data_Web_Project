@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/LabelButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkRoadView.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/features/ActivityReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/models/activity.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/activityApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/parksApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/parksApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/db/models/Activity.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Activity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/configureStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +55,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "feature/2차-메인기능",
     "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
     "node.js.detected.package.eslint": "true",
@@ -82,6 +99,8 @@
       <updated>1685771095765</updated>
       <workItem from="1685771097029" duration="6169000" />
       <workItem from="1685835737918" duration="57692000" />
+      <workItem from="1686179223875" duration="25028000" />
+      <workItem from="1686221463675" duration="22271000" />
     </task>
     <servers />
   </component>
