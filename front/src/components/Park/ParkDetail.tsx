@@ -28,11 +28,27 @@ const ParkDetail = () => {
       <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
           <KaKaoParkRoadView data={data as Park} />
-          <CardHeader title={data?.name} />
-          <CardContent>
-            <Typography variant="body1">{data?.region}</Typography>
-            <Typography variant="body1">{data?.address}</Typography>
-            <Typography variant="body1">{data?.tel}</Typography>
+          <CardHeader style={{marginTop: "0.5rem", marginLeft: "1rem"}} title={<span style={{ fontWeight: "bold"}}>{data?.name}</span>} />
+          <CardContent style={{marginTop: "-1rem", marginLeft: "1rem"}}>
+            <Typography variant="body1">
+            <img
+                  src={require("../../assets/images/region.png")}
+                  alt="Region Icon"
+                  style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
+                  {data?.region}</Typography>
+            <Typography variant="body1">
+            <img
+              src={require("../../assets/images/address.png")}
+              alt="Address Icon"
+              style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+              />{" "}{data?.address}</Typography>
+            <Typography variant="body1">
+            <img
+              src={require("../../assets/images/phone.png")}
+              alt="Phone Icon"
+              style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+              />{" "}{data?.tel}</Typography>
           </CardContent>
         </Grid>
       </Grid>

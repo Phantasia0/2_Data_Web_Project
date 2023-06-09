@@ -49,14 +49,17 @@ const LabelButton: FC<LabelButtonProps> = ({ label, able }) => {
       sx={{
         backgroundColor: isClicked ? "primary.main" : "initial",
         color: isClicked ? "white" : "primary.main",
+        fontWeight : 'bold',
         "&:hover": !isClicked
           ? {
               backgroundColor: "primary.main",
               color: "white",
+              fontWeight : 'bold',
             }
           : {
               backgroundColor: "white",
               color: "primary.main",
+              fontWeight : 'bold',
             },
       }}
     >

@@ -79,7 +79,7 @@ const Activity = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "5rem",
+          marginTop: "3rem",
         }}
       >
         <Typography
@@ -88,11 +88,12 @@ const Activity = () => {
           sx={{
             fontSize: {
               xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
+              sm: "clamp(15px, 2vw, 30px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "primary.main",
             whiteSpace: "nowrap",
+            fontFamily: "NanumSquareExtraBold, sans-serif"
           }}
         >
           활동 소개
@@ -109,12 +110,16 @@ const Activity = () => {
             <LabelButton key={item} label={item} able={isChecked} />
           ))}
         </Box>
-        <Box>
+        <Box sx={{marginTop: 2, marginLeft:2}}>
           <FormControlLabel
             control={
               <Switch defaultChecked={false} onChange={handleFilterChange} />
             }
-            label="필터링"
+            label={
+              <Typography variant="body1" style={{ fontWeight: 'bold', color: "info.main"}}>
+                필터링
+              </Typography>
+            }
           />
         </Box>
       </Box>

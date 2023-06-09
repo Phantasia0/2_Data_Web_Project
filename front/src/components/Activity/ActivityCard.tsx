@@ -23,11 +23,12 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
         component="div"
         sx={{
           position: "absolute",
-          top: "10px",
+          top: "30px",
           color: "primary.main",
           wordBreak: "keep-all",
           lineBreak: "strict",
           width: "100%",
+          fontWeight: "bold"
         }}
       >
         <center>{name}</center>
@@ -49,16 +50,17 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
         sx={{
           position: "absolute",
           width: "100%",
-          top: "70%",
+          top: "66%",
+          left: "-6%"
         }}
       >
-        <Typography variant="body2">
+        <Typography variant="body2" fontWeight='bold' color='info.main'>
           <center>탄소 배출량: {CO2_reduction}</center>
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" fontWeight='bold' color='info.main'>
           <center>비용: {cost_reduction}</center>
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" fontWeight='bold' color='info.main'>
           <center>효과: {tree_effect}</center>
         </Typography>
       </CardContent>

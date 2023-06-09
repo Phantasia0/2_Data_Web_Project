@@ -17,19 +17,20 @@ interface RestaurantVeganItemProps {
 const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
   return (
     <>
+    <Link href={`/restaurant/detail/${data._id}`}
+          sx={{ textDecoration: "none", color: "inherit" }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Link href={`/restaurant/detail/${data._id}`}>
             <Avatar alt="식당" src={data?.image} />
-          </Link>
-        </ListItemAvatar>
+          </ListItemAvatar>
         <ListItemText
           primary={data?.name}
+          primaryTypographyProps={{ style: { fontWeight: 'bold' }}}  
           secondary={
             <React.Fragment>
               <div>
                 <Typography
-                  sx={{ display: "inline" }}
+                  sx={{ display: "inline"}}
                   component="span"
                   variant="body2"
                   color="text.primary"
@@ -92,7 +93,9 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
             </React.Fragment>
           }
         />
+
       </ListItem>
+      </Link>
       <Divider variant="inset" component="li" />
     </>
   );

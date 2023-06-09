@@ -52,7 +52,7 @@ const ActivitySlick: FC<ActivitySlick> = ({ category }) => {
   };
 
   return (
-    <Box sx={{ margin: "auto", width: "100%" }}>
+    <Box sx={{ margin: "auto", width: "100%", fontFamily: "NanumSquareExtraBold, sans-serif", color : 'info.main'}}>
       <h2>{category}</h2>
       <Slider {...settings}>
         {datas &&

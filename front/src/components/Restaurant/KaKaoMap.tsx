@@ -80,6 +80,7 @@ const KeywordSearchMap = () => {
       style={{
         width: "100%",
         height: "1000px",
+        
       }}
       level={3}
       onCreate={setMap}

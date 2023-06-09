@@ -139,7 +139,7 @@ const Navbar = () => {
           <CustomTypography sx={{ fontSize: "1.2rem"}}>PARK</CustomTypography>
         </Link>
         <Link href={"/activity"} underline="none">
-          <CustomTypography>Activity</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem"}}>ACTIVITY</CustomTypography>
         </Link>
       </Stack>
     </AppBar>

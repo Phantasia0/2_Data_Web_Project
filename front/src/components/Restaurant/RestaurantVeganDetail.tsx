@@ -32,17 +32,52 @@ const RestaurantVeganDetail = () => {
             alt={data?.name}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <CardHeader title={data?.name} />
+        <Grid item xs={12} md={6} style={{marginTop: "1.5rem"}} >
+          <CardHeader title={<span style={{ fontWeight: "bold"}}>{data?.name}</span>} />
           <CardContent>
-            <Typography variant="body1">{data?.region}</Typography>
-            <Typography variant="body1">{data?.category}</Typography>
-            <Typography variant="body1">{data?.description}</Typography>
-            <Typography variant="body1">{data?.address}</Typography>
-            <Typography variant="body1">{data?.tel}</Typography>
+            <Typography variant="body1"><img
+                    src={require("../../assets/images/region.png")}
+                    alt="Region Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
+                  {data?.region}</Typography>
             <Typography variant="body1">
+            <img
+                    src={require("../../assets/images/category.png")}
+                    alt="category Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
+                  {data?.category}</Typography>
+            
+            <Typography variant="body1">
+              <img
+                    src={require("../../assets/images/address.png")}
+                    alt="Address Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}{data?.address}</Typography>
+            <Typography variant="body1">
+            <img
+                    src={require("../../assets/images/phone.png")}
+                    alt="Phone Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
+                  {data?.tel}</Typography>
+            <Typography variant="body1">
+            <img
+              src={require("../../assets/images/information.png")}
+              alt="Info Icon"
+              style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+              />{" "}
               {data?.reservation ? "예약 가능" : "예약 불가능"}
             </Typography>
+            <Typography variant="body1">
+            <img
+              src={require("../../assets/images/food.png")}
+              alt="food Icon"
+              style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+              />{" "}
+              {data?.description}
+              </Typography>
           </CardContent>
         </Grid>
       </Grid>

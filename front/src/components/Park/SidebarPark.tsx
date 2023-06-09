@@ -72,6 +72,8 @@ const SidebarPark = () => {
           "@media (max-width: 1080px)": {
             display: "none",
           },
+          marginLeft: '1.5rem',
+          marginTop: '1rem',
         },
       }}
     >
@@ -84,6 +86,7 @@ const SidebarPark = () => {
               </ListItemIcon>
               <ListItemText
                 primary={selectedRegion ? selectedRegion : "지역 선택"}
+                primaryTypographyProps={{ style: { fontWeight: 'bold' }, marginLeft:'0.5rem' }}
               />
             </ListItemButton>
             <Popover
@@ -110,7 +113,7 @@ const SidebarPark = () => {
                           setAnchorEl(null);
                         }}
                       >
-                        <CustomTypography>{region}</CustomTypography>
+                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold"}}>{region}</CustomTypography>
                       </div>
                     </ListItem>
                   ))}
@@ -128,7 +131,7 @@ const SidebarPark = () => {
               <ListItemIcon>
                 <RestartAlt />
               </ListItemIcon>
-              <ListItemText primary="초기화" />
+              <ListItemText primary="초기화" primaryTypographyProps={{ style: { fontWeight: 'bold' }, marginLeft:'0.8rem' }}/>
             </ListItemButton>
           </ListItem>
         </List>
