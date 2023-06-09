@@ -2,6 +2,20 @@ import is from "@sindresorhus/is";
 import { Router } from "express";
 import { login_required } from "../middlewares/login_required";
 import { userService } from "../services/userService";
+const { v4: uuidv4 } = require("uuid");
+import multer from "multer";
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination: "./src/uploaded/profile",
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    const uniqueFilename = `${uuidv4()}${ext}`;
+    cb(null, uniqueFilename);
+  },
+});
+
+const upload = multer({ storage });
 
 const userRouter = Router();
 
@@ -88,6 +102,43 @@ userRouter.get(
   }
 );
 
+userRouter.put("/", login_required, async function (req, res, next) {
+  try {
+    const _id = req.currentUserId;
+    const { nickname, description } = req.body;
+    const toUpdate = { nickname, description };
+    const updatedUser = await userService.setUser({ _id, toUpdate });
+
+    if (updatedUser.errorMessage) {
+      throw new Error(updatedUser.errorMessage);
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+userRouter.patch(
+  "/",
+  login_required,
+  upload.single("file"),
+  async function (req, res, next) {
+    try {
+      const _id = req.currentUserId;
+      const profile = req.file.filename;
+      const toUpdate = { profile };
+      const updatedUser = await userService.setUser({ _id, toUpdate });
+
+      if (updatedUser.errorMessage) {
+        throw new Error(updatedUser.errorMessage);
+      }
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 // userRouter.get(
 //   "/userlist",
 //   login_required,
@@ -96,35 +147,6 @@ userRouter.get(
 //       // 전체 사용자 목록을 얻음
 //       const users = await userService.getUsers();
 //       res.status(200).send(users);
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
-
-// userRouter.put(
-//   "/users/:id",
-//   login_required,
-//   async function (req, res, next) {
-//     try {
-//       // URI로부터 사용자 id를 추출함.
-//       const user_id = req.params.id;
-//       // body data 로부터 업데이트할 사용자 정보를 추출함.
-//       const name = req.body.name ?? null;
-//       const email = req.body.email ?? null;
-//       const password = req.body.password ?? null;
-//       const description = req.body.description ?? null;
-
-//       const toUpdate = { name, email, password, description };
-
-//       // 해당 사용자 아이디로 사용자 정보를 db에서 찾아 업데이트함. 업데이트 요소가 없을 시 생략함
-//       const updatedUser = await userService.setUser({ user_id, toUpdate });
-
-//       if (updatedUser.errorMessage) {
-//         throw new Error(updatedUser.errorMessage);
-//       }
-
-//       res.status(200).json(updatedUser);
 //     } catch (error) {
 //       next(error);
 //     }
