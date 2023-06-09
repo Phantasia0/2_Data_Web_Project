@@ -33,7 +33,11 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    tel
+                  <img
+                    src={require("../../assets/images/phone.png")}
+                    alt="Phone Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                   </Typography>
                   {data?.tel ? data.tel : "전화번호가 등록되지 않았습니다."}
                 </div>
@@ -44,7 +48,11 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    address
+                  <img
+                    src={require("../../assets/images/address.png")}
+                    alt="Address Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                   </Typography>
                   {data?.address
                     ? data?.address
@@ -57,7 +65,11 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    region
+                  <img
+                  src={require("../../assets/images/region.png")}
+                  alt="Region Icon"
+                  style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                   </Typography>
                   {data?.region ? data?.region : "리전이 등록되지 않았습니다."}
                 </div>

@@ -13,4 +13,22 @@ export const theme = createTheme({
       main: "#3C504A",
     },
   },
+  typography: {
+    fontFamily: [
+      'NanumSquare',
+      'Nanum Gothic',
+      'NanumSquareExtraBold',
+      'Black Han Sans',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
 });

@@ -27,6 +27,7 @@ const AboutGreenLife = () => {
         <img
           src={require("../../assets/images/flowers.jpg")}
           alt="Home Image"
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
         />
         <div
           style={{
@@ -42,13 +43,16 @@ const AboutGreenLife = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginTop :'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             그린라이프,
@@ -56,13 +60,16 @@ const AboutGreenLife = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginBottom :'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             왜 실천해야할까요?
@@ -74,12 +81,13 @@ const AboutGreenLife = () => {
           sx={{
             fontSize: {
               xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
+              sm: "clamp(15px, 2vw, 30px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "primary.main",
             whiteSpace: "nowrap",
             marginTop: "10rem",
+            fontFamily: "NanumSquareExtraBold, sans-serif"
           }}
         >
           지구가 슬퍼하고 있어요
@@ -89,13 +97,14 @@ const AboutGreenLife = () => {
         <Typography
           sx={{
             fontSize: {
-              xs: "clamp(10px, 2vw, 15px)",
-              sm: "clamp(15px, 2vw, 30px)",
+              xs: "clamp(10px, 2vw, 20px)",
+              sm: "clamp(10px, 2vw, 20px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "info.main",
             whiteSpace: "wrap",
             marginTop: "5rem",
+            fontWeight: "bold"
           }}
         >
           <center>나 하나쯤은 괜찮겠지 하는 생각과 행동들이</center>
@@ -115,12 +124,13 @@ const AboutGreenLife = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "wrap",
-              marginTop: "15rem",
+              marginTop: "10rem",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             <center>환경문제에 대한 인식</center>
@@ -128,30 +138,32 @@ const AboutGreenLife = () => {
         </div>
         <div
           style={{
-            marginTop: "5rem",
+            marginTop: "0rem",
             display: "flex",
             gap: "3rem",
-            marginBottom: "10rem",
+            marginBottom: "5rem",
             alignItems: "center",
+            marginLeft: '14rem',
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/graphXC.png")}
             alt="VeganRestaurant"
-            width="40%"
-            height="40%"
+            width="35%"
+            height="35%"
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <center>
@@ -169,12 +181,13 @@ const AboutGreenLife = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "wrap",
-              marginTop: "15rem",
+              marginTop: "10rem",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             <center>인식하는 시급한 과제</center>
@@ -182,30 +195,32 @@ const AboutGreenLife = () => {
         </div>
         <div
           style={{
-            marginTop: "5rem",
+            marginTop: "0rem",
             display: "flex",
             gap: "3rem",
             marginBottom: "10rem",
             alignItems: "center",
+            marginLeft: '14rem',
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/graphXC2.png")}
             alt="VeganRestaurant"
-            width="40%"
-            height="40%"
+            width="35%"
+            height="35%"
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <center>특히 온실가스 문제를 시급한 과제로 인식하며,</center>
@@ -219,12 +234,13 @@ const AboutGreenLife = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "wrap",
-              marginTop: "15rem",
+              marginTop: "10rem",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             <center>늘어나는 온실가스</center>
@@ -232,34 +248,36 @@ const AboutGreenLife = () => {
         </div>
         <div
           style={{
-            marginTop: "5rem",
+            marginTop: "0rem",
             display: "flex",
             gap: "3rem",
             marginBottom: "10rem",
             alignItems: "center",
+            marginLeft: '14rem',
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/total_co2.png")}
             alt="VeganRestaurant"
-            width="40%"
-            height="40%"
+            width="35%"
+            height="35%"
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <center>하지만 늘어나는 관심과 다르게</center>
-            <center>온실가스 배출량은 꾸준히 증가하고 있어요</center>
+            <center>온실가스 배출량은 꾸준히 증가하고 있어요.</center>
           </Typography>
         </div>
         <div>
@@ -267,12 +285,13 @@ const AboutGreenLife = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "wrap",
-              marginTop: "15rem",
+              marginTop: "10rem",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             <center>그 주범은 육류!</center>
@@ -280,30 +299,32 @@ const AboutGreenLife = () => {
         </div>
         <div
           style={{
-            marginTop: "5rem",
+            marginTop: "0rem",
             display: "flex",
             gap: "3rem",
             marginBottom: "10rem",
             alignItems: "center",
+            marginLeft: '14rem',
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/co2perfood.png")}
             alt="VeganRestaurant"
-            width="40%"
-            height="40%"
+            width="35%"
+            height="35%"
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <center>온실가스를 배출하는 주된 원인이 동물성 식품 </center>
@@ -316,12 +337,13 @@ const AboutGreenLife = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "wrap",
-              marginTop: "15rem",
+              marginTop: "10rem",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             <center>늘어나는 육류 소비량</center>
@@ -329,30 +351,32 @@ const AboutGreenLife = () => {
         </div>
         <div
           style={{
-            marginTop: "5rem",
+            marginTop: "0rem",
             display: "flex",
             gap: "3rem",
             marginBottom: "10rem",
             alignItems: "center",
+            marginLeft: '14rem',
           }}
         >
           <img
-            src={require("../../assets/images/GraphSample.png")}
+            src={require("../../assets/images/meat_consume.png")}
             alt="VeganRestaurant"
-            width="40%"
-            height="40%"
+            width="35%"
+            height="35%"
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <center> '육류 섭취량 1990 ~ 2025 ~ ' 데이터에 따르면 </center>

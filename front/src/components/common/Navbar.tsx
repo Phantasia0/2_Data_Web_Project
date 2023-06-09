@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { AppBar, Typography, Stack, Menu, MenuItem, Link } from "@mui/material";
 import { styled } from "@mui/system";
+import { info } from "console";
 
 export const CustomTypography = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
-  color: "#000",
+  color: theme.palette.info.main,
   transition: "color 0.15s ease-in-out",
   "&:hover": {
     color: theme.palette.primary.main,
   },
+  fontFamily: "Black Han Sans, sans-serif",
+  fontWeight: "light"
 }));
 
 export const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
@@ -53,23 +56,41 @@ const Navbar = () => {
           fontSize: 50,
           display: "flex",
           justifyContent: "center",
+          marginTop: '2rem',
+          marginBottom: "2rem"
         }}
+        
       >
-        <Link href={"/"} underline="none">
-          GreenLife
+        <Link href={"/"} 
+        underline="none"
+        sx={{
+          fontFamily: "Black Han Sans, sans-serif"}}>
+          <img
+          src={require("../../assets/images/tree.png")}
+          alt="Tree Image"
+          width="100%"
+          height="100%"
+          style={{marginTop:'-1rem', width: "50px", height: "50px", verticalAlign: "middle" }}
+        />{" "}
+          GREEN LIFE
         </Link>
       </Typography>
       <Stack
         direction="row"
         spacing={20}
-        sx={{ margin: "auto" }}
+        sx={{           
+          marginTop: '-1rem',
+          marginBottom: "0.5rem",
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}
         onMouseEnter={handleMenuBarHover}
       >
         <CustomTypography
           onMouseEnter={handleAboutMenuOpen}
           onMouseLeave={handleAboutMenuClose}
-        >
-          About
+          sx={{ fontSize: "1.2rem"}}>
+          VISION
           <Menu
             anchorEl={anchorEl}
             open={aboutMenuOpen}
@@ -82,12 +103,13 @@ const Navbar = () => {
               vertical: "top",
               horizontal: "left",
             }}
+            style={{marginTop : "0.5rem"}}
           >
             <div>
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenlife"} underline="none">
                   <CustomTypography
-                    sx={{ fontSize: "0.5rem", backgroundColor: "transparent" }}
+                    sx={{ fontSize: "1rem", backgroundColor: "transparent" }}
                   >
                     필요성
                   </CustomTypography>
@@ -95,14 +117,14 @@ const Navbar = () => {
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenservice"} underline="none">
-                  <CustomTypography sx={{ fontSize: "0.5rem" }}>
+                  <CustomTypography sx={{ fontSize: "1rem" }}>
                     서비스
                   </CustomTypography>
                 </Link>
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenresult"} underline="none">
-                  <CustomTypography sx={{ fontSize: "0.5rem" }}>
+                  <CustomTypography sx={{ fontSize: "1rem" }}>
                     기대효과
                   </CustomTypography>
                 </Link>
@@ -111,10 +133,10 @@ const Navbar = () => {
           </Menu>
         </CustomTypography>
         <Link href={"/restaurant"} underline="none">
-          <CustomTypography>Restaurant</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem"}}>RESTAURANT</CustomTypography>
         </Link>
         <Link href={"/park"} underline="none">
-          <CustomTypography>Park</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem"}}>PARK</CustomTypography>
         </Link>
       </Stack>
     </AppBar>
