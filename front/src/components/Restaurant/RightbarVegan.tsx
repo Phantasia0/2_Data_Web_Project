@@ -78,11 +78,22 @@ const RightbarVegan = () => {
             maxWidth: 360,
             bgcolor: "background.paper",
             overflow: "auto",
-            maxHeight: "70%",
+            maxHeight: "85%",
+            scrollbarWidth: "thin",
+            "&::-webkit-scrollbar": {
+              width: "6px",
+              backgroundColor: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "transparent",
+            },
           }}
         >
-          <Typography variant="h6" fontWeight={100} mt={2}>
-            <center>너에게 추천할께</center>
+          <Typography variant="body1" mt={2}
+          sx={{color:"info.main",
+          fontFamily: "Nanum Gothic, sans-serif",
+          fontWeight: "bold"}}>
+            <center>비건 레스토랑이란 개인뿐만 아니라 식물성 옵션을 탐색하고 더 건강하고 지속 가능한 식사에 관심있는 사람들을 위한 것입니다.</center>
           </Typography>
           {!filtered && (
             <Stack

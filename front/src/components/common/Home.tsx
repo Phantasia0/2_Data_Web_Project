@@ -31,8 +31,8 @@ const Home = () => {
         <div
           style={{
             position: "absolute",
-            top: "15%",
-            left: "64%",
+            top: "22%",
+            left: "70%",
             backgroundColor: "rgba(255, 255, 255, 0.3)",
             backdropFilter: "blur(8px)",
             borderRadius: "5px",
@@ -42,13 +42,16 @@ const Home = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginTop :'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             환경을 위한 첫걸음
@@ -56,24 +59,27 @@ const Home = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginBottom:'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
-            그린라이프와 함께.
+            그린라이프와 함께
           </Typography>
         </div>
         {width >= 1500 && (
           <div
             style={{
               position: "absolute",
-              top: "38%",
-              left: "64%",
+              top: "37%",
+              left: "70%",
               backgroundColor: "rgba(255, 255, 255, 0.3)",
               backdropFilter: "blur(8px)",
               borderRadius: "5px",
@@ -83,21 +89,24 @@ const Home = () => {
             <Typography
               sx={{
                 fontSize: {
-                  xs: "clamp(8px, 2vw, 10px)",
-                  sm: "clamp(10px, 2vw, 28px)",
+                  xs: "clamp(15px, 2vw, 20px)",
+                  sm: "clamp(15px, 2vw, 20px)",
+                  paddingLeft: "20px",
+                  paddingRight: "20px"
                 },
-                lineHeight: { xs: "1.2", sm: "1.5" },
+                lineHeight: { xs: "1.5", sm: "2" },
                 color: "secondary.main",
                 whiteSpace: "nowrap",
+                fontFamily: "NanumSquareExtraBold, sans-serif"
               }}
             >
-              지구, 그리고 우리 모두를 위한 작은 실천
+              지구, 그리고 우리 모두를 위한 작은 실천 
             </Typography>
             <div
               style={{
                 position: "absolute",
                 top: "400%",
-                left: "81%",
+                left: "65%",
                 backgroundColor: "rgba(255, 255, 255, 0.3)",
                 backdropFilter: "blur(8px)",
                 borderRadius: "50px",
@@ -116,6 +125,7 @@ const Home = () => {
                     borderRadius: "50px",
                     color: "secondary.main",
                     borderColor: "secondary.main",
+                    fontFamily: "Black Han Sans, sans-serif"
                   }}
                 >
                   Service
@@ -130,12 +140,13 @@ const Home = () => {
           sx={{
             fontSize: {
               xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
+              sm: "clamp(15px, 2vw, 30px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "primary.main",
             whiteSpace: "nowrap",
             marginTop: "10rem",
+            fontFamily: "NanumSquareExtraBold, sans-serif"
           }}
         >
           녹색 소비자가 되어봐요
@@ -145,19 +156,20 @@ const Home = () => {
         <Typography
           sx={{
             fontSize: {
-              xs: "clamp(10px, 2vw, 15px)",
-              sm: "clamp(15px, 2vw, 30px)",
+              xs: "clamp(10px, 2vw, 20px)",
+              sm: "clamp(10px, 2vw, 20px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "info.main",
             whiteSpace: "nowrap",
-            marginTop: "5rem",
+            marginTop: "2rem",
+            fontWeight: "bold"
           }}
         >
-          GreenLife 란, 환경과 건강을 생각하는, 친환경적이고 지속 가능한 지구
+          GreenLife란, 환경과 건강을 생각하는, 친환경적이고 지속 가능한 지구
           차원의 성장을 위한 삶<br />
           <center>
-            저희 그린라이프는 일상 속에서 작은 실천을 도와 드립니다
+          GreenLife는 일상 속에서 작은 실천을 도와 드립니다.
           </center>
         </Typography>
       </div>
@@ -166,12 +178,13 @@ const Home = () => {
           sx={{
             fontSize: {
               xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
+              sm: "clamp(15px, 2vw, 30px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "primary.main",
             whiteSpace: "nowrap",
             marginTop: "15rem",
+            fontFamily: "NanumSquareExtraBold, sans-serif"
           }}
         >
           환경을 위한 당신의 선택
@@ -179,7 +192,7 @@ const Home = () => {
       </div>
       <div
         style={{
-          marginTop: "5rem",
+          marginTop: "2rem",
           display: "flex",
           gap: "3rem",
           marginBottom: "10rem",
@@ -189,20 +202,21 @@ const Home = () => {
           <img
             src={require("../../assets/images/VeganRestaurant.jpg")}
             alt="VeganRestaurant"
-            width={500}
-            height={200}
+            width={400}
+            height={160}
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "nowrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <Link
@@ -218,20 +232,21 @@ const Home = () => {
           <img
             src={require("../../assets/images/Park.jpg")}
             alt="VeganRestaurant"
-            width={500}
-            height={200}
+            width={400}
+            height={160}
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "nowrap",
               padding: "1rem",
+              fontWeight: "bold"
             }}
           >
             <Link
@@ -239,7 +254,7 @@ const Home = () => {
               underline="none"
               sx={{ color: "info.main" }}
             >
-              공원으로 떠나요
+              자연에서의 시간
             </Link>
           </Typography>
         </div>

@@ -89,8 +89,11 @@ const RightbarPark = () => {
             },
           }}
         >
-          <Typography variant="h6" fontWeight={100} mt={2}>
-            <center>너에게 추천할께</center>
+          <Typography variant="body1" mt={2}
+          sx={{color:"info.main",
+          fontFamily: "Nanum Gothic, sans-serif",
+          fontWeight: "bold"}}>
+            <center>공원에서 자연의 소중함을 느껴보세요.</center>
           </Typography>
           {!filtered && (
             <Stack

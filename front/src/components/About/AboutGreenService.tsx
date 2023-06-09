@@ -43,13 +43,16 @@ const AboutGreenService = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginTop :'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             그린라이프,
@@ -57,13 +60,16 @@ const AboutGreenService = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(20px, 3vw, 40px)",
-                sm: "clamp(30px, 3vw, 59px)",
+                xs: "clamp(30px, 2vw, 40px)",
+                sm: "clamp(30px, 2vw, 40px)",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginBottom :'10px'
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "secondary.main",
               whiteSpace: "nowrap",
-              fontWeight: "bold",
+              fontFamily: "NanumSquareExtraBold, sans-serif"
             }}
           >
             서비스
@@ -75,12 +81,13 @@ const AboutGreenService = () => {
           sx={{
             fontSize: {
               xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
+              sm: "clamp(15px, 2vw, 30px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "primary.main",
             whiteSpace: "nowrap",
             marginTop: "10rem",
+            fontFamily: "NanumSquareExtraBold, sans-serif"
           }}
         >
           서비스 소개
@@ -90,13 +97,14 @@ const AboutGreenService = () => {
         <Typography
           sx={{
             fontSize: {
-              xs: "clamp(10px, 2vw, 15px)",
-              sm: "clamp(15px, 2vw, 30px)",
+              xs: "clamp(10px, 2vw, 20px)",
+              sm: "clamp(10px, 2vw, 20px)",
             },
             lineHeight: { xs: "1.2", sm: "1.5" },
             color: "info.main",
             whiteSpace: "wrap",
-            marginTop: "5rem",
+            marginTop: "2rem",
+            fontWeight: "bold"
           }}
         >
           <center>
@@ -104,15 +112,15 @@ const AboutGreenService = () => {
           </center>
         </Typography>
       </div>
-      <div style={{ width: "1400px", maxWidth: "100%", margin: "0 auto" }}>
+      <div style={{ width: "700px", maxWidth: "50%", margin: "0 auto" }}>
         <Carousel />
       </div>
       <div
         style={{
-          width: "1400px",
+          width: "800px",
           maxWidth: "100%",
           margin: "0",
-          marginLeft: "15%",
+          marginLeft: "4%",
         }}
       >
         <div
@@ -120,7 +128,7 @@ const AboutGreenService = () => {
             marginTop: "5rem",
             display: "flex",
             gap: "3rem",
-            marginBottom: "10rem",
+            marginBottom: "5rem",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -129,12 +137,13 @@ const AboutGreenService = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "nowrap",
               flexGrow: "1",
+              fontFamily: "Black Han Sans, sans-serif"
             }}
           >
             RESTAURANT
@@ -142,17 +151,18 @@ const AboutGreenService = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+              xs: "clamp(10px, 2vw, 20px)",
+              sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
               flexGrow: "0.898",
+              fontWeight: "bold"
             }}
           >
-            환경보호를 위한 첫 걸음,
+            환경보호를 위한 첫번째 걸음,
             <br />
             카테고리와 지역별로 비건 식당을 소개해드릴게요.
           </Typography>
@@ -162,7 +172,7 @@ const AboutGreenService = () => {
             marginTop: "5rem",
             display: "flex",
             gap: "3rem",
-            marginBottom: "10rem",
+            marginBottom: "5rem",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -171,12 +181,13 @@ const AboutGreenService = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "nowrap",
               flexGrow: "1",
+              fontFamily: "Black Han Sans, sans-serif"
             }}
           >
             PARK
@@ -184,14 +195,15 @@ const AboutGreenService = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
               flexGrow: "0.93",
+              fontWeight: "bold"
             }}
           >
             환경보호를 위한 두번째 걸음,
@@ -213,12 +225,13 @@ const AboutGreenService = () => {
             sx={{
               fontSize: {
                 xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(25px, 2vw, 50px)",
+                sm: "clamp(15px, 2vw, 30px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "primary.main",
               whiteSpace: "nowrap",
               flexGrow: "1",
+              fontFamily: "Black Han Sans, sans-serif"
             }}
           >
             SHARE
@@ -226,14 +239,15 @@ const AboutGreenService = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "clamp(10px, 2vw, 15px)",
-                sm: "clamp(15px, 2vw, 30px)",
+                xs: "clamp(10px, 2vw, 20px)",
+                sm: "clamp(10px, 2vw, 20px)",
               },
               lineHeight: { xs: "1.2", sm: "1.5" },
               color: "info.main",
               whiteSpace: "wrap",
               padding: "1rem",
               flexGrow: "0.85",
+              fontWeight: "bold"
             }}
           >
             환경보호를 위한 세번째 걸음,
