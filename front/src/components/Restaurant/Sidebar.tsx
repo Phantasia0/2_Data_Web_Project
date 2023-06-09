@@ -20,7 +20,7 @@ import {
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 import { RootState } from "../../features/configureStore";
-import { CustomTypography } from "./Navbar";
+import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
 
 const regionCategory: string[] = [

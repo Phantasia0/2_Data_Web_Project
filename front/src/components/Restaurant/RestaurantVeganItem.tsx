@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-
+import PhoneIcon from '@mui/icons-material/Phone';
 import {
   Avatar,
   Divider,
@@ -34,7 +34,11 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  tel
+                  <img
+                    src={require("../../assets/images/phone.png")}
+                    alt="Phone Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                 </Typography>
                 {data?.tel ? data.tel : "전화번호가 등록되지 않았습니다."}
               </div>
@@ -45,7 +49,11 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  category
+                  <img
+                    src={require("../../assets/images/category.png")}
+                    alt="category Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                 </Typography>
                 {data?.category
                   ? data?.category
@@ -58,7 +66,11 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  address
+                <img
+                    src={require("../../assets/images/address.png")}
+                    alt="Address Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                 </Typography>
                 {data?.address ? data?.address : "주소가 등록되지 않았습니다."}
               </div>
@@ -69,7 +81,11 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  region
+                  <img
+                    src={require("../../assets/images/region.png")}
+                    alt="Region Icon"
+                    style={{ width: "13px", height: "13px", verticalAlign: "middle" }}
+                  />{" "}
                 </Typography>
                 {data?.region ? data?.region : "리전이 등록되지 않았습니다."}
               </div>

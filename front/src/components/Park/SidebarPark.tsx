@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 
 import { filterBySelected, resetData } from "../../features/ParkReducer"; // <<
 import { useDispatch } from "react-redux";
-import { CustomTypography } from "../Restaurant/Navbar";
+import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
 
 const regionCategory: string[] = [

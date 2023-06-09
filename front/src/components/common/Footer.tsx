@@ -25,7 +25,7 @@ const Footer = () => {
         About Us
       </Link>
       <Typography className="footer-greenLife" variant="body2">
-        Copyright© 2023 Elise. All rights reserved
+        Copyright© 2023 Elice. All rights reserved
       </Typography>
     </div>
   );
