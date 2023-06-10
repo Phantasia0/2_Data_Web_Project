@@ -4,6 +4,7 @@ import { restaurantsApi } from "../services/restaurantsApi";
 import { kakaoApi } from "../services/restaurantsApi";
 import { parksApi } from "../services/parksApi";
 import { activitysApi } from "../services/activityApi";
+import { apiSlice } from "../services/authApi";
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -12,7 +13,8 @@ export const store = configureStore({
       restaurantsApi.middleware,
       kakaoApi.middleware,
       parksApi.middleware,
-      activitysApi.middleware
+      activitysApi.middleware,
+      apiSlice.middleware
     ),
 });
 

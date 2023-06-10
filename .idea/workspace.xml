@@ -5,25 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Activity/LabelButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkRoadView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/features/ActivityReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/models/activity.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/services/activityApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/User/LoginModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/User/RegisterModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/User/User.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/hooks/useInput.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/authApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/utils/validate.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/db/models/Activity.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Activity.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/middlewares/login_required.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/middlewares/login_required.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/features/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/configureStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,24 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "feature/2차-메인기능",
-    "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/front-3차-메인기능&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ncpro/Desktop/env/front/src/assets/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -101,6 +96,7 @@
       <workItem from="1685835737918" duration="57692000" />
       <workItem from="1686179223875" duration="25028000" />
       <workItem from="1686221463675" duration="22271000" />
+      <workItem from="1686322496143" duration="27144000" />
     </task>
     <servers />
   </component>
