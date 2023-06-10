@@ -113,7 +113,7 @@ const SidebarPark = () => {
                           setAnchorEl(null);
                         }}
                       >
-                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold"}}>{region}</CustomTypography>
+                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold", padding: "0.2vw"}}>{region}</CustomTypography>
                       </div>
                     </ListItem>
                   ))}

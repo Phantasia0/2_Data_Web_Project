@@ -1,6 +1,7 @@
 import React from "react";
-import { Typography, Button, Link } from "@mui/material";
+import { Typography, Button, Link,Box } from "@mui/material";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { fontdesign } from "../../theme/fontdesign";
 
 const Home = () => {
   const { width } = useWindowDimensions();
@@ -27,59 +28,37 @@ const Home = () => {
         <img
           src={require("../../assets/images/HomeImage.jpg")}
           alt="Home Image"
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
         />
-        <div
-          style={{
+        <Box
+          sx={{
             position: "absolute",
-            top: "22%",
-            left: "70%",
+            top: "12%",
+            left: {
+              xs: "65%",
+            },
             backgroundColor: "rgba(255, 255, 255, 0.3)",
             backdropFilter: "blur(8px)",
             borderRadius: "5px",
             zIndex: 1,
           }}
         >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(30px, 2vw, 40px)",
-                sm: "clamp(30px, 2vw, 40px)",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                marginTop :'10px'
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "secondary.main",
-              whiteSpace: "nowrap",
-              fontFamily: "NanumSquareExtraBold, sans-serif"
-            }}
-          >
+          <Typography sx={fontdesign.xsTop}>
             환경을 위한 첫걸음
           </Typography>
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(30px, 2vw, 40px)",
-                sm: "clamp(30px, 2vw, 40px)",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                marginBottom:'10px'
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "secondary.main",
-              whiteSpace: "nowrap",
-              fontFamily: "NanumSquareExtraBold, sans-serif"
-            }}
-          >
+          <Typography sx={fontdesign.xsBottom}>
             그린라이프와 함께
           </Typography>
-        </div>
-        {width >= 1500 && (
-          <div
-            style={{
+        </Box>
+          <Box
+            sx={{
               position: "absolute",
-              top: "37%",
-              left: "70%",
+              top: {
+                xs: "35%",
+              },
+              left: {
+                xs: "60%",
+              },
               backgroundColor: "rgba(255, 255, 255, 0.3)",
               backdropFilter: "blur(8px)",
               borderRadius: "5px",
@@ -89,12 +68,13 @@ const Home = () => {
             <Typography
               sx={{
                 fontSize: {
-                  xs: "clamp(15px, 2vw, 20px)",
-                  sm: "clamp(15px, 2vw, 20px)",
-                  paddingLeft: "20px",
-                  paddingRight: "20px"
+                  xs: "1.5vw",
+                  paddingLeft: "1vw",
+                  paddingRight: "1vw",
+                  marginTop :'0.5vw',
+                  marginBottom :'0.5vw'
                 },
-                lineHeight: { xs: "1.5", sm: "2" },
+                lineHeight: { xs: "1.5vw" },
                 color: "secondary.main",
                 whiteSpace: "nowrap",
                 fontFamily: "NanumSquareExtraBold, sans-serif"
@@ -102,11 +82,11 @@ const Home = () => {
             >
               지구, 그리고 우리 모두를 위한 작은 실천 
             </Typography>
-            <div
+            {/* <div
               style={{
                 position: "absolute",
                 top: "400%",
-                left: "65%",
+                left: "50%",
                 backgroundColor: "rgba(255, 255, 255, 0.3)",
                 backdropFilter: "blur(8px)",
                 borderRadius: "50px",
@@ -131,40 +111,21 @@ const Home = () => {
                   Service
                 </Button>
               </Link>
-            </div>
-          </div>
-        )}
+            </div> */}
+          </Box>
       </div>
       <div>
         <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(15px, 2vw, 30px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "primary.main",
-            whiteSpace: "nowrap",
-            marginTop: "10rem",
-            fontFamily: "NanumSquareExtraBold, sans-serif"
-          }}
+          sx={fontdesign.xsTitle}
+          style={{marginTop: "10vw"}}
         >
           녹색 소비자가 되어봐요
         </Typography>
       </div>
       <div>
         <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(10px, 2vw, 20px)",
-              sm: "clamp(10px, 2vw, 20px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "info.main",
-            whiteSpace: "nowrap",
-            marginTop: "2rem",
-            fontWeight: "bold"
-          }}
+          sx={fontdesign.xsText}
+          style={{marginTop: "7vw"}}
         >
           GreenLife란, 환경과 건강을 생각하는, 친환경적이고 지속 가능한 지구
           차원의 성장을 위한 삶<br />
@@ -175,50 +136,30 @@ const Home = () => {
       </div>
       <div>
         <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(15px, 2vw, 30px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "primary.main",
-            whiteSpace: "nowrap",
-            marginTop: "15rem",
-            fontFamily: "NanumSquareExtraBold, sans-serif"
-          }}
+          sx={fontdesign.xsTitle}
+          style={{marginTop: "10vw"}}
         >
           환경을 위한 당신의 선택
         </Typography>
       </div>
       <div
         style={{
-          marginTop: "2rem",
+          marginTop: "4vw",
           display: "flex",
-          gap: "3rem",
-          marginBottom: "10rem",
+          flexDirection: "row",
+          gap: "6vw",
         }}
       >
-        <div>
+        <div style={{margin:"0 0 0 20px"}}>
           <img
             src={require("../../assets/images/VeganRestaurant.jpg")}
             alt="VeganRestaurant"
-            width={400}
-            height={160}
+            width={'400vw'}
+            height={'160vw'}
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(10px, 2vw, 20px)",
-                sm: "clamp(10px, 2vw, 20px)",
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "info.main",
-              whiteSpace: "nowrap",
-              padding: "1rem",
-              fontWeight: "bold"
-            }}
-          >
+            sx={fontdesign.xsText}>
             <Link
               href="/front/src/components/Restaurant/Restaurant"
               underline="none"
@@ -228,26 +169,16 @@ const Home = () => {
             </Link>
           </Typography>
         </div>
-        <div>
+        <div style={{margin:"0 20px 0 0 "}}>
           <img
             src={require("../../assets/images/Park.jpg")}
             alt="VeganRestaurant"
-            width={400}
-            height={160}
+            width={'400vw'}
+            height={'160vw'}
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(10px, 2vw, 20px)",
-                sm: "clamp(10px, 2vw, 20px)",
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "info.main",
-              whiteSpace: "nowrap",
-              padding: "1rem",
-              fontWeight: "bold"
-            }}
+            sx={fontdesign.xsText}
           >
             <Link
               href="/front/src/components/Restaurant/Restaurant"

@@ -40,7 +40,7 @@ const RightbarVegan = () => {
   const getItemList = (filtered: Boolean | undefined) => {
     if (filtered) {
       return filteredData?.map((item: any) => (
-        <div key={item._id}>
+        <div key={item._id} style={{backgroundColor:"green"}}>
           <RestaurantVeganItem data={item} />
         </div>
       ));
@@ -92,8 +92,11 @@ const RightbarVegan = () => {
           <Typography variant="body1" mt={2}
           sx={{color:"info.main",
           fontFamily: "Nanum Gothic, sans-serif",
-          fontWeight: "bold"}}>
-            <center>비건 레스토랑이란 개인뿐만 아니라 식물성 옵션을 탐색하고 더 건강하고 지속 가능한 식사에 관심있는 사람들을 위한 것입니다.</center>
+          fontWeight: "bold",
+          backgroundColor: "rgba(60, 80, 74, 0.1)",
+          borderRadius:"5px",
+          padding: "10px"}}>
+            <center>비건 레스토랑이란 개인뿐만 아니라 <br></br>식물성 옵션을 탐색하고 더 건강하고 지속 가능한 식사에 관심있는 사람들을 위한 것입니다.</center>
           </Typography>
           {!filtered && (
             <Stack

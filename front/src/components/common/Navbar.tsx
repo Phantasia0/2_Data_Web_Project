@@ -11,8 +11,10 @@ export const CustomTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.primary.main,
   },
   fontFamily: "Black Han Sans, sans-serif",
-  fontWeight: "light"
-}));
+  fontWeight: "light",
+  '@media (max-width: 768px)': {
+    fontSize: "0.5rem",
+}}));
 
 export const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -45,6 +47,9 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  const currentUrl = window.location.pathname
+  const currentPath = currentUrl.split("/");
+
   return (
     <AppBar position="sticky" color="inherit" sx={{ zIndex: 9999 }}>
       <Typography
@@ -57,14 +62,21 @@ const Navbar = () => {
           display: "flex",
           justifyContent: "center",
           marginTop: '2rem',
-          marginBottom: "2rem"
+          marginBottom: "2rem",
+          '@media (max-width: 768px)': {
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontSize: 30,
+          },
         }}
-        
       >
         <Link href={"/"} 
         underline="none"
         sx={{
-          fontFamily: "Black Han Sans, sans-serif"}}>
+          fontFamily: "Black Han Sans, sans-serif",
+          display: 'flex',
+          alignItems: 'center',
+          }}>
           <img
           src={require("../../assets/images/tree.png")}
           alt="Tree Image"
@@ -76,20 +88,19 @@ const Navbar = () => {
         </Link>
       </Typography>
       <Stack
-        direction="row"
-        spacing={20}
-        sx={{           
-          marginTop: '-1rem',
-          marginBottom: "0.5rem",
-          marginLeft: "auto",
-          marginRight: "auto"
+        sx={{
+          display:"flex",
+          width:"100%",
+          flexDirection:"row",
+          justifyContent:"space-around",
+          paddingBottom:"10px",
         }}
         onMouseEnter={handleMenuBarHover}
       >
         <CustomTypography
           onMouseEnter={handleAboutMenuOpen}
           onMouseLeave={handleAboutMenuClose}
-          sx={{ fontSize: "1.2rem"}}>
+          sx={{ fontSize: "1.2rem", color:currentPath[1]==="about"?"primary.main": undefined,}}>
           VISION
           <Menu
             anchorEl={anchorEl}
@@ -109,7 +120,7 @@ const Navbar = () => {
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenlife"} underline="none">
                   <CustomTypography
-                    sx={{ fontSize: "1rem", backgroundColor: "transparent" }}
+                    sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenlife"?"primary.main": undefined,}}
                   >
                     필요성
                   </CustomTypography>
@@ -117,14 +128,14 @@ const Navbar = () => {
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenservice"} underline="none">
-                  <CustomTypography sx={{ fontSize: "1rem" }}>
+                  <CustomTypography sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenservice"?"primary.main": undefined, }}>
                     서비스
                   </CustomTypography>
                 </Link>
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link href={"/about/greenresult"} underline="none">
-                  <CustomTypography sx={{ fontSize: "1rem" }}>
+                  <CustomTypography sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenresult"?"primary.main": undefined, }}>
                     기대효과
                   </CustomTypography>
                 </Link>
@@ -133,13 +144,13 @@ const Navbar = () => {
           </Menu>
         </CustomTypography>
         <Link href={"/restaurant"} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem"}}>RESTAURANT</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="restaurant"?"primary.main": undefined,}} >RESTAURANT</CustomTypography>
         </Link>
         <Link href={"/park"} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem"}}>PARK</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="park"?"primary.main": undefined,}}>PARK</CustomTypography>
         </Link>
         <Link href={"/activity"} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem"}}>ACTIVITY</CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="activity"?"primary.main": undefined,}}>ACTIVITY</CustomTypography>
         </Link>
       </Stack>
     </AppBar>

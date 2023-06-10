@@ -32,8 +32,8 @@ const Rightbar = () => {
 
   const getItemList = (data: RestaurantState["data"]) =>
     data.map((item: any) => (
-      <div key={item.id}>
-        <RestaurantItem data={item} />
+      <div key={item.id} >
+        <RestaurantItem data={item}/>
       </div>
     ));
 

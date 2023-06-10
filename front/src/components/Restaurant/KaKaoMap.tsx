@@ -210,6 +210,7 @@ const TotalSearchMap = () => {
       style={{
         width: "100%",
         height: "1000px",
+        borderRadius: "3rem",
       }}
       level={13} // 지도의 확대 레벨
       ref={mapRef}
@@ -232,6 +233,9 @@ const KaKaoMap = () => {
   const responsiveStyle = {
     width: "100%",
     height: "50%",
+    marginTop:'1.5vw',
+    marginLeft:'1vw',
+    
     [theme.breakpoints.down("sm")]: {
       height: "100%",
       width: "50%",

@@ -2,7 +2,6 @@ import React from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ThemeProvider, Box } from "@mui/material";
 import { theme } from "./theme/theme";
-
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import Home from "./components/common/Home";

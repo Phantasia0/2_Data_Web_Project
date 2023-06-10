@@ -92,7 +92,10 @@ const RightbarPark = () => {
           <Typography variant="body1" mt={2}
           sx={{color:"info.main",
           fontFamily: "Nanum Gothic, sans-serif",
-          fontWeight: "bold"}}>
+          fontWeight: "bold",
+          backgroundColor: "rgba(60, 80, 74, 0.1)",
+          borderRadius:"5px",
+          padding: "10px"}}>
             <center>공원에서 자연의 소중함을 느껴보세요.</center>
           </Typography>
           {!filtered && (

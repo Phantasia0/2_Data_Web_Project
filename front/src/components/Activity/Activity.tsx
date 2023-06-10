@@ -21,6 +21,7 @@ import {
 } from "../../features/ActivityReducer";
 import { Simulate } from "react-dom/test-utils";
 import Slider from "react-slick";
+import { fontdesign } from "../../theme/fontdesign";
 
 const categoryList = ["교통", "전기", "냉/난방", "자원"];
 
@@ -79,22 +80,11 @@ const Activity = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "3rem",
+          marginTop: "2vw",
         }}
       >
         <Typography
-          variant="h2"
-          component="div"
-          sx={{
-            fontSize: {
-              xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(15px, 2vw, 30px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "primary.main",
-            whiteSpace: "nowrap",
-            fontFamily: "NanumSquareExtraBold, sans-serif"
-          }}
+          sx={fontdesign.xsTitle}
         >
           활동 소개
         </Typography>
@@ -103,20 +93,20 @@ const Activity = () => {
             display: "flex",
             justifyContent: "space-between",
             gap: "1rem",
-            marginTop: 2,
+            marginTop: '2vw',
           }}
         >
           {categoryList.map((item) => (
             <LabelButton key={item} label={item} able={isChecked} />
           ))}
         </Box>
-        <Box sx={{marginTop: 2, marginLeft:2}}>
+        <Box sx={{marginTop: '0vw', marginLeft:'2vw'}}>
           <FormControlLabel
             control={
-              <Switch defaultChecked={false} onChange={handleFilterChange} />
+              <Switch sx={fontdesign.xsText} defaultChecked={false} onChange={handleFilterChange} />
             }
             label={
-              <Typography variant="body1" style={{ fontWeight: 'bold', color: "info.main"}}>
+              <Typography variant="body1" sx={fontdesign.xsText} style={{ fontWeight: 'bold', color: "info.main"}}>
                 필터링
               </Typography>
             }
@@ -124,8 +114,8 @@ const Activity = () => {
         </Box>
       </Box>
       {isSuccess && categories && (
-        <Grid container justifyContent="center">
-          <Grid item xs={12} sm={10} md={8} lg={10}>
+        <Grid container justifyContent="center" sx={fontdesign.xsText}>
+          <Grid item xs={12} sm={10} md={10} lg={10}>
             {categories.map((cate) => (
               <div key={cate}>
                 <ActivitySlick category={cate} />

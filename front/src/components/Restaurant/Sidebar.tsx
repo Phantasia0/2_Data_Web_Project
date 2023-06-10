@@ -187,7 +187,7 @@ const Sidebar = () => {
                           setAnchorEl(null);
                         }}
                       >
-                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold"}}>{region}</CustomTypography>
+                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold", padding: "0.2vw"}}>{region}</CustomTypography>
                       </div>
                     </ListItem>
                   ))}
@@ -229,7 +229,7 @@ const Sidebar = () => {
                           setAnchorFoodEl(null);
                         }}
                       >
-                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold"}}>{food}</CustomTypography>
+                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold", padding: "0.2vw"}}>{food}</CustomTypography>
                       </div>
                     </ListItem>
                   ))}
