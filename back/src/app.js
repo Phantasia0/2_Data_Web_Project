@@ -12,6 +12,7 @@ import {
 } from "./routers";
 
 const app = express();
+const path = require("path");
 
 // CORS 에러 방지
 app.use(cors());
@@ -26,6 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.send("안녕하세요");
 });
+
+// 이미지 url로 접근 시 처리
+app.use(express.static(path.join(__dirname, "uploaded")));
 
 // router, service 구현
 app.use("/user", userRouter);
