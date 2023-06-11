@@ -65,19 +65,24 @@ const SidebarPark = () => {
       flex={1}
       p={2}
       sx={{
-        display: {
-          xs: "none",
-          sm: "block",
-          width: "100%",
-          "@media (max-width: 1080px)": {
-            display: "none",
-          },
-          marginLeft: '1.5rem',
-          marginTop: '1rem',
-        },
+        // display: {
+        //   xs: "none",
+        //   sm: "block",
+        //   width: "100%",
+        //   "@media (max-width: 1080px)": {
+        //     display: "none",
+        //   },
+        //   marginLeft: '1.5rem',
+        //   marginTop: '1rem',
+        // },
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
-      <Box position="fixed">
+      <Box
+      // position="fixed"
+      >
         <List>
           <ListItem disablePadding>
             <ListItemButton onClick={handleRegionOpenClick}>
@@ -86,7 +91,10 @@ const SidebarPark = () => {
               </ListItemIcon>
               <ListItemText
                 primary={selectedRegion ? selectedRegion : "지역 선택"}
-                primaryTypographyProps={{ style: { fontWeight: 'bold' }, marginLeft:'0.5rem' }}
+                primaryTypographyProps={{
+                  style: { fontWeight: "bold" },
+                  marginLeft: "0.5rem",
+                }}
               />
             </ListItemButton>
             <Popover
@@ -113,7 +121,15 @@ const SidebarPark = () => {
                           setAnchorEl(null);
                         }}
                       >
-                        <CustomTypography style={{ fontFamily: "NanumSquare, sans-serif", fontWeight: "bold", padding: "0.2vw"}}>{region}</CustomTypography>
+                        <CustomTypography
+                          style={{
+                            fontFamily: "NanumSquare, sans-serif",
+                            fontWeight: "bold",
+                            padding: "0.2vw",
+                          }}
+                        >
+                          {region}
+                        </CustomTypography>
                       </div>
                     </ListItem>
                   ))}
@@ -131,7 +147,13 @@ const SidebarPark = () => {
               <ListItemIcon>
                 <RestartAlt />
               </ListItemIcon>
-              <ListItemText primary="초기화" primaryTypographyProps={{ style: { fontWeight: 'bold' }, marginLeft:'0.8rem' }}/>
+              <ListItemText
+                primary="초기화"
+                primaryTypographyProps={{
+                  style: { fontWeight: "bold" },
+                  marginLeft: "0.8rem",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </List>

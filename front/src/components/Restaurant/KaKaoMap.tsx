@@ -80,7 +80,7 @@ const KeywordSearchMap = () => {
       style={{
         width: "100%",
         height: "1000px",
-        
+        borderRadius: "3rem",
       }}
       level={3}
       onCreate={setMap}
@@ -233,9 +233,9 @@ const KaKaoMap = () => {
   const responsiveStyle = {
     width: "100%",
     height: "50%",
-    marginTop:'1.5vw',
-    marginLeft:'1vw',
-    
+    marginTop: "1.5vw",
+    marginLeft: "1vw",
+
     [theme.breakpoints.down("sm")]: {
       height: "100%",
       width: "50%",

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,9 +9,10 @@ import { RootState } from "../../features/configureStore";
 
 interface ActivitySlick {
   category: string;
+  autoplay: boolean;
 }
 
-const ActivitySlick: FC<ActivitySlick> = ({ category }) => {
+const ActivitySlick: FC<ActivitySlick> = ({ category, autoplay }) => {
   const theme = useTheme();
   const { datas } = useSelector(
     ({ activity }: RootState) => ({
@@ -20,14 +21,14 @@ const ActivitySlick: FC<ActivitySlick> = ({ category }) => {
     shallowEqual
   );
 
-  const settings = {
+  const [settings, setSettings] = useState({
     dots: false,
     infinite: true,
     speed: 2000,
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-    autoplay: true,
+    autoplay: autoplay,
     pauseOnHover: true,
     responsive: [
       {
@@ -49,10 +50,24 @@ const ActivitySlick: FC<ActivitySlick> = ({ category }) => {
         },
       },
     ],
-  };
+  });
+
+  useEffect(() => {
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      autoplay: autoplay,
+    }));
+  }, [autoplay]);
 
   return (
-    <Box sx={{ margin: "auto", width: "100%", fontFamily: "NanumSquareExtraBold, sans-serif", color : 'info.main'}}>
+    <Box
+      sx={{
+        margin: "auto",
+        width: "100%",
+        fontFamily: "NanumSquareExtraBold, sans-serif",
+        color: "info.main",
+      }}
+    >
       <h2>{category}</h2>
       <Slider {...settings}>
         {datas &&

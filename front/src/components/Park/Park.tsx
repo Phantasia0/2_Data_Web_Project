@@ -15,35 +15,28 @@ const Park = () => {
         color={"text.primary"}
         sx={{
           width: "100%",
+          display: width < 600 ? "" : "flex",
+          justifyContent: "center",
         }}
       >
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {width >= 1150 && (
-            <Box sx={{ flex: "1" }}>
-              <SidebarPark />
-            </Box>
-          )}
-          <Box sx={{ flex: "3" }}>
+        <Box sx={{ flex: "1" }}>
+          <SidebarPark />
+        </Box>
+        {width >= 1000 && (
+          <Box sx={{ flex: "3", margin: "0 20px 0 20px" }}>
             <KaKaoParkMap />
           </Box>
-          {width >= 768 && (
-            <Box sx={{ flex: "1.7" }}>
-              <RightbarPark />
-            </Box>
-          )}
-          {width < 768 && (
-            <Box sx={{ flex: "3" }}>
-              <RightbarPark />
-            </Box>
-          )}
-        </Stack>
+        )}
+        {width >= 600 && (
+          <Box sx={{ flex: "1.7" }}>
+            <RightbarPark />
+          </Box>
+        )}
+        {width < 600 && (
+          <Box sx={{ flex: "3" }}>
+            <RightbarPark />
+          </Box>
+        )}
       </Box>
     </div>
   );

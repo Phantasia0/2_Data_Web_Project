@@ -43,6 +43,8 @@ const Activity = () => {
     category as string
   );
 
+  const [autoplay, setAutoplay] = useState(true);
+
   useEffect(() => {
     if (data && isSuccess && !isChecked && !filtered) {
       dispatch(
@@ -69,6 +71,11 @@ const Activity = () => {
     setIsChecked(event.target.checked);
   };
 
+  const handleAutoplayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = event.target.checked;
+    setAutoplay(isChecked);
+  };
+
   if (isLoading) {
     return <div>...Loading</div>;
   }
@@ -83,31 +90,55 @@ const Activity = () => {
           marginTop: "2vw",
         }}
       >
-        <Typography
-          sx={fontdesign.xsTitle}
-        >
-          활동 소개
-        </Typography>
+        <Typography sx={fontdesign.xsTitle}>활동 소개</Typography>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             gap: "1rem",
-            marginTop: '2vw',
+            marginTop: "2vw",
           }}
         >
           {categoryList.map((item) => (
             <LabelButton key={item} label={item} able={isChecked} />
           ))}
         </Box>
-        <Box sx={{marginTop: '0vw', marginLeft:'2vw'}}>
+        <Box sx={{ marginTop: "0vw", marginLeft: "2vw" }}>
           <FormControlLabel
             control={
-              <Switch sx={fontdesign.xsText} defaultChecked={false} onChange={handleFilterChange} />
+              <Switch
+                sx={fontdesign.xsText}
+                defaultChecked={false}
+                onChange={handleFilterChange}
+              />
             }
             label={
-              <Typography variant="body1" sx={fontdesign.xsText} style={{ fontWeight: 'bold', color: "info.main"}}>
+              <Typography
+                variant="body1"
+                sx={fontdesign.xsText}
+                style={{ fontWeight: "bold", color: "info.main" }}
+              >
                 필터링
+              </Typography>
+            }
+          />
+          {/* </Box> */}
+          {/* <Box sx={{ marginTop: "0vw", marginLeft: "2vw" }}> */}
+          <FormControlLabel
+            control={
+              <Switch
+                sx={fontdesign.xsText}
+                defaultChecked={true}
+                onChange={handleAutoplayChange}
+              />
+            }
+            label={
+              <Typography
+                variant="body1"
+                sx={fontdesign.xsText}
+                style={{ fontWeight: "bold", color: "info.main" }}
+              >
+                Autoplay
               </Typography>
             }
           />
@@ -118,7 +149,11 @@ const Activity = () => {
           <Grid item xs={12} sm={10} md={10} lg={10}>
             {categories.map((cate) => (
               <div key={cate}>
-                <ActivitySlick category={cate} />
+                <ActivitySlick
+                  key={autoplay.toString()}
+                  category={cate}
+                  autoplay={autoplay}
+                />
               </div>
             ))}
           </Grid>
