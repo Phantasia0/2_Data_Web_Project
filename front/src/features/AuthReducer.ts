@@ -6,7 +6,6 @@ interface AuthState {
   user: string | null;
   token: string | null;
 }
-
 const initialState: AuthState = {
   user: null,
   token: null,

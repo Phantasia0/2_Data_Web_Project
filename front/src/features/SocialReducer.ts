@@ -68,6 +68,7 @@ const socialSlice = createSlice({
       state.currentPage = 1;
     },
     addThisFeed: (state, action: PayloadAction<any>) => {
+      console.log(action?.payload);
       state?.feeds?.unshift(action?.payload);
     },
   },

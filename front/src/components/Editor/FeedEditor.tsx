@@ -54,6 +54,7 @@ const FeedEditor = () => {
       }).unwrap();
 
       if (success) {
+        // console.log(success);
         dispatch(addThisFeed(success));
         navigate("/community");
       }

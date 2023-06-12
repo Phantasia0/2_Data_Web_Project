@@ -16,7 +16,6 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
   useEffect(() => {
     if (isSuccess && currentPage <= Math.floor(data.total / SKIPCOUNT) + 1) {
       if (!isFetching) {
-        console.log("getAllFeed", data);
         dispatch(
           getAllFeed({
             total: data?.total,

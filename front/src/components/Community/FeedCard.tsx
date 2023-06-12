@@ -42,10 +42,9 @@ const FeedCard: FC<any> = ({ data }) => {
   const navigate = useNavigate();
 
   const user = useSelector(selectCurrentUser);
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(data?.likeCheck);
 
   const dispatch = useDispatch();
 
@@ -66,23 +65,22 @@ const FeedCard: FC<any> = ({ data }) => {
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
 
-  useEffect(() => {
-    if (thisFeedSuccess) {
-      console.log(thisFeedSuccess);
-      thisFeedData?.likes?.some((item) => {
-        console.log(item.user?._id === user?._id);
-        if (item.user?._id === user?._id) {
-          if (item.value === 1) {
-            setIsLiked(true);
-          } else if (item.value === 0) {
-            setIsLiked(false);
-          }
-        } else {
-          setIsLiked(false);
-        }
-      });
-    }
-  }, [thisFeedSuccess]);
+  // useEffect(() => {
+  //   if (thisFeedSuccess) {
+  //     // thisFeedData?.likes?.some((item) => {
+  //     //   console.log(item.user?._id === user?._id);
+  //     //   if (item.user?._id === user?._id) {
+  //     //     if (item.value === 1) {
+  //     //       setIsLiked(true);
+  //     //     } else if (item.value === 0) {
+  //     //       setIsLiked(false);
+  //     //     }
+  //     //   } else {
+  //     //     setIsLiked(false);
+  //     //   }
+  //     // });
+  //   }
+  // }, [thisFeedSuccess]);
 
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
@@ -95,6 +93,7 @@ const FeedCard: FC<any> = ({ data }) => {
 
   const handleEdit = () => {
     navigate(`/community/feed/${data._id}`);
+
     handleMenuClose();
   };
 
@@ -163,7 +162,7 @@ const FeedCard: FC<any> = ({ data }) => {
   }
 
   return (
-    <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
+    <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
       <Card
         sx={{
           margin: 5,
@@ -173,11 +172,13 @@ const FeedCard: FC<any> = ({ data }) => {
         }}
       >
         <CardHeader
+          title={thisFeedData?.user?.nickname}
           avatar={<Avatar src={user?.profile} />}
-          title={data.user[0]?.nickname}
           action={
             <IconButton onClick={handleMenuOpen}>
-              {data.user[0]?._id === (user?._id as string) && <MoreVert />}
+              {thisFeedData?.user?._id === (user?._id as string) && (
+                <MoreVert />
+              )}
             </IconButton>
           }
           subheader={data.updatedAt.slice(0, 10)}
@@ -202,17 +203,12 @@ const FeedCard: FC<any> = ({ data }) => {
             alt="sample"
             sx={{
               width: {
-                xs: "266px",
+                xs: "400px",
                 sm: "400px",
                 md: "266px",
                 lg: "400px",
               },
-              height: {
-                xs: "200px",
-                sm: "300px",
-                md: "200px",
-                lg: "300px",
-              },
+              height: "200px",
             }}
           />
         </Link>

@@ -109,6 +109,12 @@ const Navbar = () => {
   const currentUrl = window.location.pathname;
   const currentPath = currentUrl.split("/");
 
+  const handleLogOut = () => {
+    dispatch(logOut());
+    navigate("/");
+    window.location.reload();
+  };
+
   return (
     <AppBar position="sticky" color="inherit" sx={{ zIndex: 9999 }}>
       <Typography
@@ -279,7 +285,15 @@ const Navbar = () => {
           </CustomTypography>
         </Link>
         <Link onClick={() => navigate("/community")} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem" }}>STORY</CustomTypography>
+          <CustomTypography
+            sx={{
+              fontSize: "1.2rem",
+              color:
+                currentPath[1] === "community" ? "primary.main" : undefined,
+            }}
+          >
+            STORY
+          </CustomTypography>
         </Link>
         {!user ? (
           <CustomTypography onClick={() => setUserAuthOpen(true)}>
@@ -320,7 +334,7 @@ const Navbar = () => {
                 <CustomMenuItem onClick={handleProfileClose}>
                   <CustomTypography
                     sx={{ fontSize: "1rem" }}
-                    onClick={() => dispatch(logOut())}
+                    onClick={handleLogOut}
                   >
                     LogOut
                   </CustomTypography>
