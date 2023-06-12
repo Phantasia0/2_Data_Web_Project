@@ -85,6 +85,7 @@ postRouter.put("/:_id", login_required, async function (req, res, next) {
     const _id = req.params._id;
     const { content } = req.body;
     const data = await postService.update({ _id, content });
+    console.log(data);
 
     if (data.errorMessage) {
       throw new Error(data.errorMessage);
