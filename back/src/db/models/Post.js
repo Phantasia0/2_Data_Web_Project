@@ -22,8 +22,8 @@ class Post {
       });
   }
 
-  static async findAll({ page, _id }) {
-    console.log(page);
+  static async findAll({ page, _id, userId }) {
+    console.log(page, userId);
     page = parseInt(page) || 1;
     const skip = (page - 1) * POST_LIMIT;
 
@@ -60,6 +60,19 @@ class Post {
               },
             },
           },
+          likeCheck: {
+            $size: {
+              $filter: {
+                input: { $ifNull: ["$likes", []] }, //필터링 할 배열소스
+                cond: {
+                  $and: [
+                    { $eq: ["$$this.value", 1] },
+                    { $eq: [{ $toString: "$$this.user" }, userId] },
+                  ],
+                }, // 지정 표현식 각 요소에 대해 평가하고 선택
+              },
+            },
+          },
           commentCount: { $size: { $ifNull: ["$comments", []] } },
         },
       },
@@ -92,6 +105,7 @@ class Post {
 
     if (post) {
       const currentValue = post.likes[0].value;
+      console.log(currentValue);
       post.likes[0].value = currentValue === 0 ? 1 : 0;
       await post.save(); // 문서 업데이트
     } else {

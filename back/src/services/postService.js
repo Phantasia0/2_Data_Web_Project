@@ -9,8 +9,8 @@ class postService {
     return await Comment.findAll(page, _id);
   }
 
-  static async getPosts(page) {
-    return await Post.findAll(page);
+  static async getPosts(page, userId) {
+    return await Post.findAll(page, userId);
   }
 
   static async getPost(_id) {

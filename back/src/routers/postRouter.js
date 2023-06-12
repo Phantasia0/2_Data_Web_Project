@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { postService } from "../services/postService";
 import { login_required } from "../middlewares/login_required";
+import { getCurrentUser } from "../middlewares/getCurrentUser";
 
 const postRouter = Router();
 
@@ -39,10 +40,12 @@ postRouter.get("/user/:_id/comment", async function (req, res, next) {
 });
 
 // 게시글 리스트
-postRouter.get("/", async function (req, res, next) {
+postRouter.get("/", getCurrentUser, async function (req, res, next) {
   try {
     const { page } = req.query;
-    const data = await postService.getPosts({ page });
+    const userId = req.currentUserId;
+    console.log(userId);
+    const data = await postService.getPosts({ page, userId });
 
     if (data.errorMessage) {
       throw new Error(data.errorMessage);
