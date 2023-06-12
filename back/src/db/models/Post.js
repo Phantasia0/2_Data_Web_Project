@@ -1,9 +1,10 @@
 import { PostModel } from "../schemas/post";
 import mongoose from "mongoose";
+import { POST_LIMIT, COMMENT_LIMIT } from "../../lib/constant";
 
 class Post {
   static async findById(_id) {
-    const post = await PostModel.findOne({ _id })
+    return await PostModel.findOne({ _id })
       .populate("user", "_id nickname")
       .populate({
         path: "comments",
@@ -19,13 +20,11 @@ class Post {
           select: "_id nickname",
         },
       });
-    return post;
   }
 
   static async findAll(page, _id) {
     page = parseInt(page) || 1;
-    const limit = 12; // 페이지당 보여줄 항목 수
-    const skip = (page - 1) * limit;
+    const skip = (page - 1) * POST_LIMIT;
 
     const match = {};
     if (_id) {
@@ -36,7 +35,7 @@ class Post {
       { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
       { $sort: { createdAt: -1 } },
       { $skip: skip },
-      { $limit: limit },
+      { $limit: POST_LIMIT },
       {
         $lookup: {
           from: "users",
@@ -71,11 +70,10 @@ class Post {
   }
 
   static async create({ user, content }) {
-    const post = await PostModel.create({
+    return await PostModel.create({
       user,
       content,
     });
-    return post;
   }
 
   static async update({ _id, content }) {
@@ -113,8 +111,7 @@ class Post {
 class Comment {
   static async findAll(page, _id) {
     page = parseInt(page) || 1;
-    const limit = 12; // 페이지당 보여줄 항목 수
-    const skip = (page - 1) * limit;
+    const skip = (page - 1) * COMMENT_LIMIT;
 
     let match = {};
     if (_id) {
@@ -140,14 +137,14 @@ class Comment {
       },
       { $sort: { "comments.createdAt": -1 } },
       { $skip: skip },
-      { $limit: limit },
+      { $limit: COMMENT_LIMIT },
     ]);
 
     return { posts };
   }
 
   static async create({ _id, user, content }) {
-    const comment = await PostModel.updateOne(
+    return await PostModel.updateOne(
       { _id },
       {
         $push: {
@@ -155,7 +152,6 @@ class Comment {
         },
       }
     );
-    return comment;
   }
 
   static async update({ _id, content }) {

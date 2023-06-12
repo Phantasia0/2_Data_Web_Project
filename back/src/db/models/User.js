@@ -14,8 +14,7 @@ class User {
 
     if (Object.keys(filter).length === 0)
       throw new Error("정보를 불러오지 못했습니다.");
-    const user = await UserModel.findOne(filter);
-    return user;
+    return await UserModel.findOne(filter);
   }
 
   static async update({ _id, fieldToUpdate, newValue }) {
@@ -23,12 +22,7 @@ class User {
     const update = { [fieldToUpdate]: newValue };
     const option = { returnOriginal: false };
 
-    const updatedUser = await UserModel.findOneAndUpdate(
-      filter,
-      update,
-      option
-    );
-    return updatedUser;
+    return await UserModel.findOneAndUpdate(filter, update, option);
   }
 }
 

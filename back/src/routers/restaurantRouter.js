@@ -43,8 +43,8 @@ restaurantRouter.get("", async function (req, res, next) {
 // 식당 상세페이지
 restaurantRouter.get("/:id", async function (req, res, next) {
   try {
-    const restaurant_id = req.params.id;
-    const data = await restaurantService.getRestaurant(restaurant_id);
+    const restaurantId = req.params.id;
+    const data = await restaurantService.getRestaurant(restaurantId);
 
     if (data.errorMessage) {
       throw new Error(data.errorMessage);

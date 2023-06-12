@@ -26,10 +26,11 @@ class userService {
     const newUser = { id, nickname, password: hashedPassword };
 
     // db에 저장
-    const createdNewUser = await User.create({ newUser });
-    createdNewUser.errorMessage = null; // 문제 없이 db 저장 완료되었으므로 에러가 없음.
-
-    return createdNewUser;
+    try {
+      return await User.create({ newUser });
+    } catch (error) {
+      return error;
+    }
   }
 
   static async getUser({ id, password }) {
@@ -53,7 +54,7 @@ class userService {
     }
 
     // 로그인 성공 -> JWT 웹 토큰 생성
-    const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
+    const secretKey = process.env.JWT_SECRET_KEY;
     const token = jwt.sign({ _id: user._id }, secretKey);
 
     // 반환할 loginuser 객체를 위한 변수 설정

@@ -5,21 +5,15 @@ class parkService {
     const filter = {};
     if (region) filter.region = region;
 
-    const data = await Park.findBySearch(filter);
-
-    return data;
+    return await Park.findBySearch(filter);
   }
 
   static async getParks(page) {
-    const data = await Park.findAll(page);
-
-    return data;
+    return await Park.findAll(page);
   }
 
   static async getPark(park_id) {
-    const data = await Park.findById(park_id);
-
-    return data;
+    return await Park.findById(park_id);
   }
 }
 

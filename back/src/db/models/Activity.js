@@ -7,10 +7,10 @@ class Activity {
     const activity = await ActivityModel.find(filter);
 
     // category 값 가져오기
-    let categoryAll;
-    categoryAll = await ActivityModel.distinct("category").exec();
+    let categories;
+    categories = await ActivityModel.distinct("category").exec();
 
-    return { categoryAll, activity };
+    return { categories, activity };
   }
 }
 

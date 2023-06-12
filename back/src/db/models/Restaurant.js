@@ -1,11 +1,11 @@
 import { RestaurantModel } from "../schemas/restaurant";
+import { LIMIT } from "../../lib/constant";
 
 class Restaurant {
   static async findAll(page) {
-    const limit = 5; // 페이지당 보여줄 항목 수
-    const skip = (page - 1) * limit;
+    const skip = (page - 1) * LIMIT;
 
-    const restaurant = await RestaurantModel.find().skip(skip).limit(limit);
+    const restaurant = await RestaurantModel.find().skip(skip).limit(LIMIT);
     const total = await RestaurantModel.countDocuments();
 
     // region, category 값 가져오기
