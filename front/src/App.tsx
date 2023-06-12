@@ -15,6 +15,10 @@ import RestaurantVeganDetail from "./components/Restaurant/RestaurantVeganDetail
 import RestaurantKeywordDetail from "./components/Restaurant/RestaurantKeywordDetail";
 import ParkDetail from "./components/Park/ParkDetail";
 import Activity from "./components/Activity/Activity";
+import Profile from "./components/Profile/Profile";
+import Community from "./components/Community/Community";
+import FeedEditor from "./components/Editor/FeedEditor";
+import FeedDetail from "./components/Editor/FeedDetail";
 
 const Layout = () => {
   return (
@@ -77,6 +81,22 @@ const router = createBrowserRouter([
       {
         path: "activity",
         element: <Activity />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "community",
+        element: <Community />,
+      },
+      {
+        path: "editor/new",
+        element: <FeedEditor />,
+      },
+      {
+        path: "community/feed/:feedId",
+        element: <FeedDetail />,
       },
     ],
   },

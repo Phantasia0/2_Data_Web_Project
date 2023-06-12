@@ -5,20 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/components/User/LoginModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/User/RegisterModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/User/User.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/hooks/useInput.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/services/authApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/utils/validate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Community/FeedGrid.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Community/LabelCommunity.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentEditor.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor2.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Editor/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/models/social.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/models/user.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/commentApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/feedApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/likeApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/socialApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/middlewares/login_required.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/middlewares/login_required.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/db/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/routers/postRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/routers/postRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/features/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/configureStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/theme/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/theme/theme.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +114,7 @@
       <workItem from="1685835737918" duration="57692000" />
       <workItem from="1686179223875" duration="25028000" />
       <workItem from="1686221463675" duration="22271000" />
-      <workItem from="1686322496143" duration="27144000" />
+      <workItem from="1686322496143" duration="140283000" />
     </task>
     <servers />
   </component>

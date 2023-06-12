@@ -1,4 +1,4 @@
-import { apiSlice } from "../services/authApi";
+import { apiSlice } from "./authApi";
 
 export const authApiWrapper = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

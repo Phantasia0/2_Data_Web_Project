@@ -1,4 +1,5 @@
 import { PostModel } from "../schemas/post";
+import {RestaurantModel} from "../schemas/restaurant";
 
 class Post {
   static async findById(_id) {
@@ -21,9 +22,9 @@ class Post {
     return post;
   }
 
-  static async findAll(page) {
+  static async findAll({page}) {
     page = parseInt(page) || 1;
-    const limit = 12; // 페이지당 보여줄 항목 수
+    const limit = 4; // 페이지당 보여줄 항목 수
     const skip = (page - 1) * limit;
 
     const post = await PostModel.aggregate([
@@ -59,7 +60,7 @@ class Post {
       },
     ]);
 
-    const total = post.length;
+    const total = await PostModel.countDocuments();
 
     return { total, post };
   }

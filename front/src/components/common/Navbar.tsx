@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { AppBar, Typography, Stack, Menu, MenuItem, Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person4Icon from "@mui/icons-material/Person4";
 import User from "../User/User";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   logOut,
   selectCurrentUser,
@@ -40,8 +41,9 @@ const Navbar = () => {
     null
   );
   const [userAuthOpen, setUserAuthOpen] = useState<Boolean>(false);
-  const user = useSelector(selectCurrentUser);
+  const user = useSelector(selectCurrentUser, shallowEqual);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { data, isSuccess, isError } = useGetCurrentUserQuery(undefined, {
     // @ts-ignore
@@ -51,7 +53,8 @@ const Navbar = () => {
   });
 
   useEffect(() => {
-    if (isSuccess) {
+    // @ts-ignore
+    if (isSuccess && !user) {
       dispatch(
         setCredentials({
           user: data,
@@ -116,7 +119,7 @@ const Navbar = () => {
         }}
       >
         <Link
-          href={"/"}
+          onClick={() => navigate("/")}
           underline="none"
           sx={{
             fontFamily: "Black Han Sans, sans-serif",
@@ -170,7 +173,10 @@ const Navbar = () => {
           >
             <div>
               <CustomMenuItem onClick={handleClose}>
-                <Link href={"/about/greenlife"} underline="none">
+                <Link
+                  onClick={() => navigate("/about/greenlife")}
+                  underline="none"
+                >
                   <CustomTypography
                     sx={{ fontSize: "1rem", backgroundColor: "transparent" }}
                   >
@@ -179,14 +185,20 @@ const Navbar = () => {
                 </Link>
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
-                <Link href={"/about/greenservice"} underline="none">
+                <Link
+                  onClick={() => navigate("/about/greenservice")}
+                  underline="none"
+                >
                   <CustomTypography sx={{ fontSize: "1rem" }}>
                     서비스
                   </CustomTypography>
                 </Link>
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
-                <Link href={"/about/greenresult"} underline="none">
+                <Link
+                  onClick={() => navigate("/about/greenresult")}
+                  underline="none"
+                >
                   <CustomTypography sx={{ fontSize: "1rem" }}>
                     기대효과
                   </CustomTypography>
@@ -195,17 +207,22 @@ const Navbar = () => {
             </div>
           </Menu>
         </CustomTypography>
-        <Link href={"/restaurant"} underline="none">
+        <Link onClick={() => navigate("/restaurant")} underline="none">
           <CustomTypography sx={{ fontSize: "1.2rem" }}>
             RESTAURANT
           </CustomTypography>
         </Link>
-        <Link href={"/park"} underline="none">
+        <Link onClick={() => navigate("/park")} underline="none">
           <CustomTypography sx={{ fontSize: "1.2rem" }}>PARK</CustomTypography>
         </Link>
-        <Link href={"/activity"} underline="none">
+        <Link onClick={() => navigate("/activity")} underline="none">
           <CustomTypography sx={{ fontSize: "1.2rem" }}>
             Activity
+          </CustomTypography>
+        </Link>
+        <Link onClick={() => navigate("/community")} underline="none">
+          <CustomTypography sx={{ fontSize: "1.2rem" }}>
+            Community
           </CustomTypography>
         </Link>
         {!user ? (
@@ -236,7 +253,7 @@ const Navbar = () => {
             >
               <div>
                 <CustomMenuItem onClick={handleProfileClose}>
-                  <Link href={"/about/greenlife"} underline="none">
+                  <Link onClick={() => navigate("/profile")} underline="none">
                     <CustomTypography
                       sx={{ fontSize: "1rem", backgroundColor: "transparent" }}
                     >
