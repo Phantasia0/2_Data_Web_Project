@@ -42,18 +42,20 @@ const FeedEditor = () => {
     { data: addFeedData, isSuccess: addFeedSuccess, isError: addFeedError },
   ] = useAddFeedMutation();
 
-  const save = (story: string) => {
+  const save = async (story: string) => {
     if (story !== "") {
       addFeed({
         content: story,
       });
-      navigate("/community", { replace: true });
     }
   };
 
   const handleClickPost = (e: any) => {
     // @ts-ignore
     rteRef?.current?.save();
+
+    navigate("/community");
+    window.location.reload();
   };
 
   return (

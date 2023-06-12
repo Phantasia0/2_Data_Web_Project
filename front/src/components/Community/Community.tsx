@@ -30,8 +30,7 @@ const Community = () => {
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetSocialDataQuery(currentPage, {
       skip: currentPage > Math.floor((total as number) / 4) + 1,
-      refetchOnMountOrArgChange: true,
-      cacheTime: 0,
+      refetchOnArgChange: true,
     });
 
   const handleScroll = () => {
@@ -60,7 +59,7 @@ const Community = () => {
       return;
     }
     const scrollToPosition = () => {
-      const scrollY = window.innerHeight + window.scrollY - 50;
+      const scrollY = window.innerHeight + window.scrollY - 1;
       window.scrollTo({ top: scrollY });
     };
 
