@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Button, Link } from "@mui/material";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { fontdesign } from "../../theme/fontdesign";
 
 const AboutGreenResult = () => {
   const { width } = useWindowDimensions();
@@ -27,11 +28,12 @@ const AboutGreenResult = () => {
         <img
           src={require("../../assets/images/flowers.jpg")}
           alt="Home Image"
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
         />
         <div
           style={{
             position: "absolute",
-            top: "15%",
+            top: "20%",
             left: "14%",
             backgroundColor: "rgba(255, 255, 255, 0.3)",
             backdropFilter: "blur(8px)",
@@ -39,73 +41,24 @@ const AboutGreenResult = () => {
             zIndex: 1,
           }}
         >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(30px, 2vw, 40px)",
-                sm: "clamp(30px, 2vw, 40px)",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                marginTop :'10px'
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "secondary.main",
-              whiteSpace: "nowrap",
-              fontWeight: "bold",
-            }}
-          >
+          <Typography sx={fontdesign.xsTop}>
             지구를 지키는 우리의 힘,
           </Typography>
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(30px, 2vw, 40px)",
-                sm: "clamp(30px, 2vw, 40px)",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                marginBottom :'10px'
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "secondary.main",
-              whiteSpace: "nowrap",
-              fontWeight: "bold",
-            }}
-          >
+          <Typography sx={fontdesign.xsBottom}>
             환경보호 실천!
           </Typography>
         </div>
       </div>
       <div>
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(15px, 2vw, 30px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "primary.main",
-            whiteSpace: "nowrap",
-            marginTop: "10rem",
-            fontWeight: "bold"
-          }}>
+        <Typography sx={fontdesign.xsTitle}
+        style={{marginTop: "10vw"}}>
             기대효과
           </Typography>
           
           </div>
         <div>
-          <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(10px, 2vw, 20px)",
-              sm: "clamp(10px, 2vw, 20px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "info.main",
-            whiteSpace: "wrap",
-            padding: "1rem",
-            fontWeight: "bold",
-            marginTop: "2rem"
-          }}>
+          <Typography sx={fontdesign.xsText}
+          style={{marginTop: "4vw"}}>
           <center>
             Greenlife의 비건 레스토랑 서비스를 이용해서 지구를 위한 식단을 찾아보세요.
           </center>
@@ -114,19 +67,8 @@ const AboutGreenResult = () => {
 
       <div style={{ width: "1400px", maxWidth: "100%", margin: "0 auto" }}>
         <div>
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "clamp(15px, 2vw, 30px)",
-                sm: "clamp(15px, 2vw, 30px)",
-              },
-              lineHeight: { xs: "1.2", sm: "1.5" },
-              color: "primary.main",
-              whiteSpace: "wrap",
-              marginTop: "7rem",
-              fontWeight: "bold"
-            }}
-          >
+          <Typography sx={fontdesign.xsTitle}
+          style={{marginTop: "10vw"}}>
             <center>단계적인 채식으로 환경보호에 기여하기</center>
           </Typography>
         </div>
@@ -143,22 +85,11 @@ const AboutGreenResult = () => {
             alt="VeganRestaurant"
             width="60%"
             height="60%"
-            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
+            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover"}}
           />
         </div>
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "clamp(10px, 2vw, 20px)",
-              sm: "clamp(10px, 2vw, 20px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "info.main",
-            whiteSpace: "wrap",
-            padding: "1rem",
-            fontWeight: "bold"
-          }}
-        >
+        <Typography sx={fontdesign.xsText}
+        style={{marginTop: "7vw"}}>
           <center>
             위 그래프는 육식이 개인의 탄소 배출량에 어떤 영향을 미치는지
           </center>
@@ -191,23 +122,11 @@ const AboutGreenResult = () => {
           src={require("../../assets/images/eirthday.jpg")}
           alt="VeganRestaurant"
           width="50%"
-          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover", marginTop: "4vw" }}
         />
       </div>
-      <Typography
-        sx={{
-          fontSize: {
-            xs: "clamp(10px, 2vw, 20px)",
-            sm: "clamp(10px, 2vw, 20px)",
-          },
-          lineHeight: { xs: "1.2", sm: "1.5" },
-          color: "info.main",
-          whiteSpace: "wrap",
-          padding: "1rem",
-          marginBottom: "10rem",
-          fontWeight: "bold"
-        }}
-      >
+      <Typography sx={fontdesign.xsText}
+      style={{marginTop: "4vw"}}>
         <center>
           이처럼 우리가 매일 먹는 식탁에서 작은 부분이 음식물의 탄소 배출에
           영향을 미칠 수 있어요.

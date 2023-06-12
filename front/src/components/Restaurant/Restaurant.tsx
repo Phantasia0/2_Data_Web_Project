@@ -36,12 +36,12 @@ const Restaurant = () => {
     } else {
       return (
         <>
-          {width >= 768 && (
+          {width >= 600 && (
             <Box sx={{ flex: "1.7" }}>
               <RightbarVegan />
             </Box>
           )}
-          {width < 768 && (
+          {width < 600 && (
             <Box sx={{ flex: "3" }}>
               <RightbarVegan />
             </Box>
@@ -58,26 +58,19 @@ const Restaurant = () => {
         color={"text.primary"}
         sx={{
           width: "100%",
+          display: width < 600 ? "" : "flex",
+          justifyContent: "center",
         }}
       >
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {width >= 1150 && (
-            <Box sx={{ flex: "1" }}>
-              <Sidebar />
-            </Box>
-          )}
-          <Box sx={{ flex: "3" }}>
+        <Box sx={{ flex: "1" }}>
+          <Sidebar />
+        </Box>
+        {width >= 1000 && (
+          <Box sx={{ flex: "3", margin: "0 20px 0 20px" }}>
             <KaKaoMap />
           </Box>
-          {whatToDisplay()}
-        </Stack>
+        )}
+        {whatToDisplay()}
       </Box>
     </div>
   );

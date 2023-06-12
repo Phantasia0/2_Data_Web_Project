@@ -24,6 +24,11 @@ const UserSchema = new Schema(
       required: true,
       default: 1,
     },
+    profile: {
+      type: String,
+      required: true,
+      default: "59616e98-eddb-4b07-9d87-df69b9e9c5d3.jpg",
+    },
     deletedAt: {
       type: Number,
       required: true,

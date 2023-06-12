@@ -1,5 +1,5 @@
 import { PostModel } from "../schemas/post";
-import {RestaurantModel} from "../schemas/restaurant";
+import mongoose from "mongoose";
 
 class Post {
   static async findById(_id) {
@@ -22,13 +22,18 @@ class Post {
     return post;
   }
 
-  static async findAll({page}) {
+  static async findAll(page, _id) {
     page = parseInt(page) || 1;
     const limit = 4; // 페이지당 보여줄 항목 수
     const skip = (page - 1) * limit;
 
+    const match = {};
+    if (_id) {
+      match.user = mongoose.Types.ObjectId(_id);
+    }
+
     const post = await PostModel.aggregate([
-      { $match: {} }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
       { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit },
@@ -60,7 +65,7 @@ class Post {
       },
     ]);
 
-    const total = await PostModel.countDocuments();
+    const total = post.length;
 
     return { total, post };
   }
@@ -106,6 +111,41 @@ class Post {
 }
 
 class Comment {
+  static async findAll(page, _id) {
+    page = parseInt(page) || 1;
+    const limit = 12; // 페이지당 보여줄 항목 수
+    const skip = (page - 1) * limit;
+
+    let match = {};
+    if (_id) {
+      match = {
+        "comments.user": mongoose.Types.ObjectId(_id),
+      };
+    }
+
+    const posts = await PostModel.aggregate([
+      { $match: {} },
+      {
+        $project: {
+          _id: 1,
+          postId: 1,
+          comments: 1,
+        },
+      },
+      {
+        $unwind: "$comments",
+      },
+      {
+        $match: match,
+      },
+      { $sort: { "comments.createdAt": -1 } },
+      { $skip: skip },
+      { $limit: limit },
+    ]);
+
+    return { posts };
+  }
+
   static async create({ _id, user, content }) {
     const comment = await PostModel.updateOne(
       { _id },

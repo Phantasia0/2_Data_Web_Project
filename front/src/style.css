@@ -1,41 +1,40 @@
-html, body {
-      margin: 0;
-      font-family:'Roboto', sans-serif;
-      height: 100%;
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
 }
 
 #root {
-      height:100%;
+  height: 100%;
 }
 
 .app-container {
-
 }
 
 .layout {
-      height:auto;
-      min-height: 100%;
+  height: auto;
+  min-height: 100%;
 }
 
 .contents-container {
-      height:auto;
-      min-height: calc(100% - 80px);
-      padding-bottom: 4rem;
-      box-sizing: border-box;
+  height: auto;
+  min-height: calc(100% - 80px);
+  padding-bottom: 4rem;
+  box-sizing: border-box;
 }
 
 .restaurant-container {
-
 }
 
 .footer {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap:0.01rem;
-      font-size: 0.5rem;
-      position:relative;
-      height:4rem;
-      transform: translateY(-100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.01rem;
+  font-size: 0.5rem;
+  position: relative;
+  height: 4rem;
+  transform: translateY(-100%);
 }

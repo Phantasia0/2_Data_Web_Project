@@ -1,6 +1,14 @@
 import { Post, Comment } from "../db/models/Post";
 
 class postService {
+  static async getSpecificUserPosts({ page, _id }) {
+    return await Post.findAll(page, _id);
+  }
+
+  static async getSpecificUserComments({ page, _id }) {
+    return await Comment.findAll(page, _id);
+  }
+
   static async getPosts(page) {
     return await Post.findAll(page);
   }

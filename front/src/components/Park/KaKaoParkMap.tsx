@@ -168,6 +168,9 @@ const KaKaoParkMap = () => {
         style={{
           width: "100%",
           height: "1000px",
+          borderRadius: "3rem",
+          marginTop:'1.5vw',
+          marginLeft:'1vw',
         }}
         level={13} // 지도의 확대 레벨
         ref={mapRef}

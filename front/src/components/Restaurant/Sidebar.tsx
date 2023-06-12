@@ -122,16 +122,18 @@ const Sidebar = () => {
       p={2}
       sx={{
         display: {
-          xs: "none",
-          sm: "block",
+          // xs: "none",
+          // sm: "block",
           width: "100%",
-          "@media (max-width: 1080px)": {
-            display: "none",
-          },
+          // "@media (max-width: 1080px)": {
+          //   display: "none",
+          // },
+          display: "flex",
+          justifyContent: "center",
         },
       }}
     >
-      <Box position="fixed">
+      <Box>
         <TextField
           variant="outlined"
           placeholder="키워드 검색"
@@ -142,9 +144,12 @@ const Sidebar = () => {
           }}
           sx={{
             width: "80%",
-            "@media (max-width: 768px)": {
-              display: "none",
-            },
+            maxWidth: "350px",
+            // "@media (max-width: 768px)": {
+            //   display: "none",
+            // },
+            marginLeft: "1.5rem",
+            marginTop: "1rem",
           }}
           value={searchValue}
           onChange={handleSearchChange}
@@ -157,6 +162,9 @@ const Sidebar = () => {
               </ListItemIcon>
               <ListItemText
                 primary={selectedRegion ? selectedRegion : "지역 선택"}
+                primaryTypographyProps={{
+                  style: { fontWeight: "bold", marginLeft: "0.5rem" },
+                }}
               />
             </ListItemButton>
             <Popover
@@ -183,7 +191,15 @@ const Sidebar = () => {
                           setAnchorEl(null);
                         }}
                       >
-                        <CustomTypography>{region}</CustomTypography>
+                        <CustomTypography
+                          style={{
+                            fontFamily: "NanumSquare, sans-serif",
+                            fontWeight: "bold",
+                            padding: "0.2vw",
+                          }}
+                        >
+                          {region}
+                        </CustomTypography>
                       </div>
                     </ListItem>
                   ))}
@@ -197,7 +213,10 @@ const Sidebar = () => {
                 <ArrowDropDown />
               </ListItemIcon>
               <ListItemText
-                primary={selectedFood ? selectedFood : "취향 선택"}
+                primary={selectedFood ? selectedFood : "종류 선택"}
+                primaryTypographyProps={{
+                  style: { fontWeight: "bold", marginLeft: "0.5rem" },
+                }}
               />
             </ListItemButton>
             <Popover
@@ -224,7 +243,15 @@ const Sidebar = () => {
                           setAnchorFoodEl(null);
                         }}
                       >
-                        <CustomTypography>{food}</CustomTypography>
+                        <CustomTypography
+                          style={{
+                            fontFamily: "NanumSquare, sans-serif",
+                            fontWeight: "bold",
+                            padding: "0.2vw",
+                          }}
+                        >
+                          {food}
+                        </CustomTypography>
                       </div>
                     </ListItem>
                   ))}
@@ -243,7 +270,13 @@ const Sidebar = () => {
               <ListItemIcon>
                 <RestartAlt />
               </ListItemIcon>
-              <ListItemText primary="초기화" />
+              <ListItemText
+                primary="초기화"
+                primaryTypographyProps={{
+                  style: { fontWeight: "bold" },
+                  marginLeft: "0.8rem",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </List>

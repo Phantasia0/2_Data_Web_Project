@@ -24,6 +24,7 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
         >
           <ListItemText
             primary={data?.name}
+            primaryTypographyProps={{ style: { fontWeight: 'bold' }}}
             secondary={
               <React.Fragment>
                 <div>

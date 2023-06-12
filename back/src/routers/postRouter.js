@@ -4,6 +4,40 @@ import { login_required } from "../middlewares/login_required";
 
 const postRouter = Router();
 
+// 내가 쓴 글 ( 특정 인의 글도 가능 )
+postRouter.get("/user/:_id", async function (req, res, next) {
+  try {
+    const _id = req.params._id;
+    const { page } = req.query;
+    const data = await postService.getSpecificUserPosts({ _id, page });
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
+    res.status(200).send(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// 내가 쓴 댓글 ( 특정 인의 글도 가능 )
+postRouter.get("/user/:_id/comment", async function (req, res, next) {
+  try {
+    const _id = req.params._id;
+    const { page } = req.query;
+    const data = await postService.getSpecificUserComments({ _id, page });
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
+    res.status(200).send(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // 게시글 리스트
 postRouter.get("/", async function (req, res, next) {
   try {

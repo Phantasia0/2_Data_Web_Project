@@ -86,48 +86,34 @@ class userService {
     return user;
   }
 
-  // static async getUsers() {
-  //   const users = await User.findAll();
-  //   return users;
-  // }
+  static async setUser({ _id, toUpdate }) {
+    // 업데이트 대상에 name이 있다면, 즉 name 값이 null 이 아니라면 업데이트 진행
+    if (toUpdate.nickname) {
+      const nicknameChecked = await User.findByOne({
+        nickname: toUpdate.nickname,
+      });
+      if (nicknameChecked) {
+        const errorMessage =
+          "사용중인 닉네임입니다. 다른 닉네임을 입력해 주세요.";
+        return { errorMessage };
+      }
 
-  // static async setUser({ user_id, toUpdate }) {
-  //   // 우선 해당 id 의 유저가 db에 존재하는지 여부 확인
-  //   let user = await User.findById({ user_id });
-
-  //   // db에서 찾지 못한 경우, 에러 메시지 반환
-  //   if (!user) {
-  //     const errorMessage = "가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
-  //     return { errorMessage };
-  //   }
-
-  //   // 업데이트 대상에 name이 있다면, 즉 name 값이 null 이 아니라면 업데이트 진행
-  //   if (toUpdate.name) {
-  //     const fieldToUpdate = "name";
-  //     const newValue = toUpdate.name;
-  //     user = await User.update({ user_id, fieldToUpdate, newValue });
-  //   }
-
-  //   if (toUpdate.email) {
-  //     const fieldToUpdate = "email";
-  //     const newValue = toUpdate.email;
-  //     user = await User.update({ user_id, fieldToUpdate, newValue });
-  //   }
-
-  //   if (toUpdate.password) {
-  //     const fieldToUpdate = "password";
-  //     const newValue = bcrypt.hash(toUpdate.password, 10);
-  //     user = await User.update({ user_id, fieldToUpdate, newValue });
-  //   }
-
-  //   if (toUpdate.description) {
-  //     const fieldToUpdate = "description";
-  //     const newValue = toUpdate.description;
-  //     user = await User.update({ user_id, fieldToUpdate, newValue });
-  //   }
-
-  //   return user;
-  // }
+      const fieldToUpdate = "nickname";
+      const newValue = toUpdate.nickname;
+      return await User.update({ _id, fieldToUpdate, newValue });
+    } else if (toUpdate.description) {
+      const fieldToUpdate = "description";
+      const newValue = toUpdate.description;
+      return await User.update({ _id, fieldToUpdate, newValue });
+    } else if (toUpdate.profile) {
+      const fieldToUpdate = "profile";
+      const newValue = toUpdate.profile;
+      return await User.update({ _id, fieldToUpdate, newValue });
+    } else {
+      const errorMessage = "정보를 불러오지 못했습니다.";
+      return { errorMessage };
+    }
+  }
 }
 
 export { userService };

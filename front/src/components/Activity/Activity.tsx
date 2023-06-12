@@ -21,6 +21,7 @@ import {
 } from "../../features/ActivityReducer";
 import { Simulate } from "react-dom/test-utils";
 import Slider from "react-slick";
+import { fontdesign } from "../../theme/fontdesign";
 
 const categoryList = ["교통", "전기", "냉/난방", "자원"];
 
@@ -41,6 +42,8 @@ const Activity = () => {
   const { data, error, isSuccess, isLoading } = useGetActivitysDataQuery(
     category as string
   );
+
+  const [autoplay, setAutoplay] = useState(true);
 
   useEffect(() => {
     if (data && isSuccess && !isChecked && !filtered) {
@@ -68,6 +71,11 @@ const Activity = () => {
     setIsChecked(event.target.checked);
   };
 
+  const handleAutoplayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = event.target.checked;
+    setAutoplay(isChecked);
+  };
+
   if (isLoading) {
     return <div>...Loading</div>;
   }
@@ -79,51 +87,73 @@ const Activity = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "5rem",
+          marginTop: "2vw",
         }}
       >
-        <Typography
-          variant="h2"
-          component="div"
-          sx={{
-            fontSize: {
-              xs: "clamp(15px, 2vw, 30px)",
-              sm: "clamp(25px, 2vw, 50px)",
-            },
-            lineHeight: { xs: "1.2", sm: "1.5" },
-            color: "primary.main",
-            whiteSpace: "nowrap",
-          }}
-        >
-          활동 소개
-        </Typography>
+        <Typography sx={fontdesign.xsTitle}>활동 소개</Typography>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             gap: "1rem",
-            marginTop: 2,
+            marginTop: "2vw",
           }}
         >
           {categoryList.map((item) => (
             <LabelButton key={item} label={item} able={isChecked} />
           ))}
         </Box>
-        <Box>
+        <Box sx={{ marginTop: "0vw", marginLeft: "2vw" }}>
           <FormControlLabel
             control={
-              <Switch defaultChecked={false} onChange={handleFilterChange} />
+              <Switch
+                sx={fontdesign.xsText}
+                defaultChecked={false}
+                onChange={handleFilterChange}
+              />
             }
-            label="필터링"
+            label={
+              <Typography
+                variant="body1"
+                sx={fontdesign.xsText}
+                style={{ fontWeight: "bold", color: "info.main" }}
+              >
+                필터링
+              </Typography>
+            }
+          />
+          {/* </Box> */}
+          {/* <Box sx={{ marginTop: "0vw", marginLeft: "2vw" }}> */}
+          <FormControlLabel
+            control={
+              <Switch
+                sx={fontdesign.xsText}
+                defaultChecked={true}
+                onChange={handleAutoplayChange}
+              />
+            }
+            label={
+              <Typography
+                variant="body1"
+                sx={fontdesign.xsText}
+                style={{ fontWeight: "bold", color: "info.main" }}
+              >
+                Autoplay
+              </Typography>
+            }
           />
         </Box>
       </Box>
       {isSuccess && categories && (
-        <Grid container justifyContent="center">
-          <Grid item xs={12} sm={10} md={8} lg={10}>
+        <Grid container justifyContent="center" sx={fontdesign.xsText}>
+          <Grid item xs={12} sm={10} md={10} lg={10}>
             {categories.map((cate) => (
               <div key={cate}>
-                <ActivitySlick category={cate} />
+                <ActivitySlick
+                  key={autoplay.toString()}
+                  category={cate}
+                  autoplay={autoplay}
+                />
               </div>
             ))}
           </Grid>
