@@ -14,6 +14,7 @@ import { updateThisFeed } from "../../features/SocialReducer";
 import { Comment } from "@mui/icons-material";
 import CommentEditor from "./CommentEditor";
 import CommentList from "./CommentList";
+import FeedCard from "./FeedCard";
 
 export const LoadDetail = (text: any) => {
   const contentHTML = convertFromHTML(text);
@@ -25,58 +26,56 @@ export const LoadDetail = (text: any) => {
 };
 
 const FeedDetail = () => {
-  const rteRef = useRef(null);
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const { feedId } = useParams();
-  const [detailContent, setDetailContent] = useState<any>("");
   const user = useSelector(selectCurrentUser);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const rteRef = useRef(null);
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const { data, isSuccess, isLoading, isError, refetch } = useGetFeedQuery(
     feedId as string
   );
 
-  const [
-    updateFeed,
-    {
-      data: updateFeedData,
-      isSuccess: updateFeedSuccess,
-      isError: updateFeedError,
-    },
-  ] = useUpdateFeedMutation();
+  // const [
+  //   updateFeed,
+  //   {
+  //     data: updateFeedData,
+  //     isSuccess: updateFeedSuccess,
+  //     isError: updateFeedError,
+  //   },
+  // ] = useUpdateFeedMutation();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
-      setDetailContent(data?.content);
       if (user?._id === data?.user?._id) {
         setIsOwner(true);
       }
     }
   }, [isSuccess]);
 
-  const save = (story: string) => {
-    if (story !== "") {
-      updateFeed({
-        _id: feedId,
-        body: {
-          content: story,
-        },
-      });
-      dispatch(
-        updateThisFeed({
-          _id: feedId,
-          content: story,
-        })
-      );
-      navigate("/community", { replace: true });
-    }
-  };
-  const handleClickUpdate = (e: any) => {
-    // @ts-ignore
-    rteRef?.current?.save();
-  };
+  // const save = (story: string) => {
+  //   if (story !== "") {
+  //     updateFeed({
+  //       _id: feedId,
+  //       body: {
+  //         content: story,
+  //       },
+  //     });
+  //     dispatch(
+  //       updateThisFeed({
+  //         _id: feedId,
+  //         content: story,
+  //       })
+  //     );
+  //     navigate("/community", { replace: true });
+  //   }
+  // };
+  // const handleClickUpdate = (e: any) => {
+  //   // @ts-ignore
+  //   rteRef?.current?.save();
+  // };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -90,7 +89,8 @@ const FeedDetail = () => {
         gap: "2rem",
       }}
     >
-      <Box
+      <FeedCard data={data} isOwner={isOwner} />
+      {/* <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -111,8 +111,8 @@ const FeedDetail = () => {
             />
           </MuiThemeProvider>
         )}
-      </Box>
-      {isOwner && (
+      </Box> */}
+      {/* {isOwner && (
         <Box sx={{ marginTop: "1rem" }}>
           <Button
             onClick={handleClickUpdate}
@@ -122,7 +122,7 @@ const FeedDetail = () => {
             Update
           </Button>
         </Box>
-      )}
+      )} */}
       <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {/*<CommentEditor />*/}
         <CommentList />

@@ -21,8 +21,9 @@ import {
   Menu,
   MenuItem,
   Typography,
+  Button,
 } from "@mui/material";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
@@ -31,22 +32,60 @@ import { useDispatch } from "react-redux";
 import { deleteThisFeed } from "../../features/SocialReducer";
 import { useUpdateLikeMutation } from "../../services/likeApi";
 import { useGetFeedQuery } from "../../services/socialApi";
+import MUIRichTextEditor from "mui-rte";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { theme } from "../../theme/theme";
+import { useUpdateFeedMutation } from "../../services/feedApi";
+import { updateThisFeed } from "../../features/SocialReducer";
 
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
 
-const FeedCard: FC<any> = ({ data }) => {
+const FeedCard: FC<any> = ({ data, isOwner }) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-
+  console.log(data);
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(data?.likeCheck);
-
+  // console.log(data);
   const dispatch = useDispatch();
+  const rteRef = useRef(null);
+
+  const [
+    updateFeed,
+    {
+      data: updateFeedData,
+      isSuccess: updateFeedSuccess,
+      isError: updateFeedError,
+    },
+  ] = useUpdateFeedMutation();
+
+  const save = (story: string) => {
+    if (story !== "") {
+      updateFeed({
+        _id: data?._id,
+        body: {
+          content: story,
+        },
+      });
+      dispatch(
+        updateThisFeed({
+          _id: data?._id,
+          content: story,
+        })
+      );
+      // navigate("/community/f", { replace: true });
+    }
+  };
+
+  const handleClickUpdate = (e: any) => {
+    // @ts-ignore
+    rteRef?.current?.save();
+  };
 
   const [
     deleteFeed,
@@ -65,6 +104,23 @@ const FeedCard: FC<any> = ({ data }) => {
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
 
+  // useEffect(() => {
+  //   if (thisFeedSuccess) {
+  //     // thisFeedData?.likes?.some((item) => {
+  //     //   console.log(item.user?._id === user?._id);
+  //     //   if (item.user?._id === user?._id) {
+  //     //     if (item.value === 1) {
+  //     //       setIsLiked(true);
+  //     //     } else if (item.value === 0) {
+  //     //       setIsLiked(false);
+  //     //     }
+  //     //   } else {
+  //     //     setIsLiked(false);
+  //     //   }
+  //     // });
+  //   }
+  // }, [thisFeedSuccess]);
+
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);
@@ -74,19 +130,13 @@ const FeedCard: FC<any> = ({ data }) => {
     setMenuOpen(false);
   };
 
-  const handleEdit = () => {
-    navigate(`/community/feed/${data._id}`);
-
-    handleMenuClose();
-  };
-
   const handleDelete = async () => {
     await deleteFeed({
       _id: data?._id,
     });
     dispatch(deleteThisFeed(data?._id));
 
-    handleMenuClose();
+    navigate("/community");
   };
 
   const handleClickLike = async (e: any) => {
@@ -158,10 +208,7 @@ const FeedCard: FC<any> = ({ data }) => {
           title={thisFeedData?.user?.nickname}
           avatar={<Avatar src={user?.profile} />}
           action={
-            <IconButton
-              onClick={handleMenuOpen}
-              disabled={thisFeedData?.user?._id !== (user?._id as string)}
-            >
+            <IconButton onClick={handleMenuOpen} disabled={!isOwner}>
               {thisFeedData?.user?._id === (user?._id as string) && (
                 <MoreVert />
               )}
@@ -176,39 +223,28 @@ const FeedCard: FC<any> = ({ data }) => {
           anchorOrigin={{ vertical: "top", horizontal: "left" }}
           transformOrigin={{ vertical: "top", horizontal: "left" }}
         >
-          <MenuItem onClick={handleEdit}>수정</MenuItem>
           <MenuItem onClick={handleDelete}>삭제</MenuItem>
         </Menu>
-        <Link
-          onClick={() => navigate(`/community/feed/${data._id}`)}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardMedia
-            component="img"
-            image={analyzedData.image}
-            alt="sample"
-            sx={{
-              width: {
-                xs: "400px",
-                sm: "400px",
-                md: "266px",
-                lg: "400px",
-              },
-              height: "200px",
-            }}
+
+        <MuiThemeProvider theme={theme}>
+          <MUIRichTextEditor
+            ref={rteRef}
+            defaultValue={data?.content}
+            readOnly={!isOwner}
+            onSave={save}
           />
-        </Link>
-        <Typography variant="body2" color="text.secondary">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
-            }}
-          >
-            {analyzedData.text}
+        </MuiThemeProvider>
+        {isOwner && (
+          <Box sx={{ marginTop: "1rem", textAlign: "center" }}>
+            <Button
+              onClick={handleClickUpdate}
+              variant="contained"
+              sx={{ height: "auto", color: "white" }}
+            >
+              Update
+            </Button>
           </Box>
-        </Typography>
+        )}
         <CardContent
           sx={{
             height: "1px",
@@ -230,7 +266,7 @@ const FeedCard: FC<any> = ({ data }) => {
           <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
             <Comment sx={{ fontSize: "1rem" }} />
           </IconButton>
-          <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
+          <Box sx={{ fontSize: "0.7rem" }}> {data?.comments.length || 0}</Box>
         </CardContent>
       </Card>
     </Grid>

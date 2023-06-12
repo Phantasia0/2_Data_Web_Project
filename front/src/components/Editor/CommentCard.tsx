@@ -99,7 +99,10 @@ const CommentCard = ({ data, refetch }: any) => {
         title={data?.user?.nickname}
         subheader={data?.updatedAt.slice(0, 10)}
         action={
-          <IconButton onClick={handleMenuOpen}>
+          <IconButton
+            onClick={handleMenuOpen}
+            disabled={data?.user?._id !== (user?._id as string)}
+          >
             {data.user._id === user?._id && <MoreVert />}
           </IconButton>
         }

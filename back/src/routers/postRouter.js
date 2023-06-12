@@ -59,10 +59,11 @@ postRouter.get("/", getCurrentUser, async function (req, res, next) {
 });
 
 // 게시글 상세( 댓글/좋아요 포함 )
-postRouter.get("/:_id", async function (req, res, next) {
+postRouter.get("/:_id", getCurrentUser, async function (req, res, next) {
   try {
-    const post_id = req.params._id;
-    const data = await postService.getPost(post_id);
+    const userId = req.currentUserId;
+    const postId = req.params._id;
+    const data = await postService.getPost(postId, userId);
 
     res.status(200).send(data);
   } catch (error) {

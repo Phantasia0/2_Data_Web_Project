@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import { POST_LIMIT, COMMENT_LIMIT } from "../../lib/constant";
 
 class Post {
-  static async findById(_id) {
-    return await PostModel.findOne({ _id })
+  static async findById(_id, userId) {
+    const post = await PostModel.findOne({ _id })
       .populate("user", "_id nickname")
       .populate({
         path: "comments",
@@ -20,6 +20,13 @@ class Post {
           select: "_id nickname",
         },
       });
+
+    const likeCheck = post.likes.filter(
+      (like) => like.user._id.toString() === userId && like.value === 1
+    ).length;
+    post.set("likeCheck", likeCheck, { strict: false });
+
+    return post;
   }
 
   static async findAll({ page, _id, userId }) {

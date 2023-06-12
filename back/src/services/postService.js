@@ -13,8 +13,8 @@ class postService {
     return await Post.findAll(page, userId);
   }
 
-  static async getPost(_id) {
-    return await Post.findById(_id);
+  static async getPost(_id, userId) {
+    return await Post.findById(_id, userId);
   }
 
   static async create({ user, content }) {
