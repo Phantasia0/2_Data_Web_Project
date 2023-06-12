@@ -71,7 +71,7 @@ const RestaurantVeganDetail = () => {
               sx={{
                 fontSize: {
                   xs: "1.5vw",
-                  lg: "1eem",
+                  lg: "1rem",
                 },
                 lineHeight: { xs: "2.2vw" },
                 color: "info.main",

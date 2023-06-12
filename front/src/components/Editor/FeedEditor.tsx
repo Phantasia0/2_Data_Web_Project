@@ -47,7 +47,8 @@ const FeedEditor = () => {
       addFeed({
         content: story,
       });
-      navigate("/community", { replace: true });
+      navigate("/community");
+      window.location.reload();
     }
   };
 

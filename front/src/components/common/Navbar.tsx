@@ -25,9 +25,10 @@ export const CustomTypography = styled(Typography)(({ theme }) => ({
   },
   fontFamily: "Black Han Sans, sans-serif",
   fontWeight: "light",
-  '@media (max-width: 768px)': {
+  "@media (max-width: 768px)": {
     fontSize: "0.5rem",
-}}));
+  },
+}));
 
 export const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -105,7 +106,7 @@ const Navbar = () => {
     setAnchorProfileEl(null);
   };
 
-  const currentUrl = window.location.pathname
+  const currentUrl = window.location.pathname;
   const currentPath = currentUrl.split("/");
 
   return (
@@ -119,23 +120,22 @@ const Navbar = () => {
           fontSize: 50,
           display: "flex",
           justifyContent: "center",
-          marginTop: '2rem',
+          marginTop: "2rem",
           marginBottom: "2rem",
-          '@media (max-width: 768px)': {
-            flexDirection: 'column',
-            alignItems: 'center',
+          "@media (max-width: 768px)": {
+            flexDirection: "column",
+            alignItems: "center",
             fontSize: 30,
           },
         }}
-        
       >
         <Link
           onClick={() => navigate("/")}
           underline="none"
           sx={{
             fontFamily: "Black Han Sans, sans-serif",
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
           }}
         >
           <img
@@ -155,18 +155,22 @@ const Navbar = () => {
       </Typography>
       <Stack
         sx={{
-          display:"flex",
-          width:"100%",
-          flexDirection:"row",
-          justifyContent:"space-around",
-          paddingBottom:"10px",
+          display: "flex",
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          paddingBottom: "10px",
         }}
         onMouseEnter={handleMenuBarHover}
       >
         <CustomTypography
           onMouseEnter={handleAboutMenuOpen}
           onMouseLeave={handleAboutMenuClose}
-          sx={{ fontSize: "1.2rem", color:currentPath[1]==="about"?"primary.main": undefined,}}>
+          sx={{
+            fontSize: "1.2rem",
+            color: currentPath[1] === "about" ? "primary.main" : undefined,
+          }}
+        >
           VISION
           <Menu
             anchorEl={anchorEl}
@@ -189,7 +193,14 @@ const Navbar = () => {
                   underline="none"
                 >
                   <CustomTypography
-                    sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenlife"?"primary.main": undefined,}}
+                    sx={{
+                      fontSize: "1rem",
+                      color:
+                        currentPath[1] === "about" &&
+                        currentPath[2] === "greenlife"
+                          ? "primary.main"
+                          : undefined,
+                    }}
                   >
                     필요성
                   </CustomTypography>
@@ -200,7 +211,16 @@ const Navbar = () => {
                   onClick={() => navigate("/about/greenservice")}
                   underline="none"
                 >
-                  <CustomTypography sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenservice"?"primary.main": undefined, }}>
+                  <CustomTypography
+                    sx={{
+                      fontSize: "1rem",
+                      color:
+                        currentPath[1] === "about" &&
+                        currentPath[2] === "greenservice"
+                          ? "primary.main"
+                          : undefined,
+                    }}
+                  >
                     서비스
                   </CustomTypography>
                 </Link>
@@ -210,7 +230,16 @@ const Navbar = () => {
                   onClick={() => navigate("/about/greenresult")}
                   underline="none"
                 >
-                  <CustomTypography sx={{ fontSize: "1rem", color: currentPath[1] === "about" && currentPath[2]==="greenresult"?"primary.main": undefined, }}>
+                  <CustomTypography
+                    sx={{
+                      fontSize: "1rem",
+                      color:
+                        currentPath[1] === "about" &&
+                        currentPath[2] === "greenresult"
+                          ? "primary.main"
+                          : undefined,
+                    }}
+                  >
                     기대효과
                   </CustomTypography>
                 </Link>
@@ -219,18 +248,38 @@ const Navbar = () => {
           </Menu>
         </CustomTypography>
         <Link onClick={() => navigate("/restaurant")} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="restaurant"?"primary.main": undefined,}} >RESTAURANT</CustomTypography>
+          <CustomTypography
+            sx={{
+              fontSize: "1.2rem",
+              color:
+                currentPath[1] === "restaurant" ? "primary.main" : undefined,
+            }}
+          >
+            RESTAURANT
+          </CustomTypography>
         </Link>
         <Link onClick={() => navigate("/park")} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="park"?"primary.main": undefined,}}>PARK</CustomTypography>
+          <CustomTypography
+            sx={{
+              fontSize: "1.2rem",
+              color: currentPath[1] === "park" ? "primary.main" : undefined,
+            }}
+          >
+            PARK
+          </CustomTypography>
         </Link>
         <Link onClick={() => navigate("/activity")} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem", color:currentPath[1]==="activity"?"primary.main": undefined,}}>ACTIVITY</CustomTypography>
+          <CustomTypography
+            sx={{
+              fontSize: "1.2rem",
+              color: currentPath[1] === "activity" ? "primary.main" : undefined,
+            }}
+          >
+            ACTIVITY
+          </CustomTypography>
         </Link>
         <Link onClick={() => navigate("/community")} underline="none">
-          <CustomTypography sx={{ fontSize: "1.2rem" }}>
-            Community
-          </CustomTypography>
+          <CustomTypography sx={{ fontSize: "1.2rem" }}>STORY</CustomTypography>
         </Link>
         {!user ? (
           <CustomTypography onClick={() => setUserAuthOpen(true)}>

@@ -39,9 +39,16 @@ const CommentEditor = ({ refetch }: any) => {
   };
 
   return (
-    <Grid sx={{ width: "25%", minWidth: "600px" }}>
+    <Grid sx={{ width: "80vw", maxWidth: "600px" }}>
       <Grid>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+          }}
+        >
           <InputBase
             onChange={handleCommentChange}
             value={content}
@@ -60,11 +67,12 @@ const CommentEditor = ({ refetch }: any) => {
             variant="contained"
             color="primary"
             sx={{
-              marginTop: "3px",
+              marginTop: "4px",
               borderRadius: "4px",
               height: "100%",
               width: "10%",
               color: "white",
+              marginBottom: "2px",
             }}
             onClick={handleClick}
           >

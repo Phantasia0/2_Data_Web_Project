@@ -91,6 +91,7 @@ const CommentCard = ({ data, refetch }: any) => {
         borderColor: "lightgray",
         height: "auto",
         width: "100%",
+        marginTop: "10px",
       }}
     >
       <CardHeader

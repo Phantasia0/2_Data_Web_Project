@@ -35,6 +35,9 @@ const LabelCommunity = ({ label }: any) => {
         sx={{
           borderRadius: "1rem",
           color: "primary.main",
+          fontSize: {
+            xs: "1vw",
+          },
           "&:hover": {
             backgroundColor: "primary.main",
             color: "white",
@@ -53,6 +56,9 @@ const LabelCommunity = ({ label }: any) => {
           backgroundColor: isClicked ? "primary.main" : "initial",
           borderRadius: "1rem",
           color: isClicked ? "white" : "primary.main",
+          fontSize: {
+            xs: "1vw",
+          },
           "&:hover": !isClicked
             ? {
                 backgroundColor: "primary.main",

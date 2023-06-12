@@ -69,6 +69,7 @@ const FeedCard: FC<any> = ({ data }) => {
   useEffect(() => {
     if (thisFeedSuccess) {
       thisFeedData?.likes?.some((item) => {
+        console.log(item.user?._id === user?._id);
         if (item.user?._id === user?._id) {
           if (item.value === 1) {
             setIsLiked(true);
