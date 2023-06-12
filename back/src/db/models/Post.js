@@ -22,7 +22,8 @@ class Post {
       });
   }
 
-  static async findAll(page, _id) {
+  static async findAll({ page, _id }) {
+    console.log(page);
     page = parseInt(page) || 1;
     const skip = (page - 1) * POST_LIMIT;
 
@@ -64,7 +65,7 @@ class Post {
       },
     ]);
 
-    const total = post.length;
+    const total = await PostModel.countDocuments();
 
     return { total, post };
   }
