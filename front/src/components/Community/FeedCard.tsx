@@ -68,6 +68,7 @@ const FeedCard: FC<any> = ({ data }) => {
 
   useEffect(() => {
     if (thisFeedSuccess) {
+      console.log(thisFeedSuccess);
       thisFeedData?.likes?.some((item) => {
         console.log(item.user?._id === user?._id);
         if (item.user?._id === user?._id) {
@@ -110,8 +111,9 @@ const FeedCard: FC<any> = ({ data }) => {
     await updateLike({
       _id: data?._id,
     });
-    setIsLiked(!isLiked);
     thisFeedRefetch();
+
+    setIsLiked(!isLiked);
   };
 
   const analyzingData = (data: any) => {
@@ -171,7 +173,7 @@ const FeedCard: FC<any> = ({ data }) => {
         }}
       >
         <CardHeader
-          avatar={<Avatar sx={{ backgroundColor: "primary.main" }}>R</Avatar>}
+          avatar={<Avatar src={user?.profile} />}
           title={data.user[0]?.nickname}
           action={
             <IconButton onClick={handleMenuOpen}>
@@ -236,6 +238,7 @@ const FeedCard: FC<any> = ({ data }) => {
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
               checked={isLiked}
+              disabled={!user}
             />
           </IconButton>
           <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>

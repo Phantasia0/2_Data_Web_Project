@@ -104,6 +104,7 @@ class Post {
     let post = await PostModel.findOne(filter); // 문서 찾기
 
     if (post) {
+      console.log(post.likes);
       const currentValue = post.likes[0].value;
       console.log(currentValue);
       post.likes[0].value = currentValue === 0 ? 1 : 0;
@@ -114,6 +115,7 @@ class Post {
         {
           $push: {
             likes: { user: userId },
+            $position: 0
           },
         }
       );
