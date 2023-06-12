@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { SocialData, Social } from "../models/social.model";
 import { socialApi, useGetSocialDataQuery } from "../services/socialApi";
+import { SKIPCOUNT } from "../utils/validate";
 
 interface SocialState {
   feeds?: any[];
@@ -58,15 +59,27 @@ const socialSlice = createSlice({
     goNext: (state, action: PayloadAction<any>) => {
       if (action?.payload !== null) {
         // @ts-ignore
-        if (Number(state.total / 4) > state.currentPage) {
+        if (Number(state.total / SKIPCOUNT) > state.currentPage) {
           state.currentPage += action?.payload;
         }
       }
     },
+    resetCurrentPage: (state, action: PayloadAction<any>) => {
+      state.currentPage = 1;
+    },
+    addThisFeed: (state, action: PayloadAction<any>) => {
+      state?.feeds?.unshift(action?.payload);
+    },
   },
 });
 
-export const { getAllFeed, deleteThisFeed, updateThisFeed, goNext } =
-  socialSlice.actions;
+export const {
+  getAllFeed,
+  deleteThisFeed,
+  updateThisFeed,
+  goNext,
+  resetCurrentPage,
+  addThisFeed,
+} = socialSlice.actions;
 
 export default socialSlice.reducer;

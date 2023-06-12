@@ -44,8 +44,9 @@ postRouter.get("/", getCurrentUser, async function (req, res, next) {
   try {
     const { page } = req.query;
     const userId = req.currentUserId;
-    console.log(userId);
+    // console.log(userId);
     const data = await postService.getPosts({ page, userId });
+    // console.log("게시글리스트, data", JSON.stringify(data?.post));
 
     if (data.errorMessage) {
       throw new Error(data.errorMessage);

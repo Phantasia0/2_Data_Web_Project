@@ -24,3 +24,5 @@ export const validateLoginForm = (
   password: string,
   confirmPassword: string
 ) => validateName(name) && validatePassword(password);
+
+export const SKIPCOUNT = 12;

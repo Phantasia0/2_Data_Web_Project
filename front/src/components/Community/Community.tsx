@@ -13,6 +13,7 @@ import { RootState } from "../../features/configureStore";
 import FeedGrid from "./FeedGrid";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { debounce } from "lodash";
+import { SKIPCOUNT } from "../../utils/validate";
 
 const category = ["친환경", "비건", "기타"];
 
@@ -30,8 +31,8 @@ const Community = () => {
 
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetSocialDataQuery(currentPage, {
-      skip: currentPage > Math.floor((total as number) / 4) + 1,
-      refetchOnArgChange: true,
+      skip: currentPage > Math.floor((total as number) / SKIPCOUNT) + 1,
+      refetchOnMountOrArgChange: true,
     });
 
   const handleScroll = () => {
@@ -51,7 +52,7 @@ const Community = () => {
   const debouncedHandleScroll = debounce(handleScroll, 100);
 
   useEffect(() => {
-    if (currentPage > Math.floor((total as number) / 4) + 1) {
+    if (currentPage > Math.floor((total as number) / SKIPCOUNT) + 1) {
       return;
     }
     window.addEventListener("scroll", debouncedHandleScroll);
@@ -92,36 +93,6 @@ const Community = () => {
         alignItems: "center",
       }}
     >
-      {/* <div
-        className="home-first"
-        style={{
-          position: "relative",
-          maxWidth: "100%",
-          maxHeight: "100%",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <img
-          src={require("../../assets/images/flowers.jpg")}
-          alt="Home Image"
-          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "20%",
-            left: "14%",
-            backgroundColor: "rgba(255, 255, 255, 0.3)",
-            backdropFilter: "blur(8px)",
-            borderRadius: "5px",
-            zIndex: 1,
-          }}
-        >
-          <Typography sx={fontdesign.xsTop}>여러분의</Typography>
-          <Typography sx={fontdesign.xsBottom}>스토리</Typography>
-        </div>
-      </div> */}
       <div>
         <Typography sx={fontdesign.xsTitle} style={{ marginTop: "4vw" }}>
           Story
@@ -137,20 +108,6 @@ const Community = () => {
           marginTop: "0rem",
         }}
       >
-        {/* <Box
-          flex={3}
-          sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}
-        >
-          {category.map((item) => (
-            <LabelCommunity
-              label={
-                <Typography sx={fontdesign.xsText} style={{ marginTop: "0" }}>
-                  {item}
-                </Typography>
-              }
-            />
-          ))}
-        </Box> */}
         <Box
           flex={2}
           sx={{
@@ -168,7 +125,7 @@ const Community = () => {
         mt={2}
         sx={{ margin: "auto", width: "80%" }}
       >
-        {isSuccess && (
+        {data && (
           <FeedGrid
             data={data}
             isSuccess={isSuccess}

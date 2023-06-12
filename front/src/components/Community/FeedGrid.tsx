@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import { getAllFeed } from "../../features/SocialReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
+import { SKIPCOUNT } from "../../utils/validate";
 
 const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
   const dispatch = useDispatch();
@@ -13,8 +14,9 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
   }));
 
   useEffect(() => {
-    if (isSuccess && currentPage <= Math.floor(data.total / 4) + 1) {
+    if (isSuccess && currentPage <= Math.floor(data.total / SKIPCOUNT) + 1) {
       if (!isFetching) {
+        console.log("getAllFeed", data);
         dispatch(
           getAllFeed({
             total: data?.total,

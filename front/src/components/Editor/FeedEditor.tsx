@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { replace } from "lodash";
+import { useDispatch } from "react-redux";
+import { resetCurrentPage, addThisFeed } from "../../features/SocialReducer";
 
 const MyHashTagDecorator = (props: any) => {
   return (
@@ -37,6 +39,7 @@ const MyAtDecorator = (props: any) => {
 const FeedEditor = () => {
   const rteRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [
     addFeed,
     { data: addFeedData, isSuccess: addFeedSuccess, isError: addFeedError },
@@ -44,20 +47,23 @@ const FeedEditor = () => {
 
   const save = async (story: string) => {
     if (story !== "") {
-      addFeed({
+      dispatch(resetCurrentPage(0));
+
+      const success = await addFeed({
         content: story,
-      });
-      navigate("/community");
-      window.location.reload();
+      }).unwrap();
+
+      if (success) {
+        dispatch(addThisFeed(success));
+        navigate("/community");
+      }
+      console.log("success", success);
     }
   };
 
   const handleClickPost = (e: any) => {
     // @ts-ignore
     rteRef?.current?.save();
-
-    navigate("/community");
-    window.location.reload();
   };
 
   return (
