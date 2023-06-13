@@ -9,8 +9,6 @@ import Feed from "./Feed";
 import Rightbar from "./RightBar";
 import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "./Navbar";
-import Add from "./Add";
-import { useState } from "react";
 
 const Profile = () => {
   const navigate = useNavigate();

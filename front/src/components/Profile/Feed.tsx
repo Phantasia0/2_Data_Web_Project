@@ -6,12 +6,20 @@ import { useGetUserFeedQuery } from "../../services/profileApi";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { RootState } from "../../features/configureStore";
+import { useDispatch } from "react-redux";
+import { resetData, setTotal } from "../../features/ProfileReducer";
+import { useGetNicknameDataQuery } from "../../services/socialApi";
 
 const Feed = () => {
   const user = useSelector(selectCurrentUser);
-  const { pageNumber } = useSelector(({ profile }: RootState) => ({
-    pageNumber: profile.pageNumber,
-  }));
+  const { pageNumber, keyword, filtered } = useSelector(
+    ({ profile }: RootState) => ({
+      pageNumber: profile.pageNumber,
+      keyword: profile.keyword,
+      filtered: profile.filtered,
+    })
+  );
+  const dispatch = useDispatch();
 
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
 
@@ -29,10 +37,31 @@ const Feed = () => {
       page: pageNumber,
     },
     {
-      skip: false,
+      skip: filtered,
       refetchOnMountOrArgChange: true,
     }
   );
+
+  const {
+    data: searchData,
+    isSuccess: searchSuccess,
+    isLoading: searchLoading,
+    isFetching: searchFetching,
+  } = useGetNicknameDataQuery(keyword, {
+    skip: !filtered,
+  });
+
+  useEffect(() => {
+    if (!keyword) {
+      dispatch(resetData());
+    }
+  }, [keyword]);
+
+  useEffect(() => {
+    if (feedSuccess) {
+      dispatch(setTotal(feedData?.tot));
+    }
+  }, [feedSuccess]);
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -50,13 +79,22 @@ const Feed = () => {
 
   return (
     <Box flex={4} p={{ xs: 0, md: 2 }}>
-      {feedData?.post?.map((item: any) => (
-        <FeedCard
-          key={item?._id}
-          data={item}
-          setSnackbarOpen={setSnackbarOpen}
-        />
-      ))}
+      {!filtered &&
+        feedData?.post?.map((item: any) => (
+          <FeedCard
+            key={item?._id}
+            data={item}
+            setSnackbarOpen={setSnackbarOpen}
+          />
+        ))}
+      {filtered &&
+        searchData?.post?.map((item: any) => (
+          <FeedCard
+            key={item?._id}
+            data={item}
+            setSnackbarOpen={setSnackbarOpen}
+          />
+        ))}
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={2000}

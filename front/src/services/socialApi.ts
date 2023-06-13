@@ -19,7 +19,12 @@ export const newSocialApi = apiSlice.injectEndpoints({
         url: `/post?page=${page}`,
       }),
     }),
+    getNicknameData: builder.query<any, any>({
+      query: (nickname: string) => ({
+        url: `/post/search?nickname=${nickname}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetSocialDataQuery } = newSocialApi;
+export const { useGetSocialDataQuery, useGetNicknameDataQuery } = newSocialApi;
