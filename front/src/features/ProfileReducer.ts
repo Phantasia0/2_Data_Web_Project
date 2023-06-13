@@ -6,7 +6,7 @@ export interface ProfileState {
   data?: any;
   filtered?: boolean;
   pageNumber?: number;
-  pageCommentNumber?: number;
+  total?: number;
 }
 
 const initialState: ProfileState = {
@@ -14,6 +14,7 @@ const initialState: ProfileState = {
   data: null,
   filtered: false,
   pageNumber: 1,
+  total: 12,
 };
 
 const profileSlice = createSlice({
@@ -23,6 +24,7 @@ const profileSlice = createSlice({
     searchKeyword: (state, action: PayloadAction<ProfileState | null>) => {
       if (action?.payload !== null) {
         state.keyword = action.payload.keyword;
+        state.filtered = true;
       }
     },
     updateData: (state, action: PayloadAction<ProfileState | null>) => {
@@ -33,13 +35,19 @@ const profileSlice = createSlice({
     resetData: (state) => {
       state.keyword = null;
       state.filtered = false;
+      state.pageNumber = 1;
     },
     goPage: (state, action: PayloadAction<ProfileState | null>) => {
       state.pageNumber = action?.payload?.pageNumber;
     },
+    setTotal: (state, action: PayloadAction<number | null>) => {
+      if (action?.payload !== null) {
+        state.total = action?.payload;
+      }
+    },
   },
 });
 
-export const { searchKeyword, updateData, resetData, goPage } =
+export const { searchKeyword, updateData, resetData, goPage, setTotal } =
   profileSlice.actions;
 export default profileSlice.reducer;

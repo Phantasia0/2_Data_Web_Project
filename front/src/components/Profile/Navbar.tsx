@@ -13,9 +13,12 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
+import { searchKeyword } from "../../features/ProfileReducer";
+import { debounce } from "lodash";
+import { useDispatch } from "react-redux";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -42,11 +45,38 @@ const Icons = styled(Box)(({ theme }) => ({
 
 const Navbar = () => {
   const user = useSelector(selectCurrentUser);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const dispatch = useDispatch();
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+    debounceOnChangeKeyword(event.target.value);
+  };
+
+  const debounceKeywordSearch = (keyword: string) => {
+    dispatch(
+      searchKeyword({
+        keyword: keyword,
+      })
+    );
+  };
+
+  const DEBOUNCE_DELAY: number = 300;
+
+  const debounceOnChangeKeyword = useCallback(
+    debounce(debounceKeywordSearch, DEBOUNCE_DELAY),
+    []
+  );
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
         <Search>
-          <InputBase placeholder="유저 스토리 검색" />
+          <InputBase
+            placeholder="유저 스토리 검색"
+            onChange={handleSearchChange}
+            value={searchValue}
+          />
         </Search>
         <Icons>
           <Badge badgeContent={1} color="error">
