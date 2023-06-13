@@ -1,11 +1,14 @@
 import { Schema } from "mongoose";
 
-const LikeSchema = new Schema(
+const ContactSchema = new Schema(
   {
-    user: {
+    restaurant: {
       type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
+      ref: "Restaurant",
+    },
+    park: {
+      type: Schema.Types.ObjectId,
+      ref: "Park",
     },
     value: {
       type: Number,
@@ -18,4 +21,4 @@ const LikeSchema = new Schema(
   }
 );
 
-export { LikeSchema };
+export { ContactSchema };

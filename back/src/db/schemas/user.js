@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { ContactSchema } from "./contact";
 
 const UserSchema = new Schema(
   {
@@ -34,6 +35,7 @@ const UserSchema = new Schema(
       required: true,
       default: 0,
     },
+    contacts: [ContactSchema],
   },
   {
     timestamps: true,

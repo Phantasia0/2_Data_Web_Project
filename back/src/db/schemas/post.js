@@ -15,6 +15,9 @@ const postSchema = new Schema(
     },
     likes: [LikeSchema],
     comments: [CommentSchema],
+    spot_id: {
+      type: String,
+    },
   },
   {
     timestamps: true,
