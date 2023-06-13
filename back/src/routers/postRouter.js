@@ -58,6 +58,23 @@ postRouter.get("/", getCurrentUser, async function (req, res, next) {
   }
 });
 
+// 게시글 리스트 유저닉네임으로 검색
+postRouter.get("/search", getCurrentUser, async function (req, res, next) {
+  try {
+    const { page, nickname } = req.query;
+    const userId = req.currentUserId;
+    const data = await postService.getSearchedPosts({ page, nickname, userId });
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
+    res.status(200).send(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // 게시글 상세( 댓글/좋아요 포함 )
 postRouter.get("/:_id", getCurrentUser, async function (req, res, next) {
   try {

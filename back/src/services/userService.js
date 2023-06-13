@@ -75,6 +75,10 @@ class userService {
     return loginUser;
   }
 
+  static async getUsers() {
+    return await User.findAll();
+  }
+
   static async getUserInfo(_id) {
     const user = await User.findByOne({ _id });
 

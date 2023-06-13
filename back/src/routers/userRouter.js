@@ -139,19 +139,15 @@ userRouter.patch(
     }
   }
 );
-// userRouter.get(
-//   "/userlist",
-//   login_required,
-//   async function (req, res, next) {
-//     try {
-//       // 전체 사용자 목록을 얻음
-//       const users = await userService.getUsers();
-//       res.status(200).send(users);
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
+userRouter.get("/", login_required, async function (req, res, next) {
+  try {
+    // 전체 사용자 목록을 얻음
+    const users = await userService.getUsers();
+    res.status(200).send(users);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // jwt 토큰 기능 확인용, 삭제해도 되는 라우터임.
 userRouter.get("/afterlogin", function (req, res, next) {

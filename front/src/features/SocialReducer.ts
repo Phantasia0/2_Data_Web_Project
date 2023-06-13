@@ -44,6 +44,7 @@ const socialSlice = createSlice({
                 // @ts-ignore
                 ...state?.feeds[existingFeedIndex],
                 commentCount: newFeed.commentCount,
+                likeCheck: newFeed.likeCheck,
               },
               // @ts-ignore
               ...state?.feeds.slice(existingFeedIndex + 1),

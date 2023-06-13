@@ -21,8 +21,17 @@ export const authApiWrapper = apiSlice.injectEndpoints({
         url: "/user/current",
       }),
     }),
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/user",
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useGetCurrentUserQuery } =
-  authApiWrapper;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetCurrentUserQuery,
+  useGetAllUserQuery,
+} = authApiWrapper;

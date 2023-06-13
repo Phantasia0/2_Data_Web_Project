@@ -5,7 +5,7 @@ import { POST_LIMIT, COMMENT_LIMIT } from "../../lib/constant";
 class Post {
   static async findById(_id, userId) {
     const post = await PostModel.findOne({ _id })
-      .populate("user", "_id nickname")
+      .populate("user", "_id nickname profile")
       .populate({
         path: "comments",
         populate: {
@@ -30,7 +30,6 @@ class Post {
   }
 
   static async findAll({ page, _id, userId }) {
-    console.log(_id);
     page = parseInt(page) || 1;
     const skip = (page - 1) * POST_LIMIT;
 
@@ -86,6 +85,66 @@ class Post {
     ]);
 
     const total = await PostModel.countDocuments();
+
+    return { total, post };
+  }
+
+  static async findAllBySearch({ page, nickname, userId }) {
+    page = parseInt(page) || 1;
+    const skip = (page - 1) * POST_LIMIT;
+    // console.log(page, nickname, userId);
+    const match = {};
+    if (nickname) {
+      match["user.nickname"] = { $regex: nickname, $options: "i" };
+    }
+    const post = await PostModel.aggregate([
+      { $sort: { createdAt: -1 } },
+      { $skip: skip },
+      { $limit: POST_LIMIT },
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          user: { _id: 1, nickname: 1 },
+          content: 1,
+          createdAt: 1,
+          updatedAt: 1,
+          likeCount: {
+            $size: {
+              $filter: {
+                input: { $ifNull: ["$likes", []] }, //필터링 할 배열소스
+                cond: { $eq: ["$$this.value", 1] }, // 지정 표현식 각 요소에 대해 평가하고 선택
+              },
+            },
+          },
+          likeCheck: {
+            $size: {
+              $filter: {
+                input: { $ifNull: ["$likes", []] }, //필터링 할 배열소스
+                cond: {
+                  $and: [
+                    { $eq: ["$$this.value", 1] },
+                    { $eq: [{ $toString: "$$this.user" }, userId] },
+                  ],
+                }, // 지정 표현식 각 요소에 대해 평가하고 선택
+              },
+            },
+          },
+          commentCount: { $size: { $ifNull: ["$comments", []] } },
+        },
+      },
+      { $unwind: "$user" },
+      { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+    ]);
+
+    const total = post.length || 0;
 
     return { total, post };
   }

@@ -26,7 +26,6 @@ const CommentEditor = ({
   const handleCommentChange = (e: any) => {
     setContent(e.currentTarget.value);
   };
-  console.log(document.body.scrollHeight);
   const handleClick = async (e: any) => {
     e.preventDefault();
     setContent(e.currentTarget.value);
