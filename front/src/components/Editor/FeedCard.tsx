@@ -81,13 +81,9 @@ const FeedCard: FC<any> = ({
           content: story,
         })
       );
-<<<<<<< Updated upstream
       setSnackbarOpen(true);
       setSnackbarMessage("게시글이 수정되었습니다.");
-
       // navigate("/community/f", { replace: true });
-=======
->>>>>>> Stashed changes
       navigate(-1, { replace: true });
     }
   };

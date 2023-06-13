@@ -31,8 +31,6 @@ const Feed = () => {
     }
   );
 
-  console.log(feedData);
-
   // const {
   //   data: commentData,
   //   isSuccess: commentSuccess,
