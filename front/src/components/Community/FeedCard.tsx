@@ -47,7 +47,6 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
   const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
 
   const dispatch = useDispatch();
-
   const [
     deleteFeed,
     {
@@ -64,7 +63,8 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     isError: thisFeedError,
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
-
+  console.log("data:", data);
+  console.log("thisFeedData:", thisFeedData);
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);

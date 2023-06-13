@@ -30,6 +30,7 @@ class Post {
   }
 
   static async findAll({ page, _id, userId }) {
+    console.log(_id);
     page = parseInt(page) || 1;
     const skip = (page - 1) * POST_LIMIT;
 
@@ -73,7 +74,7 @@ class Post {
                 cond: {
                   $and: [
                     { $eq: ["$$this.value", 1] },
-                    { $eq: [{ $toString: "$$this.user" }, userId] },
+                    { $eq: [{ $toString: "$$this.user" }, userId || _id] },
                   ],
                 }, // 지정 표현식 각 요소에 대해 평가하고 선택
               },

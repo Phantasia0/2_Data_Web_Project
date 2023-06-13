@@ -25,7 +25,7 @@ const Profile = () => {
   const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    if (!Boolean(user)) {
+    if (!sessionStorage.getItem("user")) {
       navigate("/");
     }
   }, []);
