@@ -2,15 +2,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./authApi";
 
-// export const socialApi = createApi({
-//   reducerPath: "socialApi",
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: `http://${window.location.hostname}:5001/`,
-//   }),
-//   endpoints: (builder) => ({}),
-// });
-//
-// export const { useGetFeedQuery } = socialApi;
+export const socialApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getFeed: builder.query<any, string>({
+      query: (_id: string) => `/post/${_id}`,
+    }),
+  }),
+});
+
+export const { useGetFeedQuery } = socialApi;
 
 export const newSocialApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,4 +25,4 @@ export const newSocialApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetSocialDataQuery, useGetFeedQuery } = newSocialApi;
+export const { useGetSocialDataQuery } = newSocialApi;
