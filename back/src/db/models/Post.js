@@ -30,7 +30,6 @@ class Post {
   }
 
   static async findAll({ page, _id, userId }) {
-    console.log(page, userId);
     page = parseInt(page) || 1;
     const skip = (page - 1) * POST_LIMIT;
 

@@ -44,7 +44,8 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-  const [isLiked, setIsLiked] = useState(data?.likeCheck);
+  const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
+
   const dispatch = useDispatch();
 
   const [
