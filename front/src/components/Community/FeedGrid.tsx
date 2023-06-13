@@ -6,7 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { SKIPCOUNT } from "../../utils/validate";
 
-const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
+const FeedGrid = ({
+  data,
+  isSuccess,
+  currentPage,
+  isFetching,
+  refetch,
+}: any) => {
   const dispatch = useDispatch();
   const { feeds, total } = useSelector(({ social }: RootState) => ({
     feeds: social.feeds,
@@ -31,6 +37,12 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
+  useEffect(() => {
+    if (snackbarOpen) {
+      refetch();
+    }
+  }, [snackbarOpen]);
 
   if (!data) {
     return <div>Empty</div>;

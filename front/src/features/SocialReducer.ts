@@ -26,9 +26,30 @@ const socialSlice = createSlice({
         state.total = action?.payload.total;
         for (let i = 0; i < action?.payload.feeds.length; i++) {
           const newFeed = action?.payload.feeds[i];
+
           const isExisting = state?.feeds?.some(
             (feed) => feed._id === newFeed._id
           );
+
+          if (isExisting) {
+            const existingFeedIndex = state?.feeds?.findIndex(
+              (feed) => feed._id === newFeed._id
+            );
+            // @ts-ignore
+            state.feeds = [
+              // @ts-ignore
+              ...state?.feeds?.slice(0, existingFeedIndex),
+
+              {
+                // @ts-ignore
+                ...state?.feeds[existingFeedIndex],
+                commentCount: newFeed.commentCount,
+              },
+              // @ts-ignore
+              ...state?.feeds.slice(existingFeedIndex + 1),
+            ];
+          }
+
           const isDeleted = state?.deletedFeeds?.some(
             (deletedFeedId) => deletedFeedId === newFeed._id
           );

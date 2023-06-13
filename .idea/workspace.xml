@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/services/profileApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/db/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/services/postService.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/services/postService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/configureStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/socialApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/socialApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/profileApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "feature/front-4차-메인기능",
+    "git-widget-placeholder": "feature/front-4차-메인기능-기능플러스",
     "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
