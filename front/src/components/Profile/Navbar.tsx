@@ -52,7 +52,10 @@ const Navbar = () => {
           <Badge badgeContent={1} color="error">
             <Notifications />
           </Badge>
-          <Avatar sx={{ width: 30, height: 30 }} src={user?.profile} />
+          <Avatar
+            sx={{ width: 30, height: 30 }}
+            src={`http://localhost:5001/profile/${user?.profile}`}
+          />
         </Icons>
       </StyledToolbar>
     </AppBar>

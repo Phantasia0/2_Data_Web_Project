@@ -5,7 +5,7 @@ import { POST_LIMIT, COMMENT_LIMIT } from "../../lib/constant";
 class Post {
   static async findById(_id, userId) {
     const post = await PostModel.findOne({ _id })
-      .populate("user", "_id nickname")
+      .populate("user", "_id nickname profile")
       .populate({
         path: "comments",
         populate: {

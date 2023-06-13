@@ -13,8 +13,6 @@ import Add from "./Add";
 import { useState } from "react";
 
 const Profile = () => {
-  const [mode, setMode] = useState("light");
-
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
 
@@ -32,7 +30,7 @@ const Profile = () => {
     <Box bgcolor={"background.default"} color={"text.primary"}>
       <Navbar />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Sidebar setMode={setMode} mode={mode} />
+        <Sidebar />
         <Feed />
         <Rightbar />
       </Stack>

@@ -110,23 +110,6 @@ const FeedCard: FC<any> = ({
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
 
-  // useEffect(() => {
-  //   if (thisFeedSuccess) {
-  //     // thisFeedData?.likes?.some((item) => {
-  //     //   console.log(item.user?._id === user?._id);
-  //     //   if (item.user?._id === user?._id) {
-  //     //     if (item.value === 1) {
-  //     //       setIsLiked(true);
-  //     //     } else if (item.value === 0) {
-  //     //       setIsLiked(false);
-  //     //     }
-  //     //   } else {
-  //     //     setIsLiked(false);
-  //     //   }
-  //     // });
-  //   }
-  // }, [thisFeedSuccess]);
-
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);

@@ -45,7 +45,6 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
-  console.log(data);
 
   const dispatch = useDispatch();
   const [
@@ -68,8 +67,6 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     isError: thisFeedError,
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
-  console.log("data:", data);
-  console.log("thisFeedData:", thisFeedData);
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);
@@ -145,10 +142,6 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     analyzingData(data);
   }, []);
 
-  // if (true) {
-  //   return <LoadingImage />;
-  // }
-
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
       <Card
@@ -161,7 +154,11 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
       >
         <CardHeader
           title={thisFeedData?.user?.nickname}
-          avatar={<Avatar src={user?.profile} />}
+          avatar={
+            <Avatar
+              src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
+            />
+          }
           action={
             <IconButton
               onClick={handleMenuOpen}

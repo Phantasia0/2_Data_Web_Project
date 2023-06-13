@@ -44,13 +44,6 @@ const Feed = () => {
     }
   }, [snackbarOpen]);
 
-  // const {
-  //   data: commentData,
-  //   isSuccess: commentSuccess,
-  //   isError: commentError,
-  //   isLoading: commentLoading,
-  // } = useGetUserCommentQuery(user._id);
-
   if (feedFetching) {
     return null;
   }
