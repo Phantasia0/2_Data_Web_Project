@@ -18,9 +18,6 @@ export const newSocialApi = apiSlice.injectEndpoints({
       query: (page: number) => ({
         url: `/post?page=${page}`,
       }),
-      getFeed: builder.query<any, string>({
-        query: (_id: string) => `/post/${_id}`,
-      }),
     }),
   }),
 });
