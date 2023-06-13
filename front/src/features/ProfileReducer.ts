@@ -6,6 +6,7 @@ export interface ProfileState {
   data?: any;
   filtered?: boolean;
   pageNumber?: number;
+  pageCommentNumber?: number;
 }
 
 const initialState: ProfileState = {

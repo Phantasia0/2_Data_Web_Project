@@ -41,16 +41,6 @@ const Sidebar = ({ mode, setMode }) => {
               <ListItemText primary="프로필 수정" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="div">
-              <ListItemIcon>
-                <ModeNight />
-              </ListItemIcon>
-              <Switch
-                onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
-              />
-            </ListItemButton>
-          </ListItem>
         </List>
       </Box>
     </Box>

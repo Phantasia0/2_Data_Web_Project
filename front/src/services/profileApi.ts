@@ -15,8 +15,8 @@ export const profileApi = createApi({
       }),
     }),
     getUserComment: builder.query<any, any>({
-      query: (_id: any) => ({
-        url: `/post//user/${_id}/comment`,
+      query: ({ _id, page }: any) => ({
+        url: `/post/user/${_id}/comment?page=${page}`,
         method: "GET",
         params: { _id: _id },
       }),
