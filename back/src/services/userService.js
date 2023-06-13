@@ -88,8 +88,18 @@ class userService {
   }
 
   static async setUser({ _id, toUpdate }) {
-    // 업데이트 대상에 name이 있다면, 즉 name 값이 null 이 아니라면 업데이트 진행
-    if (toUpdate.nickname) {
+    const validEntries = Object.entries(toUpdate).filter(
+      ([key, value]) => value !== undefined
+    )[0];
+
+    if (!validEntries) {
+      const errorMessage = "정보를 불러오지 못했습니다.";
+      return { errorMessage };
+    }
+
+    const [key, value] = validEntries;
+
+    if (key === "nickname") {
       const nicknameChecked = await User.findByOne({
         nickname: toUpdate.nickname,
       });
@@ -98,22 +108,8 @@ class userService {
           "사용중인 닉네임입니다. 다른 닉네임을 입력해 주세요.";
         return { errorMessage };
       }
-
-      const fieldToUpdate = "nickname";
-      const newValue = toUpdate.nickname;
-      return await User.update({ _id, fieldToUpdate, newValue });
-    } else if (toUpdate.description) {
-      const fieldToUpdate = "description";
-      const newValue = toUpdate.description;
-      return await User.update({ _id, fieldToUpdate, newValue });
-    } else if (toUpdate.profile) {
-      const fieldToUpdate = "profile";
-      const newValue = toUpdate.profile;
-      return await User.update({ _id, fieldToUpdate, newValue });
-    } else {
-      const errorMessage = "정보를 불러오지 못했습니다.";
-      return { errorMessage };
     }
+    return await User.update({ _id, key, value });
   }
 }
 

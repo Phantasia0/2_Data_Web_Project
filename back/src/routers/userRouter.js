@@ -126,7 +126,7 @@ userRouter.patch(
   async function (req, res, next) {
     try {
       const _id = req.currentUserId;
-      const profile = req.file.filename;
+      const profile = req.file?.filename;
       const toUpdate = { profile };
       const updatedUser = await userService.setUser({ _id, toUpdate });
 

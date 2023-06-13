@@ -17,9 +17,9 @@ class User {
     return await UserModel.findOne(filter);
   }
 
-  static async update({ _id, fieldToUpdate, newValue }) {
+  static async update({ _id, key, value }) {
     const filter = { _id };
-    const update = { [fieldToUpdate]: newValue };
+    const update = { [key]: value };
     const option = { returnOriginal: false };
 
     return await UserModel.findOneAndUpdate(filter, update, option);
