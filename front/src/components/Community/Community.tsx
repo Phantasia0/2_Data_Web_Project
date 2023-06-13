@@ -14,10 +14,13 @@ import FeedGrid from "./FeedGrid";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { debounce } from "lodash";
 import { SKIPCOUNT } from "../../utils/validate";
+import LoadingImage from "../common/Loading";
 
 const category = ["친환경", "비건", "기타"];
 
 const Community = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const dispatch = useDispatch();
   const { feeds, total, currentPage } = useSelector(
     ({ social }: RootState) => ({
@@ -83,7 +86,9 @@ const Community = () => {
   if (isError) {
     return null;
   }
-
+  if (isLoading) {
+    return <LoadingImage />;
+  }
   return (
     <div
       className="home"

@@ -45,7 +45,6 @@ const FeedCard: FC<any> = ({ data }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(data?.likeCheck);
-
   const dispatch = useDispatch();
 
   const [
@@ -140,9 +139,9 @@ const FeedCard: FC<any> = ({ data }) => {
     analyzingData(data);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (true) {
+  //   return <LoadingImage />;
+  // }
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
@@ -185,7 +184,7 @@ const FeedCard: FC<any> = ({ data }) => {
         >
           <CardMedia
             component="img"
-            image={analyzedData.image}
+            image={analyzedData?.image}
             alt="sample"
             sx={{
               width: {
@@ -206,7 +205,7 @@ const FeedCard: FC<any> = ({ data }) => {
               marginTop: "1rem",
             }}
           >
-            {analyzedData.text}
+            {analyzedData?.text}
           </Box>
         </Typography>
         <CardContent
@@ -215,12 +214,15 @@ const FeedCard: FC<any> = ({ data }) => {
             display: "flex",
           }}
         >
-          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
+          <IconButton
+            sx={{ height: "1rem" }}
+            onClick={handleClickLike}
+            disabled={!user}
+          >
             <Checkbox
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
               checked={isLiked}
-              disabled={!user}
             />
           </IconButton>
           <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>

@@ -15,6 +15,7 @@ import { Comment } from "@mui/icons-material";
 import CommentEditor from "./CommentEditor";
 import CommentList from "./CommentList";
 import FeedCard from "./FeedCard";
+import LoadingImage from "../common/Loading";
 
 export const LoadDetail = (text: any) => {
   const contentHTML = convertFromHTML(text);
@@ -78,7 +79,7 @@ const FeedDetail = () => {
   // };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
   return (
     <Box

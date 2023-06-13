@@ -22,6 +22,7 @@ import {
 import { Simulate } from "react-dom/test-utils";
 import Slider from "react-slick";
 import { fontdesign } from "../../theme/fontdesign";
+import LoadingImage from "../common/Loading";
 
 const categoryList = ["교통", "전기", "냉/난방", "자원"];
 
@@ -77,7 +78,7 @@ const Activity = () => {
   };
 
   if (isLoading) {
-    return <div>...Loading</div>;
+    return <LoadingImage />;
   }
 
   return (
