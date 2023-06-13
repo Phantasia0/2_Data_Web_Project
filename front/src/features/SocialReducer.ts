@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { SocialData, Social } from "../models/social.model";
-import { socialApi, useGetSocialDataQuery } from "../services/socialApi";
 import { SKIPCOUNT } from "../utils/validate";
 
 interface SocialState {

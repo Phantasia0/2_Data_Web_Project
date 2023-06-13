@@ -46,7 +46,6 @@ const FeedCard: FC<any> = ({ data, isOwner }) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-  console.log(data);
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
@@ -251,12 +250,15 @@ const FeedCard: FC<any> = ({ data, isOwner }) => {
             display: "flex",
           }}
         >
-          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
+          <IconButton
+            sx={{ height: "1rem" }}
+            onClick={handleClickLike}
+            disabled={!user}
+          >
             <Checkbox
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
               checked={isLiked}
-              disabled={!user}
             />
           </IconButton>
           <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>
