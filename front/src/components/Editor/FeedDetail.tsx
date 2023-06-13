@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetFeedQuery } from "../../services/socialApi";
 import { convertFromHTML, ContentState, convertToRaw } from "draft-js";
 import MUIRichTextEditor from "mui-rte";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Snackbar } from "@mui/material";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../../theme/theme";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,6 +34,9 @@ const FeedDetail = () => {
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
 
+  const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<any>("");
+
   const { data, isSuccess, isLoading, isError, refetch } = useGetFeedQuery(
     feedId as string
   );
@@ -55,6 +58,23 @@ const FeedDetail = () => {
       }
     }
   }, [isSuccess]);
+
+  // useEffect(() => {
+  //   if (formState === "register" && snackbarOpen) {
+  //     setFormState("login");
+  //     setPrevState("register");
+  //   }
+
+  //   if (prevState === "register") {
+  //     setTimeout(() => {
+  //       setPrevState("login");
+  //     }, 2000);
+  //   }
+  // }, [snackbarOpen]);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   // const save = (story: string) => {
   //   if (story !== "") {
@@ -90,7 +110,12 @@ const FeedDetail = () => {
         gap: "2rem",
       }}
     >
-      <FeedCard data={data} isOwner={isOwner} />
+      <FeedCard
+        data={data}
+        isOwner={isOwner}
+        setSnackbarOpen={setSnackbarOpen}
+        setSnackbarMessage={setSnackbarMessage}
+      />
       {/* <Box
         sx={{
           display: "flex",
@@ -126,8 +151,20 @@ const FeedDetail = () => {
       )} */}
       <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {/*<CommentEditor />*/}
-        <CommentList />
+        <CommentList
+          setSnackbarOpen={setSnackbarOpen}
+          setSnackbarMessage={setSnackbarMessage}
+        />
       </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+        ContentProps={{
+          sx: { backgroundColor: "primary.main" },
+        }}
+      />
     </Box>
   );
 };

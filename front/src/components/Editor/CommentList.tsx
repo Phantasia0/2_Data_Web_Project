@@ -29,7 +29,7 @@ import CommentEditor from "./CommentEditor";
 //
 // export default CommentList;
 
-const CommentList = () => {
+const CommentList = ({ setSnackbarOpen, setSnackbarMessage }) => {
   const { feedId } = useParams();
   const { data, isSuccess, isFetching, isLoading, isError, refetch } =
     useGetFeedQuery(feedId as string);
@@ -48,10 +48,19 @@ const CommentList = () => {
 
   return (
     <Box>
-      <CommentEditor refetch={refetch} />
+      <CommentEditor
+        refetch={refetch}
+        setSnackbarOpen={setSnackbarOpen}
+        setSnackbarMessage={setSnackbarMessage}
+      />
       {commentList.map((item) => (
         <Box key={item?.user?._id}>
-          <CommentCard data={item} refetch={handleCommentUpdate} />
+          <CommentCard
+            data={item}
+            refetch={handleCommentUpdate}
+            setSnackbarOpen={setSnackbarOpen}
+            setSnackbarMessage={setSnackbarMessage}
+          />
         </Box>
       ))}
     </Box>

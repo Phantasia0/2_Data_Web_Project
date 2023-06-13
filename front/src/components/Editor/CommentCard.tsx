@@ -25,7 +25,12 @@ import {
 } from "../../services/commentApi";
 import { useParams } from "react-router-dom";
 
-const CommentCard = ({ data, refetch }: any) => {
+const CommentCard = ({
+  data,
+  refetch,
+  setSnackbarOpen,
+  setSnackbarMessage,
+}: any) => {
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
@@ -68,6 +73,8 @@ const CommentCard = ({ data, refetch }: any) => {
 
     refetch();
     setIsEdit(false);
+    setSnackbarOpen(true);
+    setSnackbarMessage("댓글이 수정되었습니다.");
   };
 
   const handleClickCancel = (e: any) => {
@@ -82,6 +89,8 @@ const CommentCard = ({ data, refetch }: any) => {
     refetch();
 
     handleMenuClose();
+    setSnackbarOpen(true);
+    setSnackbarMessage("댓글이 삭제되었습니다.");
   };
 
   return (

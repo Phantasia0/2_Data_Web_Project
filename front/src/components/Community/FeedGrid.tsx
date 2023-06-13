@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FeedCard from "./FeedCard";
-import { Grid } from "@mui/material";
+import { Grid, Snackbar } from "@mui/material";
 import { getAllFeed } from "../../features/SocialReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
@@ -12,6 +12,8 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
     feeds: social.feeds,
     total: social.total,
   }));
+
+  const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
 
   useEffect(() => {
     if (isSuccess && currentPage <= Math.floor(data.total / SKIPCOUNT) + 1) {
@@ -26,6 +28,10 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
     }
   }, [isSuccess, currentPage, isFetching, data?.post]);
 
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   if (!data) {
     return <div>Empty</div>;
   }
@@ -33,8 +39,21 @@ const FeedGrid = ({ data, isSuccess, currentPage, isFetching }: any) => {
   return (
     <Grid container sx={{ display: "flex", justifyContent: "flex-start" }}>
       {feeds?.map((feed: any) => (
-        <FeedCard data={feed} key={feed?._id} />
+        <FeedCard
+          data={feed}
+          key={feed?._id}
+          setSnackbarOpen={setSnackbarOpen}
+        />
       ))}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={"게시글이 삭제되었습니다."}
+        ContentProps={{
+          sx: { backgroundColor: "primary.main" },
+        }}
+      />
     </Grid>
   );
 };

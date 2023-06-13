@@ -289,10 +289,12 @@ const Navbar = () => {
             sx={{
               fontSize: "1.2rem",
               color:
-                currentPath[1] === "community" ? "primary.main" : undefined,
+                currentPath[1] === "community" || currentPath[1] === "editor"
+                  ? "primary.main"
+                  : undefined,
             }}
           >
-            STORY
+            SHARE
           </CustomTypography>
         </Link>
         {!user ? (

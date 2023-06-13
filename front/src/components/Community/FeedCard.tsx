@@ -36,7 +36,7 @@ const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
 
-const FeedCard: FC<any> = ({ data }) => {
+const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -84,8 +84,7 @@ const FeedCard: FC<any> = ({ data }) => {
       _id: data?._id,
     });
     dispatch(deleteThisFeed(data?._id));
-
-    handleMenuClose();
+    setSnackbarOpen(true); // 스낵바 상태를 업데이트합니다.
   };
 
   const handleClickLike = async (e: any) => {

@@ -12,7 +12,11 @@ import SendIcon from "@mui/icons-material/Send";
 import { useAddCommentMutation } from "../../services/commentApi";
 import { useParams } from "react-router-dom";
 
-const CommentEditor = ({ refetch }: any) => {
+const CommentEditor = ({
+  refetch,
+  setSnackbarOpen,
+  setSnackbarMessage,
+}: any) => {
   const { feedId } = useParams();
   const [content, setContent] = useState<any>(null);
 
@@ -22,20 +26,22 @@ const CommentEditor = ({ refetch }: any) => {
   const handleCommentChange = (e: any) => {
     setContent(e.currentTarget.value);
   };
-
+  console.log(document.body.scrollHeight);
   const handleClick = async (e: any) => {
     e.preventDefault();
     setContent(e.currentTarget.value);
-    if (content.length > 0) {
+    if (content && content.length > 0) {
       await addComment({
         _id: feedId,
         body: {
           content: content,
         },
       });
+      await refetch();
+      setSnackbarOpen(true);
+      setSnackbarMessage("댓글이 작성되었습니다.");
+      window.scrollTo(0, document.body.scrollHeight);
     }
-
-    refetch();
   };
 
   return (

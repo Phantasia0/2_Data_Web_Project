@@ -41,8 +41,12 @@ import { updateThisFeed } from "../../features/SocialReducer";
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
-
-const FeedCard: FC<any> = ({ data, isOwner }) => {
+const FeedCard: FC<any> = ({
+  data,
+  isOwner,
+  setSnackbarOpen,
+  setSnackbarMessage,
+}) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -77,6 +81,9 @@ const FeedCard: FC<any> = ({ data, isOwner }) => {
           content: story,
         })
       );
+      setSnackbarOpen(true);
+      setSnackbarMessage("게시글이 수정되었습니다.");
+
       // navigate("/community/f", { replace: true });
     }
   };
