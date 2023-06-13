@@ -1,6 +1,11 @@
 import { UserModel } from "../schemas/user";
 
 class User {
+  static async findAll() {
+    const User = await UserModel.find({}, "_id profile");
+    return User;
+  }
+
   static async create({ newUser }) {
     const createdNewUser = await UserModel.create(newUser);
     return createdNewUser;
