@@ -305,7 +305,10 @@ const Navbar = () => {
           <CustomTypography
             onMouseEnter={handleProfileMenuOpen}
             onMouseLeave={handleProfileMenuClose}
-            sx={{ fontSize: "1rem" }}
+            sx={{
+              fontSize: "1rem",
+              color: currentPath[1] === "profile" ? "primary.main" : undefined,
+            }}
           >
             {/* @ts-ignore*/}
             {user?.nickname}
@@ -327,7 +330,14 @@ const Navbar = () => {
                 <CustomMenuItem onClick={handleProfileClose}>
                   <Link onClick={() => navigate("/profile")} underline="none">
                     <CustomTypography
-                      sx={{ fontSize: "1rem", backgroundColor: "transparent" }}
+                      sx={{
+                        fontSize: "1rem",
+                        backgroundColor: "transparent",
+                        color:
+                          currentPath[1] === "profile"
+                            ? "primary.main"
+                            : undefined,
+                      }}
                     >
                       My Page
                     </CustomTypography>
