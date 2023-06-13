@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Snackbar } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import FeedCard from "../Community/FeedCard";
 
 import { useGetUserFeedQuery } from "../../services/profileApi";
@@ -13,12 +13,15 @@ const Feed = () => {
     pageNumber: profile.pageNumber,
   }));
 
+  const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+
   const {
     data: feedData,
     isSuccess: feedSuccess,
     isError: feedError,
     isLoading: feedLoading,
     isFetching: feedFetching,
+    refetch,
   } = useGetUserFeedQuery(
     {
       // @ts-ignore
@@ -30,6 +33,16 @@ const Feed = () => {
       refetchOnMountOrArgChange: true,
     }
   );
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  useEffect(() => {
+    if (snackbarOpen) {
+      refetch();
+    }
+  }, [snackbarOpen]);
 
   // const {
   //   data: commentData,
@@ -45,8 +58,21 @@ const Feed = () => {
   return (
     <Box flex={4} p={{ xs: 0, md: 2 }}>
       {feedData?.post?.map((item: any) => (
-        <FeedCard key={item?._id} data={item} />
+        <FeedCard
+          key={item?._id}
+          data={item}
+          setSnackbarOpen={setSnackbarOpen}
+        />
       ))}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={"게시글이 삭제되었습니다."}
+        ContentProps={{
+          sx: { backgroundColor: "primary.main" },
+        }}
+      />
     </Box>
   );
 };

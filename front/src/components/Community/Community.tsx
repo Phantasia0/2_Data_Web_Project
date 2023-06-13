@@ -46,10 +46,6 @@ const Community = () => {
       const scrollY = window.innerHeight + window.scrollY - 50;
       window.scrollTo({ top: scrollY });
     }
-    // if (scrollTop === 0) {
-    //   const scrollY = 1; // 스크롤 위치를 1px 아래로 유지
-    //   window.scrollTo({ top: scrollY });
-    // }
   };
 
   const debouncedHandleScroll = debounce(handleScroll, 100);
@@ -63,25 +59,6 @@ const Community = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // useEffect(() => {
-  //   // const scrollToPosition = () => {
-  //   //   const scrollY = window.innerHeight + window.scrollY - 50;
-  //   //   window.scrollTo({ top: scrollY });
-  //   // };
-
-  //   const handleScroll = () => {
-  //     // if (window.scrollY === 0) {
-  //     //   scrollToPosition();
-  //     // }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [isSuccess, currentPage]);
 
   if (isError) {
     return null;
@@ -136,6 +113,7 @@ const Community = () => {
             isSuccess={isSuccess}
             currentPage={currentPage}
             isFetching={isFetching}
+            refetch={refetch}
           />
         )}
       </Grid>

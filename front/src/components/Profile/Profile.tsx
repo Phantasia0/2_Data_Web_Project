@@ -15,17 +15,11 @@ import { useState } from "react";
 const Profile = () => {
   const [mode, setMode] = useState("light");
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
-
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    if (!Boolean(user)) {
+    if (!sessionStorage.getItem("user")) {
       navigate("/");
     }
   }, []);
@@ -35,16 +29,14 @@ const Profile = () => {
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Sidebar setMode={setMode} mode={mode} />
-          <Feed />
-          <Rightbar />
-        </Stack>
-      </Box>
-    </ThemeProvider>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Navbar />
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Sidebar setMode={setMode} mode={mode} />
+        <Feed />
+        <Rightbar />
+      </Stack>
+    </Box>
   );
 };
 

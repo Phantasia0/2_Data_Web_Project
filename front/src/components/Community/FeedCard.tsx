@@ -45,6 +45,7 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
+  console.log(data);
 
   const dispatch = useDispatch();
 
@@ -84,8 +85,9 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     await deleteFeed({
       _id: data?._id,
     });
-    dispatch(deleteThisFeed(data?._id));
+
     setSnackbarOpen(true); // 스낵바 상태를 업데이트합니다.
+    dispatch(deleteThisFeed(data?._id));
   };
 
   const handleClickLike = async (e: any) => {
