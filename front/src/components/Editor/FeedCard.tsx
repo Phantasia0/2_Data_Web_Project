@@ -84,7 +84,7 @@ const FeedCard: FC<any> = ({
       setSnackbarOpen(true);
       setSnackbarMessage("게시글이 수정되었습니다.");
       // navigate("/community/f", { replace: true });
-      navigate(-1, { replace: true });
+      // navigate(-1, { replace: false });
     }
   };
 
