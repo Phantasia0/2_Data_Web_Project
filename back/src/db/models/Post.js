@@ -110,10 +110,11 @@ class Post {
     let post = await PostModel.findOne(filter); // 문서 찾기
 
     if (post) {
-      const currentValue = post.likes[0].value;
-      // 6482211cf534172b84f8ef86
+      const currentValue = post.likes.filter(
+        (like) => like.user.toString() === userId
+      );
 
-      post.likes[0].value = currentValue === 0 ? 1 : 0;
+      currentValue[0].value = currentValue[0].value === 0 ? 1 : 0;
       await post.save(); // 문서 업데이트
     } else {
       post = await PostModel.updateOne(

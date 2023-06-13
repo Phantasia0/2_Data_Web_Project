@@ -49,8 +49,8 @@ const LoginModal: FC<LoginModalProps> = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await loginUser({ id, password });
-    window.location.reload();
+    const user = await loginUser({ id, password });
+    if ("data" in user) window.location.reload();
   };
 
   useEffect(() => {
