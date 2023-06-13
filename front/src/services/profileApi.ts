@@ -18,7 +18,7 @@ export const profileApi = createApi({
       query: (_id: any) => ({
         url: `/post//user/${_id}/comment`,
         method: "GET",
-        // params: { _id: _id },
+        params: { _id: _id },
       }),
     }),
   }),
