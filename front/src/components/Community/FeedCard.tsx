@@ -57,6 +57,10 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     },
   ] = useDeleteFeedMutation();
 
+  useEffect(() => {
+    setIsLiked(data?.likeCheck);
+  }, [data?.likeCheck]);
+
   const [updateLike, { data: updatedLikeData }] = useUpdateLikeMutation();
   const {
     data: thisFeedData,
