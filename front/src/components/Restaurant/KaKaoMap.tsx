@@ -102,27 +102,42 @@ const KeywordSearchMap = () => {
 
 const TotalSearchMap = () => {
   const mapRef = useRef<any>();
-  const { region, foodCategory, pageNumber, filtered } = useSelector(
-    ({ restaurant }: RootState) => ({
-      region: restaurant.region,
-      foodCategory: restaurant.foodCategory,
-      pageNumber: restaurant.pageNumber,
-      filtered: restaurant.filtered,
-    }),
-    shallowEqual
-  );
+  const { region, foodCategory, pageNumber, filtered, pageFilteredNumber } =
+    useSelector(
+      ({ restaurant }: RootState) => ({
+        region: restaurant.region,
+        foodCategory: restaurant.foodCategory,
+        pageNumber: restaurant.pageNumber,
+        filtered: restaurant.filtered,
+        pageFilteredNumber: restaurant.pageFilteredNumber,
+      }),
+      shallowEqual
+    );
 
   const { data, error, isLoading, isFetching, isSuccess } =
     useGetRestaurantsDataQuery(pageNumber as number);
   const { data2 }: any = useGetRestaurantsDataQuery((pageNumber as number) + 1);
 
+  // const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
+  //   {
+  //     region: region,
+  //     foodCategory: foodCategory,
+  //   },
+  //   {
+  //     skip: !region && !foodCategory,
+  //     // @ts-ignore
+  //     refetchOnArgChange: true,
+  //   }
+  // )
+
   const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
     {
+      page: pageFilteredNumber,
       region: region,
       foodCategory: foodCategory,
     },
     {
-      skip: !region && !foodCategory,
+      skip: !region,
       // @ts-ignore
       refetchOnArgChange: true,
     }
@@ -136,11 +151,11 @@ const TotalSearchMap = () => {
       centerLng = 127.6358;
     } else {
       centerLat =
-        (filtered && filteredData?.[0]?.latitude) ||
+        (filtered && filteredData?.restaurant?.[0]?.latitude) ||
         data?.restaurant?.[0]?.latitude ||
         36.2683;
       centerLng =
-        (filtered && filteredData?.[0]?.longitude) ||
+        (filtered && filteredData?.restaurant?.[0]?.longitude) ||
         data?.restaurant?.[0]?.longitude ||
         127.6358;
     }
@@ -163,7 +178,7 @@ const TotalSearchMap = () => {
 
   const makeMakerData = () => {
     if (region || foodCategory) {
-      return filteredData?.map((item: any) => (
+      return filteredData?.restaurant?.map((item: any) => (
         <MapMarker
           key={`${item.latitude}-${item.longitude}`}
           position={{

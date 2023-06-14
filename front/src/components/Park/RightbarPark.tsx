@@ -11,13 +11,15 @@ import { RootState } from "../../features/configureStore";
 
 import { goPage } from "../../features/ParkReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { goFilteredPage } from "../../features/ParkReducer";
 
 const RightbarPark = () => {
-  const { region, filtered, pageNumber } = useSelector(
+  const { region, filtered, pageNumber, pageFilteredNumber } = useSelector(
     ({ park }: RootState) => ({
       region: park.region,
       filtered: park.filtered,
       pageNumber: park.pageNumber,
+      pageFilteredNumber: park.pageFilteredNumber,
     }),
     shallowEqual
   );
@@ -28,6 +30,7 @@ const RightbarPark = () => {
 
   const { data: filteredData } = useGetParksFilteredDataQuery(
     {
+      page: pageFilteredNumber,
       region: region,
     },
     {
@@ -39,7 +42,7 @@ const RightbarPark = () => {
 
   const getItemList = (filtered: Boolean | undefined) => {
     if (filtered) {
-      return filteredData?.map((item: any) => (
+      return filteredData?.park?.map((item: any) => (
         <div key={item._id}>
           <ParkItem data={item} />
         </div>
@@ -61,6 +64,18 @@ const RightbarPark = () => {
 
   const handleNextPage = () => {
     dispatch(goPage({ pageNumber: (pageNumber as number) + 1 }));
+  };
+
+  const handleFilterPrevPage = () => {
+    dispatch(
+      goFilteredPage({ pageFilteredNumber: (pageFilteredNumber as number) - 1 })
+    );
+  };
+
+  const handleFilterNextPage = () => {
+    dispatch(
+      goFilteredPage({ pageFilteredNumber: (pageFilteredNumber as number) + 1 })
+    );
   };
 
   if (error) {
@@ -133,6 +148,32 @@ const RightbarPark = () => {
               <Button
                 disabled={pageNumber === Math.ceil(data.total / 5)} // 총 페이지 수에 맞게 수정
                 onClick={handleNextPage}
+                endIcon={<ChevronRight />}
+              >
+                Next
+              </Button>
+            </Stack>
+          )}
+          {filtered && (
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={2}
+            >
+              <Button
+                disabled={pageFilteredNumber === 1}
+                onClick={handleFilterPrevPage}
+                startIcon={<ChevronLeft />}
+              >
+                Prev
+              </Button>
+              <Button
+                disabled={
+                  pageFilteredNumber ===
+                  Math.ceil((filteredData?.total as number) / 5)
+                } // 총 페이지 수에 맞게 수정
+                onClick={handleFilterNextPage}
                 endIcon={<ChevronRight />}
               >
                 Next

@@ -12,6 +12,7 @@ restaurantRouter.get(
   async function (req, res, next) {
     try {
       const { page, region, category } = req.query;
+      console.log(page);
       const userId = req.currentUserId;
       const data = await restaurantService.getFilteredRestaurant({
         page,

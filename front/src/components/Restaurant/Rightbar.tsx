@@ -1,16 +1,4 @@
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Divider,
-  ImageList,
-  ImageListItem,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Box, List, Typography } from "@mui/material";
 import React from "react";
 
 import { shallowEqual, useSelector } from "react-redux";
@@ -42,10 +30,6 @@ const Rightbar = () => {
       flex={2}
       p={2}
       sx={{
-        // display: {
-        //   xs: "none",
-        //   sm: "block",
-        // },
         display: "flex",
         justifyContent: "center",
       }}
@@ -56,14 +40,25 @@ const Rightbar = () => {
           maxWidth: 360,
           bgcolor: "background.paper",
           overflow: "auto",
-          maxHeight: "70%",
+          maxHeight: "30%",
         }}
       >
         <Typography variant="h6" fontWeight={100} mt={2}>
-          <center>너에게 추천할께</center>
+          <p style={{ textAlign: "center" }}>너에게 추천할께</p>
         </Typography>
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+            maxHeight: "700px",
+            overflow: "auto",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            scrollbarWidth: "none",
+            "-ms-overflow-style": "none",
+          }}
         >
           {getItemList(data)}
         </List>

@@ -5,22 +5,44 @@ export const restaurantsApi = createApi({
   reducerPath: "restaurantsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `http://${window.location.hostname}:5001/`,
+    prepareHeaders: (headers) => {
+      // @ts-ignore
+      const token = sessionStorage.getItem("user");
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     getRestaurantsData: builder.query<RestaurantData, number>({
       query: (page: number) => `/restaurant?page=${page}`,
     }),
     getRestaurantsFilteredData: builder.query<
-      Restaurant[],
-      { region?: string | null; foodCategory?: string | null }
+      RestaurantData,
+      {
+        region?: string | null;
+        foodCategory?: string | null;
+        page?: number | null;
+      }
     >({
-      query: ({ region, foodCategory }) => {
+      query: ({ region, foodCategory, page }) => {
         let queryString = "/restaurant/search";
 
-        if (region) {
-          queryString += `?region=${encodeURIComponent(region)}`;
+        if (page) {
+          queryString += `?page=${encodeURIComponent(page)}`;
         } else {
-          queryString += "?region";
+          queryString += "?page";
+        }
+
+        if (region) {
+          if (queryString.includes("?")) {
+            queryString += `&region=${encodeURIComponent(region)}`;
+          } else {
+            queryString += `?region=${encodeURIComponent(region)}`;
+          }
+        } else {
+          queryString += "&region";
         }
         if (foodCategory) {
           if (queryString.includes("?")) {

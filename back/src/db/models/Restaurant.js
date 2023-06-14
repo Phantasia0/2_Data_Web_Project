@@ -71,7 +71,7 @@ class Restaurant {
   }
 
   static async findBySearch({ page, filter, userId }) {
-    const skip = (1 - 1) * LIMIT;
+    const skip = (page - 1) * LIMIT;
     const restaurant = await RestaurantModel.aggregate([
       { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
       { $skip: skip },
