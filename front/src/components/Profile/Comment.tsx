@@ -39,7 +39,16 @@ const Comment = ({ data }: any) => {
     >
       <ListItem alignItems="flex-start">
         <ListItemText
-          primary={data?.comments?.content}
+          primary={
+            <Typography
+              sx={{ fontSize: { xs: "1.1vw" } }}
+              component="span"
+              color="secondary.main"
+              fontWeight="bold"
+            >
+              {data?.comments?.content}
+            </Typography>
+          }
           secondary={
             <React.Fragment>
               <Typography
@@ -47,10 +56,19 @@ const Comment = ({ data }: any) => {
                 component="span"
                 variant="body2"
                 color="text.primary"
+                fontSize={{ xs: "0.85vw" }}
               >
                 {feedData?.user?.nickname}
               </Typography>
-              {` -  ${text}`}
+              <Typography
+                sx={{ display: "inline" }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+                fontSize={{ xs: "0.85vw" }}
+              >
+                {` -  ${text}`}
+              </Typography>
             </React.Fragment>
           }
         />

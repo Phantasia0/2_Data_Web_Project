@@ -60,7 +60,10 @@ const Sidebar = () => {
               <ListItemIcon>
                 <Home />
               </ListItemIcon>
-              <ListItemText primary="홈" />
+              <ListItemText primary="홈" 
+                  primaryTypographyProps={{
+                  style: { fontWeight: "bold" },
+                }}/>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -68,7 +71,10 @@ const Sidebar = () => {
               <ListItemIcon>
                 <Article />
               </ListItemIcon>
-              <ListItemText primary="커뮤니티" />
+              <ListItemText primary="커뮤니티" 
+                primaryTypographyProps={{
+                style: { fontWeight: "bold" },
+              }}/>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding onClick={showModal}>
@@ -76,7 +82,10 @@ const Sidebar = () => {
               <ListItemIcon>
                 <AccountBox />
               </ListItemIcon>
-              <ListItemText primary="프로필 수정" />
+              <ListItemText primary="프로필 수정" 
+                primaryTypographyProps={{
+                style: { fontWeight: "bold" },
+                }}/>
             </ListItemButton>
           </ListItem>
           {showModal && (

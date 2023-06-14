@@ -17,6 +17,7 @@ import React from "react";
 import CommentList from "./CommentList";
 import { useGetAllUserQuery } from "../../services/authApiWrapper";
 import { makeStyles } from "@mui/styles";
+import { fontdesign } from "../../theme/fontdesign";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -36,7 +37,7 @@ const Rightbar = () => {
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed" width={300}>
-        <Typography variant="h6" fontWeight={100}>
+        <Typography sx={fontdesign.xsText}>
           Our Service User
         </Typography>
         <AvatarGroup max={7}>
@@ -50,7 +51,7 @@ const Rightbar = () => {
               />
             ))}
         </AvatarGroup>
-        <Typography variant="h6" fontWeight={100} mt={2}>
+        <Typography sx={fontdesign.xsText} mt={2}>
           Latest Comments
         </Typography>
         <CommentList />
