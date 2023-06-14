@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/db/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/socialApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/socialApi.ts" afterDir="false" />
-    </list>
+    <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,24 +34,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/front-4차-메인기능-기능3플러스&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ncpro/Desktop/env/front/src/assets/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>

@@ -4,10 +4,13 @@ import Comment from "./Comment";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { useGetUserCommentQuery } from "../../services/profileApi";
-import FeedCard from "../Community/FeedCard";
+import { RootState } from "../../features/configureStore";
 
 const CommentList = () => {
   const user = useSelector(selectCurrentUser);
+  const { commentListUpdate } = useSelector(({ profile }: RootState) => ({
+    commentListUpdate: profile.commentListUpdate,
+  }));
 
   const {
     data: commentData,
@@ -27,6 +30,10 @@ const CommentList = () => {
       refetchOnMountOrArgChange: true,
     }
   );
+
+  useEffect(() => {
+    refetch();
+  }, [commentListUpdate]);
 
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>

@@ -7,6 +7,7 @@ export interface ProfileState {
   filtered?: boolean;
   pageNumber?: number;
   total?: number;
+  commentListUpdate?: false;
 }
 
 const initialState: ProfileState = {
@@ -15,6 +16,7 @@ const initialState: ProfileState = {
   filtered: false,
   pageNumber: 1,
   total: 12,
+  commentListUpdate: false,
 };
 
 const profileSlice = createSlice({
@@ -45,9 +47,19 @@ const profileSlice = createSlice({
         state.total = action?.payload;
       }
     },
+    updateCommentList: (state) => {
+      // @ts-ignore
+      state.commentListUpdate = !state.commentListUpdate;
+    },
   },
 });
 
-export const { searchKeyword, updateData, resetData, goPage, setTotal } =
-  profileSlice.actions;
+export const {
+  searchKeyword,
+  updateData,
+  resetData,
+  goPage,
+  setTotal,
+  updateCommentList,
+} = profileSlice.actions;
 export default profileSlice.reducer;

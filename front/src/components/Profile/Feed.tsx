@@ -3,11 +3,15 @@ import React, { useEffect, useState } from "react";
 import FeedCard from "../Community/FeedCard";
 
 import { useGetUserFeedQuery } from "../../services/profileApi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { RootState } from "../../features/configureStore";
-import { useDispatch } from "react-redux";
-import { resetData, setTotal } from "../../features/ProfileReducer";
+
+import {
+  resetData,
+  setTotal,
+  updateCommentList,
+} from "../../features/ProfileReducer";
 import { useGetNicknameDataQuery } from "../../services/socialApi";
 
 const Feed = () => {
@@ -70,6 +74,7 @@ const Feed = () => {
   useEffect(() => {
     if (snackbarOpen) {
       refetch();
+      dispatch(updateCommentList());
     }
   }, [snackbarOpen]);
 
