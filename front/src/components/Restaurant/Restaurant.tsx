@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import KaKaoMap from "./KaKaoMap";
 import Sidebar from "./Sidebar";
 import { Box, Stack } from "@mui/material";
@@ -7,15 +7,22 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import RightbarVegan from "./RightbarVegan";
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
+import { useDispatch } from "react-redux";
+import { resetData } from "../../features/RestaurantReducer";
 
 const Restaurant = () => {
   const { width } = useWindowDimensions();
+  const dispatch = useDispatch();
   const { keyword } = useSelector(
     ({ restaurant }: RootState) => ({
       keyword: restaurant.keyword,
     }),
     shallowEqual
   );
+
+  useEffect(() => {
+    dispatch(resetData());
+  }, []);
 
   const whatToDisplay = () => {
     if (keyword) {

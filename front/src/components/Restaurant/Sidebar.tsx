@@ -15,13 +15,17 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   filterBySelected,
   resetData,
+  resetFilterPage,
+  resetFood,
   searchKeyword,
+  setFoodCategoryList,
 } from "../../features/RestaurantReducer";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 import { RootState } from "../../features/configureStore";
 import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
+import { useGetRestaurantsFilteredDataQuery } from "../../services/restaurantsApi";
 
 const regionCategory: string[] = [
   "경기도",
@@ -39,17 +43,6 @@ const regionCategory: string[] = [
   "충청북도",
 ];
 
-const foodCategory: string[] = [
-  "샐러드",
-  "술집",
-  "양식",
-  "인도음식",
-  "중식",
-  "카페",
-  "퓨전음식",
-  "한식",
-];
-
 const Sidebar = () => {
   const [regionOpen, setRegionOpen] = useState<Boolean>(false);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
@@ -59,12 +52,35 @@ const Sidebar = () => {
   const [anchorFoodEl, setAnchorFoodEl] = useState<null | HTMLElement>(null);
   const [searchValue, setSearchValue] = useState<string>("");
   const dispatch = useDispatch();
-  const { keyword } = useSelector(
-    ({ restaurant }: RootState) => ({
-      keyword: restaurant.keyword,
-    }),
-    shallowEqual
+  const { keyword, foodCategoryList, region, foodCategory, filtered } =
+    useSelector(
+      ({ restaurant }: RootState) => ({
+        keyword: restaurant.keyword,
+        foodCategoryList: restaurant.foodCategoryList,
+        region: restaurant.region,
+        foodCategory: restaurant.foodCategory,
+        filtered: restaurant.filtered,
+      }),
+      shallowEqual
+    );
+
+  const { data, isSuccess, isFetching } = useGetRestaurantsFilteredDataQuery(
+    {
+      page: 1,
+      region: region,
+    },
+    {
+      skip: !region,
+      // @ts-ignore
+      refetchOnArgChange: true,
+    }
   );
+
+  useEffect(() => {
+    if (isSuccess && !isFetching) {
+      dispatch(setFoodCategoryList(data?.category));
+    }
+  }, [isSuccess, isFetching]);
 
   const open = Boolean(anchorEl);
   const openFood = Boolean(anchorFoodEl);
@@ -189,6 +205,8 @@ const Sidebar = () => {
                         onClick={() => {
                           setSelectedRegion(region);
                           setAnchorEl(null);
+                          setSelectedFood(null);
+                          dispatch(resetFood());
                         }}
                       >
                         <CustomTypography
@@ -208,17 +226,19 @@ const Sidebar = () => {
             </Popover>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={handleFoodOpenClick}>
-              <ListItemIcon>
-                <ArrowDropDown />
-              </ListItemIcon>
-              <ListItemText
-                primary={selectedFood ? selectedFood : "종류 선택"}
-                primaryTypographyProps={{
-                  style: { fontWeight: "bold", marginLeft: "0.5rem" },
-                }}
-              />
-            </ListItemButton>
+            {filtered && (
+              <ListItemButton onClick={handleFoodOpenClick}>
+                <ListItemIcon>
+                  <ArrowDropDown />
+                </ListItemIcon>
+                <ListItemText
+                  primary={foodCategory ? foodCategory : "종류 선택"}
+                  primaryTypographyProps={{
+                    style: { fontWeight: "bold", marginLeft: "0.5rem" },
+                  }}
+                />
+              </ListItemButton>
+            )}
             <Popover
               open={openFood}
               anchorEl={anchorFoodEl}
@@ -235,26 +255,28 @@ const Sidebar = () => {
             >
               <Paper>
                 <List>
-                  {foodCategory.map((food) => (
-                    <ListItem key={food}>
-                      <div
-                        onClick={() => {
-                          setSelectedFood(food);
-                          setAnchorFoodEl(null);
-                        }}
-                      >
-                        <CustomTypography
-                          style={{
-                            fontFamily: "NanumSquare, sans-serif",
-                            fontWeight: "bold",
-                            padding: "0.1vw",
+                  {foodCategoryList &&
+                    foodCategoryList?.map((food) => (
+                      <ListItem key={food}>
+                        <div
+                          onClick={() => {
+                            setSelectedFood(food);
+                            setAnchorFoodEl(null);
+                            dispatch(resetFilterPage());
                           }}
                         >
-                          {food}
-                        </CustomTypography>
-                      </div>
-                    </ListItem>
-                  ))}
+                          <CustomTypography
+                            style={{
+                              fontFamily: "NanumSquare, sans-serif",
+                              fontWeight: "bold",
+                              padding: "0.1vw",
+                            }}
+                          >
+                            {food}
+                          </CustomTypography>
+                        </div>
+                      </ListItem>
+                    ))}
                 </List>
               </Paper>
             </Popover>

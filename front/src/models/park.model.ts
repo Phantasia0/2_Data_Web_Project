@@ -13,4 +13,6 @@ export interface Park {
   longitude: number;
   tel: string;
   region: string;
+  contactCount: number;
+  contactCheck: number;
 }

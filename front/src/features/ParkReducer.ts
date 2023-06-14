@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { RestaurantState } from "./RestaurantReducer";
 
 export interface ParkState {
   data?: any;
   region?: string | null;
   filtered?: boolean;
   pageNumber?: number;
+  pageFilteredNumber?: number;
 }
 
 const initialState: ParkState = {
@@ -13,6 +15,7 @@ const initialState: ParkState = {
   region: null,
   filtered: false,
   pageNumber: 1,
+  pageFilteredNumber: 1,
 };
 
 const parkSlice = createSlice({
@@ -35,13 +38,27 @@ const parkSlice = createSlice({
     resetData: (state) => {
       state.region = null;
       state.filtered = false;
+      state.pageNumber = 1;
+      state.pageFilteredNumber = 1;
     },
     goPage: (state, action: PayloadAction<ParkState | null>) => {
       state.pageNumber = action?.payload?.pageNumber;
     },
+    goFilteredPage: (state, action: PayloadAction<ParkState | null>) => {
+      state.pageFilteredNumber = action?.payload?.pageFilteredNumber;
+    },
+    resetFilterPage: (state) => {
+      state.pageFilteredNumber = 1;
+    },
   },
 });
 
-export const { updateData, filterBySelected, resetData, goPage } =
-  parkSlice.actions;
+export const {
+  updateData,
+  filterBySelected,
+  resetData,
+  goPage,
+  goFilteredPage,
+  resetFilterPage,
+} = parkSlice.actions;
 export default parkSlice.reducer;

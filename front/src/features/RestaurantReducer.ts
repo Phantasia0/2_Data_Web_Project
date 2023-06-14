@@ -8,6 +8,8 @@ export interface RestaurantState {
   foodCategory?: string | null;
   filtered?: boolean;
   pageNumber?: number;
+  foodCategoryList?: string[] | null;
+  pageFilteredNumber?: number;
 }
 
 const initialState: RestaurantState = {
@@ -17,6 +19,8 @@ const initialState: RestaurantState = {
   foodCategory: null,
   filtered: false,
   pageNumber: 1,
+  foodCategoryList: [],
+  pageFilteredNumber: 1,
 };
 
 const restaurantSlice = createSlice({
@@ -53,9 +57,30 @@ const restaurantSlice = createSlice({
       state.region = null;
       state.foodCategory = null;
       state.filtered = false;
+      state.pageFilteredNumber = 1;
+      state.pageNumber = 1;
+      state.foodCategoryList = [];
     },
     goPage: (state, action: PayloadAction<RestaurantState | null>) => {
       state.pageNumber = action?.payload?.pageNumber;
+    },
+    setFoodCategoryList: (state, action: PayloadAction<any>) => {
+      if (action?.payload !== null) {
+        state.foodCategory = null;
+        state.foodCategoryList = [];
+        // @ts-ignore
+        state.foodCategoryList = [...action?.payload];
+      }
+    },
+    resetFood: (state) => {
+      state.foodCategory = null;
+      state.pageFilteredNumber = 1;
+    },
+    goFilteredPage: (state, action: PayloadAction<RestaurantState | null>) => {
+      state.pageFilteredNumber = action?.payload?.pageFilteredNumber;
+    },
+    resetFilterPage: (state) => {
+      state.pageFilteredNumber = 1;
     },
   },
 });
@@ -66,5 +91,9 @@ export const {
   filterBySelected,
   resetData,
   goPage,
+  setFoodCategoryList,
+  resetFood,
+  goFilteredPage,
+  resetFilterPage,
 } = restaurantSlice.actions;
 export default restaurantSlice.reducer;

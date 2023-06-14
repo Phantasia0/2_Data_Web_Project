@@ -5,19 +5,40 @@ export const parksApi = createApi({
   reducerPath: "parksApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `http://${window.location.hostname}:5001/`,
+    prepareHeaders: (headers) => {
+      // @ts-ignore
+      const token = sessionStorage.getItem("user");
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     getParksData: builder.query<ParkData, number>({
       query: (page: number) => `/park?page=${page}`,
     }),
-    getParksFilteredData: builder.query<Park[], { region?: string | null }>({
-      query: ({ region }) => {
+    getParksFilteredData: builder.query<
+      ParkData,
+      { page?: number | null; region?: string | null }
+    >({
+      query: ({ page, region }) => {
         let queryString = "/park/search";
 
-        if (region) {
-          queryString += `?region=${encodeURIComponent(region)}`;
+        if (page) {
+          queryString += `?page=${encodeURIComponent(page)}`;
         } else {
-          queryString += "?region";
+          queryString += "?page";
+        }
+
+        if (region) {
+          if (queryString.includes("?")) {
+            queryString += `&region=${encodeURIComponent(region)}`;
+          } else {
+            queryString += `?region=${encodeURIComponent(region)}`;
+          }
+        } else {
+          queryString += "&region";
         }
 
         return queryString;

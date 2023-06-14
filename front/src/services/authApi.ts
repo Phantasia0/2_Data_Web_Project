@@ -18,32 +18,6 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-// const baseQueryWithReauth = async (
-//   args: string | FetchArgs,
-//   api: BaseQueryApi,
-//   extraOptions: {}
-// ) => {
-//   let result = await baseQuery(args, api, extraOptions);
-//
-//   // @ts-ignore
-//   if (result?.error?.originalStatus === 403) {
-//     console.log("sending refresh token");
-//     const refreshResult = await baseQuery("/refresh", api, extraOptions);
-//     console.log(refreshResult);
-//     if (refreshResult?.data) {
-//       // @ts-ignore
-//       const user = api.getState().auth.user;
-//       // @ts-ignore
-//       api.dispatch(setCredentials({ ...refreshResult.data, user }));
-//       result = await baseQuery(args, api, extraOptions);
-//     } else {
-//       api.dispatch(logOut());
-//     }
-//   }
-//
-//   return result;
-// };
-
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: baseQuery,
