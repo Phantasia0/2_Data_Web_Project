@@ -7,7 +7,7 @@ class userService {
     // ID 중복 확인
     const idChecked = await User.findByOne({ id });
     if (idChecked) {
-      const errorMessage = "사용중인 ID입니다. 다른 ID를 입력해 주세요.";
+      const errorMessage = "사용중인 ID입니다.\n다른 ID를 입력해 주세요.";
       return { errorMessage };
     }
 
@@ -15,7 +15,7 @@ class userService {
     const nicknameChecked = await User.findByOne({ nickname });
     if (nicknameChecked) {
       const errorMessage =
-        "사용중인 닉네임입니다. 다른 닉네임을 입력해 주세요.";
+        "사용중인 닉네임입니다.\n다른 닉네임을 입력해 주세요.";
       return { errorMessage };
     }
 
@@ -49,7 +49,7 @@ class userService {
     );
     if (!isPasswordCorrect) {
       const errorMessage =
-        "비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요.";
+        "비밀번호가 일치하지 않습니다.\n다시 한 번 확인해 주세요.";
       return { errorMessage };
     }
 
@@ -121,7 +121,7 @@ class userService {
       });
       if (nicknameChecked) {
         const errorMessage =
-          "사용중인 닉네임입니다. 다른 닉네임을 입력해 주세요.";
+          "사용중인 닉네임입니다.\n다른 닉네임을 입력해 주세요.";
         return { errorMessage };
       }
     }

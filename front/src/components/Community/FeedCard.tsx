@@ -25,18 +25,24 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../../features/AuthReducer";
+import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
 import { useDeleteFeedMutation } from "../../services/feedApi";
 import { useDispatch } from "react-redux";
 import { deleteThisFeed } from "../../features/SocialReducer";
 import { useUpdateLikeMutation } from "../../services/likeApi";
 import { useGetFeedQuery } from "../../services/socialApi";
+import { RootState } from "../../features/configureStore";
 
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
 
-const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
+const FeedCard: FC<any> = ({
+  data,
+  setSnackbarOpen,
+  setSnackbarMessage,
+  setSnackbarColor,
+}) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -67,6 +73,16 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     isError: thisFeedError,
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
+
+  const { isModalVisible } = useSelector(({ profile }: RootState) => ({
+    isModalVisible: profile.isModalVisible,
+  }));
+
+  useEffect(() => {
+    thisFeedRefetch();
+    setIsLiked(thisFeedData?.likeCheck);
+  }, [isLiked]);
+
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);
@@ -87,17 +103,30 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
       _id: data?._id,
     });
 
+    setSnackbarColor("primary.main");
     setSnackbarOpen(true); // 스낵바 상태를 업데이트합니다.
+    setSnackbarMessage("게시글이 삭제되었습니다.");
+
     dispatch(deleteThisFeed(data?._id));
   };
 
   const handleClickLike = async (e: any) => {
+    if (!user) {
+      setSnackbarColor("orange");
+      setSnackbarOpen(true);
+      setSnackbarMessage("로그인 한 회원만 누를 수 있습니다.");
+      return;
+    }
+
     await updateLike({
       _id: data?._id,
-    });
-    thisFeedRefetch();
+    }).unwrap();
 
-    setIsLiked(!isLiked);
+    const success = await thisFeedRefetch().unwrap();
+
+    if (success) {
+      setIsLiked(!isLiked);
+    }
   };
 
   const analyzingData = (data: any) => {
@@ -142,6 +171,10 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
     analyzingData(data);
   }, []);
 
+  useEffect(() => {
+    thisFeedRefetch();
+  }, [isModalVisible]);
+
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
       <Card
@@ -156,6 +189,7 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
           title={thisFeedData?.user?.nickname}
           avatar={
             <Avatar
+              sx={{ width: 50, height: 50 }}
               src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
             />
           }
@@ -217,11 +251,7 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
             display: "flex",
           }}
         >
-          <IconButton
-            sx={{ height: "1rem" }}
-            onClick={handleClickLike}
-            disabled={!user}
-          >
+          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
             <Checkbox
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}

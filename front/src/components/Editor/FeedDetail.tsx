@@ -36,6 +36,7 @@ const FeedDetail = () => {
 
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<any>("");
+  const [snackbarColor, setSnackbarColor] = useState<any>("primary.main");
 
   const { data, isSuccess, isLoading, isError, refetch } = useGetFeedQuery(
     feedId as string
@@ -115,6 +116,7 @@ const FeedDetail = () => {
         isOwner={isOwner}
         setSnackbarOpen={setSnackbarOpen}
         setSnackbarMessage={setSnackbarMessage}
+        setSnackbarColor={setSnackbarColor}
       />
       {/* <Box
         sx={{
@@ -162,7 +164,7 @@ const FeedDetail = () => {
         onClose={handleSnackbarClose}
         message={snackbarMessage}
         ContentProps={{
-          sx: { backgroundColor: "primary.main" },
+          sx: { backgroundColor: snackbarColor },
         }}
       />
     </Box>

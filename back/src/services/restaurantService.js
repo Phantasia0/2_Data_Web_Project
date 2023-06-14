@@ -1,15 +1,17 @@
 import { Restaurant } from "../db/models/Restaurant";
 
 class restaurantService {
-  static async getFilteredRestaurant({ region, category, userId }) {
+  static async getFilteredRestaurant({ page, region, category, userId }) {
+    if (!page) page = 1;
     const filter = {};
     if (region) filter.region = region;
     if (category) filter.category = category;
 
-    return await Restaurant.findBySearch({ filter, userId });
+    return await Restaurant.findBySearch({ page, filter, userId });
   }
 
   static async getRestaurants({ page, userId }) {
+    if (!page) page = 1;
     return await Restaurant.findAll({ page, userId });
   }
 

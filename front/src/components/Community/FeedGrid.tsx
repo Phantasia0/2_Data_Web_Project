@@ -20,6 +20,8 @@ const FeedGrid = ({
   }));
 
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<any>("");
+  const [snackbarColor, setSnackbarColor] = useState<any>("primary.main");
 
   useEffect(() => {
     if (isSuccess && currentPage <= Math.floor(data.total / SKIPCOUNT) + 1) {
@@ -55,15 +57,17 @@ const FeedGrid = ({
           data={feed}
           key={feed?._id}
           setSnackbarOpen={setSnackbarOpen}
+          setSnackbarMessage={setSnackbarMessage}
+          setSnackbarColor={setSnackbarColor}
         />
       ))}
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={2000}
         onClose={handleSnackbarClose}
-        message={"게시글이 삭제되었습니다."}
+        message={snackbarMessage}
         ContentProps={{
-          sx: { backgroundColor: "primary.main" },
+          sx: { backgroundColor: snackbarColor },
         }}
       />
     </Grid>

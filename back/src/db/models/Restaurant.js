@@ -70,9 +70,12 @@ class Restaurant {
     return restaurant;
   }
 
-  static async findBySearch({ filter, userId }) {
-    return await RestaurantModel.aggregate([
+  static async findBySearch({ page, filter, userId }) {
+    const skip = (1 - 1) * LIMIT;
+    const restaurant = await RestaurantModel.aggregate([
       { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $skip: skip },
+      { $limit: LIMIT },
       {
         $project: {
           _id: 1,
@@ -110,6 +113,13 @@ class Restaurant {
         },
       },
     ]);
+
+    const category = await RestaurantModel.distinct("category", filter);
+    const region = await RestaurantModel.distinct("region", filter);
+
+    const total = await RestaurantModel.countDocuments(filter);
+
+    return { restaurant, category, region, total };
   }
 
   // 찜하기 처리

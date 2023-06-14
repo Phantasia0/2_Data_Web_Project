@@ -7,7 +7,8 @@ export interface ProfileState {
   filtered?: boolean;
   pageNumber?: number;
   total?: number;
-  commentListUpdate?: false;
+  commentListUpdate?: boolean;
+  isModalVisible?: boolean;
 }
 
 const initialState: ProfileState = {
@@ -17,6 +18,7 @@ const initialState: ProfileState = {
   pageNumber: 1,
   total: 12,
   commentListUpdate: false,
+  isModalVisible: false,
 };
 
 const profileSlice = createSlice({
@@ -51,6 +53,11 @@ const profileSlice = createSlice({
       // @ts-ignore
       state.commentListUpdate = !state.commentListUpdate;
     },
+    setModalVisible: (state, action: any) => {
+      if (action?.payload !== null) {
+        state.isModalVisible = action?.payload;
+      }
+    },
   },
 });
 
@@ -61,5 +68,6 @@ export const {
   goPage,
   setTotal,
   updateCommentList,
+  setModalVisible,
 } = profileSlice.actions;
 export default profileSlice.reducer;

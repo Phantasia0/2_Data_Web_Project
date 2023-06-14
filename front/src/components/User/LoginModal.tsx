@@ -114,10 +114,15 @@ const LoginModal: FC<LoginModalProps> = ({
         </Button>
       </DialogActions>
       {isError && (
-        <Typography color="red">
+        <Typography color="red" style={{ whiteSpace: "pre-line" }}>
           <center>
             {/*@ts-ignore*/}
-            {JSON.stringify(error?.data)}
+            {error?.data.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </center>
         </Typography>
       )}

@@ -111,10 +111,10 @@ const RightbarVegan = () => {
               padding: "10px",
             }}
           >
-            <center>
+            <p style={{ textAlign: "center" }}>
               비건 레스토랑이란 개인뿐만 아니라 <br></br>식물성 옵션을 탐색하고
               더 건강하고 지속 가능한 식사에 관심있는 사람들을 위한 것입니다.
-            </center>
+            </p>
           </Typography>
           {!filtered && (
             <Stack

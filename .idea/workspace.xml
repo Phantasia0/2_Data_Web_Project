@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "feature/front-피드백-작업2",
     "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

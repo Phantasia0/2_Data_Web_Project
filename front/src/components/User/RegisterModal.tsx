@@ -127,7 +127,12 @@ const RegisterModal: FC<RegisterModalProps> = ({
         <Typography color="red">
           <center>
             {/*@ts-ignore*/}
-            {JSON.stringify(error?.data)}
+            {error?.data.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </center>
         </Typography>
       )}

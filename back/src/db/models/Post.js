@@ -10,14 +10,14 @@ class Post {
         path: "comments",
         populate: {
           path: "user",
-          select: "_id nickname",
+          select: "_id nickname profile",
         },
       })
       .populate({
         path: "likes",
         populate: {
           path: "user",
-          select: "_id nickname",
+          select: "_id nickname profile",
         },
       });
 
@@ -87,7 +87,7 @@ class Post {
     const total = await PostModel.countDocuments();
     const tot = post.length;
 
-    return { total, post,tot };
+    return { total, post, tot };
   }
 
   static async findAllBySearch({ page, nickname, userId }) {
@@ -194,7 +194,7 @@ class Post {
 }
 
 class Comment {
-  static async findAll({page, _id}) {
+  static async findAll({ page, _id }) {
     page = parseInt(page) || 1;
     const skip = (page - 1) * COMMENT_LIMIT;
 

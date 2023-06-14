@@ -1,14 +1,16 @@
 import { Park } from "../db/models/Park";
 
 class parkService {
-  static async getFilteredPark({ region, userId }) {
+  static async getFilteredPark({ page, region, userId }) {
+    if (!page) page = 1;
     const filter = {};
     if (region) filter.region = region;
 
-    return await Park.findBySearch({ filter, userId });
+    return await Park.findBySearch({ page, filter, userId });
   }
 
   static async getParks({ page, userId }) {
+    if (!page) page = 1;
     return await Park.findAll({ page, userId });
   }
 

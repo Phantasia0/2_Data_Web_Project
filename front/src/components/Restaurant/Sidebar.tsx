@@ -184,7 +184,7 @@ const Sidebar = () => {
               <Paper>
                 <List>
                   {regionCategory.map((region) => (
-                    <ListItem key={region} disablePadding>
+                    <ListItem key={region}>
                       <div
                         onClick={() => {
                           setSelectedRegion(region);
@@ -195,7 +195,7 @@ const Sidebar = () => {
                           style={{
                             fontFamily: "NanumSquare, sans-serif",
                             fontWeight: "bold",
-                            padding: "0.2vw",
+                            padding: "0.1vw",
                           }}
                         >
                           {region}
@@ -236,7 +236,7 @@ const Sidebar = () => {
               <Paper>
                 <List>
                   {foodCategory.map((food) => (
-                    <ListItem key={food} disablePadding>
+                    <ListItem key={food}>
                       <div
                         onClick={() => {
                           setSelectedFood(food);
@@ -247,7 +247,7 @@ const Sidebar = () => {
                           style={{
                             fontFamily: "NanumSquare, sans-serif",
                             fontWeight: "bold",
-                            padding: "0.2vw",
+                            padding: "0.1vw",
                           }}
                         >
                           {food}

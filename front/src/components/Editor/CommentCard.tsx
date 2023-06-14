@@ -104,7 +104,12 @@ const CommentCard = ({
       }}
     >
       <CardHeader
-        avatar={<Avatar sx={{ backgroundColor: "primary.main" }}>R</Avatar>}
+        avatar={
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+            src={`http://localhost:5001/profile/${data?.user?.profile}`}
+          />
+        }
         title={data?.user?.nickname}
         subheader={data?.updatedAt.slice(0, 10)}
         action={
