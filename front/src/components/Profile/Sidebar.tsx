@@ -23,21 +23,24 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
-import { goPage } from "../../features/ProfileReducer";
+import { goPage, setModalVisible } from "../../features/ProfileReducer";
 import ProfileEditor from "./ProfileEdittor";
 
 const Sidebar = () => {
-  const { pageNumber, total } = useSelector(({ profile }: RootState) => ({
-    pageNumber: profile.pageNumber,
-    total: profile.total,
-  }));
+  const { pageNumber, total, isModalVisible } = useSelector(
+    ({ profile }: RootState) => ({
+      pageNumber: profile.pageNumber,
+      total: profile.total,
+      isModalVisible: profile.isModalVisible,
+    })
+  );
 
   const dispatch = useDispatch();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<any>("");
   const showModal = () => {
-    setIsModalVisible(true);
+    dispatch(setModalVisible(true));
   };
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -60,10 +63,12 @@ const Sidebar = () => {
               <ListItemIcon>
                 <Home />
               </ListItemIcon>
-              <ListItemText primary="홈" 
-                  primaryTypographyProps={{
+              <ListItemText
+                primary="홈"
+                primaryTypographyProps={{
                   style: { fontWeight: "bold" },
-                }}/>
+                }}
+              />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -71,10 +76,12 @@ const Sidebar = () => {
               <ListItemIcon>
                 <Article />
               </ListItemIcon>
-              <ListItemText primary="커뮤니티" 
+              <ListItemText
+                primary="커뮤니티"
                 primaryTypographyProps={{
-                style: { fontWeight: "bold" },
-              }}/>
+                  style: { fontWeight: "bold" },
+                }}
+              />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding onClick={showModal}>
@@ -82,16 +89,16 @@ const Sidebar = () => {
               <ListItemIcon>
                 <AccountBox />
               </ListItemIcon>
-              <ListItemText primary="프로필 수정" 
+              <ListItemText
+                primary="프로필 수정"
                 primaryTypographyProps={{
-                style: { fontWeight: "bold" },
-                }}/>
+                  style: { fontWeight: "bold" },
+                }}
+              />
             </ListItemButton>
           </ListItem>
           {showModal && (
             <ProfileEditor
-              setIsModalVisible={setIsModalVisible}
-              isModalVisible={isModalVisible}
               setSnackbarOpen={setSnackbarOpen}
               setSnackbarMessage={setSnackbarMessage}
             />

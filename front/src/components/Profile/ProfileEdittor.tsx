@@ -1,29 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, TextField, Box, Typography } from "@mui/material";
 import { useInput } from "../../hooks/useInput";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../../features/AuthReducer";
+import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
 import {
   useChangeUserInfoMutation,
   useChangeUserImageMutation,
 } from "../../services/profileApi";
 import { validateName } from "../../utils/validate";
+import { useDispatch } from "react-redux";
+import { setModalVisible } from "../../features/ProfileReducer";
+import { RootState } from "../../features/configureStore";
+import { useGetCurrentUserQuery } from "../../services/authApiWrapper";
 
-const ProfileEditor = ({
-  isModalVisible,
-  setIsModalVisible,
-  setSnackbarOpen,
-  setSnackbarMessage,
-}: any) => {
+const ProfileEditor = ({ setSnackbarOpen, setSnackbarMessage }: any) => {
   const user = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
 
   // @ts-ignore
-  const [nickName, setNickName] = useState<any>(user?.nickname || "");
-  // @ts-ignore
-  const [description, setDescription] = useState<any>(user?.description || "");
   const [error, setError] = useState<string>("");
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [imageError, setImageError] = useState<string>("");
+  const { isModalVisible } = useSelector(({ profile }: RootState) => ({
+    isModalVisible: profile.isModalVisible,
+  }));
+
+  // @ts-ignore
+  const [nickName, setNickName] = useState<any>(user?.nickname);
 
   const [
     updateProfile,
@@ -37,23 +40,24 @@ const ProfileEditor = ({
 
   const [
     updateUserImage,
-    { isLoading: imageUpdateLoading, isError: imageUpdateError },
+    {
+      data: profileImageData,
+      isLoading: imageUpdateLoading,
+      isError: imageUpdateError,
+    },
   ] = useChangeUserImageMutation();
 
   const handleChangeNickname = (e: any) => {
     setNickName(e.currentTarget.value);
     setError("");
   };
-  const handleChangeDescription = (e: any) => {
-    setDescription(e.currentTarget.value);
-  };
-  const handleOk = () => {
-    window.location.reload();
-    setIsModalVisible(false);
-  };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const handleCancel = async () => {
+    // @ts-ignore
+    dispatch(setModalVisible(false));
+    setSelectedImage(null);
+    // @ts-ignore
+    setNickName(user?.nickname);
   };
 
   const handleSubmitNickName = async (e: any) => {
@@ -66,23 +70,11 @@ const ProfileEditor = ({
       if (success) {
         setSnackbarOpen(true);
         setSnackbarMessage("닉네임 변경 완료");
+        dispatch(changeUserInfo({ key: "nickname", value: nickName }));
       }
     } catch (err) {
       // @ts-ignore
       setError(err.data as string);
-    }
-  };
-
-  const handleSubmitDescription = async (e: any) => {
-    e.preventDefault();
-    // 여기에 API 요청
-    const success = await updateProfile({
-      description: description,
-    }).unwrap();
-
-    if (success) {
-      setSnackbarOpen(true);
-      setSnackbarMessage("소개 변경 완료");
     }
   };
 
@@ -93,11 +85,10 @@ const ProfileEditor = ({
       return;
     }
     setSelectedImage(file);
-    console.log(selectedImage);
   };
   const handleImageCancel = () => {
-    setImageError("");
     setSelectedImage(null);
+    setImageError("");
   };
 
   const handleFileSubmit = async (e: any) => {
@@ -108,6 +99,7 @@ const ProfileEditor = ({
       if (success) {
         setSnackbarOpen(true);
         setSnackbarMessage("프로필 이미지 변경 완료");
+        setSelectedImage(null);
       }
     } catch (err) {
       // @ts-ignore
@@ -117,7 +109,7 @@ const ProfileEditor = ({
 
   return (
     <Modal
-      open={isModalVisible}
+      open={isModalVisible as boolean}
       onClose={handleCancel}
       aria-labelledby="modal-title"
       sx={{
@@ -161,30 +153,6 @@ const ProfileEditor = ({
               disabled={!validateName(nickName)}
             >
               닉네임 변경
-            </Button>
-          </Box>
-        </form>
-        <form
-          onSubmit={handleSubmitDescription}
-          style={{ marginBottom: "1rem" }}
-        >
-          <TextField
-            label="description"
-            name="description"
-            type="text"
-            fullWidth
-            value={description}
-            onChange={handleChangeDescription}
-          />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              marginTop: "16px",
-            }}
-          >
-            <Button variant="contained" type="submit" sx={{ color: "white" }}>
-              소개 변경
             </Button>
           </Box>
         </form>
@@ -241,13 +209,6 @@ const ProfileEditor = ({
             </Button>
           </Box>
         </form>
-        <Button
-          variant="contained"
-          sx={{ color: "white", marginTop: "1rem" }}
-          onClick={handleOk}
-        >
-          프로필 변경을 끝내시겠습니까?
-        </Button>
       </Box>
     </Modal>
   );

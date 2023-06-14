@@ -31,10 +31,20 @@ const authSlice = createSlice({
       state.token = null;
       sessionStorage.clear();
     },
+    changeUserInfo: (state, action: PayloadAction<any>) => {
+      if (action?.payload !== null) {
+        const updateUserInfo = {
+          ...state.user,
+          [action?.payload.key]: action?.payload.value,
+        };
+        // @ts-ignore
+        Object.assign(state?.user, updateUserInfo);
+      }
+    },
   },
 });
 
-export const { setCredentials, logOut } = authSlice.actions;
+export const { setCredentials, logOut, changeUserInfo } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectCurrentUser = (state: RootState) => state.auth.user;

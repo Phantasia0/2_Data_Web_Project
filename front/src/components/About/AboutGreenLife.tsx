@@ -41,38 +41,34 @@ const AboutGreenLife = () => {
             zIndex: 1,
           }}
         >
-          <Typography sx={fontdesign.xsTop}>
-            그린라이프,
-          </Typography>
-          <Typography sx={fontdesign.xsBottom}>
-            왜 실천해야할까요?
-          </Typography>
+          <Typography sx={fontdesign.xsTop}>그린라이프,</Typography>
+          <Typography sx={fontdesign.xsBottom}>왜 실천해야할까요?</Typography>
         </div>
       </div>
       <div>
-        <Typography sx={fontdesign.xsTitle}
-        style={{marginTop: "10vw"}}>
+        <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
           지구가 슬퍼하고 있어요
         </Typography>
       </div>
       <div>
-        <Typography sx={fontdesign.xsText}
-        style={{marginTop: "7vw"}}>
-          <center>나 하나쯤은 괜찮겠지 하는 생각과 행동들이</center>
-          <center>
+        <Typography sx={fontdesign.xsText} style={{ marginTop: "7vw" }}>
+          <p style={{ textAlign: "center" }}>
+            나 하나쯤은 괜찮겠지 하는 생각과 행동들이
+          </p>
+          <p style={{ textAlign: "center" }}>
             결국은 우리가 마시고 먹는 공기와 수질, 토양 속 오염 등을 부추기고
             있다는 사실
-          </center>
-          <center>
+          </p>
+          <p style={{ textAlign: "center" }}>
             그리고 이로 인한 피해는 부메랑이 되어 다시 우리의 일상의 삶 속에
             돌아온다는 것을 아시나요?
-          </center>
+          </p>
         </Typography>
       </div>
       <div style={{ width: "1400px", maxWidth: "100%", margin: "0 auto" }}>
         <div>
-          <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
-            <center>환경문제에 대한 인식</center>
+          <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
+            <p style={{ textAlign: "center" }}>환경문제에 대한 인식</p>
           </Typography>
         </div>
         <div
@@ -82,7 +78,7 @@ const AboutGreenLife = () => {
             flexDirection: "row",
             gap: "3vw",
             alignItems: "center",
-            marginLeft: '16vw',
+            marginLeft: "16vw",
           }}
         >
           <img
@@ -93,19 +89,21 @@ const AboutGreenLife = () => {
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography sx={fontdesign.xsText}>
-            <center>
+            <p style={{ textAlign: "center" }}>
               지속가능한 삶과 친환경에 대한 관심이 날로 증가하고 있어요.
-            </center>
-            <center>
+            </p>
+            <p style={{ textAlign: "center" }}>
               '2018년 환경문제 관심도 설문조사' 데이터를 분석한 결과
-            </center>
-            <center>78.6%가 환경문제에 대한 관심을 가지고 있답니다.</center>
-            <center>당신은 어느쪽인가요?</center>
+            </p>
+            <p style={{ textAlign: "center" }}>
+              78.6%가 환경문제에 대한 관심을 가지고 있답니다.
+            </p>
+            <p style={{ textAlign: "center" }}>당신은 어느쪽인가요?</p>
           </Typography>
         </div>
         <div>
-          <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
-            <center>인식하는 시급한 과제</center>
+          <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
+            <p style={{ textAlign: "center" }}>인식하는 시급한 과제</p>
           </Typography>
         </div>
         <div
@@ -115,7 +113,7 @@ const AboutGreenLife = () => {
             flexDirection: "row",
             gap: "3vw",
             alignItems: "center",
-            marginLeft: '16vw',
+            marginLeft: "16vw",
           }}
         >
           <img
@@ -126,15 +124,17 @@ const AboutGreenLife = () => {
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography sx={fontdesign.xsText}>
-            <center>특히 온실가스 문제를 시급한 과제로 인식하며,</center>
-            <center>
+            <p style={{ textAlign: "center" }}>
+              특히 온실가스 문제를 시급한 과제로 인식하며,
+            </p>
+            <p style={{ textAlign: "center" }}>
               사람들이 온실가스 줄이기 운동에 관심을 가지고 있어요.
-            </center>
+            </p>
           </Typography>
         </div>
         <div>
-          <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
-            <center>늘어나는 온실가스</center>
+          <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
+            <p style={{ textAlign: "center" }}>늘어나는 온실가스</p>
           </Typography>
         </div>
         <div
@@ -144,7 +144,7 @@ const AboutGreenLife = () => {
             flexDirection: "row",
             gap: "3vw",
             alignItems: "center",
-            marginLeft: '16vw',
+            marginLeft: "16vw",
           }}
         >
           <img
@@ -155,13 +155,15 @@ const AboutGreenLife = () => {
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography sx={fontdesign.xsText}>
-            <center>하지만 늘어나는 관심과 다르게</center>
-            <center>온실가스 배출량은 꾸준히 증가하고 있어요.</center>
+            <p style={{ textAlign: "center" }}>하지만 늘어나는 관심과 다르게</p>
+            <p style={{ textAlign: "center" }}>
+              온실가스 배출량은 꾸준히 증가하고 있어요.
+            </p>
           </Typography>
         </div>
         <div>
-          <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
-            <center>그 주범은 육류!</center>
+          <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
+            <p style={{ textAlign: "center" }}>그 주범은 육류!</p>
           </Typography>
         </div>
         <div
@@ -171,7 +173,7 @@ const AboutGreenLife = () => {
             flexDirection: "row",
             gap: "3vw",
             alignItems: "center",
-            marginLeft: '16vw',
+            marginLeft: "16vw",
           }}
         >
           <img
@@ -182,14 +184,20 @@ const AboutGreenLife = () => {
             style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
           <Typography sx={fontdesign.xsText}>
-            <center>온실가스를 배출하는 주된 원인이 동물성 식품 </center>
-            <center>특히 육고기의 소비가 식품생산과정에서</center>
-            <center> 많은 온실가스를 배출한다는것을 알고계셨나요?</center>
+            <p style={{ textAlign: "center" }}>
+              온실가스를 배출하는 주된 원인이 동물성 식품{" "}
+            </p>
+            <p style={{ textAlign: "center" }}>
+              특히 육고기의 소비가 식품생산과정에서
+            </p>
+            <p style={{ textAlign: "center" }}>
+              많은 온실가스를 배출한다는것을 알고계셨나요?
+            </p>
           </Typography>
         </div>
         <div>
-          <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
-            <center>늘어나는 육류 소비량</center>
+          <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
+            <p style={{ textAlign: "center" }}>늘어나는 육류 소비량</p>
           </Typography>
         </div>
         <div
@@ -199,7 +207,7 @@ const AboutGreenLife = () => {
             flexDirection: "row",
             gap: "3vw",
             alignItems: "center",
-            marginLeft: '16vw',
+            marginLeft: "16vw",
           }}
         >
           <img
@@ -207,14 +215,19 @@ const AboutGreenLife = () => {
             alt="VeganRestaurant"
             width="40%"
             height="40%"
-            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover"}}
+            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover" }}
           />
-          <Typography sx={fontdesign.xsText} >
-            <center> '육류 섭취량 1990 ~ 2025 ~ ' 데이터에 따르면 </center>
-            <center>전세계 육류 소비량은 지속적으로 증가하는 추세이며</center>
-            <center>
+          <Typography sx={fontdesign.xsText}>
+            <p style={{ textAlign: "center" }}>
+              {" "}
+              '육류 섭취량 1990 ~ 2025 ~ ' 데이터에 따르면{" "}
+            </p>
+            <p style={{ textAlign: "center" }}>
+              전세계 육류 소비량은 지속적으로 증가하는 추세이며
+            </p>
+            <p style={{ textAlign: "center" }}>
               늘어나는 소비량이 환경오염으로 이어질 것으로 보여요.
-            </center>
+            </p>
           </Typography>
         </div>
       </div>

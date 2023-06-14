@@ -8,11 +8,13 @@ import {
   styled,
   Toolbar,
 } from "@mui/material";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { debounce } from "lodash";
-import { selectCurrentUser } from "../../features/AuthReducer";
+import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
 import { searchKeyword } from "../../features/ProfileReducer";
+import { RootState } from "../../features/configureStore";
+import { useGetCurrentUserQuery } from "../../services/authApiWrapper";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -41,6 +43,12 @@ const Navbar = () => {
   const user = useSelector(selectCurrentUser);
   const [searchValue, setSearchValue] = useState<string>("");
   const dispatch = useDispatch();
+  const { isModalVisible } = useSelector(({ profile }: RootState) => ({
+    isModalVisible: profile.isModalVisible,
+  }));
+
+  // @ts-ignore
+  const { data, refetch: getCurrentRefetch } = useGetCurrentUserQuery();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -62,6 +70,12 @@ const Navbar = () => {
     []
   );
 
+  useEffect(() => {
+    if (!isModalVisible) {
+      getCurrentRefetch();
+    }
+  }, [isModalVisible]);
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -70,6 +84,7 @@ const Navbar = () => {
             placeholder="유저 스토리 검색"
             onChange={handleSearchChange}
             value={searchValue}
+            sx={{ width: "100%" }}
           />
         </Search>
         <Icons>
@@ -77,8 +92,9 @@ const Navbar = () => {
             <Notifications />
           </Badge>
           <Avatar
-            sx={{ width: 30, height: 30 }}
-            src={`http://localhost:5001/profile/${user?.profile}`}
+            sx={{ width: 50, height: 50 }}
+            // @ts-ignore
+            src={`http://localhost:5001/profile/${data?.profile}`}
           />
         </Icons>
       </StyledToolbar>

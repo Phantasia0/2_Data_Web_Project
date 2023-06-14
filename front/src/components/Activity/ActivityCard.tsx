@@ -28,7 +28,7 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
           lineBreak: "strict",
           width: "100%",
           fontWeight: "bold",
-          fontSize: {xs: "10px", sm: "12px", md: "14px", lg:"16px"},
+          fontSize: { xs: "10px", sm: "12px", md: "14px", lg: "16px" },
           whiteSpace: "nowrap",
           fontFamily: "NanumSquareExtraBold, sans-serif",
         }}
@@ -41,7 +41,7 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
         //   fontFamily: "NanumSquareExtraBold, sans-serif"
         // }},
       >
-        <center>{name}</center>
+        <p style={{ textAlign: "center" }}>{name}</p>
       </Typography>
       <CardMedia
         component="img"
@@ -64,13 +64,36 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
           left: "-6%",
         }}
       >
-        <Typography variant="body2" fontWeight='bold' color='info.main' sx={{fontSize: {xs: "10px", sm: "12px", md: "14px", lg:"16px"}}}>
+        <Typography
+          variant="body2"
+          fontWeight="bold"
+          color="info.main"
+          sx={{ fontSize: { xs: "10px", sm: "12px", md: "14px", lg: "16px" } }}
+        >
           <center>탄소 배출량: {CO2_reduction}</center>
         </Typography>
-        <Typography variant="body2" fontWeight='bold' color='info.main' sx={{fontSize: {xs: "10px", sm: "12px", md: "14px", lg:"16px"}}}>
-          <center>비용: {cost_reduction}</center>
+        <Typography
+          variant="body2"
+          fontWeight="bold"
+          color="info.main"
+          sx={{
+            fontSize: {
+              xs: "10px",
+              sm: "12px",
+              md: "14px",
+              lg: "16px",
+              textAlign: "center",
+            },
+          }}
+        >
+          비용: {cost_reduction}
         </Typography>
-        <Typography variant="body2" fontWeight='bold' color='info.main' sx={{fontSize: {xs: "10px", sm: "12px", md: "14px", lg:"16px"}}}>
+        <Typography
+          variant="body2"
+          fontWeight="bold"
+          color="info.main"
+          sx={{ fontSize: { xs: "10px", sm: "12px", md: "14px", lg: "16px" } }}
+        >
           <center>효과: {tree_effect}</center>
         </Typography>
       </CardContent>
