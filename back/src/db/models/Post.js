@@ -197,7 +197,7 @@ class Comment {
   static async findAll({page, _id}) {
     page = parseInt(page) || 1;
     const skip = (page - 1) * COMMENT_LIMIT;
-    
+
     let match = {};
     if (_id) {
       match = {
