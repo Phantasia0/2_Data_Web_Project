@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ActivityData } from "../models/activity.model";
+import { apiSlice } from "./authApi";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
@@ -25,3 +25,30 @@ export const profileApi = createApi({
 });
 
 export const { useGetUserFeedQuery, useGetUserCommentQuery } = profileApi;
+
+export const profileMutationApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    changeUserInfo: builder.mutation({
+      query: (body: { nickname?: string; description?: string }) => ({
+        url: `/user`,
+        method: "PUT",
+        body,
+      }),
+    }),
+    changeUserImage: builder.mutation({
+      query: (file: any) => {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        return {
+          url: "/user",
+          method: "PATCH",
+          body: formData,
+        };
+      },
+    }),
+  }),
+});
+
+export const { useChangeUserInfoMutation, useChangeUserImageMutation } =
+  profileMutationApi;

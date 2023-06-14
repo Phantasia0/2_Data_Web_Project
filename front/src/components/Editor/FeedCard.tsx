@@ -47,8 +47,8 @@ const FeedCard: FC<any> = ({
   setSnackbarOpen,
   setSnackbarMessage,
 }) => {
-  const [analyzedData, setAnalyzedData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [analyzedData, setAnalyzedData] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -137,47 +137,47 @@ const FeedCard: FC<any> = ({
     setIsLiked(!isLiked);
   };
 
-  const analyzingData = (data: any) => {
-    const parsedData = JSON.parse(data?.content);
-    let url = null;
-    // console.log(parsedData);
+  // const analyzingData = (data: any) => {
+  //   const parsedData = JSON.parse(data?.content);
+  //   let url = null;
+  //   // console.log(parsedData);
+  //
+  //   if (Object.keys(parsedData.entityMap).length > 0) {
+  //     const entityKeys = Object.keys(parsedData.entityMap);
+  //     const imageEntities = entityKeys
+  //       .map((key) => parsedData.entityMap[key])
+  //       .filter((entity) => entity.type === "IMAGE");
+  //
+  //     if (imageEntities.length > 0) {
+  //       const firstImageEntity = imageEntities[0];
+  //       const entityData = firstImageEntity.data;
+  //
+  //       url = entityData.url;
+  //       const width = entityData.width;
+  //       const height = entityData.height;
+  //     } else {
+  //       url = sampleURL.url;
+  //     }
+  //   } else {
+  //     url = sampleURL.url;
+  //   }
+  //
+  //   const text =
+  //     parsedData?.blocks[0]?.text.length > 20
+  //       ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
+  //       : parsedData?.blocks[0]?.text;
+  //
+  //   const newData = {
+  //     text: text,
+  //     image: url,
+  //   };
+  //   setAnalyzedData(newData);
+  //   setLoading(false);
+  // };
 
-    if (Object.keys(parsedData.entityMap).length > 0) {
-      const entityKeys = Object.keys(parsedData.entityMap);
-      const imageEntities = entityKeys
-        .map((key) => parsedData.entityMap[key])
-        .filter((entity) => entity.type === "IMAGE");
-
-      if (imageEntities.length > 0) {
-        const firstImageEntity = imageEntities[0];
-        const entityData = firstImageEntity.data;
-
-        url = entityData.url;
-        const width = entityData.width;
-        const height = entityData.height;
-      } else {
-        url = sampleURL.url;
-      }
-    } else {
-      url = sampleURL.url;
-    }
-
-    const text =
-      parsedData?.blocks[0]?.text.length > 20
-        ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
-        : parsedData?.blocks[0]?.text;
-
-    const newData = {
-      text: text,
-      image: url,
-    };
-    setAnalyzedData(newData);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    analyzingData(data);
-  }, []);
+  // useEffect(() => {
+  //   analyzingData(data);
+  // }, []);
 
   if (loading) {
     return <div>Loading...</div>;

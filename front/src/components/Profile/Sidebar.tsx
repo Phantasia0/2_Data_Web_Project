@@ -16,13 +16,15 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Snackbar,
   Stack,
   Switch,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { goPage } from "../../features/ProfileReducer";
+import ProfileEditor from "./ProfileEdittor";
 
 const Sidebar = () => {
   const { pageNumber, total } = useSelector(({ profile }: RootState) => ({
@@ -31,6 +33,15 @@ const Sidebar = () => {
   }));
 
   const dispatch = useDispatch();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<any>("");
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const handlePrevPage = (e: any) => {
     dispatch(goPage({ pageNumber: (pageNumber as number) - 1 }));
@@ -60,14 +71,22 @@ const Sidebar = () => {
               <ListItemText primary="커뮤니티" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
+          <ListItem disablePadding onClick={showModal}>
+            <ListItemButton component="a">
               <ListItemIcon>
                 <AccountBox />
               </ListItemIcon>
               <ListItemText primary="프로필 수정" />
             </ListItemButton>
           </ListItem>
+          {showModal && (
+            <ProfileEditor
+              setIsModalVisible={setIsModalVisible}
+              isModalVisible={isModalVisible}
+              setSnackbarOpen={setSnackbarOpen}
+              setSnackbarMessage={setSnackbarMessage}
+            />
+          )}
           <Stack
             direction="row"
             alignItems="center"
@@ -82,7 +101,7 @@ const Sidebar = () => {
               Prev
             </Button>
             <Button
-              disabled={pageNumber === Math.ceil(total / 12)}
+              disabled={pageNumber === (Math.ceil(total / 12) || 1)}
               onClick={handleNextPage}
               endIcon={<ChevronRight />}
             >
@@ -91,6 +110,15 @@ const Sidebar = () => {
           </Stack>
         </List>
       </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+        ContentProps={{
+          sx: { backgroundColor: "primary.main" },
+        }}
+      />
     </Box>
   );
 };
