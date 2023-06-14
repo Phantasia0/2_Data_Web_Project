@@ -78,6 +78,11 @@ const FeedCard: FC<any> = ({
     isModalVisible: profile.isModalVisible,
   }));
 
+  useEffect(() => {
+    thisFeedRefetch();
+    setIsLiked(thisFeedData?.likeCheck);
+  }, [isLiked]);
+
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);
@@ -115,10 +120,13 @@ const FeedCard: FC<any> = ({
 
     await updateLike({
       _id: data?._id,
-    });
-    thisFeedRefetch();
+    }).unwrap();
 
-    setIsLiked(!isLiked);
+    const success = await thisFeedRefetch().unwrap();
+
+    if (success) {
+      setIsLiked(!isLiked);
+    }
   };
 
   const analyzingData = (data: any) => {
