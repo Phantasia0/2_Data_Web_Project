@@ -15,11 +15,12 @@ const KaKaoParkMap = () => {
   const mapRef = useRef<any>();
   const [selectedMarker, setSeleteMarker] = useState<any>();
 
-  const { region, pageNumber, filtered } = useSelector(
+  const { region, pageNumber, filtered, pageFilteredNumber } = useSelector(
     ({ park }: RootState) => ({
       region: park.region,
       pageNumber: park.pageNumber,
       filtered: park.filtered,
+      pageFilteredNumber: park.pageFilteredNumber,
     }),
     shallowEqual
   );
@@ -30,6 +31,7 @@ const KaKaoParkMap = () => {
 
   const { data: filteredData } = useGetParksFilteredDataQuery(
     {
+      page: pageFilteredNumber,
       region: region,
     },
     {
@@ -56,11 +58,11 @@ const KaKaoParkMap = () => {
       centerLng = 127.6358;
     } else {
       centerLat =
-        (filtered && filteredData?.[0]?.latitude) ||
+        (filtered && filteredData?.park[0]?.latitude) ||
         data?.park?.[0]?.latitude ||
         36.2683;
       centerLng =
-        (filtered && filteredData?.[0]?.longitude) ||
+        (filtered && filteredData?.park[0]?.longitude) ||
         data?.park?.[0]?.longitude ||
         127.6358;
     }
@@ -108,7 +110,7 @@ const KaKaoParkMap = () => {
 
   const makeMakerData = () => {
     if (region) {
-      return filteredData?.map((item: any, index) => (
+      return filteredData?.park?.map((item: any, index) => (
         <EventMarkerContainer
           index={index}
           key={`${item.lat}-${item.lng}`}
@@ -169,8 +171,8 @@ const KaKaoParkMap = () => {
           width: "100%",
           height: "1000px",
           borderRadius: "3rem",
-          marginTop:'1.5vw',
-          marginLeft:'1vw',
+          marginTop: "1.5vw",
+          marginLeft: "1vw",
         }}
         level={13} // 지도의 확대 레벨
         ref={mapRef}

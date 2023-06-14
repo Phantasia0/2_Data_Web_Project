@@ -10,7 +10,11 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
-import { filterBySelected, resetData } from "../../features/ParkReducer"; // <<
+import {
+  filterBySelected,
+  resetData,
+  resetFilterPage,
+} from "../../features/ParkReducer"; // <<
 import { useDispatch } from "react-redux";
 import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
@@ -65,16 +69,6 @@ const SidebarPark = () => {
       flex={1}
       p={2}
       sx={{
-        // display: {
-        //   xs: "none",
-        //   sm: "block",
-        //   width: "100%",
-        //   "@media (max-width: 1080px)": {
-        //     display: "none",
-        //   },
-        //   marginLeft: '1.5rem',
-        //   marginTop: '1rem',
-        // },
         width: "100%",
         display: "flex",
         justifyContent: "center",
@@ -119,6 +113,7 @@ const SidebarPark = () => {
                         onClick={() => {
                           setSelectedRegion(region);
                           setAnchorEl(null);
+                          dispatch(resetFilterPage());
                         }}
                       >
                         <CustomTypography

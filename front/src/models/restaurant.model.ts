@@ -17,4 +17,6 @@ export interface Restaurant {
   longitude: number;
   reservation: number;
   image: string;
+  contactCount: number;
+  contackCheck: number;
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Box, List, Typography, Button, Stack } from "@mui/material";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
@@ -7,19 +7,21 @@ import { useGetRestaurantsFilteredDataQuery } from "../../services/restaurantsAp
 import RestaurantVeganItem from "./RestaurantVeganItem";
 import { RootState } from "../../features/configureStore";
 
-import { goPage } from "../../features/RestaurantReducer";
+import { goFilteredPage, goPage } from "../../features/RestaurantReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 const RightbarVegan = () => {
-  const { region, foodCategory, filtered, pageNumber } = useSelector(
-    ({ restaurant }: RootState) => ({
-      region: restaurant.region,
-      foodCategory: restaurant.foodCategory,
-      filtered: restaurant.filtered,
-      pageNumber: restaurant.pageNumber,
-    }),
-    shallowEqual
-  );
+  const { region, foodCategory, filtered, pageNumber, pageFilteredNumber } =
+    useSelector(
+      ({ restaurant }: RootState) => ({
+        region: restaurant.region,
+        foodCategory: restaurant.foodCategory,
+        filtered: restaurant.filtered,
+        pageNumber: restaurant.pageNumber,
+        pageFilteredNumber: restaurant.pageFilteredNumber,
+      }),
+      shallowEqual
+    );
 
   const { data, error, isLoading, isSuccess } = useGetRestaurantsDataQuery(
     pageNumber as number
@@ -27,11 +29,12 @@ const RightbarVegan = () => {
 
   const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
     {
+      page: pageFilteredNumber,
       region: region,
       foodCategory: foodCategory,
     },
     {
-      skip: !region && !foodCategory,
+      skip: !region,
       // @ts-ignore
       refetchOnArgChange: true,
     }
@@ -39,7 +42,7 @@ const RightbarVegan = () => {
 
   const getItemList = (filtered: Boolean | undefined) => {
     if (filtered) {
-      return filteredData?.map((item: any) => (
+      return filteredData?.restaurant?.map((item: any) => (
         <div key={item._id}>
           <RestaurantVeganItem data={item} />
         </div>
@@ -61,6 +64,18 @@ const RightbarVegan = () => {
 
   const handleNextPage = () => {
     dispatch(goPage({ pageNumber: (pageNumber as number) + 1 }));
+  };
+
+  const handleFilterPrevPage = () => {
+    dispatch(
+      goFilteredPage({ pageFilteredNumber: (pageFilteredNumber as number) - 1 })
+    );
+  };
+
+  const handleFilterNextPage = () => {
+    dispatch(
+      goFilteredPage({ pageFilteredNumber: (pageFilteredNumber as number) + 1 })
+    );
   };
 
   if (error) {
@@ -133,6 +148,32 @@ const RightbarVegan = () => {
               <Button
                 disabled={pageNumber === Math.ceil(data.total / 5)} // 총 페이지 수에 맞게 수정
                 onClick={handleNextPage}
+                endIcon={<ChevronRight />}
+              >
+                Next
+              </Button>
+            </Stack>
+          )}
+          {filtered && (
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={2}
+            >
+              <Button
+                disabled={pageFilteredNumber === 1}
+                onClick={handleFilterPrevPage}
+                startIcon={<ChevronLeft />}
+              >
+                Prev
+              </Button>
+              <Button
+                disabled={
+                  pageFilteredNumber ===
+                  Math.ceil((filteredData?.total as number) / 5)
+                } // 총 페이지 수에 맞게 수정
+                onClick={handleFilterNextPage}
                 endIcon={<ChevronRight />}
               >
                 Next

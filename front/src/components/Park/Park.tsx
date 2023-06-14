@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import KaKaoParkMap from "./KaKaoParkMap";
 import { Box, Stack } from "@mui/material";
 import SidebarPark from "./SidebarPark";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import RightbarPark from "./RightbarPark";
+import { useDispatch } from "react-redux";
+import { resetData } from "../../features/ParkReducer";
 
 const Park = () => {
   const { width } = useWindowDimensions();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetData());
+  }, []);
 
   return (
     <div className="park-container">
