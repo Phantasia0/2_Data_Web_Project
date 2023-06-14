@@ -91,6 +91,18 @@ class userService {
     return user;
   }
 
+  static async getUserContact(_id) {
+    const user = await User.findContactInfo({ _id });
+
+    // db에서 찾지 못한 경우, 에러 메시지 반환
+    if (!user) {
+      const errorMessage = "해당 ID는 가입이력이 없습니다.";
+      return { errorMessage };
+    }
+
+    return user;
+  }
+
   static async setUser({ _id, toUpdate }) {
     const validEntries = Object.entries(toUpdate).filter(
       ([key, value]) => value !== undefined

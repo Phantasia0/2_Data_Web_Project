@@ -22,6 +22,7 @@ class Restaurant {
           description: 1,
           latitude: 1,
           longitude: 1,
+          image: 1,
           reservation: 1,
           contactCount: {
             $size: {
@@ -83,6 +84,7 @@ class Restaurant {
           description: 1,
           latitude: 1,
           longitude: 1,
+          image: 1,
           reservation: 1,
           contactCount: {
             $size: {

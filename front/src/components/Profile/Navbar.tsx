@@ -1,24 +1,18 @@
-// @ts-nocheck
-
-import { Mail, Notifications, Pets } from "@mui/icons-material";
+import { Notifications } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
   Badge,
   Box,
   InputBase,
-  Menu,
-  MenuItem,
   styled,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { debounce } from "lodash";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { searchKeyword } from "../../features/ProfileReducer";
-import { debounce } from "lodash";
-import { useDispatch } from "react-redux";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",

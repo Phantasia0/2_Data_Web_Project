@@ -83,6 +83,21 @@ userRouter.get("/current", login_required, async function (req, res, next) {
   }
 });
 
+userRouter.get("/contact", login_required, async function (req, res, next) {
+  try {
+    const _id = req.currentUserId;
+    const currentUserInfo = await userService.getUserContact(_id);
+
+    if (currentUserInfo.errorMessage) {
+      throw new Error(currentUserInfo.errorMessage);
+    }
+
+    res.status(200).send(currentUserInfo);
+  } catch (error) {
+    next(error);
+  }
+});
+
 userRouter.get(
   "/:_id",
   //   login_required,

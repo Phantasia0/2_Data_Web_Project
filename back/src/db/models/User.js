@@ -1,4 +1,6 @@
 import { UserModel } from "../schemas/user";
+import { ParkModel } from "../schemas/park";
+import { RestaurantModel } from "../schemas/restaurant";
 
 class User {
   static async findAll() {
@@ -28,6 +30,33 @@ class User {
     const option = { returnOriginal: false };
 
     return await UserModel.findOneAndUpdate(filter, update, option);
+  }
+
+  static async findContactInfo(_id) {
+    const restaurant = await RestaurantModel.aggregate([
+      {
+        $match: {
+          "contacts.user": _id,
+        },
+      },
+      {
+        $unwind: "$contacts",
+      },
+      {
+        $match: {
+          "contacts.user": _id,
+          "contacts.value": 1,
+        },
+      },
+    ]);
+    const park = await ParkModel.find({
+      "contacts.user": _id,
+      contacts: {
+        $elemMatch: { value: 1 },
+      },
+    });
+
+    return { restaurant, park };
   }
 }
 
