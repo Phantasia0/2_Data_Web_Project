@@ -16,6 +16,8 @@ import CommentEditor from "./CommentEditor";
 import CommentList from "./CommentList";
 import FeedCard from "./FeedCard";
 import LoadingImage from "../common/Loading";
+import Rightbar from "./Rightbar";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 export const LoadDetail = (text: any) => {
   const contentHTML = convertFromHTML(text);
@@ -30,9 +32,6 @@ const FeedDetail = () => {
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const { feedId } = useParams();
   const user = useSelector(selectCurrentUser);
-  // const rteRef = useRef(null);
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<any>("");
@@ -41,15 +40,7 @@ const FeedDetail = () => {
   const { data, isSuccess, isLoading, isError, refetch } = useGetFeedQuery(
     feedId as string
   );
-
-  // const [
-  //   updateFeed,
-  //   {
-  //     data: updateFeedData,
-  //     isSuccess: updateFeedSuccess,
-  //     isError: updateFeedError,
-  //   },
-  // ] = useUpdateFeedMutation();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (isSuccess) {
@@ -60,103 +51,67 @@ const FeedDetail = () => {
     }
   }, [isSuccess]);
 
-  // useEffect(() => {
-  //   if (formState === "register" && snackbarOpen) {
-  //     setFormState("login");
-  //     setPrevState("register");
-  //   }
-
-  //   if (prevState === "register") {
-  //     setTimeout(() => {
-  //       setPrevState("login");
-  //     }, 2000);
-  //   }
-  // }, [snackbarOpen]);
-
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
 
-  // const save = (story: string) => {
-  //   if (story !== "") {
-  //     updateFeed({
-  //       _id: feedId,
-  //       body: {
-  //         content: story,
-  //       },
-  //     });
-  //     dispatch(
-  //       updateThisFeed({
-  //         _id: feedId,
-  //         content: story,
-  //       })
-  //     );
-  //     navigate("/community", { replace: true });
-  //   }
-  // };
-  // const handleClickUpdate = (e: any) => {
-  //   // @ts-ignore
-  //   rteRef?.current?.save();
-  // };
-
   if (isLoading) {
     return <LoadingImage />;
   }
+
+  const whatToDisplay = () => {
+    if (data?.restaurant || data?.park) {
+      return (
+        <>
+          {width >= 768 && (
+            <Box sx={{ flex: "1.7" }}>
+              <Rightbar data={data} />
+            </Box>
+          )}
+          {width < 768 && (
+            <Box sx={{ flex: "3" }}>
+              <Rightbar data={data} />
+            </Box>
+          )}
+        </>
+      );
+    } else {
+      return;
+    }
+  };
+
   return (
     <Box
+      // sx={{
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   alignItems: "center",
+      //   gap: "2rem",
+      // }}
       sx={{
+        width: "100%",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        gap: "2rem",
+        justifyContent: "center",
       }}
     >
-      <FeedCard
-        data={data}
-        isOwner={isOwner}
-        setSnackbarOpen={setSnackbarOpen}
-        setSnackbarMessage={setSnackbarMessage}
-        setSnackbarColor={setSnackbarColor}
-      />
-      {/* <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "5rem",
-          marginBottom: "1rem",
-          height: "600px",
-          maxHeight: "600px",
-          width: "100%",
-        }}
-      >
-        {isSuccess && (
-          <MuiThemeProvider theme={theme}>
-            <MUIRichTextEditor
-              ref={rteRef}
-              defaultValue={data?.content}
-              readOnly={!isOwner}
-              onSave={save}
-            />
-          </MuiThemeProvider>
-        )}
-      </Box> */}
-      {/* {isOwner && (
-        <Box sx={{ marginTop: "1rem" }}>
-          <Button
-            onClick={handleClickUpdate}
-            variant="contained"
-            sx={{ height: "auto", color: "white" }}
-          >
-            Update
-          </Button>
-        </Box>
-      )} */}
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {/*<CommentEditor />*/}
-        <CommentList
+      {(data?.park || data?.restaurant) && <Box sx={{ flex: "1" }} />}
+      <Box sx={{ flex: "3", maxWidth: "800px" }}>
+        <FeedCard
+          data={data}
+          isOwner={isOwner}
           setSnackbarOpen={setSnackbarOpen}
           setSnackbarMessage={setSnackbarMessage}
+          setSnackbarColor={setSnackbarColor}
         />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {/*<CommentEditor />*/}
+          <CommentList
+            setSnackbarOpen={setSnackbarOpen}
+            setSnackbarMessage={setSnackbarMessage}
+            setSnackbarColor={setSnackbarColor}
+          />
+        </Box>
       </Box>
       <Snackbar
         open={snackbarOpen}
@@ -167,6 +122,7 @@ const FeedDetail = () => {
           sx: { backgroundColor: snackbarColor },
         }}
       />
+      {whatToDisplay()}
     </Box>
   );
 };

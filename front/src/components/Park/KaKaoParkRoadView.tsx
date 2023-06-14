@@ -7,6 +7,7 @@ interface KaKaoParkRoadViewProps {
 }
 
 const KaKaoParkRoadView: FC<KaKaoParkRoadViewProps> = ({ data }) => {
+  console.log(data);
   const placePosition = {
     lat: data.latitude,
     lng: data.longitude,

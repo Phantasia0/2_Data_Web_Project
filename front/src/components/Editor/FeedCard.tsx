@@ -55,6 +55,7 @@ const FeedCard: FC<any> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(data?.likeCheck);
+
   // console.log(data);
   const dispatch = useDispatch();
   const rteRef = useRef(null);
@@ -68,26 +69,37 @@ const FeedCard: FC<any> = ({
     },
   ] = useUpdateFeedMutation();
 
-  const save = (story: string) => {
-    if (story !== "") {
-      updateFeed({
-        _id: data?._id,
-        body: {
-          content: story,
-        },
-      });
-      dispatch(
-        updateThisFeed({
-          _id: data?._id,
-          content: story,
-        })
-      );
-      setSnackbarColor("primary.main");
+  const save = (story: any) => {
+    const parsedData = JSON.parse(story);
+    const text =
+      parsedData?.blocks[0]?.text.length > 20
+        ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
+        : parsedData?.blocks[0]?.text;
+    const content = text.replace(/\s/g, "");
+    if (!content) {
+      setSnackbarColor("orange");
       setSnackbarOpen(true);
-      setSnackbarMessage("게시글이 수정되었습니다.");
-      // navigate("/community/f", { replace: true });
-      // navigate(-1, { replace: false });
+      setSnackbarMessage("내용을 입력해주세요.");
+      return;
     }
+
+    updateFeed({
+      _id: data?._id,
+      body: {
+        content: story,
+      },
+    });
+    dispatch(
+      updateThisFeed({
+        _id: data?._id,
+        content: story,
+      })
+    );
+    setSnackbarColor("primary.main");
+    setSnackbarOpen(true);
+    setSnackbarMessage("게시글이 수정되었습니다.");
+    // navigate("/community/f", { replace: true });
+    // navigate(-1, { replace: false });
   };
 
   const handleClickUpdate = (e: any) => {

@@ -30,6 +30,7 @@ const CommentCard = ({
   refetch,
   setSnackbarOpen,
   setSnackbarMessage,
+  setSnackbarColor,
 }: any) => {
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,6 +63,12 @@ const CommentCard = ({
   };
 
   const handleClickSubmit = async (e: any) => {
+    if (!content) {
+      setSnackbarColor("orange");
+      setSnackbarOpen(true);
+      setSnackbarMessage("댓글을 입력해주세요.");
+      return;
+    }
     e.preventDefault();
     await updateComment({
       post_id: feedId,
@@ -73,6 +80,7 @@ const CommentCard = ({
 
     refetch();
     setIsEdit(false);
+    setSnackbarColor("primary.main");
     setSnackbarOpen(true);
     setSnackbarMessage("댓글이 수정되었습니다.");
   };
@@ -89,6 +97,7 @@ const CommentCard = ({
     refetch();
 
     handleMenuClose();
+    setSnackbarColor("primary.main");
     setSnackbarOpen(true);
     setSnackbarMessage("댓글이 삭제되었습니다.");
   };

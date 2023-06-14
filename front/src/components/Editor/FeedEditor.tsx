@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import MUIRichTextEditor from "mui-rte";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Snackbar } from "@mui/material";
 import { useAddFeedMutation } from "../../services/feedApi";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
@@ -45,7 +45,20 @@ const FeedEditor = () => {
     { data: addFeedData, isSuccess: addFeedSuccess, isError: addFeedError },
   ] = useAddFeedMutation();
 
+  const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+
   const save = async (story: string) => {
+    const parsedData = JSON.parse(story);
+    const text =
+      parsedData?.blocks[0]?.text.length > 20
+        ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
+        : parsedData?.blocks[0]?.text;
+    const content = text.replace(/\s/g, "");
+    if (!content) {
+      setSnackbarOpen(true);
+      return;
+    }
+
     if (story !== "") {
       dispatch(resetCurrentPage(0));
 
@@ -65,6 +78,10 @@ const FeedEditor = () => {
   const handleClickPost = (e: any) => {
     // @ts-ignore
     rteRef?.current?.save();
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -114,6 +131,15 @@ const FeedEditor = () => {
           POST
         </Button>
       </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message="내용을 입력해주세요."
+        ContentProps={{
+          sx: { backgroundColor: "orange" },
+        }}
+      />
     </Box>
   );
 };

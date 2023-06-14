@@ -19,6 +19,7 @@ const CommentEditor = ({
   refetch,
   setSnackbarOpen,
   setSnackbarMessage,
+  setSnackbarColor,
 }: any) => {
   const { feedId } = useParams();
   const [content, setContent] = useState<any>(null);
@@ -32,6 +33,12 @@ const CommentEditor = ({
     setContent(e.currentTarget.value);
   };
   const handleClick = async (e: any) => {
+    if (!content) {
+      setSnackbarOpen(true);
+      setSnackbarColor("orange");
+      setSnackbarMessage("댓글을 입력해주세요.");
+      return;
+    }
     e.preventDefault();
     setContent(e.currentTarget.value);
     if (content && content.length > 0) {
@@ -43,54 +50,61 @@ const CommentEditor = ({
       });
       await refetch();
       setSnackbarOpen(true);
+      setSnackbarColor("primary.main");
       setSnackbarMessage("댓글이 작성되었습니다.");
       window.scrollTo(0, document.body.scrollHeight);
     }
   };
 
   return (
-    <Grid sx={{ width: "80vw", maxWidth: "600px" }}>
+    <Grid
+      sx={{
+        display: "flex",
+        borderColor: "lightgray",
+        height: "auto",
+        justifyContent: "center",
+        marginTop: "10px",
+      }}
+    >
       {user ? (
-        <Grid>
-          <FormControl
+        <FormControl
+          sx={{
+            width: "80%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+          }}
+        >
+          <InputBase
+            onChange={handleCommentChange}
+            value={content}
+            placeholder="의견 남기기"
+            multiline
+            rows={2.2}
             fullWidth
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
+              border: "1px solid",
+              borderRadius: "4px",
+              p: 1,
             }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: "4px",
+              borderRadius: "4px",
+              height: "100%",
+              width: "10%",
+              color: "white",
+              marginBottom: "2px",
+            }}
+            onClick={handleClick}
           >
-            <InputBase
-              onChange={handleCommentChange}
-              value={content}
-              placeholder="의견 남기기"
-              multiline
-              rows={2.2}
-              fullWidth
-              sx={{
-                border: "1px solid",
-                borderRadius: "4px",
-                p: 1,
-              }}
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{
-                marginTop: "4px",
-                borderRadius: "4px",
-                height: "100%",
-                width: "10%",
-                color: "white",
-                marginBottom: "2px",
-              }}
-              onClick={handleClick}
-            >
-              등록
-            </Button>
-          </FormControl>
-        </Grid>
+            등록
+          </Button>
+        </FormControl>
       ) : (
         <Grid sx={{ textAlign: "center" }}>
           <Typography sx={fontdesign.xsText}>
