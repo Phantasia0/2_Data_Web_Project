@@ -4,7 +4,6 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import Carousel from "./Carousel";
 import { fontdesign } from "../../theme/fontdesign";
 
-
 const AboutGreenService = () => {
   const { width } = useWindowDimensions();
 
@@ -43,27 +42,23 @@ const AboutGreenService = () => {
             zIndex: 1,
           }}
         >
-          <Typography sx={fontdesign.xsTop}>
-            그린라이프,
-          </Typography>
-          <Typography sx={fontdesign.xsBottom}>
-            서비스
-          </Typography>
+          <Typography sx={fontdesign.xsTop}>그린라이프,</Typography>
+          <Typography sx={fontdesign.xsBottom}>서비스</Typography>
         </div>
       </div>
       <div>
-        <Typography sx={fontdesign.xsTitle} style={{marginTop: "10vw"}}>
+        <Typography sx={fontdesign.xsTitle} style={{ marginTop: "10vw" }}>
           서비스 소개
         </Typography>
       </div>
       <div>
-        <Typography sx={fontdesign.xsText} style={{marginTop: "7vw"}}>
-          <center>
+        <Typography sx={fontdesign.xsText} style={{ marginTop: "7vw" }}>
+          <p style={{ textAlign: "center" }}>
             온실가스의 배출량을 줄일 수 있도록 일상에서 작은 실천을 해보아요!
-          </center>
+          </p>
         </Typography>
       </div>
-      <div style={{ width: "700vw", maxWidth: "50%"}}>
+      <div style={{ width: "700vw", maxWidth: "50%" }}>
         <Carousel />
       </div>
       <div
@@ -82,9 +77,7 @@ const AboutGreenService = () => {
             justifyContent: "center",
           }}
         >
-          <Typography sx={fontdesign.xsTitle}>
-            RESTAURANT
-          </Typography>
+          <Typography sx={fontdesign.xsTitle}>RESTAURANT</Typography>
           <Typography sx={fontdesign.xsText}>
             환경보호를 위한 첫번째 걸음,
             <br />
@@ -100,9 +93,7 @@ const AboutGreenService = () => {
             alignItems: "center",
           }}
         >
-          <Typography sx={fontdesign.xsTitle}>
-            PARK
-          </Typography>
+          <Typography sx={fontdesign.xsTitle}>PARK</Typography>
           <Typography sx={fontdesign.xsText}>
             환경보호를 위한 두번째 걸음,
             <br />
@@ -118,14 +109,11 @@ const AboutGreenService = () => {
             alignItems: "center",
           }}
         >
-          <Typography sx={fontdesign.xsTitle}>
-            ACTIVITY
-          </Typography>
+          <Typography sx={fontdesign.xsTitle}>ACTIVITY</Typography>
           <Typography sx={fontdesign.xsText}>
             환경보호를 위한 세번째 걸음,
             <br />
             카테고리별 일상 속 실천방안을 확인해보세요.
-            
           </Typography>
         </div>
         <div
@@ -137,9 +125,7 @@ const AboutGreenService = () => {
             alignItems: "center",
           }}
         >
-          <Typography sx={fontdesign.xsTitle} >
-            SHARE
-          </Typography>
+          <Typography sx={fontdesign.xsTitle}>SHARE</Typography>
           <Typography sx={fontdesign.xsText}>
             환경보호를 위한 네번째 걸음,
             <br />

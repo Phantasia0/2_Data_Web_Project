@@ -112,7 +112,9 @@ const RightbarPark = () => {
               padding: "10px",
             }}
           >
-            <center>공원에서 자연의 소중함을 느껴보세요.</center>
+            <p style={{ textAlign: "center" }}>
+              공원에서 자연의 소중함을 느껴보세요.
+            </p>
           </Typography>
           {!filtered && (
             <Stack

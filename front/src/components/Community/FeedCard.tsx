@@ -25,12 +25,13 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../../features/AuthReducer";
+import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
 import { useDeleteFeedMutation } from "../../services/feedApi";
 import { useDispatch } from "react-redux";
 import { deleteThisFeed } from "../../features/SocialReducer";
 import { useUpdateLikeMutation } from "../../services/likeApi";
 import { useGetFeedQuery } from "../../services/socialApi";
+import { RootState } from "../../features/configureStore";
 
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -72,6 +73,11 @@ const FeedCard: FC<any> = ({
     isError: thisFeedError,
     refetch: thisFeedRefetch,
   } = useGetFeedQuery(data._id);
+
+  const { isModalVisible } = useSelector(({ profile }: RootState) => ({
+    isModalVisible: profile.isModalVisible,
+  }));
+
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
     setMenuAnchorEl(event.currentTarget);
@@ -156,6 +162,10 @@ const FeedCard: FC<any> = ({
   useEffect(() => {
     analyzingData(data);
   }, []);
+
+  useEffect(() => {
+    thisFeedRefetch();
+  }, [isModalVisible]);
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>

@@ -17,11 +17,12 @@ import { useGetNicknameDataQuery } from "../../services/socialApi";
 
 const Feed = () => {
   const user = useSelector(selectCurrentUser);
-  const { pageNumber, keyword, filtered } = useSelector(
+  const { pageNumber, keyword, filtered, isModalVisible } = useSelector(
     ({ profile }: RootState) => ({
       pageNumber: profile.pageNumber,
       keyword: profile.keyword,
       filtered: profile.filtered,
+      isModalVisible: profile.isModalVisible,
     })
   );
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ const Feed = () => {
 
   useEffect(() => {
     if (snackbarOpen) {
+      console.log("제발 되라");
       refetch();
       dispatch(updateCommentList());
     }
