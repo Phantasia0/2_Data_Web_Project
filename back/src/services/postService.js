@@ -2,18 +2,22 @@ import { Post, Comment } from "../db/models/Post";
 
 class postService {
   static async getSpecificUserPosts({ page, _id }) {
+    if (!page) page = 1;
     return await Post.findAll({ page, _id });
   }
 
   static async getSpecificUserComments({ page, _id }) {
+    if (!page) page = 1;
     return await Comment.findAll({ page, _id });
   }
 
   static async getPosts(page, userId) {
+    if (!page) page = 1;
     return await Post.findAll(page, userId);
   }
 
   static async getSearchedPosts({ page, nickname, userId }) {
+    if (!page) page = 1;
     return await Post.findAllBySearch({ page, nickname, userId });
   }
 
