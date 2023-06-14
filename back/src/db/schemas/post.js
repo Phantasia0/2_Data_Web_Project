@@ -15,8 +15,13 @@ const postSchema = new Schema(
     },
     likes: [LikeSchema],
     comments: [CommentSchema],
-    spot_id: {
-      type: String,
+    restaurant: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+    },
+    park: {
+      type: Schema.Types.ObjectId,
+      ref: "Park",
     },
   },
   {

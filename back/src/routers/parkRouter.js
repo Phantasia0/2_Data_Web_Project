@@ -8,10 +8,11 @@ const ParkRouter = Router();
 // 공원 필터링 리스트(지역, 종류)
 ParkRouter.get("/search", getCurrentUser, async function (req, res, next) {
   try {
-    const { region } = req.query;
+    const { page, region } = req.query;
     const userId = req.currentUserId;
 
     const data = await parkService.getFilteredPark({
+      page,
       region,
       userId,
     });

@@ -64,9 +64,12 @@ class Park {
     return park;
   }
 
-  static async findBySearch({ filter, userId }) {
-    return await ParkModel.aggregate([
+  static async findBySearch({ page, filter, userId }) {
+    const skip = (page - 1) * LIMIT;
+    const park = await ParkModel.aggregate([
       { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $skip: skip },
+      { $limit: LIMIT },
       {
         $project: {
           _id: 1,
@@ -100,6 +103,10 @@ class Park {
         },
       },
     ]);
+
+    const total = await ParkModel.countDocuments(filter);
+
+    return { park, total };
   }
 
   // 찜하기 처리
