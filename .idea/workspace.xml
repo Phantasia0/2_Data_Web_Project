@@ -6,21 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/About/AboutGreenLife.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/AboutGreenLife.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/About/AboutGreenResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/AboutGreenResult.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/About/AboutGreenService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/AboutGreenService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/ProfileEdittor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/ProfileEdittor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/common/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AuthReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "feature/front-피드백-10가지",
+    "git-widget-placeholder": "feature/front-피드백-작업2",
     "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
