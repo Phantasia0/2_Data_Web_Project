@@ -171,6 +171,7 @@ const FeedCard: FC<any> = ({
           title={thisFeedData?.user?.nickname}
           avatar={
             <Avatar
+              sx={{ width: 50, height: 50 }}
               src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
             />
           }

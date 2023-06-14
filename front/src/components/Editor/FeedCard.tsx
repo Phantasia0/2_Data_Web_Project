@@ -204,7 +204,12 @@ const FeedCard: FC<any> = ({
       >
         <CardHeader
           title={thisFeedData?.user?.nickname}
-          avatar={<Avatar src={user?.profile} />}
+          avatar={
+            <Avatar
+              sx={{ width: 50, height: 50 }}
+              src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
+            />
+          }
           action={
             <IconButton onClick={handleMenuOpen} disabled={!isOwner}>
               {thisFeedData?.user?._id === (user?._id as string) && (
