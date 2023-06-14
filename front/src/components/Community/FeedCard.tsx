@@ -36,7 +36,12 @@ const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 };
 
-const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
+const FeedCard: FC<any> = ({
+  data,
+  setSnackbarOpen,
+  setSnackbarMessage,
+  setSnackbarColor,
+}) => {
   const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -87,11 +92,21 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
       _id: data?._id,
     });
 
+    setSnackbarColor("primary.main");
     setSnackbarOpen(true); // 스낵바 상태를 업데이트합니다.
+    setSnackbarMessage("게시글이 삭제되었습니다.");
+
     dispatch(deleteThisFeed(data?._id));
   };
 
   const handleClickLike = async (e: any) => {
+    if (!user) {
+      setSnackbarColor("orange");
+      setSnackbarOpen(true);
+      setSnackbarMessage("로그인 한 회원만 누를 수 있습니다.");
+      return;
+    }
+
     await updateLike({
       _id: data?._id,
     });
@@ -156,6 +171,7 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
           title={thisFeedData?.user?.nickname}
           avatar={
             <Avatar
+              sx={{ width: 50, height: 50 }}
               src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
             />
           }
@@ -217,11 +233,7 @@ const FeedCard: FC<any> = ({ data, setSnackbarOpen }) => {
             display: "flex",
           }}
         >
-          <IconButton
-            sx={{ height: "1rem" }}
-            onClick={handleClickLike}
-            disabled={!user}
-          >
+          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
             <Checkbox
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
