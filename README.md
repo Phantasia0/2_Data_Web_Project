@@ -21,6 +21,7 @@ GreenLife
 ### 4-1. 기술스택
 ### 4-2. 와이어프레임
 ### 4-3. ERD
+[ERD](https://kdt-gitlab.elice.io/ai_track/class_07/data_project/team02/env/-/wikis/uploads/9c53be7e34f3350b2b406d5b4bdceb35/%EA%B7%B8%EB%A6%B0_%EB%9D%BC%EC%9D%B4%ED%94%84__3_.png)
 ### 4-4. API명세
 ### 4-5. 시스템 아키텍쳐
 ## 5. 협업과정
