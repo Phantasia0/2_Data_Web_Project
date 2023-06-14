@@ -46,6 +46,7 @@ const FeedCard: FC<any> = ({
   isOwner,
   setSnackbarOpen,
   setSnackbarMessage,
+  setSnackbarColor,
 }) => {
   // const [analyzedData, setAnalyzedData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -81,6 +82,7 @@ const FeedCard: FC<any> = ({
           content: story,
         })
       );
+      setSnackbarColor("primary.main");
       setSnackbarOpen(true);
       setSnackbarMessage("게시글이 수정되었습니다.");
       // navigate("/community/f", { replace: true });
@@ -129,6 +131,13 @@ const FeedCard: FC<any> = ({
   };
 
   const handleClickLike = async (e: any) => {
+    if (!user) {
+      setSnackbarColor("orange");
+      setSnackbarOpen(true);
+      setSnackbarMessage("로그인 한 회원만 누를 수 있습니다.");
+      return;
+    }
+
     await updateLike({
       _id: data?._id,
     });
@@ -240,11 +249,7 @@ const FeedCard: FC<any> = ({
             display: "flex",
           }}
         >
-          <IconButton
-            sx={{ height: "1rem" }}
-            onClick={handleClickLike}
-            disabled={!user}
-          >
+          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
             <Checkbox
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}

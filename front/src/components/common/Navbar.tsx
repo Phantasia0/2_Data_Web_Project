@@ -16,6 +16,8 @@ import {
   authApiWrapper,
 } from "../../services/authApiWrapper";
 
+import PrevButton from "./PrevButton";
+
 export const CustomTypography = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
   color: theme.palette.info.main,
@@ -355,6 +357,7 @@ const Navbar = () => {
             </Menu>
           </CustomTypography>
         )}
+        <PrevButton />
       </Stack>
       {userAuthOpen && <User setUserAuthOpen={setUserAuthOpen} />}
     </AppBar>

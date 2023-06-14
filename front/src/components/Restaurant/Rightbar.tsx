@@ -51,7 +51,6 @@ const Rightbar = () => {
       }}
     >
       <Box
-        position="fixed"
         sx={{
           width: "100%",
           maxWidth: 360,
