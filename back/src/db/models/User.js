@@ -1,6 +1,7 @@
 import { UserModel } from "../schemas/user";
 import { ParkModel } from "../schemas/park";
 import { RestaurantModel } from "../schemas/restaurant";
+import mongoose from "mongoose";
 
 class User {
   static async findAll() {
@@ -32,11 +33,11 @@ class User {
     return await UserModel.findOneAndUpdate(filter, update, option);
   }
 
-  static async findContactInfo(_id) {
+  static async findContactInfo({ _id }) {
     const restaurant = await RestaurantModel.aggregate([
       {
         $match: {
-          "contacts.user": _id,
+          "contacts.user": mongoose.Types.ObjectId(_id),
         },
       },
       {
@@ -44,17 +45,40 @@ class User {
       },
       {
         $match: {
-          "contacts.user": _id,
+          "contacts.user": mongoose.Types.ObjectId(_id),
           "contacts.value": 1,
         },
       },
-    ]);
-    const park = await ParkModel.find({
-      "contacts.user": _id,
-      contacts: {
-        $elemMatch: { value: 1 },
+      {
+        $project: {
+          _id: 1,
+          name: 1,
+        },
       },
-    });
+    ]);
+
+    const park = await ParkModel.aggregate([
+      {
+        $match: {
+          "contacts.user": mongoose.Types.ObjectId(_id),
+        },
+      },
+      {
+        $unwind: "$contacts",
+      },
+      {
+        $match: {
+          "contacts.user": mongoose.Types.ObjectId(_id),
+          "contacts.value": 1,
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          name: 1,
+        },
+      },
+    ]);
 
     return { restaurant, park };
   }
