@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/db/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/CommentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/CommentList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/profileApi.ts" afterDir="false" />
-    </list>
+    <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
