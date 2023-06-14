@@ -6,6 +6,8 @@ class Post {
   static async findById(_id, userId) {
     const post = await PostModel.findOne({ _id })
       .populate("user", "_id nickname profile")
+      .populate("restaurant")
+      .populate("park")
       .populate({
         path: "comments",
         populate: {
@@ -150,10 +152,12 @@ class Post {
     return { total, post };
   }
 
-  static async create({ user, content }) {
+  static async create({ user, content, restaurant, park }) {
     return await PostModel.create({
       user,
       content,
+      restaurant,
+      park,
     });
   }
 

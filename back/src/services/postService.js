@@ -25,8 +25,8 @@ class postService {
     return await Post.findById(_id, userId);
   }
 
-  static async create({ user, content }) {
-    return await Post.create({ user, content });
+  static async create({ user, content, restaurant, park }) {
+    return await Post.create({ user, content, restaurant, park });
   }
 
   static async update({ _id, content }) {

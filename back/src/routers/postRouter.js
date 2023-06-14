@@ -92,8 +92,8 @@ postRouter.get("/:_id", getCurrentUser, async function (req, res, next) {
 postRouter.post("/", login_required, async function (req, res, next) {
   try {
     const user = req.currentUserId;
-    const { content } = req.body;
-    const data = await postService.create({ user, content });
+    const { content, restaurant, park } = req.body;
+    const data = await postService.create({ user, content, restaurant, park });
 
     res.status(200).send(data);
   } catch (error) {
