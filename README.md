@@ -1,8 +1,9 @@
-# GreenLife
+Elice 데이터 분석 프로젝트 2팀 ENV ReadMe파일 입니다.
 
 [[_TOC_]]
 
 ## 1. 프로젝트명GreenLife
+GreenLife
 ## 2. 프로젝트 구성원/기간
 ## 3. 프로젝트 소개
 ### 3-0. URL,PPT링크
