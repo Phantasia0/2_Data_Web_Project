@@ -101,7 +101,7 @@ const Sidebar = () => {
               Prev
             </Button>
             <Button
-              disabled={pageNumber === Math.ceil(total / 12)}
+              disabled={pageNumber === (Math.ceil(total / 12) || 1)}
               onClick={handleNextPage}
               endIcon={<ChevronRight />}
             >
