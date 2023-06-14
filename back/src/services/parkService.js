@@ -1,19 +1,23 @@
 import { Park } from "../db/models/Park";
 
 class parkService {
-  static async getFilteredPark({ region }) {
+  static async getFilteredPark({ region, userId }) {
     const filter = {};
     if (region) filter.region = region;
 
-    return await Park.findBySearch(filter);
+    return await Park.findBySearch({ filter, userId });
   }
 
-  static async getParks(page) {
-    return await Park.findAll(page);
+  static async getParks({ page, userId }) {
+    return await Park.findAll({ page, userId });
   }
 
-  static async getPark(park_id) {
-    return await Park.findById(park_id);
+  static async getPark(_id, userId) {
+    return await Park.findById(_id, userId);
+  }
+
+  static async updateContact({ _id, userId }) {
+    return await Park.spotContact({ _id, userId });
   }
 }
 

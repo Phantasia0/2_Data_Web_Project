@@ -23,7 +23,7 @@ class Restaurant {
           latitude: 1,
           longitude: 1,
           reservation: 1,
-          likeCount: {
+          contactCount: {
             $size: {
               $filter: {
                 input: { $ifNull: ["$contacts", []] }, //필터링 할 배열소스
@@ -31,7 +31,7 @@ class Restaurant {
               },
             },
           },
-          likeCheck: {
+          contactCheck: {
             $size: {
               $filter: {
                 input: { $ifNull: ["$contacts", []] }, //필터링 할 배열소스
@@ -84,7 +84,7 @@ class Restaurant {
           latitude: 1,
           longitude: 1,
           reservation: 1,
-          likeCount: {
+          contactCount: {
             $size: {
               $filter: {
                 input: { $ifNull: ["$contacts", []] }, //필터링 할 배열소스
@@ -92,7 +92,7 @@ class Restaurant {
               },
             },
           },
-          likeCheck: {
+          contactCheck: {
             $size: {
               $filter: {
                 input: { $ifNull: ["$contacts", []] }, //필터링 할 배열소스
@@ -110,7 +110,7 @@ class Restaurant {
     ]);
   }
 
-  // 좋아요 처리
+  // 찜하기 처리
   static async spotContact({ _id, userId }) {
     const filter = { _id, "contacts.user": userId }; // 찾을 문서의 필터 조건
     let restaurant = await RestaurantModel.findOne(filter); // 문서 찾기
