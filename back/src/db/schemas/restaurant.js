@@ -1,4 +1,5 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import { ContactSchema } from "./contact";
 
 const RestaurantSchema = new Schema(
   {
@@ -38,6 +39,7 @@ const RestaurantSchema = new Schema(
       type: String,
       required: true,
     },
+    contacts: [ContactSchema],
   },
   {
     timestamps: true,

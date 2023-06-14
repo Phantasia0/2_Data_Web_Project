@@ -2,13 +2,9 @@ import { Schema } from "mongoose";
 
 const ContactSchema = new Schema(
   {
-    restaurant: {
+    user: {
       type: Schema.Types.ObjectId,
-      ref: "Restaurant",
-    },
-    park: {
-      type: Schema.Types.ObjectId,
-      ref: "Park",
+      ref: "User",
     },
     value: {
       type: Number,
