@@ -150,6 +150,88 @@ class User {
 
     return { restaurant, park };
   }
+
+  static async findRankInfo({ _id }) {
+    const users = await UserModel.find({}, "_id nickname");
+    const updatedUsers = await Promise.all(
+      users.map(async (user, idx) => {
+        const { _id } = user;
+        const post = await PostModel.aggregate([
+          {
+            $match: {
+              user: mongoose.Types.ObjectId(_id),
+            },
+          },
+          {
+            $project: {
+              likeCount: {
+                $size: {
+                  $filter: {
+                    input: { $ifNull: ["$likes", []] }, //필터링 할 배열소스
+                    cond: { $eq: ["$$this.value", 1] }, // 지정 표현식 각 요소에 대해 평가하고 선택
+                  },
+                },
+              },
+            },
+          },
+          {
+            $group: {
+              _id: null,
+              postCount: { $sum: 1 }, // post의 총 갯수
+              likeCount: { $sum: "$likeCount" }, // likeCount의 총합
+            },
+          },
+        ]);
+
+        const comment = await PostModel.aggregate([
+          {
+            $match: {
+              "comments.user": mongoose.Types.ObjectId(_id),
+            },
+          },
+          {
+            $project: {
+              commentCount: {
+                $size: {
+                  $filter: {
+                    input: "$comments",
+                    as: "comment",
+                    cond: {
+                      $eq: ["$$comment.user", mongoose.Types.ObjectId(_id)],
+                    },
+                  },
+                },
+              },
+            },
+          },
+          {
+            $group: {
+              _id: null,
+              count: { $sum: "$commentCount" },
+            },
+          },
+        ]);
+
+        const updatedUser = {
+          _id: user._id,
+          nickname: user.nickname,
+          post: post[0]?.postCount || 0,
+          comment: comment[0]?.count || 0,
+          follow: post[0]?.likeCount || 0,
+          score:
+            (post[0]?.likeCount || 0) * 10 +
+            ((post[0]?.postCount || 0) * 2 || 0) +
+            (comment[0]?.count || 0),
+        };
+
+        return updatedUser;
+      })
+    );
+
+    updatedUsers.sort((a, b) => b.score - a.score);
+    const top10Users = updatedUsers.slice(0, 10);
+    return top10Users;
+  }
 }
 
 export { User };

@@ -1,6 +1,7 @@
 import is from "@sindresorhus/is";
 import { Router } from "express";
 import { login_required } from "../middlewares/login_required";
+import { getCurrentUser } from "../middlewares/getCurrentUser";
 import { userService } from "../services/userService";
 const { v4: uuidv4 } = require("uuid");
 import multer from "multer";
@@ -87,6 +88,21 @@ userRouter.get("/contact", login_required, async function (req, res, next) {
   try {
     const _id = req.currentUserId;
     const currentUserInfo = await userService.getUserContact(_id);
+
+    if (currentUserInfo.errorMessage) {
+      throw new Error(currentUserInfo.errorMessage);
+    }
+
+    res.status(200).send(currentUserInfo);
+  } catch (error) {
+    next(error);
+  }
+});
+
+userRouter.get("/rank", getCurrentUser, async function (req, res, next) {
+  try {
+    const _id = req.currentUserId;
+    const currentUserInfo = await userService.getUserRank(_id);
 
     if (currentUserInfo.errorMessage) {
       throw new Error(currentUserInfo.errorMessage);

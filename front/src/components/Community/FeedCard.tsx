@@ -32,6 +32,7 @@ import { deleteThisFeed } from "../../features/SocialReducer";
 import { useUpdateLikeMutation } from "../../services/likeApi";
 import { useGetFeedQuery } from "../../services/socialApi";
 import { RootState } from "../../features/configureStore";
+import LoadingImage from "../common/Loading";
 
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -177,7 +178,7 @@ const FeedCard: FC<any> = ({
   }, [isModalVisible]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   return (
