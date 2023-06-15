@@ -21,6 +21,7 @@ import Button from "@mui/material/Button";
 import * as Baskets from "../../features/BasketReducer";
 import * as BasketParks from "../../features/BasketParkReducer";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import LoadingImage from "../common/Loading";
 
 const Rightbar2: FC<any> = ({
   Type,
@@ -56,11 +57,11 @@ const Rightbar2: FC<any> = ({
   });
 
   if (Type === "restaurant" && RestaurantFetching) {
-    return <div>Restaurant Loading...</div>;
+    return <LoadingImage />;
   }
 
   if (Type === "park" && ParkFetching) {
-    return <div>Park Loading...</div>;
+    return <LoadingImage />;
   }
 
   const handleBarClose = () => {
@@ -141,8 +142,11 @@ const Rightbar2: FC<any> = ({
                           disabled={false}
                           checked={true}
                         />
-                         {/* @ts-ignore */}
-                        {RestaurantData?.contacts.filter((item) => item.value === 1).length + "찜"}
+                        {/* @ts-ignore */}
+                        {RestaurantData?.contacts.filter(
+                          //  @ts-ignore
+                          (item) => item.value === 1
+                        ).length + "찜"}
                       </IconButton>
                     </span>
                   }
@@ -150,31 +154,32 @@ const Rightbar2: FC<any> = ({
                 />
               ) : (
                 <CardHeader
-                title={
-                  <span>
-                    {ParkData?.name}
-                    <IconButton
-                      sx={{
-                        fontSize: "15px",
-                        fontWeight: "blod",
-                        marginLeft: "10px",
-                      }}
-                      // onClick={handleMyRestaurant}
-                    >
-                      <Checkbox
-                        icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-                        checkedIcon={
-                          <Favorite sx={{ color: "red", fontSize: "1rem" }} />
-                        }
-                        disabled={false}
-                        checked={true}
-                      />
-                       {/* @ts-ignore */}
-                      {ParkData?.contacts.filter((item) => item.value === 1).length + "찜"}
-                    </IconButton>
-                  </span>
-                }
-              />
+                  title={
+                    <span>
+                      {ParkData?.name}
+                      <IconButton
+                        sx={{
+                          fontSize: "15px",
+                          fontWeight: "blod",
+                          marginLeft: "10px",
+                        }}
+                        // onClick={handleMyRestaurant}
+                      >
+                        <Checkbox
+                          icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                          checkedIcon={
+                            <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                          }
+                          disabled={false}
+                          checked={true}
+                        />
+                        {/* @ts-ignore */}
+                        {ParkData?.contacts.filter((item) => item.value === 1)
+                          .length + "찜"}
+                      </IconButton>
+                    </span>
+                  }
+                />
               )}
             </Link>
             <CardContent>

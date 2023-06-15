@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { changeUserInfo } from "../../features/AuthReducer";
 import RankList from "./RankList";
+import LoadingImage from "../common/Loading";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -45,12 +46,12 @@ const Rightbar = () => {
   }, [isModalVisible]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box width={300}>
+      <Box position="fixed" width={300}>
         <Typography sx={fontdesign.xsText}>Our Service User</Typography>
         <AvatarGroup max={7}>
           {data &&
