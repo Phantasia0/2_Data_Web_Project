@@ -19,8 +19,8 @@ GreenLife
 
 | 데이터 결과 | 데이터 분석 |
 | ------ | ------ |
-| <img src="./front/src/assets/images/graphXC.png" width="300" height="300"> | 일반 국민 78.6%가 환경문제에 관심을 가지고 있습니다. |
-| <img src="./front/src/assets/images/graphXC2.png" width="300" height="300"> | 환경 문제 중에서도 온실가스와 관련된 문제를 가장 시급한 과제로 생각하는 것을 알 수 있습니다. |
+| <img src="./front/src/assets/images/graphXC.png" width="300" height="280"> | 일반 국민 78.6%가 환경문제에 관심을 가지고 있습니다. |
+| <img src="./front/src/assets/images/graphXC2.png" width="300" height="280"> | 환경 문제 중에서도 온실가스와 관련된 문제를 가장 시급한 과제로 생각하는 것을 알 수 있습니다. |
 | <img src="./front/src/assets/images/total_co2.png" width="300" height="200"> | 환경에 대한 관심과는 다르게 온실가스 배출량이 증가하는 추세를 가집니다. |
 | <img src="./front/src/assets/images/co2perfood.png" width="300" height="200"> | 온실가스 배출에 가장 많은 영향을 끼치는 음식이 육류라는 사실을 알 수 있습니다. |
 | <img src="./front/src/assets/images/meat_consume.png" width="300" height="200"> | 육류 소비량이 지속적으로 증가하는 추세이며 환경 오염에 영향을 미칠 것이라는 예상을 할 수 있습니다. |
