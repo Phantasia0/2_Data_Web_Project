@@ -1,4 +1,4 @@
-import { Box, Grid, Snackbar, Typography } from "@mui/material";
+import { Box, Button, Grid, Snackbar, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FeedCard from "../Community/FeedCard";
 
@@ -15,9 +15,11 @@ import {
   updateCommentList,
 } from "../../features/ProfileReducer";
 import { useGetNicknameDataQuery } from "../../services/socialApi";
+import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
   const user = useSelector(selectCurrentUser);
+  const navigate = useNavigate();
   const { pageNumber, keyword, filtered, isModalVisible } = useSelector(
     ({ profile }: RootState) => ({
       pageNumber: profile.pageNumber,
@@ -111,6 +113,24 @@ const Feed = () => {
   // console.log("searchData", searchData?.post);
   return (
     <Box flex={4} p={{ xs: 0, sm: 4, md: 4, lg: 8 }}>
+      <Button
+        sx={{
+          marginLeft: "40vw",
+          borderRadius: "20px",
+          backgroundColor: "primary.main",
+          color: "white",
+          fontSize: "20px",
+          p: 0,
+          "&:hover": {
+            backgroundColor: "green",
+            color: "white",
+          },
+        }}
+        onClick={() => navigate("/editor/new")}
+      >
+        +
+      </Button>
+
       {!filtered ? (
         feedData?.post.length ? (
           feedData?.post?.map((item: any) => (
