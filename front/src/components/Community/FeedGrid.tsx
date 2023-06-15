@@ -53,7 +53,7 @@ const FeedGrid = ({
   return (
     <Grid container>
       {feeds?.map((feed: any) => (
-        <Grid item key={feed?._id} xs={12} sm={12} md={6} lg={6} xl={3}>
+        <Grid item key={feed?._id} xs={12} sm={9} md={6} lg={4} xl={4}>
           <FeedCard
             data={feed}
             key={feed?._id}
