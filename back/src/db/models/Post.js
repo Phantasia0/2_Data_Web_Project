@@ -105,6 +105,7 @@ class Post {
 
   static async findAllBySearch({ page, nickname, userId }) {
     page = parseInt(page) || 1;
+    console.log(page, POST_LIMIT);
     const skip = (page - 1) * POST_LIMIT;
     // console.log(page, nickname, userId);
     const match = {};
@@ -112,9 +113,6 @@ class Post {
       match["user.nickname"] = { $regex: nickname, $options: "i" };
     }
     const post = await PostModel.aggregate([
-      { $sort: { createdAt: -1 } },
-      { $skip: skip },
-      { $limit: POST_LIMIT },
       {
         $lookup: {
           from: "users",
@@ -156,9 +154,14 @@ class Post {
       },
       { $unwind: "$user" },
       { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $skip: skip },
+      { $limit: POST_LIMIT },
+      { $sort: { createdAt: -1 } },
     ]);
 
-    const total = post.length || 0;
+    const total = (await PostModel.find({}).populate("user")).filter((post) =>
+      post.user.nickname.includes(nickname)
+    ).length;
 
     return { total, post };
   }
