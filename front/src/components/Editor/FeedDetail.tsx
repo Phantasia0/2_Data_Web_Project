@@ -93,6 +93,7 @@ const FeedDetail = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        alignItems: "flex-start",
       }}
     >
       {(data?.park || data?.restaurant) && <Box sx={{ flex: "1" }} />}

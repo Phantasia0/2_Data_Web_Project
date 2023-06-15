@@ -33,60 +33,55 @@ const Rightbar: FC<any> = ({ data }) => {
   //   }
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        overflow: "auto",
-        maxHeight: "85%",
-        display: "flex",
-        justifyContent: "center",
-        maxWidth: 300,
-      }}
-    >
-      <Card
-        sx={{ margin: "auto", border: "solid 2px green", borderRadius: "10px" }}
+    <Box position="fixed" marginTop={4}>
+      <Box
+        sx={{
+          width: "100%",
+          overflow: "auto",
+          maxHeight: "85%",
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: 300,
+        }}
       >
-        <Grid>
-          {spotType === "restaurant" ? (
-            <CardMedia
-              component="img"
-              height="200"
-              src={spotData?.image}
-              alt="스팟 이미지"
-            />
-          ) : (
-            <KaKaoParkRoadView spotData={spotData as Park} />
-          )}
-        </Grid>
+        <Card
+          sx={{
+            margin: "auto",
+            border: "solid 2px green",
+            borderRadius: "10px",
+          }}
+        >
+          <Grid>
+            {spotType === "restaurant" ? (
+              <CardMedia
+                component="img"
+                height="200"
+                src={spotData?.image}
+                alt="스팟 이미지"
+              />
+            ) : (
+              <KaKaoParkRoadView spotData={spotData as Park} />
+            )}
+          </Grid>
 
-        <Grid item xs={12} md={6}>
-          <Link
-            href={
-              spotType === "restaurant"
-                ? `/restaurant/detail/${spotData?._id}`
-                : `/park/detail/${spotData?._id}`
-            }
-            sx={{ textDecoration: "none" }}
-          >
-            <CardHeader title={spotData?.name} subheader={spotData?.category} />
-          </Link>
-          <CardContent>
-            <Typography variant="body1">
-              <img
-                src={require("../../assets/images/phone.png")}
-                alt="Region Icon"
-                style={{
-                  width: "13px",
-                  height: "13px",
-                  verticalAlign: "middle",
-                }}
-              />{" "}
-              {spotData?.tel}
-            </Typography>
-            {spotType === "restaurant" && (
+          <Grid item xs={12} md={6}>
+            <Link
+              href={
+                spotType === "restaurant"
+                  ? `/restaurant/detail/${spotData?._id}`
+                  : `/park/detail/${spotData?._id}`
+              }
+              sx={{ textDecoration: "none" }}
+            >
+              <CardHeader
+                title={spotData?.name}
+                subheader={spotData?.category}
+              />
+            </Link>
+            <CardContent>
               <Typography variant="body1">
                 <img
-                  src={require("../../assets/images/category.png")}
+                  src={require("../../assets/images/phone.png")}
                   alt="Region Icon"
                   style={{
                     width: "13px",
@@ -94,13 +89,39 @@ const Rightbar: FC<any> = ({ data }) => {
                     verticalAlign: "middle",
                   }}
                 />{" "}
-                {spotData?.description}
+                {spotData?.tel}
               </Typography>
-            )}
-            {spotType === "restaurant" && (
-              <Typography variant="body1">
+              {spotType === "restaurant" && (
+                <Typography variant="body1">
+                  <img
+                    src={require("../../assets/images/category.png")}
+                    alt="Region Icon"
+                    style={{
+                      width: "13px",
+                      height: "13px",
+                      verticalAlign: "middle",
+                    }}
+                  />{" "}
+                  {spotData?.description}
+                </Typography>
+              )}
+              {spotType === "restaurant" && (
+                <Typography variant="body1">
+                  <img
+                    src={require("../../assets/images/information.png")}
+                    alt="Region Icon"
+                    style={{
+                      width: "13px",
+                      height: "13px",
+                      verticalAlign: "middle",
+                    }}
+                  />{" "}
+                  {spotData?.reservation ? "예약가능" : "예약불가능"}
+                </Typography>
+              )}
+              <Typography variant="body1" gutterBottom>
                 <img
-                  src={require("../../assets/images/information.png")}
+                  src={require("../../assets/images/region.png")}
                   alt="Region Icon"
                   style={{
                     width: "13px",
@@ -108,24 +129,12 @@ const Rightbar: FC<any> = ({ data }) => {
                     verticalAlign: "middle",
                   }}
                 />{" "}
-                {spotData?.reservation ? "예약가능" : "예약불가능"}
+                {spotData?.address}
               </Typography>
-            )}
-            <Typography variant="body1" gutterBottom>
-              <img
-                src={require("../../assets/images/region.png")}
-                alt="Region Icon"
-                style={{
-                  width: "13px",
-                  height: "13px",
-                  verticalAlign: "middle",
-                }}
-              />{" "}
-              {spotData?.address}
-            </Typography>
-          </CardContent>
-        </Grid>
-      </Card>
+            </CardContent>
+          </Grid>
+        </Card>
+      </Box>
     </Box>
   );
 };
