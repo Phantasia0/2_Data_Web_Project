@@ -95,15 +95,19 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
             <Link
               href={
                 Type === "restaurant"
-                  ? `/restaurant/detail/${spotData?._id}`
-                  : `/park/detail/${spotData?._id}`
+                  ? `/restaurant/detail/${RestaurantData?._id}`
+                  : `/park/detail/${ParkData?._id}`
               }
               sx={{ textDecoration: "none" }}
             >
-              <CardHeader
-                title={spotData?.name}
-                subheader={spotData?.category}
-              />
+              {Type === "restaurant" ? (
+                <CardHeader
+                  title={RestaurantData?.name}
+                  subheader={RestaurantData?.category}
+                />
+              ) : (
+                <CardHeader title={ParkData?.name} />
+              )}
             </Link>
             <CardContent>
               <Typography variant="body1">
@@ -116,7 +120,7 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
                     verticalAlign: "middle",
                   }}
                 />{" "}
-                {spotData?.tel}
+                {Type === "restaurant" ? RestaurantData?.tel : ParkData?.tel}
               </Typography>
               {Type === "restaurant" && (
                 <Typography variant="body1">
@@ -129,7 +133,7 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
                       verticalAlign: "middle",
                     }}
                   />{" "}
-                  {spotData?.description}
+                  {RestaurantData?.description}
                 </Typography>
               )}
               {Type === "restaurant" && (
@@ -143,7 +147,7 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
                       verticalAlign: "middle",
                     }}
                   />{" "}
-                  {spotData?.reservation ? "예약가능" : "예약불가능"}
+                  {RestaurantData?.reservation ? "예약가능" : "예약불가능"}
                 </Typography>
               )}
               <Typography variant="body1" gutterBottom>
@@ -156,7 +160,9 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
                     verticalAlign: "middle",
                   }}
                 />{" "}
-                {spotData?.address}
+                {Type === "restaurant"
+                  ? RestaurantData?.address
+                  : ParkData?.address}
               </Typography>
             </CardContent>
           </Grid>
