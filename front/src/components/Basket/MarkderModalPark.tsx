@@ -8,6 +8,8 @@ import {
   DialogContentText,
   DialogActions,
   Typography,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
@@ -15,6 +17,7 @@ import { addThisItem, setIsClicked } from "../../features/BasketParkReducer";
 import { usePutParkIntoBasketMutation } from "../../services/parksApi";
 import KaKaoParkRoadView from "../Editor/KaKaoParkRoadView";
 import { selectCurrentUser } from "../../features/AuthReducer";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const MarkModalPark = ({ refetch, basketData }: any) => {
   const dispatch = useDispatch();
@@ -56,7 +59,21 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
       fullWidth
       sx={{ "& .MuiDialogTitle-root": { textAlign: "center" } }}
     >
-      <DialogTitle>{basketItem?.name}</DialogTitle>
+      <DialogTitle>
+        {basketItem?.name}
+        <IconButton
+          sx={{ fontSize: "15px", fontWeight: "blod" }}
+          // onClick={handleMyRestaurant}
+        >
+          <Checkbox
+            icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+            checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
+            checked={basketItem?.contactCheck}
+            disabled={false}
+          />
+          {basketItem?.contactCount + "찜"}
+        </IconButton>
+      </DialogTitle>
       <DialogContent>
         <KaKaoParkRoadView spotData={basketItem} />
         <Typography variant="subtitle1">주소: {basketItem?.address}</Typography>

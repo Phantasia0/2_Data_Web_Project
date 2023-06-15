@@ -8,11 +8,14 @@ import {
   CardMedia,
   Avatar,
   Grid,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
 import { useGetParkDetailDataQuery } from "../../services/parksApi";
 import { useParams } from "react-router-dom";
 import KaKaoParkRoadView from "./KaKaoParkRoadView";
 import { Park } from "../../models/park.model";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const ParkDetail = () => {
   const { parkId } = useParams() as { parkId: string };
@@ -45,6 +48,27 @@ const ParkDetail = () => {
                 }}
               >
                 <span>{data?.name}</span>
+                <IconButton
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "blod",
+                    marginLeft: "10px",
+                  }}
+                  // onClick={handleMyRestaurant}
+                >
+                  <Checkbox
+                    icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                    checkedIcon={
+                      <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                    }
+                    disabled={false}
+                    /* @ts-ignore */
+                    checked={data?.contactCheck}
+                  />
+                  {/* @ts-ignore */}
+                  {data?.contacts.filter((item) => item.value === 1).length +
+                    "찜"}
+                </IconButton>
               </Typography>
             }
           />

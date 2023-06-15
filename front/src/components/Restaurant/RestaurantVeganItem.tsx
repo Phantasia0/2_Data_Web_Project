@@ -9,15 +9,22 @@ import {
   ListItemText,
   Typography,
   Box,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
+import { addThisItem } from "../../features/BasketReducer";
 
 interface RestaurantVeganItemProps {
-  data: any;
+  resData: any;
 }
 
-const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
+const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ resData }) => {
+  const dispatch = useDispatch();
+
   const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
     useSelector(({ basket }: RootState) => ({
       // @ts-ignore
@@ -27,17 +34,33 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
     }));
 
   const boxStyle = {
-    backgroundColor: data?._id === basketItem?._id ? "#F3F3F3" : "transparent",
+    backgroundColor:
+      resData?._id === basketItem?._id ? "#F3F3F3" : "transparent",
     border: `2px solid ${
-      data?._id === basketItem?._id ? "#397261" : "transparent"
+      resData?._id === basketItem?._id ? "#397261" : "transparent"
     }`,
     borderRadius: "1rem",
+  };
+
+  const [addMyRestaurant, { data, isSuccess, isError, isLoading }] =
+    usePutRestaurantIntoBasketMutation();
+
+  const handleMyRestaurant = async () => {
+    const success = await addMyRestaurant(basketItem?._id).unwrap();
+    if (success) {
+      dispatch(
+        addThisItem({
+          data: basketItem,
+        })
+      );
+      // refetch();
+    }
   };
 
   return (
     <Box sx={boxStyle}>
       <Link
-        href={`/restaurant/detail/${data._id}`}
+        href={`/restaurant/detail/${resData._id}`}
         sx={{
           textDecoration: "none",
           color: "inherit",
@@ -45,13 +68,39 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
       >
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="식당" src={data?.image} />
+            <Avatar alt="식당" src={resData?.image} />
           </ListItemAvatar>
           <ListItemText
-            primary={data?.name}
             primaryTypographyProps={{ style: { fontWeight: "bold" } }}
             secondary={
               <React.Fragment>
+                <Typography component="div" variant="body2">
+                  <span>
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                        marginRight: "0.5rem",
+                      }}
+                    >
+                      {resData?.name}
+                    </span>
+                    <IconButton
+                      sx={{ fontSize: "15px", fontWeight: "blod" }}
+                      onClick={handleMyRestaurant}
+                    >
+                      <Checkbox
+                        icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                        checkedIcon={
+                          <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                        }
+                        checked={resData?.contactCheck}
+                        disabled={false}
+                      />
+                      {resData?.contactCount + "찜"}
+                    </IconButton>
+                  </span>
+                </Typography>
                 <div>
                   <Typography
                     sx={{ display: "inline" }}
@@ -69,7 +118,9 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                       }}
                     />{" "}
                   </Typography>
-                  {data?.tel ? data.tel : "전화번호가 등록되지 않았습니다."}
+                  {resData?.tel
+                    ? resData.tel
+                    : "전화번호가 등록되지 않았습니다."}
                 </div>
                 <div>
                   <Typography
@@ -88,8 +139,8 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                       }}
                     />{" "}
                   </Typography>
-                  {data?.category
-                    ? data?.category
+                  {resData?.category
+                    ? resData?.category
                     : "카테고리가 등록되지 않았습니다."}
                 </div>
                 <div>
@@ -109,8 +160,8 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                       }}
                     />{" "}
                   </Typography>
-                  {data?.address
-                    ? data?.address
+                  {resData?.address
+                    ? resData?.address
                     : "주소가 등록되지 않았습니다."}
                 </div>
                 <div>
@@ -130,7 +181,9 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
                       }}
                     />{" "}
                   </Typography>
-                  {data?.region ? data?.region : "리전이 등록되지 않았습니다."}
+                  {resData?.region
+                    ? resData?.region
+                    : "리전이 등록되지 않았습니다."}
                 </div>
               </React.Fragment>
             }

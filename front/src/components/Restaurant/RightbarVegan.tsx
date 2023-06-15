@@ -44,13 +44,13 @@ const RightbarVegan = () => {
     if (filtered) {
       return filteredData?.restaurant?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem data={item} />
+          <RestaurantVeganItem resData={item} />
         </div>
       ));
     } else {
       return data?.restaurant?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem data={item} />
+          <RestaurantVeganItem resData={item} />
         </div>
       ));
     }

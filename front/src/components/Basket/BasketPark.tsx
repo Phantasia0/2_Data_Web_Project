@@ -28,6 +28,8 @@ const BasketPark = () => {
     data?.park.map((item: any) => item.name)
   );
 
+  const currentUrl = window.location.pathname;
+
   useEffect(() => {
     setMyParkList(data?.park);
   }, []);
@@ -81,12 +83,14 @@ const BasketPark = () => {
                     }}
                     onClick={() => dispatch(setSelectedItemId(item._id))}
                   />
-                  <Button
-                    onClick={() => handleDeletePark(item)}
-                    sx={{ color: "orange" }}
-                  >
-                    찜 취소
-                  </Button>
+                  {currentUrl !== "/editor/new" && (
+                    <Button
+                      onClick={() => handleDeletePark(item)}
+                      sx={{ color: "orange" }}
+                    >
+                      찜 취소
+                    </Button>
+                  )}
                 </ListItem>
               ))}
             </List>

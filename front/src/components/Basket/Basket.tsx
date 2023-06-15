@@ -26,6 +26,7 @@ const Basket = () => {
 
   const user = useSelector(selectCurrentUser);
 
+  const currentUrl = window.location.pathname;
   useEffect(() => {
     setMyRestaurantList(data?.restaurant);
   }, []);
@@ -81,12 +82,14 @@ const Basket = () => {
                     }}
                     onClick={() => dispatch(setSelectedItemId(item._id))}
                   />
-                  <Button
-                    onClick={() => handleDeleteRestaurant(item)}
-                    sx={{ color: "orange" }}
-                  >
-                    찜 취소
-                  </Button>
+                  {currentUrl !== "/editor/new" && (
+                    <Button
+                      onClick={() => handleDeleteRestaurant(item)}
+                      sx={{ color: "orange" }}
+                    >
+                      찜 취소
+                    </Button>
+                  )}
                 </ListItem>
               ))}
             </List>

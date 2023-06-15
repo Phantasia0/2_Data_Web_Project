@@ -3,7 +3,9 @@ import React, { FC } from "react";
 import {
   Avatar,
   Box,
+  Checkbox,
   Divider,
+  IconButton,
   Link,
   ListItem,
   ListItemAvatar,
@@ -12,6 +14,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 interface ParkItemProps {
   data: any;
@@ -41,10 +44,33 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
           sx={{ textDecoration: "none", color: "inherit" }}
         >
           <ListItemText
-            primary={data?.name}
             primaryTypographyProps={{ style: { fontWeight: "bold" } }}
             secondary={
               <React.Fragment>
+                <Typography component="div" variant="body2">
+                  <span>
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                        marginRight: "0.5rem",
+                      }}
+                    >
+                      {data?.name}
+                    </span>
+                    <IconButton sx={{ fontSize: "15px", fontWeight: "blod" }}>
+                      <Checkbox
+                        icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                        checkedIcon={
+                          <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                        }
+                        checked={data?.contactCheck}
+                        disabled={false}
+                      />
+                      {data?.contactCount + "찜"}
+                    </IconButton>
+                  </span>
+                </Typography>
                 <div>
                   <Typography
                     sx={{ display: "inline" }}

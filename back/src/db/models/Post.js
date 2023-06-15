@@ -23,7 +23,18 @@ class Post {
         },
       });
 
-    const likeCheck = post.likes.filter(
+    if (post?.restaurant) {
+      const contactCheck = post?.restaurant?.contacts.filter(
+        (item) => item.user.toString() === userId && item.value === 1
+      ).length;
+      post.set("contactCheck", contactCheck, { strict: false });
+    } else if (post?.park) {
+      const contactCheck = post?.park?.contacts.filter(
+        (item) => item.user.toString() === userId && item.value === 1
+      ).length;
+      post.set("contactCheck", contactCheck, { strict: false });
+    }
+    const likeCheck = post?.likes.filter(
       (like) => like.user._id.toString() === userId && like.value === 1
     ).length;
     post.set("likeCheck", likeCheck, { strict: false });

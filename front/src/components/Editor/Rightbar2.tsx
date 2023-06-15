@@ -8,6 +8,8 @@ import {
   CardMedia,
   Grid,
   Link,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
 import KaKaoParkRoadView from "./KaKaoParkRoadView";
 import { Park } from "../../models/park.model";
@@ -18,6 +20,7 @@ import { useGetParkDetailDataQuery } from "../../services/parksApi";
 import Button from "@mui/material/Button";
 import * as Baskets from "../../features/BasketReducer";
 import * as BasketParks from "../../features/BasketParkReducer";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const Rightbar2: FC<any> = ({
   Type,
@@ -119,11 +122,59 @@ const Rightbar2: FC<any> = ({
             >
               {Type === "restaurant" ? (
                 <CardHeader
-                  title={RestaurantData?.name}
+                  title={
+                    <span>
+                      {RestaurantData?.name}
+                      <IconButton
+                        sx={{
+                          fontSize: "15px",
+                          fontWeight: "blod",
+                          marginLeft: "10px",
+                        }}
+                        // onClick={handleMyRestaurant}
+                      >
+                        <Checkbox
+                          icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                          checkedIcon={
+                            <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                          }
+                          disabled={false}
+                          checked={true}
+                        />
+                         {/* @ts-ignore */}
+                        {RestaurantData?.contacts.filter((item) => item.value === 1).length + "찜"}
+                      </IconButton>
+                    </span>
+                  }
                   subheader={RestaurantData?.category}
                 />
               ) : (
-                <CardHeader title={ParkData?.name} />
+                <CardHeader
+                title={
+                  <span>
+                    {ParkData?.name}
+                    <IconButton
+                      sx={{
+                        fontSize: "15px",
+                        fontWeight: "blod",
+                        marginLeft: "10px",
+                      }}
+                      // onClick={handleMyRestaurant}
+                    >
+                      <Checkbox
+                        icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                        checkedIcon={
+                          <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                        }
+                        disabled={false}
+                        checked={true}
+                      />
+                       {/* @ts-ignore */}
+                      {ParkData?.contacts.filter((item) => item.value === 1).length + "찜"}
+                    </IconButton>
+                  </span>
+                }
+              />
               )}
             </Link>
             <CardContent>

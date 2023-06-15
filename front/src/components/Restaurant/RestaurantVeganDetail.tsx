@@ -8,10 +8,13 @@ import {
   CardMedia,
   Avatar,
   Grid,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
 import { useGetRestaurantDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
 import { fontdesign } from "../../theme/fontdesign";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const RestaurantVeganDetail = () => {
   const { restaurantId } = useParams() as { restaurantId: string };
@@ -22,6 +25,7 @@ const RestaurantVeganDetail = () => {
     return <div>Loading...</div>;
   }
 
+  console.log(data);
   return (
     <Card
       sx={{
@@ -63,6 +67,27 @@ const RestaurantVeganDetail = () => {
                 }}
               >
                 <span>{data?.name}</span>
+                <IconButton
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "blod",
+                    marginLeft: "10px",
+                  }}
+                  // onClick={handleMyRestaurant}
+                >
+                  <Checkbox
+                    icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                    checkedIcon={
+                      <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                    }
+                    disabled={false}
+                    /* @ts-ignore */
+                    checked={data?.contactCheck}
+                  />
+                  {/* @ts-ignore */}
+                  {data?.contacts.filter((item) => item.value === 1).length +
+                    "찜"}
+                </IconButton>
               </Typography>
             }
           />

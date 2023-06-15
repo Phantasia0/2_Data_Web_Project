@@ -9,9 +9,12 @@ import {
   Avatar,
   Grid,
   Link,
+  IconButton,
+  Checkbox,
 } from "@mui/material";
 import KaKaoParkRoadView from "./KaKaoParkRoadView";
 import { Park } from "../../models/park.model";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const Rightbar: FC<any> = ({ data }) => {
   const [spotData, setSpotData] = useState<any>(null);
@@ -74,7 +77,32 @@ const Rightbar: FC<any> = ({ data }) => {
               sx={{ textDecoration: "none" }}
             >
               <CardHeader
-                title={spotData?.name}
+                title={
+                  <span>
+                    {spotData?.name}
+                    <IconButton
+                      sx={{
+                        fontSize: "15px",
+                        fontWeight: "blod",
+                        marginLeft: "10px",
+                      }}
+                      // onClick={handleMyRestaurant}
+                    >
+                      <Checkbox
+                        icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+                        checkedIcon={
+                          <Favorite sx={{ color: "red", fontSize: "1rem" }} />
+                        }
+                        disabled={false}
+                        /* @ts-ignore */
+                        checked={data?.contactCheck}
+                      />
+                      {/* @ts-ignore */}
+                      {spotData?.contacts.filter((item) => item.value === 1)
+                        .length + "찜"}
+                    </IconButton>
+                  </span>
+                }
                 subheader={spotData?.category}
               />
             </Link>
