@@ -97,10 +97,9 @@ class Post {
       },
     ]);
 
-    const total = await PostModel.countDocuments();
-    const tot = post.length;
+    const total = await PostModel.countDocuments(match);
 
-    return { total, post, tot };
+    return { total, post };
   }
 
   static async findAllBySearch({ page, nickname, userId }) {
