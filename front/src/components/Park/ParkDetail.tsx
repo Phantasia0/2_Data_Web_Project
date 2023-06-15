@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import KaKaoParkRoadView from "./KaKaoParkRoadView";
 import { Park } from "../../models/park.model";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import LoadingImage from "../common/Loading";
 
 const ParkDetail = () => {
   const { parkId } = useParams() as { parkId: string };
@@ -23,7 +24,7 @@ const ParkDetail = () => {
     useGetParkDetailDataQuery(parkId);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   return (

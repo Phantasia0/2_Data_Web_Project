@@ -14,6 +14,7 @@ import {
 import { useGetDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
 import Rating from "./Rating";
+import LoadingImage from "../common/Loading";
 
 const RestaurantKeywordDetail = () => {
   const { restaurantId } = useParams() as { restaurantId: string };
@@ -21,7 +22,7 @@ const RestaurantKeywordDetail = () => {
     useGetDetailDataQuery(restaurantId);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   const {

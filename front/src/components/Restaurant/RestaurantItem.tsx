@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useGetDetailDataQuery } from "../../services/restaurantsApi";
+import LoadingImage from "../common/Loading";
 
 interface RestaurantItemProps {
   data: any;
@@ -25,7 +26,7 @@ const RestaurantItem: FC<RestaurantItemProps> = ({ data }) => {
   } = useGetDetailDataQuery(data.id);
 
   if (isLoading) {
-    <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   return (

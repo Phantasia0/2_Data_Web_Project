@@ -21,6 +21,7 @@ import { fontdesign } from "../../theme/fontdesign";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { changeUserInfo } from "../../features/AuthReducer";
+import LoadingImage from "../common/Loading";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -44,7 +45,7 @@ const Rightbar = () => {
   }, [isModalVisible]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   return (

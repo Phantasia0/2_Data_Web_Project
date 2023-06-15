@@ -15,6 +15,7 @@ import { useGetRestaurantDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
 import { fontdesign } from "../../theme/fontdesign";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import LoadingImage from "../common/Loading";
 
 const RestaurantVeganDetail = () => {
   const { restaurantId } = useParams() as { restaurantId: string };
@@ -22,7 +23,7 @@ const RestaurantVeganDetail = () => {
     useGetRestaurantDetailDataQuery(restaurantId);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingImage />;
   }
 
   console.log(data);

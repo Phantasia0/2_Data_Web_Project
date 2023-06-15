@@ -30,11 +30,6 @@ const Rightbar: FC<any> = ({ data }) => {
     }
   }, [data]);
 
-  console.log(spotData);
-  //   if (isLoading) {
-  //     return <div>Loading...</div>;
-  //   }
-
   return (
     <Box position="fixed" marginTop={4}>
       <Box
