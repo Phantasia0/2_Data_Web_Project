@@ -13,6 +13,7 @@ import Navbar from "./Navbar";
 const Profile = () => {
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (!sessionStorage.getItem("user")) {
@@ -20,19 +21,44 @@ const Profile = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   if (!user) {
     return null;
   }
 
   return (
-    <Box bgcolor={"background.default"} color={"text.primary"}>
-      <Navbar />
-      <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </Stack>
-    </Box>
+    <div className="Feed-container">
+      <Box bgcolor={"background.default"} color={"text.primary"}>
+        <Navbar />
+        <Box display="flex" flexDirection={windowWidth < 600 ? "column" : "row"}>
+          {windowWidth < 600 ? (
+            <>
+              <Sidebar />
+              <Feed />
+            </>
+          ) : (
+            <>
+              <Sidebar />
+              <Box flexGrow={1}>
+                <Feed />
+              </Box>
+              <Rightbar />
+            </>
+          )}
+        </Box>
+      </Box>
+    </div>
   );
 };
 

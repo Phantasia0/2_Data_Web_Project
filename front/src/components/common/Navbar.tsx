@@ -309,7 +309,7 @@ const Navbar = () => {
             onMouseEnter={handleProfileMenuOpen}
             onMouseLeave={handleProfileMenuClose}
             sx={{
-              fontSize: "1rem",
+              fontSize: "1.2rem", 
               color: currentPath[1] === "profile" ? "primary.main" : undefined,
             }}
           >
