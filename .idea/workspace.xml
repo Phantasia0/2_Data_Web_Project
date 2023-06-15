@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/Basket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/Basket.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +91,7 @@
       <workItem from="1686179223875" duration="25028000" />
       <workItem from="1686221463675" duration="22271000" />
       <workItem from="1686322496143" duration="140283000" />
-      <workItem from="1686804643463" duration="7233000" />
+      <workItem from="1686804643463" duration="12976000" />
     </task>
     <servers />
   </component>

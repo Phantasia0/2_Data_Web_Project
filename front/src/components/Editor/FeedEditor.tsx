@@ -5,13 +5,14 @@ import { useAddFeedMutation } from "../../services/feedApi";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetCurrentPage, addThisFeed } from "../../features/SocialReducer";
 import Basket from "../Basket/Basket";
 import BasketPark from "../Basket/BasketPark";
 import Rightbar2 from "./Rightbar2";
 import * as Baskets from "../../features/BasketReducer";
 import * as BasketParks from "../../features/BasketParkReducer";
+import { RootState } from "../../features/configureStore";
 
 const MyHashTagDecorator = (props: any) => {
   return (
@@ -42,6 +43,8 @@ const MyAtDecorator = (props: any) => {
 
 const FeedEditor = () => {
   const rteRef = useRef(null);
+  const [isRestaurantListClicked, setRestaurantListClicked] = useState(false);
+  const [isParkListClicked, setParkListClicked] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [
@@ -52,6 +55,14 @@ const FeedEditor = () => {
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
   const [Type, setType] = useState<string>("");
   const [show, setShow] = useState<boolean>(false);
+
+  const { selectedRestaurantItemId } = useSelector(({ basket }: RootState) => ({
+    selectedRestaurantItemId: basket.selectedItemId,
+  }));
+
+  const { selectedParkItemId } = useSelector(({ basketPark }: RootState) => ({
+    selectedParkItemId: basketPark.selectedItemId,
+  }));
 
   const save = async (story: string) => {
     const parsedData = JSON.parse(story);
@@ -70,6 +81,8 @@ const FeedEditor = () => {
 
       const success = await addFeed({
         content: story,
+        restaurant: selectedRestaurantItemId || null,
+        park: selectedParkItemId || null,
       }).unwrap();
 
       if (success) {
@@ -79,6 +92,11 @@ const FeedEditor = () => {
       }
     }
   };
+
+  useEffect(() => {
+    dispatch(Baskets.resetSelectedItemId());
+    dispatch(BasketParks.resetSelectedItemId());
+  }, []);
 
   const handleClickPost = (e: any) => {
     // @ts-ignore
@@ -90,19 +108,29 @@ const FeedEditor = () => {
   };
 
   const handleClickRestaurantList = () => {
-    setShow(true);
-    setType("restaurant");
+    setRestaurantListClicked(true);
+    setParkListClicked(false);
+    if (selectedRestaurantItemId) {
+      setShow(true);
+      setType("restaurant");
+      dispatch(BasketParks.resetSelectedItemId());
+    } else {
+      setShow(false);
+      setType("");
+    }
   };
 
   const handleClickParkList = () => {
-    setShow(true);
-    setType("park");
-  };
-
-  const handleClickCancelRightBar = () => {
-    setShow(false);
-    dispatch(BasketParks.resetSelectedItemId());
-    dispatch(Baskets.resetSelectedItemId());
+    setParkListClicked(true);
+    setRestaurantListClicked(false);
+    if (selectedParkItemId) {
+      setShow(true);
+      setType("park");
+      dispatch(Baskets.resetSelectedItemId());
+    } else {
+      setShow(false);
+      setType("");
+    }
   };
 
   return (
@@ -113,11 +141,28 @@ const FeedEditor = () => {
       }}
     >
       <Box position="fixed" marginTop={4}>
-        <Box sx={{ marginLeft: "1rem", marginTop: "5rem", flex: "0.5" }}>
-          <Box onClick={handleClickRestaurantList}>
+        <Box
+          sx={{
+            marginLeft: "1rem",
+            marginTop: "5rem",
+            flex: "0.5",
+            cursor: "pointer",
+          }}
+        >
+          <Box
+            onClick={handleClickRestaurantList}
+            style={{
+              boxShadow: isRestaurantListClicked ? "0 0 5px 2px #000" : "none",
+            }}
+          >
             <Basket />
           </Box>
-          <Box onClick={handleClickParkList}>
+          <Box
+            onClick={handleClickParkList}
+            style={{
+              boxShadow: isParkListClicked ? "0 0 5px 2px #000" : "none",
+            }}
+          >
             <BasketPark />
           </Box>
         </Box>
@@ -161,14 +206,7 @@ const FeedEditor = () => {
           </MuiThemeProvider>
           <Box>
             <Box sx={{ marginLeft: "2rem" }}>
-              {show && <Rightbar2 Type={Type} />}
-            </Box>
-            <Box sx={{ marginTop: "2rem", position: "absolute", top: "0" }}>
-              {show && (
-                <Button onClick={handleClickCancelRightBar} variant="contained">
-                  닫기
-                </Button>
-              )}
+              {show && <Rightbar2 Type={Type} setShow={setShow} />}
             </Box>
           </Box>
         </Box>

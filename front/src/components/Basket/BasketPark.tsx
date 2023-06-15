@@ -7,7 +7,10 @@ import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
 import { usePutParkIntoBasketMutation } from "../../services/parksApi";
 import MarkderModalPark from "./MarkderModalPark";
-import { setSelectedItemId } from "../../features/BasketParkReducer";
+import {
+  resetSelectedItemId,
+  setSelectedItemId,
+} from "../../features/BasketParkReducer";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 
@@ -45,6 +48,10 @@ const BasketPark = () => {
 
   const getItems = (myParkList: any) => {
     if (!isFetching && isSuccess) {
+      if (myParkList?.length === 0) {
+        dispatch(resetSelectedItemId());
+      }
+
       return (
         <>
           {myParkList?.length === 0 ? (

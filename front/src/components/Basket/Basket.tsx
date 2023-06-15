@@ -7,7 +7,10 @@ import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
 import { useDispatch } from "react-redux";
-import { setSelectedItemId } from "../../features/BasketReducer";
+import {
+  resetSelectedItemId,
+  setSelectedItemId,
+} from "../../features/BasketReducer";
 import { selectCurrentUser } from "../../features/AuthReducer";
 
 const Basket = () => {
@@ -46,6 +49,9 @@ const Basket = () => {
 
   const getItems = (myRestaurantList: any) => {
     if (!isFetching && isSuccess) {
+      if (myRestaurantList?.length === 0) {
+        dispatch(resetSelectedItemId());
+      }
       return (
         <>
           {myRestaurantList?.length === 0 ? (

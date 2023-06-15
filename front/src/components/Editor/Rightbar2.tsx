@@ -12,11 +12,22 @@ import {
 import KaKaoParkRoadView from "./KaKaoParkRoadView";
 import { Park } from "../../models/park.model";
 import { useGetRestaurantDetailDataQuery } from "../../services/restaurantsApi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { useGetParkDetailDataQuery } from "../../services/parksApi";
+import Button from "@mui/material/Button";
+import * as Baskets from "../../features/BasketReducer";
+import * as BasketParks from "../../features/BasketParkReducer";
 
-const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
+const Rightbar2: FC<any> = ({
+  Type,
+  setShow,
+}: {
+  Type: string;
+  setShow: any;
+}) => {
+  const dispatch = useDispatch();
+
   const { selectedRestaurantItemId } = useSelector(({ basket }: RootState) => ({
     selectedRestaurantItemId: basket.selectedItemId,
   }));
@@ -24,8 +35,6 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
   const { selectedParkItemId } = useSelector(({ basketPark }: RootState) => ({
     selectedParkItemId: basketPark.selectedItemId,
   }));
-
-  const [spotData, setSpotData] = useState<any>(null);
 
   const {
     data: RestaurantData,
@@ -43,20 +52,28 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
     skip: Type === "restaurant",
   });
 
-  useEffect(() => {
-    if (Type === "restaurant" && !RestaurantFetching && RestaurantSuccess) {
-      setSpotData(RestaurantData);
-    } else if (Type === "park" && !ParkFetching && ParkSuccess) {
-      setSpotData(ParkData);
-    }
-  }, [RestaurantFetching, RestaurantSuccess, ParkFetching, ParkSuccess]);
-
   if (Type === "restaurant" && RestaurantFetching) {
     return <div>Restaurant Loading...</div>;
   }
 
   if (Type === "park" && ParkFetching) {
     return <div>Park Loading...</div>;
+  }
+
+  const handleBarClose = () => {
+    setShow(false);
+    if (Type === "restaurant") {
+      dispatch(Baskets.resetSelectedItemId());
+    } else if (Type === "park") {
+      dispatch(BasketParks.resetSelectedItemId());
+    }
+  };
+
+  if (!selectedRestaurantItemId && Type === "restaurant") {
+    return null;
+  }
+  if (!selectedParkItemId && Type === "park") {
+    return null;
   }
 
   return (
@@ -164,6 +181,9 @@ const Rightbar2: FC<any> = ({ Type }: { Type: string }) => {
                   ? RestaurantData?.address
                   : ParkData?.address}
               </Typography>
+              <Button variant="contained" onClick={handleBarClose}>
+                닫기
+              </Button>
             </CardContent>
           </Grid>
         </Card>
