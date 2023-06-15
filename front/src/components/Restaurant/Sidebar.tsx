@@ -79,6 +79,12 @@ const Sidebar = () => {
   );
 
   useEffect(() => {
+    if (filtered) {
+      setSearchValue("");
+    }
+  }, [filtered]);
+
+  useEffect(() => {
     if (isSuccess && !isFetching) {
       dispatch(setFoodCategoryList(data?.category));
     }
@@ -290,6 +296,7 @@ const Sidebar = () => {
                 setSelectedFood("");
                 setSelectedRegion("");
                 dispatch(resetItem());
+                setSearchValue("");
               }}
             >
               <ListItemIcon>

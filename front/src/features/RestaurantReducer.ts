@@ -45,6 +45,7 @@ const restaurantSlice = createSlice({
         if (action.payload.region) {
           state.region = action.payload.region;
           state.filtered = true;
+          state.keyword = "";
         }
         if (action.payload.foodCategory) {
           state.foodCategory = action.payload.foodCategory;
