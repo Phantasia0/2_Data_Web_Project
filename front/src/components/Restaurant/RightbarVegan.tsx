@@ -7,6 +7,7 @@ import RestaurantVeganItem from "./RestaurantVeganItem";
 import { RootState } from "../../features/configureStore";
 import { goFilteredPage, goPage } from "../../features/RestaurantReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import LoadingImage from "../common/Loading";
 
 const RightbarVegan = () => {
   const { region, foodCategory, filtered, pageNumber, pageFilteredNumber } =
@@ -89,7 +90,7 @@ const RightbarVegan = () => {
         justifyContent: "center",
       }}
     >
-      {isLoading && <div>...Loading</div>}
+      {isLoading && <LoadingImage />}
       {isSuccess && (
         <Box
           sx={{

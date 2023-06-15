@@ -12,6 +12,7 @@ import { RootState } from "../../features/configureStore";
 import { goPage } from "../../features/ParkReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { goFilteredPage } from "../../features/ParkReducer";
+import LoadingImage from "../common/Loading";
 
 const RightbarPark = () => {
   const { region, filtered, pageNumber, pageFilteredNumber } = useSelector(
@@ -90,7 +91,7 @@ const RightbarPark = () => {
         justifyContent: "center",
       }}
     >
-      {isLoading && <div>...Loading</div>}
+      {isLoading && <LoadingImage />}
       {isSuccess && (
         <Box
           sx={{
