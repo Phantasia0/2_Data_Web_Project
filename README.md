@@ -42,6 +42,8 @@ GreenLife
    - 지도 및 로드뷰 표시 기능   
    - 리스팅 기능 
    - 페이지네이션    
+   - 찜 추가/삭제 기능   
+   - 상세 페이지에 해당 식당/공원 관련 게시글 표출 기능   
 ![image](./front/src/assets/readmeimages/3-5-1.png)
 ![image](./front/src/assets/readmeimages/3-5-2.png)
 - activity   
@@ -56,6 +58,7 @@ GreenLife
    - 유저 닉네임, 프로필 사진 변경 기능      
    - 작성 게시글, 댓글 확인 기능   
    - 좋아요 기능   
+   - 좋아요/게시글/댓글 합산 점수 및 랭크 표출 기능   
 ![image](./front/src/assets/readmeimages/3-5-4.png)
 ![image](./front/src/assets/readmeimages/3-5-5.png)
 ![image](./front/src/assets/readmeimages/3-5-6.png)  
