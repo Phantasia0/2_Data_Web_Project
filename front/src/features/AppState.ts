@@ -11,6 +11,8 @@ import { apiSlice } from "../services/authApi";
 import socialReducer from "./SocialReducer";
 import { profileApi } from "../services/profileApi";
 import profileReducer from "./ProfileReducer";
+import basketReducer from "./BasketReducer";
+import basketParkReducer from "./BasketParkReducer";
 
 export const rootReducer = combineReducers({
   restaurant: restaurantReducer,
@@ -25,4 +27,6 @@ export const rootReducer = combineReducers({
   social: socialReducer,
   [profileApi.reducerPath]: profileApi.reducer,
   profile: profileReducer,
+  basket: basketReducer,
+  basketPark: basketParkReducer,
 });

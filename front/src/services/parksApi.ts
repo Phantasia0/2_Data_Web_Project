@@ -47,6 +47,13 @@ export const parksApi = createApi({
     getParkDetailData: builder.query<Park, string>({
       query: (id) => `/park/${id}`,
     }),
+    putParkIntoBasket: builder.mutation<any, any>({
+      query: (_id) => ({
+        url: `park/contact`,
+        method: "PUT",
+        body: { _id },
+      }),
+    }),
   }),
 });
 
@@ -54,4 +61,5 @@ export const {
   useGetParksDataQuery,
   useGetParksFilteredDataQuery,
   useGetParkDetailDataQuery,
+  usePutParkIntoBasketMutation,
 } = parksApi;

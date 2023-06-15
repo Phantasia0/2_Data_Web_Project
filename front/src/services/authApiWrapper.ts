@@ -26,6 +26,11 @@ export const authApiWrapper = apiSlice.injectEndpoints({
         url: "/user",
       }),
     }),
+    getUserBasket: builder.query({
+      query: () => ({
+        url: "/user/contact",
+      }),
+    }),
   }),
 });
 
@@ -34,4 +39,5 @@ export const {
   useLoginMutation,
   useGetCurrentUserQuery,
   useGetAllUserQuery,
+  useGetUserBasketQuery,
 } = authApiWrapper;

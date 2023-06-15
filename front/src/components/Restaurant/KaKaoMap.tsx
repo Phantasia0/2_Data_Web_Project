@@ -10,6 +10,7 @@ import {
   useGetRestaurantsDataQuery,
   useGetRestaurantsFilteredDataQuery,
 } from "../../services/restaurantsApi";
+import { setThisItem } from "../../features/BasketReducer";
 
 const { kakao }: any = window;
 
@@ -26,7 +27,6 @@ const KeywordSearchMap = () => {
     page: 1,
   };
 
-  const [info, setInfo] = useState<any>();
   const [markers, setMarkers] = useState<any>([]);
   const [map, setMap] = useState<any>();
 
@@ -89,12 +89,7 @@ const KeywordSearchMap = () => {
         <MapMarker
           key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
           position={marker.position}
-          onClick={() => setInfo(marker)}
-        >
-          {info && info.content === marker.content && (
-            <div style={{ color: "#000" }}>{marker.content}</div>
-          )}
-        </MapMarker>
+        ></MapMarker>
       ))}
     </Map>
   );
@@ -102,6 +97,7 @@ const KeywordSearchMap = () => {
 
 const TotalSearchMap = () => {
   const mapRef = useRef<any>();
+  const dispatch = useDispatch();
   const { region, foodCategory, pageNumber, filtered, pageFilteredNumber } =
     useSelector(
       ({ restaurant }: RootState) => ({
@@ -117,18 +113,6 @@ const TotalSearchMap = () => {
   const { data, error, isLoading, isFetching, isSuccess } =
     useGetRestaurantsDataQuery(pageNumber as number);
   const { data2 }: any = useGetRestaurantsDataQuery((pageNumber as number) + 1);
-
-  // const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
-  //   {
-  //     region: region,
-  //     foodCategory: foodCategory,
-  //   },
-  //   {
-  //     skip: !region && !foodCategory,
-  //     // @ts-ignore
-  //     refetchOnArgChange: true,
-  //   }
-  // )
 
   const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
     {
@@ -179,13 +163,18 @@ const TotalSearchMap = () => {
   const makeMakerData = () => {
     if (region || foodCategory) {
       return filteredData?.restaurant?.map((item: any) => (
-        <MapMarker
-          key={`${item.latitude}-${item.longitude}`}
-          position={{
-            lat: item.latitude,
-            lng: item.longitude,
-          }}
-        ></MapMarker>
+        <>
+          <MapMarker
+            key={`${item.latitude}-${item.longitude}`}
+            position={{
+              lat: item.latitude,
+              lng: item.longitude,
+            }}
+            onClick={() => {
+              dispatch(setThisItem(item));
+            }}
+          ></MapMarker>
+        </>
       ));
     } else {
       return data?.restaurant.map((item: any) => (
@@ -195,6 +184,9 @@ const TotalSearchMap = () => {
             lat: item.latitude,
             lng: item.longitude,
           }}
+          onClick={() => {
+            dispatch(setThisItem(item));
+          }}
         ></MapMarker>
       ));
     }
@@ -203,12 +195,9 @@ const TotalSearchMap = () => {
   const showData = () => {
     return (
       <MarkerClusterer
-        averageCenter={true} // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-        minLevel={8} // 클러스터 할 최소 지도 레벨
-        disableClickZoom={true} // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
-        // 마커 클러스터러에 클릭이벤트를 등록합니다
-        // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
-        // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
+        averageCenter={true}
+        minLevel={8}
+        disableClickZoom={true}
         onClusterclick={onClusterclick}
       >
         {makeMakerData()}

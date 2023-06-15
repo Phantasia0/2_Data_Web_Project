@@ -8,15 +8,34 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
+  Box,
 } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/configureStore";
 
 interface RestaurantVeganItemProps {
   data: any;
 }
 
 const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
+  const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
+    useSelector(({ basket }: RootState) => ({
+      // @ts-ignore
+      isClicked: basket.isClicked,
+      // @ts-ignore
+      basketItem: basket.item,
+    }));
+
+  const boxStyle = {
+    backgroundColor: data?._id === basketItem?._id ? "#F3F3F3" : "transparent",
+    border: `2px solid ${
+      data?._id === basketItem?._id ? "#397261" : "transparent"
+    }`,
+    borderRadius: "1rem",
+  };
+
   return (
-    <>
+    <Box sx={boxStyle}>
       <Link
         href={`/restaurant/detail/${data._id}`}
         sx={{
@@ -119,7 +138,7 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ data }) => {
         </ListItem>
       </Link>
       <Divider variant="inset" component="li" />
-    </>
+    </Box>
   );
 };
 

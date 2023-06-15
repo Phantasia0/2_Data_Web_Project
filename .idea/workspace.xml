@@ -5,23 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/front/src/components/Basket/Basket.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Basket/MarkderModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Basket/MarkderModalPark.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/features/BasketParkReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/features/BasketReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/db/models/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/routers/restaurantRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/routers/restaurantRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Park/Park.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/Park.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/ParkItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/ParkItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Park/SidebarPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/SidebarPark.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Rightbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Rightbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/ParkReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ParkReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/RestaurantReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/RestaurantReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/models/park.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/models/park.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/models/restaurant.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/models/restaurant.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/authApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/authApiWrapper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/services/parksApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/parksApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" afterDir="false" />
     </list>
@@ -54,24 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "feature/front-레스토랑-피드백",
-    "last_opened_file_path": "C:/Users/ncpro/Desktop/env/front/src/assets/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ncpro/Desktop/env/front/src/assets/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ncpro\\Desktop\\env\\front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>

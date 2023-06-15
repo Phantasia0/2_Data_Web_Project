@@ -18,6 +18,8 @@ import {
 import { useDispatch } from "react-redux";
 import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
+import BasketPark from "../Basket/BasketPark";
+import { resetItem } from "../../features/BasketParkReducer";
 
 const regionCategory: string[] = [
   "강원도",
@@ -137,6 +139,7 @@ const SidebarPark = () => {
               onClick={() => {
                 dispatch(resetData());
                 setSelectedRegion(null);
+                dispatch(resetItem());
               }}
             >
               <ListItemIcon>
@@ -152,6 +155,7 @@ const SidebarPark = () => {
             </ListItemButton>
           </ListItem>
         </List>
+        <BasketPark />
       </Box>
     </Box>
   );

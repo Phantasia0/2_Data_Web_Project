@@ -9,6 +9,7 @@ import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { useDispatch } from "react-redux";
 import { resetData } from "../../features/RestaurantReducer";
+import { resetItem } from "../../features/BasketReducer";
 
 const Restaurant = () => {
   const { width } = useWindowDimensions();
@@ -22,6 +23,7 @@ const Restaurant = () => {
 
   useEffect(() => {
     dispatch(resetData());
+    dispatch(resetItem());
   }, []);
 
   const whatToDisplay = () => {

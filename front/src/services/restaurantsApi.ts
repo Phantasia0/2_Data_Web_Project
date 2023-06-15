@@ -60,6 +60,13 @@ export const restaurantsApi = createApi({
     getRestaurantDetailData: builder.query<Restaurant, string>({
       query: (id) => `/restaurant/${id}`,
     }),
+    putRestaurantIntoBasket: builder.mutation<any, any>({
+      query: (_id) => ({
+        url: `restaurant/contact`,
+        method: "PUT",
+        body: { _id },
+      }),
+    }),
   }),
 });
 
@@ -79,6 +86,7 @@ export const {
   useGetRestaurantsDataQuery,
   useGetRestaurantsFilteredDataQuery,
   useGetRestaurantDetailDataQuery,
+  usePutRestaurantIntoBasketMutation,
 } = restaurantsApi;
 
 export const { useGetDetailDataQuery } = kakaoApi;

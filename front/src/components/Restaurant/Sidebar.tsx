@@ -26,6 +26,8 @@ import { RootState } from "../../features/configureStore";
 import { CustomTypography } from "../common/Navbar";
 import Paper from "@mui/material/Paper";
 import { useGetRestaurantsFilteredDataQuery } from "../../services/restaurantsApi";
+import Basket from "../Basket/Basket";
+import { resetItem } from "../../features/BasketReducer";
 
 const regionCategory: string[] = [
   "경기도",
@@ -152,7 +154,7 @@ const Sidebar = () => {
       <Box>
         <TextField
           variant="outlined"
-          placeholder="키워드 검색"
+          placeholder="리뷰를 검색해봐"
           fullWidth
           size="small"
           InputProps={{
@@ -287,6 +289,7 @@ const Sidebar = () => {
                 dispatch(resetData());
                 setSelectedFood("");
                 setSelectedRegion("");
+                dispatch(resetItem());
               }}
             >
               <ListItemIcon>
@@ -302,6 +305,7 @@ const Sidebar = () => {
             </ListItemButton>
           </ListItem>
         </List>
+        <Basket />
       </Box>
     </Box>
   );
