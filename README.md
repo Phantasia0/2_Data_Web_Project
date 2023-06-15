@@ -56,19 +56,24 @@ GreenLife
    - 유저 닉네임, 프로필 사진 변경 기능      
    - 작성 게시글, 댓글 확인 기능   
    - 좋아요 기능
-![image](./front/src/assets/readmeimages/3-5-4.png)   
-**나머지 추가 예정**   
+![image](./front/src/assets/readmeimages/3-5-4.png)
+![image](./front/src/assets/readmeimages/3-5-5.png)
+![image](./front/src/assets/readmeimages/3-5-6.png)  
+**마이페이지 추가 예정** 
+- 미디어쿼리
+   - 미디어쿼리 기능
+![image](./front/src/assets/readmeimages/3-5-7.png) 
 ## 4. 개발과정 
 ### 4-1. 기술스택   
 프론트 **추가 예정**   
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=black"><img src="https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=MUI&logoColor=black"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=black">   
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=MUI&logoColor=black"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=black">   
 백엔드 **추가 예정**   
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"><img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white"><img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white"><img src="https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white"><img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"><img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">   
 데이터 분석   
 <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white">        
 ### 4-2. 와이어프레임
 기획과정에서는 목업 디자인을 통해 소통하였고 이후 와이어 프레임을 작성하여 개발에 착수하였습니다.   
-[와이어프레임.pdf](uploads/4fb92b82d3e209f25a53d0a454cb0ece/와이어프레임.pdf)   
+[와이어프레임](https://xd.adobe.com/view/672ce88a-8786-4a7d-bcaa-ab4c4a3ebc46-327f/)   
 ![와이어프레임](./front/src/assets/readmeimages/4-2.png)
 ### 4-3. ERD
 dbdiagram을 활용하여 ERD를 작성하였습니다.
