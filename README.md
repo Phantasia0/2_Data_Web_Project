@@ -19,15 +19,15 @@ GreenLife
 
 | 데이터 결과 | 데이터 분석 |
 | ------ | ------ |
-| ![graphXC](./front/src/assets/images/graphXC.png) | 일반 국민 78.6%가 환경문제에 관심을 가지고 있습니다. |
-| ![graphXC2](./front/src/assets/images/graphXC2.png) | 환경 문제 중에서도 온실가스와 관련된 문제를 가장 시급한 과제로 생각하는 것을 알 수 있습니다. |
-| ![total_co2](./front/src/assets/images/total_co2.png) | 환경에 대한 관심과는 다르게 온실가스 배출량이 증가하는 추세를 가집니다. |
-| ![co2perfood](./front/src/assets/images/co2perfood.png) | 온실가스 배출에 가장 많은 영향을 끼치는 음식이 육류라는 사실을 알 수 있습니다. |
-| ![meat_consume](./front/src/assets/images/meat_consume.png) | 육류 소비량이 지속적으로 증가하는 추세이며 환경 오염에 영향을 미칠 것이라는 예상을 할 수 있습니다. |
+| <img src="./front/src/assets/images/graphXC.png" width="300" height="300"> | 일반 국민 78.6%가 환경문제에 관심을 가지고 있습니다. |
+| <img src="./front/src/assets/images/graphXC2.png" width="300" height="300"> | 환경 문제 중에서도 온실가스와 관련된 문제를 가장 시급한 과제로 생각하는 것을 알 수 있습니다. |
+| <img src="./front/src/assets/images/total_co2.png" width="300" height="200"> | 환경에 대한 관심과는 다르게 온실가스 배출량이 증가하는 추세를 가집니다. |
+| <img src="./front/src/assets/images/co2perfood.png" width="300" height="200"> | 온실가스 배출에 가장 많은 영향을 끼치는 음식이 육류라는 사실을 알 수 있습니다. |
+| <img src="./front/src/assets/images/meat_consume.png" width="300" height="200"> | 육류 소비량이 지속적으로 증가하는 추세이며 환경 오염에 영향을 미칠 것이라는 예상을 할 수 있습니다. |
 
 - 기대효과
-![co2perperson](./front/src/assets/images/co2perperson.png)   
-식단에 따라 탄소 배출량이 다른 모습을 확인 할 수 있습니다. 육류를 소비하지 않는 사람들은 고기를 좋아하는 사람들에 비해 탄소 배출량을 1.4t CO2를 줄일 수 있습니다. 엄격한 채식주의자는 고기를 좋아하는 사람들에 비해 탄소 배출을 절반 정도 줄일 수 있습니다. 이러한 결과로, 육류 소비를 줄이면 탄소 배출량을 감소 시키는데 도움이 된다는 인사이트를 얻게 되었습니다.
+<img src="./front/src/assets/images/co2perperson.png" width="500" height="300">   
+식단에 따라 탄소 배출량이 다른 모습을 확인 할 수 있습니다. 육류를 소비하지 않는 사람들은 고기를 좋아하는 사람들에 비해 탄소 배출량을 1.4t CO2를 줄일 수 있습니다. 엄격한 채식주의자는 고기를 좋아하는 사람들에 비해 탄소 배출을 절반 정도 줄일 수 있습니다. 이러한 결과보면 GREEN LIFE에서 제공하는 서비스를 활용해 육류의 소비를 줄이고 온실가스 저감을 위한 활동들을 한다면 개개인의 노력으로도 탄소 배출량을 감소 시키는데 도움이 될 수 있다는 것을 보여줍니다.
 
 ### 3-4. 서비스 소개   
 - 지속 가능한 미래를 위해 일상 속에서 온실가스 배출을 줄이는 작은 실천을 권장합니다.        
@@ -36,7 +36,7 @@ GreenLife
 - activity: 카테고리 별로 일상 생활에서 탄소 배출을 감소시킬 수 있는 다양한 방법 안내합니다.   
 - share: 일상 속에서 환경 보호 활동을 기록하고 공유하는 기능입니다.    
 ### 3-5. 기능 소개   
-- restaurant, park
+- restaurant, park 페이지
    - 각 지역별, 카테고리별 비건 레스토랑 필터링 기능   
    - 각 지역별 공원 필터링 기능   
    - 지도 및 로드뷰 표시 기능   
@@ -55,13 +55,13 @@ GreenLife
    - 마이페이지 기능   
    - 유저 닉네임, 프로필 사진 변경 기능      
    - 작성 게시글, 댓글 확인 기능   
-   - 좋아요 기능
+   - 좋아요 기능   
 ![image](./front/src/assets/readmeimages/3-5-4.png)
 ![image](./front/src/assets/readmeimages/3-5-5.png)
 ![image](./front/src/assets/readmeimages/3-5-6.png)  
 **마이페이지 추가 예정** 
-- 미디어쿼리
-   - 미디어쿼리 기능
+- 미디어쿼리   
+   - 반응형 디자인 수행    
 ![image](./front/src/assets/readmeimages/3-5-7.png) 
 ## 4. 개발과정 
 ### 4-1. 기술스택   
@@ -73,7 +73,7 @@ GreenLife
 <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white">        
 ### 4-2. 와이어프레임
 기획과정에서는 목업 디자인을 통해 소통하였고 이후 와이어 프레임을 작성하여 개발에 착수하였습니다.   
-[와이어프레임](https://xd.adobe.com/view/672ce88a-8786-4a7d-bcaa-ab4c4a3ebc46-327f/)   
+[와이어프레임 링크](https://xd.adobe.com/view/672ce88a-8786-4a7d-bcaa-ab4c4a3ebc46-327f/)   
 ![와이어프레임](./front/src/assets/readmeimages/4-2.png)
 ### 4-3. ERD
 dbdiagram을 활용하여 ERD를 작성하였습니다.
