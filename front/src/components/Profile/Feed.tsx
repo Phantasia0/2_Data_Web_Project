@@ -113,7 +113,7 @@ const Feed = () => {
     <Box flex={4} p={{ xs: 0, sm: 4, md: 4, lg: 8 }}>
       <Button
         sx={{
-          marginLeft: "40vw",
+          marginLeft: "30vw",
           borderRadius: "20px",
           backgroundColor: "primary.main",
           color: "white",
