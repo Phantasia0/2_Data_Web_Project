@@ -37,6 +37,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../../theme/theme";
 import { useUpdateFeedMutation } from "../../services/feedApi";
 import { updateThisFeed } from "../../features/SocialReducer";
+import { RootState } from "../../features/configureStore";
 
 const sampleURL = {
   url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
