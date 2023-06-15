@@ -10,6 +10,7 @@ import { fontdesign } from "../../theme/fontdesign";
 
 import {
   resetData,
+  resetPage,
   setTotal,
   updateCommentList,
 } from "../../features/ProfileReducer";
@@ -55,13 +56,24 @@ const Feed = () => {
     isSuccess: searchSuccess,
     isLoading: searchLoading,
     isFetching: searchFetching,
-  } = useGetNicknameDataQuery(keyword, {
-    skip: !filtered,
-  });
+  } = useGetNicknameDataQuery(
+    {
+      // @ts-ignore
+      nickname: keyword,
+      page: pageNumber,
+    },
+    {
+      skip: !filtered,
+    }
+  );
 
   useEffect(() => {
     dispatch(resetData());
   }, []);
+
+  useEffect(() => {
+    dispatch(resetPage());
+  }, [keyword]);
 
   useEffect(() => {
     if (!keyword) {
@@ -70,10 +82,16 @@ const Feed = () => {
   }, [keyword]);
 
   useEffect(() => {
-    if (feedSuccess) {
-      dispatch(setTotal(feedData?.tot));
+    if (feedSuccess && !feedFetching) {
+      dispatch(setTotal(feedData?.total));
     }
-  }, [feedSuccess]);
+  }, [feedSuccess, feedFetching]);
+
+  useEffect(() => {
+    if (searchSuccess && !searchFetching) {
+      dispatch(setTotal(searchData?.total));
+    }
+  }, [searchSuccess, searchFetching]);
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);

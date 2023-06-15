@@ -59,6 +59,9 @@ const profileSlice = createSlice({
         state.isModalVisible = action?.payload;
       }
     },
+    resetPage: (state) => {
+      state.pageNumber = 1;
+    },
   },
 });
 
@@ -70,5 +73,6 @@ export const {
   setTotal,
   updateCommentList,
   setModalVisible,
+  resetPage,
 } = profileSlice.actions;
 export default profileSlice.reducer;

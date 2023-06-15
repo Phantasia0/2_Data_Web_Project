@@ -20,8 +20,8 @@ export const newSocialApi = apiSlice.injectEndpoints({
       }),
     }),
     getNicknameData: builder.query<any, any>({
-      query: (nickname: string) => ({
-        url: `/post/search?nickname=${nickname}`,
+      query: ({ nickname, page }) => ({
+        url: `/post/search?nickname=${nickname}&page=${page}`,
       }),
     }),
   }),
