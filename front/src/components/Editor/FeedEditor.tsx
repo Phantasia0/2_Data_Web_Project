@@ -1,13 +1,16 @@
 import React, { useRef, useState } from "react";
 import MUIRichTextEditor from "mui-rte";
-import { Box, Button, Snackbar } from "@mui/material";
+import { Box, Button, Snackbar, Typography } from "@mui/material";
 import { useAddFeedMutation } from "../../services/feedApi";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { replace } from "lodash";
 import { useDispatch } from "react-redux";
 import { resetCurrentPage, addThisFeed } from "../../features/SocialReducer";
+import Basket from "../Basket/Basket";
+import BasketPark from "../Basket/BasketPark";
+import Rightbar2 from "./Rightbar2";
+import { resetSelectedItemId } from "../../features/BasketReducer";
 
 const MyHashTagDecorator = (props: any) => {
   return (
@@ -46,6 +49,8 @@ const FeedEditor = () => {
   ] = useAddFeedMutation();
 
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
+  const [Type, setType] = useState<string>("");
+  const [show, setShow] = useState<boolean>(false);
 
   const save = async (story: string) => {
     const parsedData = JSON.parse(story);
@@ -53,11 +58,11 @@ const FeedEditor = () => {
       parsedData?.blocks[0]?.text.length > 20
         ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
         : parsedData?.blocks[0]?.text;
-    const content = text.replace(/\s/g, "");
-    if (!content) {
-      setSnackbarOpen(true);
-      return;
-    }
+    // const content = text.replace(/\s/g, "");
+    // if (!content) {
+    //   setSnackbarOpen(true);
+    //   return;
+    // }
 
     if (story !== "") {
       dispatch(resetCurrentPage(0));
@@ -71,7 +76,6 @@ const FeedEditor = () => {
         dispatch(addThisFeed(success));
         navigate("/community");
       }
-      console.log("success", success);
     }
   };
 
@@ -84,62 +88,105 @@ const FeedEditor = () => {
     setSnackbarOpen(false);
   };
 
+  const handleClickRestaurantList = () => {
+    setShow(true);
+    setType("restaurant");
+  };
+
+  const handleClickParkList = () => {
+    setShow(true);
+    setType("park");
+  };
+
+  const handleClickCancelRightBar = () => {
+    setShow(false);
+    dispatch(resetSelectedItemId());
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
         gap: "1rem",
       }}
     >
+      <Box position="fixed" marginTop={4}>
+        <Box sx={{ marginLeft: "1rem", marginTop: "5rem", flex: "0.5" }}>
+          <Box onClick={handleClickRestaurantList}>
+            <Basket />
+          </Box>
+          <Box onClick={handleClickParkList}>
+            <BasketPark />
+          </Box>
+        </Box>
+      </Box>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
-          marginTop: "5rem",
-          marginBottom: "1rem",
-          height: "600px",
-          maxHeight: "600px",
-          width: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem",
+          flex: "3",
         }}
       >
-        <MuiThemeProvider theme={theme}>
-          <MUIRichTextEditor
-            ref={rteRef}
-            label="당신의 스토리를 써주세요"
-            onSave={save}
-            decorators={[
-              {
-                component: MyHashTagDecorator,
-                regex: /\#[\w]+/g,
-              },
-              {
-                component: MyAtDecorator,
-                regex: /\@[\w]+/g,
-              },
-            ]}
-          />
-        </MuiThemeProvider>
-      </Box>
-      <Box sx={{ marginTop: "1rem" }}>
-        <Button
-          onClick={handleClickPost}
-          variant="contained"
-          sx={{ height: "auto", color: "white" }}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "5rem",
+            marginBottom: "1rem",
+            height: "600px",
+            maxHeight: "600px",
+            width: "100%",
+          }}
         >
-          POST
-        </Button>
+          <MuiThemeProvider theme={theme}>
+            <MUIRichTextEditor
+              ref={rteRef}
+              label="당신의 스토리를 써주세요"
+              onSave={save}
+              decorators={[
+                {
+                  component: MyHashTagDecorator,
+                  regex: /\#[\w]+/g,
+                },
+                {
+                  component: MyAtDecorator,
+                  regex: /\@[\w]+/g,
+                },
+              ]}
+            />
+          </MuiThemeProvider>
+          <Box sx={{ marginLeft: "2rem" }}>
+            {show && <Rightbar2 Type={Type} />}
+          </Box>
+          <Box sx={{ marginTop: "2rem" }}>
+            {show && (
+              <Button onClick={handleClickCancelRightBar} variant="contained">
+                닫기
+              </Button>
+            )}
+          </Box>
+        </Box>
+        <Box sx={{ marginTop: "1rem" }}>
+          <Button
+            onClick={handleClickPost}
+            variant="contained"
+            sx={{ height: "auto", color: "white" }}
+          >
+            POST
+          </Button>
+        </Box>
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={2000}
+          onClose={handleSnackbarClose}
+          message="내용을 입력해주세요."
+          ContentProps={{
+            sx: { backgroundColor: "orange" },
+          }}
+        />
       </Box>
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={2000}
-        onClose={handleSnackbarClose}
-        message="내용을 입력해주세요."
-        ContentProps={{
-          sx: { backgroundColor: "orange" },
-        }}
-      />
     </Box>
   );
 };

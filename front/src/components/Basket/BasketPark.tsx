@@ -7,8 +7,12 @@ import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
 import { usePutParkIntoBasketMutation } from "../../services/parksApi";
 import MarkderModalPark from "./MarkderModalPark";
+import { setSelectedItemId } from "../../features/BasketParkReducer";
+import { useDispatch } from "react-redux";
 
 const BasketPark = () => {
+  const dispatch = useDispatch();
+
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetUserBasketQuery(undefined);
 
@@ -65,6 +69,7 @@ const BasketPark = () => {
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
+                    onClick={() => dispatch(setSelectedItemId(item._id))}
                   />
                   <Button
                     onClick={() => handleDeletePark(item)}

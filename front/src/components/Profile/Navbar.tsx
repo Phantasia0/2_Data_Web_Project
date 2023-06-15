@@ -50,7 +50,6 @@ const Navbar = () => {
 
   // @ts-ignore
   const { data, refetch: getCurrentRefetch } = useGetCurrentUserQuery();
-  console.log(data);
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
     debounceOnChangeKeyword(event.target.value);

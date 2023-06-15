@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { goPage, setModalVisible } from "../../features/ProfileReducer";
 import ProfileEditor from "./ProfileEdittor";
+import Basket from "../Basket/Basket";
 
 const Sidebar = () => {
   const { pageNumber, total, isModalVisible } = useSelector(
@@ -124,6 +125,9 @@ const Sidebar = () => {
               Next
             </Button>
           </Stack>
+          <ListItem disablePadding>
+            <Basket />
+          </ListItem>
         </List>
       </Box>
       <Snackbar

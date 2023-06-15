@@ -6,8 +6,11 @@ import { RootState } from "../../features/configureStore";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
+import { useDispatch } from "react-redux";
+import { setSelectedItemId } from "../../features/BasketReducer";
 
 const Basket = () => {
+  const dispatch = useDispatch();
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetUserBasketQuery(undefined);
 
@@ -67,6 +70,7 @@ const Basket = () => {
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
+                    onClick={() => dispatch(setSelectedItemId(item._id))}
                   />
                   <Button
                     onClick={() => handleDeleteRestaurant(item)}

@@ -158,6 +158,7 @@ const FeedCard: FC<any> = ({
       parsedData?.blocks[0]?.text.length > 20
         ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
         : parsedData?.blocks[0]?.text;
+    console.log(text);
 
     const newData = {
       text: text,
@@ -174,6 +175,10 @@ const FeedCard: FC<any> = ({
   useEffect(() => {
     thisFeedRefetch();
   }, [isModalVisible]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>

@@ -1,30 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface BasketState {
+interface BasketParkState {
   items: any[];
   total: number;
   isClicked: boolean;
   item: Object;
+  selectedItemId: string;
 }
 
-const initialState: BasketState = {
+const initialState: BasketParkState = {
   items: [],
   total: 0,
   isClicked: false,
   item: {},
+  selectedItemId: "",
 };
 
 const basketParkSlice = createSlice({
   name: "basketPark",
   initialState,
   reducers: {
-    setIsClicked: (state, action: PayloadAction<BasketState["isClicked"]>) => {
+    setIsClicked: (
+      state,
+      action: PayloadAction<BasketParkState["isClicked"]>
+    ) => {
       if (action?.payload !== null) {
         state.isClicked = action.payload;
       }
     },
-    setThisItem: (state, action: PayloadAction<BasketState["item"]>) => {
+    setThisItem: (state, action: PayloadAction<BasketParkState["item"]>) => {
       if (action?.payload !== null) {
         state.isClicked = true;
         Object.assign(state.item, action?.payload);
@@ -42,9 +47,26 @@ const basketParkSlice = createSlice({
       state.item = {};
       state.isClicked = false;
     },
+    setSelectedItemId: (
+      state,
+      action: PayloadAction<BasketParkState["selectedItemId"]>
+    ) => {
+      if (action?.payload !== null) {
+        state.selectedItemId = action.payload;
+      }
+    },
+    resetSelectedItemId: (state) => {
+      state.selectedItemId = "";
+    },
   },
 });
 
-export const { setIsClicked, setThisItem, addThisItem, resetItem } =
-  basketParkSlice.actions;
+export const {
+  setIsClicked,
+  setThisItem,
+  addThisItem,
+  resetItem,
+  setSelectedItemId,
+  resetSelectedItemId,
+} = basketParkSlice.actions;
 export default basketParkSlice.reducer;
