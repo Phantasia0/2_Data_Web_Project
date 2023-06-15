@@ -1,18 +1,11 @@
 // @ts-nocheck
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useGetFeedQuery } from "../../services/socialApi";
 import { convertFromHTML, ContentState, convertToRaw } from "draft-js";
-import MUIRichTextEditor from "mui-rte";
-import { Box, Button, Snackbar } from "@mui/material";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import { theme } from "../../theme/theme";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, Snackbar } from "@mui/material";
+import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
-import { useUpdateFeedMutation } from "../../services/feedApi";
-import { updateThisFeed } from "../../features/SocialReducer";
-import { Comment } from "@mui/icons-material";
-import CommentEditor from "./CommentEditor";
 import CommentList from "./CommentList";
 import FeedCard from "./FeedCard";
 import LoadingImage from "../common/Loading";
@@ -82,12 +75,6 @@ const FeedDetail = () => {
 
   return (
     <Box
-      // sx={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   alignItems: "center",
-      //   gap: "2rem",
-      // }}
       sx={{
         width: "100%",
         display: "flex",
@@ -106,7 +93,6 @@ const FeedDetail = () => {
           setSnackbarColor={setSnackbarColor}
         />
         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {/*<CommentEditor />*/}
           <CommentList
             setSnackbarOpen={setSnackbarOpen}
             setSnackbarMessage={setSnackbarMessage}

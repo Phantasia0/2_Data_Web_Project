@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Modal, TextField, Box, Typography } from "@mui/material";
-import { useInput } from "../../hooks/useInput";
 import { useSelector } from "react-redux";
 import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
 import {
@@ -11,7 +10,6 @@ import { validateName } from "../../utils/validate";
 import { useDispatch } from "react-redux";
 import { setModalVisible } from "../../features/ProfileReducer";
 import { RootState } from "../../features/configureStore";
-import { useGetCurrentUserQuery } from "../../services/authApiWrapper";
 
 const ProfileEditor = ({ setSnackbarOpen, setSnackbarMessage }: any) => {
   const user = useSelector(selectCurrentUser);

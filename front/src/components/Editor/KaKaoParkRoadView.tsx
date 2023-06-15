@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { MapMarker, Map, Roadview, RoadviewMarker } from "react-kakao-maps-sdk";
+import { Roadview, RoadviewMarker } from "react-kakao-maps-sdk";
 import { Park } from "../../models/park.model";
 
 interface KaKaoParkRoadViewProps {

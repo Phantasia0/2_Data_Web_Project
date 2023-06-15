@@ -1,7 +1,6 @@
-import { Home, Search, ArrowDropDown, RestartAlt } from "@mui/icons-material";
+import { Search, ArrowDropDown, RestartAlt } from "@mui/icons-material";
 import {
   Box,
-  Collapse,
   List,
   ListItem,
   ListItemButton,
@@ -146,12 +145,8 @@ const Sidebar = () => {
       p={2}
       sx={{
         display: {
-          // xs: "none",
-          // sm: "block",
           width: "100%",
-          // "@media (max-width: 1080px)": {
-          //   display: "none",
-          // },
+
           display: "flex",
           justifyContent: "center",
         },
@@ -169,9 +164,6 @@ const Sidebar = () => {
           sx={{
             width: "80%",
             maxWidth: "350px",
-            // "@media (max-width: 768px)": {
-            //   display: "none",
-            // },
             marginLeft: "1.5rem",
             marginTop: "1rem",
           }}

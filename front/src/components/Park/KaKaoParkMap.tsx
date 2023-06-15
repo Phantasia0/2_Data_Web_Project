@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
-import { MapMarker, useMap, Map, MarkerClusterer } from "react-kakao-maps-sdk";
+import { MapMarker, Map, MarkerClusterer } from "react-kakao-maps-sdk";
 import { Box, useTheme } from "@mui/material";
 
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
-import { updateData } from "../../features/ParkReducer";
 import {
   useGetParksDataQuery,
   useGetParksFilteredDataQuery,
@@ -14,7 +13,6 @@ import { setThisItem } from "../../features/BasketParkReducer";
 const KaKaoParkMap = () => {
   const theme = useTheme();
   const mapRef = useRef<any>();
-  const [selectedMarker, setSeleteMarker] = useState<any>();
   const dispatch = useDispatch();
 
   const { region, pageNumber, filtered, pageFilteredNumber } = useSelector(
@@ -74,10 +72,7 @@ const KaKaoParkMap = () => {
 
   const onClusterclick = (_target: any, cluster: any) => {
     const map = mapRef.current;
-    // 현재 지도 레벨에서 1레벨 확대한 레벨
     const level = map.getLevel() - 2;
-
-    // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
     map.setLevel(level, { anchor: cluster.getCenter() });
   };
 
@@ -85,10 +80,7 @@ const KaKaoParkMap = () => {
     return null;
   }
 
-  const EventMarkerContainer = ({ position, onClick, isClicked }: any) => {
-    if (isClicked) {
-    }
-
+  const EventMarkerContainer = ({ position, onClick }: any) => {
     return (
       <MapMarker
         position={position}
@@ -124,7 +116,6 @@ const KaKaoParkMap = () => {
           onClick={() => {
             dispatch(setThisItem(item));
           }}
-          isClicked={selectedMarker === index}
         />
       ));
     } else {
@@ -140,7 +131,6 @@ const KaKaoParkMap = () => {
           onClick={() => {
             dispatch(setThisItem(item));
           }}
-          isClicked={selectedMarker === index}
         />
       ));
     }
@@ -165,7 +155,7 @@ const KaKaoParkMap = () => {
 
   return (
     <Box sx={responsiveStyle}>
-      <Map // 지도를 표시할 Container
+      <Map
         center={{
           lat: calCenter().centerLat,
           lng: calCenter().centerLng,
@@ -177,7 +167,7 @@ const KaKaoParkMap = () => {
           marginTop: "1.5vw",
           marginLeft: "1vw",
         }}
-        level={13} // 지도의 확대 레벨
+        level={13}
         ref={mapRef}
         isPanto={true}
       >

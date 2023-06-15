@@ -1,33 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  Typography,
-  Box,
-  Grid,
-  Switch,
-  FormControlLabel,
-  CheckboxClasses,
-} from "@mui/material";
+import { Typography, Box, Grid, Switch, FormControlLabel } from "@mui/material";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import LabelButton from "./LabelButton";
 import ActivitySlick from "./ActivitySlick";
 import { useGetActivitysDataQuery } from "../../services/activityApi";
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
-import {
-  filterBySelected,
-  removeSelected,
-  updateAllData,
-  updateData,
-} from "../../features/ActivityReducer";
-import { Simulate } from "react-dom/test-utils";
-import Slider from "react-slick";
+import { updateAllData, updateData } from "../../features/ActivityReducer";
 import { fontdesign } from "../../theme/fontdesign";
 import LoadingImage from "../common/Loading";
 
 const categoryList = ["교통", "전기", "냉/난방", "자원"];
 
 const Activity = () => {
-  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState<Boolean>(false);
 
@@ -123,8 +108,6 @@ const Activity = () => {
               </Typography>
             }
           />
-          {/* </Box> */}
-          {/* <Box sx={{ marginTop: "0vw", marginLeft: "2vw" }}> */}
           <FormControlLabel
             control={
               <Switch

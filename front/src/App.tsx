@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ThemeProvider, Box } from "@mui/material";
 import { theme } from "./theme/theme";
 import Navbar from "./components/common/Navbar";
-import Footer from "./components/common/Footer";
 import Home from "./components/common/Home";
 import AboutGreenLife from "./components/About/AboutGreenLife";
 import AboutGreenService from "./components/About/AboutGreenService";
@@ -18,7 +17,6 @@ import Profile from "./components/Profile/Profile";
 import Community from "./components/Community/Community";
 import FeedEditor from "./components/Editor/FeedEditor";
 import FeedDetail from "./components/Editor/FeedDetail";
-import ProfileEditor from "./components/Profile/ProfileEdittor";
 
 const Layout = () => {
   return (
@@ -27,7 +25,6 @@ const Layout = () => {
       <div className="contents-container">
         <Outlet />
       </div>
-      {/*<Footer />*/}
     </div>
   );
 };

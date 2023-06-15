@@ -1,10 +1,4 @@
-import {
-  BaseQueryApi,
-  createApi,
-  FetchArgs,
-  fetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
-import { setCredentials, logOut } from "../features/AuthReducer";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `http://${window.location.hostname}:5001/`,

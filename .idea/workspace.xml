@@ -6,9 +6,62 @@
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/common/styles/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/common/styles/clusterPositions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/common/styles/restaurant.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivityCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/MarkderModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/MarkderModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/MarkderModalPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/MarkderModalPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Community/LabelCommunity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/LabelCommunity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/KaKaoParkRoadView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/KaKaoParkRoadView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/Rightbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/Rightbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/KaKaoParkMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/Park.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/Park.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/ParkDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/ParkItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/ParkItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/RightbarPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Park/SidebarPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Park/SidebarPark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/ProfileEdittor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/ProfileEdittor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/RankItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/RankItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantVeganItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Rightbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Rightbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RightbarVegan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/RestaurantReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/RestaurantReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/User/LoginModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/User/LoginModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/User/RegisterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/User/RegisterModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/User/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/User/User.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/BasketReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/BasketReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/ParkReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ParkReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/activityApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/activityApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/authApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/socialApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/socialApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/theme/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/theme/theme.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

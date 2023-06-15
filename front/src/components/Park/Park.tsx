@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import KaKaoParkMap from "./KaKaoParkMap";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import SidebarPark from "./SidebarPark";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import RightbarPark from "./RightbarPark";

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { SKIPCOUNT } from "../utils/validate";
 import { RootState } from "./configureStore";
 
 interface BasketState {

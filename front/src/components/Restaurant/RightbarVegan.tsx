@@ -1,12 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Box, List, Typography, Button, Stack } from "@mui/material";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-
 import { useGetRestaurantsDataQuery } from "../../services/restaurantsApi";
 import { useGetRestaurantsFilteredDataQuery } from "../../services/restaurantsApi";
 import RestaurantVeganItem from "./RestaurantVeganItem";
 import { RootState } from "../../features/configureStore";
-
 import { goFilteredPage, goPage } from "../../features/RestaurantReducer";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
@@ -87,10 +85,6 @@ const RightbarVegan = () => {
       flex={2}
       p={2}
       sx={{
-        // display: {
-        //   sm: "block",
-        //   width: "100%",
-        // },
         display: "flex",
         justifyContent: "center",
       }}
@@ -146,7 +140,7 @@ const RightbarVegan = () => {
                 Prev
               </Button>
               <Button
-                disabled={pageNumber === Math.ceil(data.total / 5)} // 총 페이지 수에 맞게 수정
+                disabled={pageNumber === Math.ceil(data.total / 5)}
                 onClick={handleNextPage}
                 endIcon={<ChevronRight />}
               >
@@ -172,7 +166,7 @@ const RightbarVegan = () => {
                 disabled={
                   pageFilteredNumber ===
                   Math.ceil((filteredData?.total as number) / 5)
-                } // 총 페이지 수에 맞게 수정
+                }
                 onClick={handleFilterNextPage}
                 endIcon={<ChevronRight />}
               >

@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import PhoneIcon from "@mui/icons-material/Phone";
 import {
   Avatar,
   Divider,
@@ -25,13 +24,12 @@ interface RestaurantVeganItemProps {
 const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ resData }) => {
   const dispatch = useDispatch();
 
-  const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
-    useSelector(({ basket }: RootState) => ({
-      // @ts-ignore
-      isClicked: basket.isClicked,
+  const { basketItem }: { basketItem: any } = useSelector(
+    ({ basket }: RootState) => ({
       // @ts-ignore
       basketItem: basket.item,
-    }));
+    })
+  );
 
   const boxStyle = {
     backgroundColor:
@@ -53,7 +51,6 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ resData }) => {
           data: basketItem,
         })
       );
-      // refetch();
     }
   };
 

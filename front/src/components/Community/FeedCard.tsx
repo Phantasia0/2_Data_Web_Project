@@ -3,19 +3,16 @@ import {
   Favorite,
   FavoriteBorder,
   MoreVert,
-  Share,
   Comment,
 } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
   Checkbox,
-  Grid,
   IconButton,
   Link,
   Menu,
@@ -25,7 +22,7 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
+import { selectCurrentUser } from "../../features/AuthReducer";
 import { useDeleteFeedMutation } from "../../services/feedApi";
 import { useDispatch } from "react-redux";
 import { deleteThisFeed } from "../../features/SocialReducer";
@@ -141,8 +138,6 @@ const FeedCard: FC<any> = ({
   const analyzingData = (data: any) => {
     const parsedData = JSON.parse(data?.content);
     let url = null;
-    // console.log(parsedData);
-
     if (Object.keys(parsedData.entityMap).length > 0) {
       const entityKeys = Object.keys(parsedData.entityMap);
       const imageEntities = entityKeys
@@ -167,7 +162,6 @@ const FeedCard: FC<any> = ({
       parsedData?.blocks[0]?.text.length > 20
         ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
         : parsedData?.blocks[0]?.text;
-    console.log(text);
 
     const newData = {
       text: text,
@@ -190,97 +184,93 @@ const FeedCard: FC<any> = ({
   }
 
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
-      <Card
-        sx={{
-          margin: 5,
-          border: "1px solid",
-          borderColor: "lightgray",
-          height: "auto",
-        }}
-      >
-        <CardHeader
-          title={thisFeedData?.user?.nickname}
-          avatar={
-            <Avatar
-              sx={{ width: 50, height: 50 }}
-              src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
-            />
-          }
-          action={
-            <IconButton
-              onClick={handleMenuOpen}
-              disabled={thisFeedData?.user?._id !== (user?._id as string)}
-            >
-              {thisFeedData?.user?._id === (user?._id as string) && (
-                <MoreVert />
-              )}
-            </IconButton>
-          }
-          subheader={data.updatedAt.slice(0, 10)}
-        />
-        <Menu
-          anchorEl={menuAnchorEl}
-          open={menuOpen}
-          onClose={handleMenuClose}
-          anchorOrigin={{ vertical: "top", horizontal: "left" }}
-          transformOrigin={{ vertical: "top", horizontal: "left" }}
-        >
-          <MenuItem onClick={handleEdit}>수정</MenuItem>
-          {!keyword && <MenuItem onClick={handleDelete}>삭제</MenuItem>}
-        </Menu>
-        <Link
-          onClick={() => navigate(`/community/feed/${data._id}`)}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardMedia
-            component="img"
-            image={analyzedData?.image}
-            alt="image"
-            sx={{
-              width: "100%",
-              height: 0,
-              paddingTop: "calc(250/ 400 * 100%)",
-              background: `url('${analyzedData?.image}') center center / cover no-repeat`,
-            }}
+    <Card
+      sx={{
+        margin: 5,
+        border: "1px solid",
+        borderColor: "lightgray",
+        height: "auto",
+      }}
+    >
+      <CardHeader
+        title={thisFeedData?.user?.nickname}
+        avatar={
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+            src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
           />
-        </Link>
-        <Typography variant="body2" color="text.secondary">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
-            }}
+        }
+        action={
+          <IconButton
+            onClick={handleMenuOpen}
+            disabled={thisFeedData?.user?._id !== (user?._id as string)}
           >
-            {analyzedData?.text}
-          </Box>
-        </Typography>
-        <CardContent
+            {thisFeedData?.user?._id === (user?._id as string) && <MoreVert />}
+          </IconButton>
+        }
+        subheader={data.updatedAt.slice(0, 10)}
+      />
+      <Menu
+        anchorEl={menuAnchorEl}
+        open={menuOpen}
+        onClose={handleMenuClose}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
+      >
+        <MenuItem onClick={handleEdit}>수정</MenuItem>
+        {!keyword && <MenuItem onClick={handleDelete}>삭제</MenuItem>}
+      </Menu>
+      <Link
+        onClick={() => navigate(`/community/feed/${data._id}`)}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        <CardMedia
+          component="img"
+          image={analyzedData?.image}
+          alt="image"
           sx={{
-            height: "1px",
+            width: "100%",
+            height: 0,
+            paddingTop: "calc(300/400 * 100%)",
+            background: `url('${analyzedData?.image}') center center / cover no-repeat`,
+          }}
+        />
+      </Link>
+      <Typography variant="body2" color="text.secondary">
+        <Box
+          sx={{
             display: "flex",
+            justifyContent: "center",
+            marginTop: "1rem",
           }}
         >
-          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
-            <Checkbox
-              icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-              checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
-              checked={isLiked}
-              disabled={!user}
-            />
-          </IconButton>
-          <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>
-            {thisFeedData?.likes?.filter((item) => item.value === 1).length}
-          </Box>
+          {analyzedData?.text}
+        </Box>
+      </Typography>
+      <CardContent
+        sx={{
+          height: "1px",
+          display: "flex",
+        }}
+      >
+        <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
+          <Checkbox
+            icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+            checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
+            checked={isLiked}
+            disabled={!user}
+          />
+        </IconButton>
+        <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>
+          {thisFeedData?.likes?.filter((item) => item.value === 1).length}
+        </Box>
 
-          <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
-            <Comment sx={{ fontSize: "1rem" }} />
-          </IconButton>
-          <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
-        </CardContent>
-      </Card>
-    </Grid>
+        <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
+          <Comment sx={{ fontSize: "1rem" }} />
+        </IconButton>
+        <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
+      </CardContent>
+    </Card>
   );
 };
 

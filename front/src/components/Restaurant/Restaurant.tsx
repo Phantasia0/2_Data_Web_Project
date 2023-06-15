@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import KaKaoMap from "./KaKaoMap";
 import Sidebar from "./Sidebar";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import Rightbar from "./Rightbar";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import RightbarVegan from "./RightbarVegan";

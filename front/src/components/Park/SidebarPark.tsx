@@ -1,4 +1,4 @@
-import { Home, Search, ArrowDropDown, RestartAlt } from "@mui/icons-material";
+import { ArrowDropDown, RestartAlt } from "@mui/icons-material";
 import {
   Box,
   List,
@@ -76,9 +76,7 @@ const SidebarPark = () => {
         justifyContent: "center",
       }}
     >
-      <Box
-      // position="fixed"
-      >
+      <Box>
         <List>
           <ListItem disablePadding>
             <ListItemButton onClick={handleRegionOpenClick}>

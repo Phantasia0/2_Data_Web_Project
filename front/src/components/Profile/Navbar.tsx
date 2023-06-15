@@ -1,8 +1,6 @@
-import { Notifications } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
-  Badge,
   Box,
   InputBase,
   styled,
@@ -12,7 +10,7 @@ import {
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { debounce } from "lodash";
-import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
+import { selectCurrentUser } from "../../features/AuthReducer";
 import { searchKeyword } from "../../features/ProfileReducer";
 import { RootState } from "../../features/configureStore";
 import { useGetCurrentUserQuery } from "../../services/authApiWrapper";

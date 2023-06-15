@@ -10,11 +10,7 @@ import {
   selectCurrentUser,
   setCredentials,
 } from "../../features/AuthReducer";
-import AppleIcon from "@mui/icons-material/Apple";
-import {
-  useGetCurrentUserQuery,
-  authApiWrapper,
-} from "../../services/authApiWrapper";
+import { useGetCurrentUserQuery } from "../../services/authApiWrapper";
 
 import PrevButton from "./PrevButton";
 
@@ -144,7 +140,7 @@ const Navbar = () => {
             fontFamily: "Black Han Sans, sans-serif",
             display: "flex",
             alignItems: "center",
-            cursor:"pointer",
+            cursor: "pointer",
           }}
         >
           <img
@@ -309,7 +305,7 @@ const Navbar = () => {
             onMouseEnter={handleProfileMenuOpen}
             onMouseLeave={handleProfileMenuClose}
             sx={{
-              fontSize: "1.2rem", 
+              fontSize: "1.2rem",
               color: currentPath[1] === "profile" ? "primary.main" : undefined,
             }}
           >

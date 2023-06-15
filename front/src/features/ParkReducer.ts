@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RestaurantState } from "./RestaurantReducer";
 
 export interface ParkState {
   data?: any;

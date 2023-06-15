@@ -77,7 +77,7 @@ export const kakaoApi = createApi({
   }),
   endpoints: (builder) => ({
     getDetailData: builder.query<any, string>({
-      query: (id) => `/kakao/${id}`, // 백엔드 서버로의 요청 경로로 변경
+      query: (id) => `/kakao/${id}`,
     }),
   }),
 });

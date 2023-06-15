@@ -1,12 +1,9 @@
 import React from "react";
 import {
-  Box,
   Typography,
   Card,
   CardHeader,
   CardContent,
-  CardMedia,
-  Avatar,
   Grid,
   IconButton,
   Checkbox,
@@ -55,7 +52,6 @@ const ParkDetail = () => {
                     fontWeight: "blod",
                     marginLeft: "10px",
                   }}
-                  // onClick={handleMyRestaurant}
                 >
                   <Checkbox
                     icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}

@@ -1,19 +1,16 @@
 import React from "react";
 import {
-  Box,
   Typography,
   Card,
   CardHeader,
   CardContent,
   CardMedia,
-  Avatar,
   Grid,
   IconButton,
   Checkbox,
 } from "@mui/material";
 import { useGetRestaurantDetailDataQuery } from "../../services/restaurantsApi";
 import { useParams } from "react-router-dom";
-import { fontdesign } from "../../theme/fontdesign";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import LoadingImage from "../common/Loading";
 
@@ -26,7 +23,6 @@ const RestaurantVeganDetail = () => {
     return <LoadingImage />;
   }
 
-  console.log(data);
   return (
     <Card
       sx={{
@@ -74,7 +70,6 @@ const RestaurantVeganDetail = () => {
                     fontWeight: "blod",
                     marginLeft: "10px",
                   }}
-                  // onClick={handleMyRestaurant}
                 >
                   <Checkbox
                     icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}

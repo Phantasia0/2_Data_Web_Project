@@ -23,6 +23,7 @@ const RightbarPark = () => {
     }),
     shallowEqual
   );
+  const dispatch = useDispatch();
 
   const { data, error, isLoading, isSuccess } = useGetParksDataQuery(
     pageNumber as number
@@ -56,8 +57,6 @@ const RightbarPark = () => {
     }
   };
 
-  const dispatch = useDispatch();
-
   const handlePrevPage = () => {
     dispatch(goPage({ pageNumber: (pageNumber as number) - 1 }));
   };
@@ -87,10 +86,6 @@ const RightbarPark = () => {
       flex={2}
       p={2}
       sx={{
-        // display: {
-        //   xs: "none",
-        //   sm: "block",
-        // },
         display: "flex",
         justifyContent: "center",
       }}
@@ -98,7 +93,6 @@ const RightbarPark = () => {
       {isLoading && <div>...Loading</div>}
       {isSuccess && (
         <Box
-          // position="fixed"
           sx={{
             width: "100%",
             maxWidth: 360,
@@ -146,7 +140,7 @@ const RightbarPark = () => {
                 Prev
               </Button>
               <Button
-                disabled={pageNumber === Math.ceil(data.total / 5)} // 총 페이지 수에 맞게 수정
+                disabled={pageNumber === Math.ceil(data.total / 5)}
                 onClick={handleNextPage}
                 endIcon={<ChevronRight />}
               >
@@ -172,7 +166,7 @@ const RightbarPark = () => {
                 disabled={
                   pageFilteredNumber ===
                   Math.ceil((filteredData?.total as number) / 5)
-                } // 총 페이지 수에 맞게 수정
+                }
                 onClick={handleFilterNextPage}
                 endIcon={<ChevronRight />}
               >
