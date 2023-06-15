@@ -25,7 +25,7 @@ GreenLife
 | <img src="./front/src/assets/images/co2perfood.png" width="300" height="200"> | 온실가스 배출에 가장 많은 영향을 끼치는 음식이 육류라는 사실을 알 수 있습니다. |
 | <img src="./front/src/assets/images/meat_consume.png" width="300" height="200"> | 육류 소비량이 지속적으로 증가하는 추세이며 환경 오염에 영향을 미칠 것이라는 예상을 할 수 있습니다. |
 
-- 기대효과
+- 기대효과   
 <img src="./front/src/assets/images/co2perperson.png" width="500" height="300">   
 식단에 따라 탄소 배출량이 다른 모습을 확인 할 수 있습니다. 육류를 소비하지 않는 사람들은 고기를 좋아하는 사람들에 비해 탄소 배출량을 1.4t CO2를 줄일 수 있습니다. 엄격한 채식주의자는 고기를 좋아하는 사람들에 비해 탄소 배출을 절반 정도 줄일 수 있습니다. 이러한 결과보면 GREEN LIFE에서 제공하는 서비스를 활용해 육류의 소비를 줄이고 온실가스 저감을 위한 활동들을 한다면 개개인의 노력으로도 탄소 배출량을 감소 시키는데 도움이 될 수 있다는 것을 보여줍니다.
 
