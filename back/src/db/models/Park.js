@@ -133,7 +133,9 @@ class Park {
       );
       park = await ParkModel.findOne(filter);
     }
-    return park.contacts[0];
+    return park.contacts.filter(
+      (contact) => contact.user.toString() === userId
+    )[0];
   }
 }
 

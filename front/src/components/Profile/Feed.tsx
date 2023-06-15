@@ -84,8 +84,8 @@ const Feed = () => {
   if (feedFetching) {
     return null;
   }
-  console.log("feedData", feedData?.post);
-  console.log("searchData", searchData?.post);
+  // console.log("feedData", feedData?.post);
+  // console.log("searchData", searchData?.post);
   return (
     <Box flex={4} p={{ xs: 0, md: 2 }}>
       {!filtered ? (

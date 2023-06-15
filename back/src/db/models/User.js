@@ -1,4 +1,5 @@
 import { UserModel } from "../schemas/user";
+import { PostModel } from "../schemas/post";
 import { ParkModel } from "../schemas/park";
 import { RestaurantModel } from "../schemas/restaurant";
 import mongoose from "mongoose";
@@ -22,7 +23,74 @@ class User {
 
     if (Object.keys(filter).length === 0)
       throw new Error("정보를 불러오지 못했습니다.");
-    return await UserModel.findOne(filter);
+
+    const user = await UserModel.findOne(filter);
+
+    if (_id) {
+      // return user;
+
+      const post = await PostModel.aggregate([
+        {
+          $match: {
+            user: mongoose.Types.ObjectId(_id),
+          },
+        },
+        {
+          $project: {
+            likeCount: {
+              $size: {
+                $filter: {
+                  input: { $ifNull: ["$likes", []] }, //필터링 할 배열소스
+                  cond: { $eq: ["$$this.value", 1] }, // 지정 표현식 각 요소에 대해 평가하고 선택
+                },
+              },
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            postCount: { $sum: 1 }, // post의 총 갯수
+            likeCount: { $sum: "$likeCount" }, // likeCount의 총합
+          },
+        },
+      ]);
+
+      const comment = await PostModel.aggregate([
+        {
+          $match: {
+            "comments.user": mongoose.Types.ObjectId(_id),
+          },
+        },
+        {
+          $project: {
+            commentCount: {
+              $size: {
+                $filter: {
+                  input: "$comments",
+                  as: "comment",
+                  cond: {
+                    $eq: ["$$comment.user", mongoose.Types.ObjectId(_id)],
+                  },
+                },
+              },
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            count: { $sum: "$commentCount" },
+          },
+        },
+      ]);
+
+      user.set("post", post[0]?.postCount || 0, { strict: false });
+      user.set("comment", comment[0]?.count || 0, { strict: false });
+      user.set("follow", post[0]?.likeCount || 0, { strict: false });
+    }
+
+    return user;
   }
 
   static async update({ _id, key, value }) {

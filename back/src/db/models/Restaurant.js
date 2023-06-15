@@ -146,7 +146,9 @@ class Restaurant {
       );
       restaurant = await RestaurantModel.findOne(filter);
     }
-    return restaurant.contacts[0];
+    return restaurant.contacts.filter(
+      (contact) => contact.user.toString() === userId
+    )[0];
   }
 }
 
