@@ -52,6 +52,11 @@ const FeedCard: FC<any> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
+  const { keyword } = useSelector(
+    ({ profile }): RootState => ({
+      keyword: profile.keyword,
+    })
+  );
 
   const dispatch = useDispatch();
   const [
@@ -100,6 +105,9 @@ const FeedCard: FC<any> = ({
   };
 
   const handleDelete = async () => {
+    if (keyword) {
+      return;
+    }
     await deleteFeed({
       _id: data?._id,
     });
@@ -219,7 +227,7 @@ const FeedCard: FC<any> = ({
           transformOrigin={{ vertical: "top", horizontal: "left" }}
         >
           <MenuItem onClick={handleEdit}>수정</MenuItem>
-          <MenuItem onClick={handleDelete}>삭제</MenuItem>
+          {!keyword && <MenuItem onClick={handleDelete}>삭제</MenuItem>}
         </Menu>
         <Link
           onClick={() => navigate(`/community/feed/${data._id}`)}
