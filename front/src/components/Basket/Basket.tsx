@@ -120,6 +120,7 @@ const Basket = () => {
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: "transparent",
             },
+            padding: "0.5rem",
           }}
         >
           <Typography

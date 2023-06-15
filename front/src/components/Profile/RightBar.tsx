@@ -51,7 +51,7 @@ const Rightbar = () => {
 
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box position="fixed" width={300}>
+      <Box width={300}>
         <Typography sx={fontdesign.xsText}>Our Service User</Typography>
         <AvatarGroup max={7}>
           {data &&

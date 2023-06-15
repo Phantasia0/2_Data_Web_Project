@@ -140,7 +140,7 @@ const FeedEditor = () => {
         gap: "1rem",
       }}
     >
-      <Box position="fixed" marginTop={4}>
+      <Box position="fixed">
         <Box
           sx={{
             marginLeft: "1rem",

@@ -153,9 +153,9 @@ class Post {
       },
       { $unwind: "$user" },
       { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: POST_LIMIT },
-      { $sort: { createdAt: -1 } },
     ]);
 
     const total = (await PostModel.find({}).populate("user")).filter((post) =>
