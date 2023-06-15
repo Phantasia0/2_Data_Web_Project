@@ -144,6 +144,7 @@ const Navbar = () => {
             fontFamily: "Black Han Sans, sans-serif",
             display: "flex",
             alignItems: "center",
+            cursor:"pointer",
           }}
         >
           <img

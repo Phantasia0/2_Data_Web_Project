@@ -87,7 +87,7 @@ const Feed = () => {
   // console.log("feedData", feedData?.post);
   // console.log("searchData", searchData?.post);
   return (
-    <Box flex={4} p={{ xs: 0, md: 2 }}>
+    <Box flex={4} p={{ xs: 0,sm:4 ,md: 4, lg:8 }}>
       {!filtered ? (
         feedData?.post.length ? (
           feedData?.post?.map((item: any) => (

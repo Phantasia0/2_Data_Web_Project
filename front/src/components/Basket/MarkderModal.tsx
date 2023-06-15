@@ -77,7 +77,7 @@ const MarkerModal = ({ refetch, basketData }: any) => {
           basketData?.restaurant?.some(
             (item: any) => item._id === basketItem._id
           )
-            ? "삭제"
+            ? "찜 취소"
             : "찜하기"}
         </Button>
       </DialogActions>

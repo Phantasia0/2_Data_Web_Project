@@ -64,7 +64,7 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
         <Button onClick={handlePark} color="primary" variant="contained">
           {basketData &&
           basketData?.park?.some((item: any) => item._id === basketItem._id)
-            ? "삭제"
+            ? "찜 취소"
             : "찜하기"}
         </Button>
       </DialogActions>

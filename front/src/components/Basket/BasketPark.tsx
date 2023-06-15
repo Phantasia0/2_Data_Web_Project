@@ -47,7 +47,7 @@ const BasketPark = () => {
           {myParkList?.length === 0 ? (
             <Typography
               variant="body1"
-              sx={{ fontSize: { xs: "1.2vw" } }}
+              sx={{ fontSize: { xs: "1.2vw",wordBreak:"keep-all"} }}
               component="span"
               color="secondary.main"
               fontWeight="bold"
@@ -61,11 +61,11 @@ const BasketPark = () => {
                   key={item._id}
                   style={{
                     padding: "8px 0",
-                    borderBottom: "1px solid #ccc",
                   }}
                 >
                   <ListItemText
                     primary={item.name}
+                    sx={{wordBreak:"keep-all"}}
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
@@ -75,7 +75,7 @@ const BasketPark = () => {
                     onClick={() => handleDeletePark(item)}
                     sx={{ color: "orange" }}
                   >
-                    취소
+                    찜 취소
                   </Button>
                 </ListItem>
               ))}
@@ -93,6 +93,7 @@ const BasketPark = () => {
         borderRadius: "1rem",
         marginBottom: "1rem",
         backgroundColor: "#f5f5f5",
+        maxWidth:'250px',
         maxHeight: "400px",
         overflow: "auto",
         "&::-webkit-scrollbar": {
@@ -104,6 +105,7 @@ const BasketPark = () => {
         "&::-webkit-scrollbar-thumb": {
           backgroundColor: "transparent",
         },
+        padding:"0.5rem",
       }}
     >
       <MarkderModalPark refetch={refetch} basketData={data} />

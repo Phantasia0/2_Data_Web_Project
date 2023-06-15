@@ -62,11 +62,11 @@ const Basket = () => {
                   key={item._id}
                   style={{
                     padding: "8px 0",
-                    borderBottom: "1px solid #ccc",
                   }}
                 >
                   <ListItemText
                     primary={item.name}
+                    sx={{wordBreak:"keep-all"}}
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
@@ -76,7 +76,8 @@ const Basket = () => {
                     onClick={() => handleDeleteRestaurant(item)}
                     sx={{ color: "orange" }}
                   >
-                    취소
+                    찜 취소
+                    
                   </Button>
                 </ListItem>
               ))}
@@ -94,6 +95,7 @@ const Basket = () => {
         borderRadius: "1rem",
         marginBottom: "1rem",
         backgroundColor: "#f5f5f5",
+        maxWidth: "250px",
         maxHeight: "400px",
         overflow: "auto",
         "&::-webkit-scrollbar": {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import MUIRichTextEditor from "mui-rte";
 import { Box, Button, Snackbar, Typography } from "@mui/material";
 import { useAddFeedMutation } from "../../services/feedApi";
@@ -10,7 +10,8 @@ import { resetCurrentPage, addThisFeed } from "../../features/SocialReducer";
 import Basket from "../Basket/Basket";
 import BasketPark from "../Basket/BasketPark";
 import Rightbar2 from "./Rightbar2";
-import { resetSelectedItemId } from "../../features/BasketReducer";
+import * as Baskets from "../../features/BasketReducer";
+import * as BasketParks from "../../features/BasketParkReducer";
 
 const MyHashTagDecorator = (props: any) => {
   return (
@@ -79,6 +80,7 @@ const FeedEditor = () => {
     }
   };
 
+
   const handleClickPost = (e: any) => {
     // @ts-ignore
     rteRef?.current?.save();
@@ -100,8 +102,11 @@ const FeedEditor = () => {
 
   const handleClickCancelRightBar = () => {
     setShow(false);
-    dispatch(resetSelectedItemId());
+    dispatch(BasketParks.resetSelectedItemId());
+    dispatch(Baskets.resetSelectedItemId());
   };
+
+
 
   return (
     <Box
@@ -157,16 +162,19 @@ const FeedEditor = () => {
               ]}
             />
           </MuiThemeProvider>
-          <Box sx={{ marginLeft: "2rem" }}>
-            {show && <Rightbar2 Type={Type} />}
+          <Box>
+            <Box sx={{ marginLeft: "2rem" }}>
+              {show && <Rightbar2 Type={Type} />}
+            </Box>
+            <Box sx={{ marginTop: "2rem", position:"absolute", top:"0" }}>
+              {show && (
+                <Button onClick={handleClickCancelRightBar} variant="contained">
+                  닫기
+                </Button>
+              )}
+            </Box>
           </Box>
-          <Box sx={{ marginTop: "2rem" }}>
-            {show && (
-              <Button onClick={handleClickCancelRightBar} variant="contained">
-                닫기
-              </Button>
-            )}
-          </Box>
+          
         </Box>
         <Box sx={{ marginTop: "1rem" }}>
           <Button

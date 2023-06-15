@@ -26,6 +26,7 @@ import { RootState } from "../../features/configureStore";
 import { goPage, setModalVisible } from "../../features/ProfileReducer";
 import ProfileEditor from "./ProfileEdittor";
 import Basket from "../Basket/Basket";
+import BasketPark from "../Basket/BasketPark";
 
 const Sidebar = () => {
   const { pageNumber, total, isModalVisible } = useSelector(
@@ -125,8 +126,9 @@ const Sidebar = () => {
               Next
             </Button>
           </Stack>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{display:"flex", flexDirection:"column", gap:"1rem"}}>
             <Basket />
+            <BasketPark />
           </ListItem>
         </List>
       </Box>

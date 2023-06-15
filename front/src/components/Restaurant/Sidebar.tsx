@@ -154,7 +154,7 @@ const Sidebar = () => {
       <Box>
         <TextField
           variant="outlined"
-          placeholder="리뷰를 검색해봐"
+          placeholder="리뷰를 검색해보세요"
           fullWidth
           size="small"
           InputProps={{

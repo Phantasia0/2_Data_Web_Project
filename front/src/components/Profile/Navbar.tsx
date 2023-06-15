@@ -96,14 +96,14 @@ const Navbar = () => {
             // @ts-ignore
             src={`http://localhost:5001/profile/${data?.profile}`}
           />
-          <Typography variant="body1" sx={{ color: "white" }}>
+          <Typography variant="body1" sx={{ color: "white", fontWeight: "bold" }}>
             {data?.nickname}
           </Typography>
-          <Typography variant="body1" sx={{ color: "white" }}>
+          <Typography variant="body1" sx={{ color: "white", fontWeight: "bold"  }}>
             {data?.follow * 10 + data?.post * 2 + data?.comment + `점`}
           </Typography>
-          <Typography variant="body2" sx={{ color: "white" }}>
-            {`좋아요: ${data?.follow}  게시글:${data?.post} 댓글:${data?.comment}`}
+          <Typography variant="body2" sx={{ color: "white", fontWeight: "bold", whiteSpace: "pre" }}>
+            {`좋아요: ${data?.follow}     게시글: ${data?.post}     댓글: ${data?.comment}`}
           </Typography>
         </Icons>
       </StyledToolbar>
