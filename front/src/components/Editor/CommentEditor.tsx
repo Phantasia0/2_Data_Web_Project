@@ -83,7 +83,7 @@ const CommentEditor = ({
             rows={2.2}
             fullWidth
             sx={{
-              border: "solid orange",
+              border: "solid green",
               borderRadius: "4px",
               p: 1,
             }}
