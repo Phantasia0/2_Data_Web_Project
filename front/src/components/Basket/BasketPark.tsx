@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
-import MarkerModal from "./MarkderModal";
 import { useSelector } from "react-redux";
-import { RootState } from "../../features/configureStore";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
 import { usePutParkIntoBasketMutation } from "../../services/parksApi";

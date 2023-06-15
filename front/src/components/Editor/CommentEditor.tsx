@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import {
-  Box,
-  Grid,
-  FormControl,
-  InputBase,
-  Paper,
-  Typography,
-} from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+import { Grid, FormControl, InputBase, Typography } from "@mui/material";
 import { useAddCommentMutation } from "../../services/commentApi";
 import { useParams } from "react-router-dom";
 import { selectCurrentUser } from "../../features/AuthReducer";

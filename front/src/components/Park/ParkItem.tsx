@@ -1,14 +1,12 @@
 import React, { FC } from "react";
 
 import {
-  Avatar,
   Box,
   Checkbox,
   Divider,
   IconButton,
   Link,
   ListItem,
-  ListItemAvatar,
   ListItemText,
   Typography,
 } from "@mui/material";
@@ -21,13 +19,12 @@ interface ParkItemProps {
 }
 
 const ParkItem: FC<ParkItemProps> = ({ data }) => {
-  const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
-    useSelector(({ basketPark }: RootState) => ({
-      // @ts-ignore
-      isClicked: basketPark.isClicked,
+  const { basketItem }: { basketItem: any } = useSelector(
+    ({ basketPark }: RootState) => ({
       // @ts-ignore
       basketItem: basketPark.item,
-    }));
+    })
+  );
 
   const boxStyle = {
     backgroundColor: data?._id === basketItem?._id ? "#F3F3F3" : "transparent",

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from "react";
-import { Box, List, ListItem, Typography, styled } from "@mui/material";
+import { Box, ListItem, Typography, styled } from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
 import { searchKeyword } from "../../features/ProfileReducer";
 import { useDispatch } from "react-redux";

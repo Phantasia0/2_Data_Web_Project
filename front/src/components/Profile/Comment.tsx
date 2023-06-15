@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import {
-  Avatar,
   Divider,
   Link,
-  List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
   Typography,
 } from "@mui/material";
@@ -14,7 +10,6 @@ import { useGetFeedQuery } from "../../services/socialApi";
 import { useNavigate } from "react-router-dom";
 
 const Comment = ({ data }: any) => {
-  // data?._id << 포스트 아이디
   const [text, setText] = useState<any>("");
   const navigate = useNavigate();
 

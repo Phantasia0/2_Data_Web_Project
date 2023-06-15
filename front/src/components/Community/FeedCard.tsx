@@ -3,19 +3,16 @@ import {
   Favorite,
   FavoriteBorder,
   MoreVert,
-  Share,
   Comment,
 } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
   Checkbox,
-  Grid,
   IconButton,
   Link,
   Menu,
@@ -25,7 +22,7 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { changeUserInfo, selectCurrentUser } from "../../features/AuthReducer";
+import { selectCurrentUser } from "../../features/AuthReducer";
 import { useDeleteFeedMutation } from "../../services/feedApi";
 import { useDispatch } from "react-redux";
 import { deleteThisFeed } from "../../features/SocialReducer";
@@ -141,8 +138,6 @@ const FeedCard: FC<any> = ({
   const analyzingData = (data: any) => {
     const parsedData = JSON.parse(data?.content);
     let url = null;
-    // console.log(parsedData);
-
     if (Object.keys(parsedData.entityMap).length > 0) {
       const entityKeys = Object.keys(parsedData.entityMap);
       const imageEntities = entityKeys
@@ -167,7 +162,6 @@ const FeedCard: FC<any> = ({
       parsedData?.blocks[0]?.text.length > 20
         ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
         : parsedData?.blocks[0]?.text;
-    console.log(text);
 
     const newData = {
       text: text,
@@ -190,7 +184,6 @@ const FeedCard: FC<any> = ({
   }
 
   return (
-    // <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
     <Card
       sx={{
         margin: 5,
@@ -278,7 +271,6 @@ const FeedCard: FC<any> = ({
         <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
       </CardContent>
     </Card>
-    // </Grid>
   );
 };
 

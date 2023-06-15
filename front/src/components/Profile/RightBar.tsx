@@ -1,18 +1,6 @@
 // @ts-nocheck
 
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Divider,
-  ImageList,
-  ImageListItem,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Avatar, AvatarGroup, Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import CommentList from "./CommentList";
 import { useGetAllUserQuery } from "../../services/authApiWrapper";
@@ -20,7 +8,6 @@ import { makeStyles } from "@mui/styles";
 import { fontdesign } from "../../theme/fontdesign";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
-import { changeUserInfo } from "../../features/AuthReducer";
 import RankList from "./RankList";
 import LoadingImage from "../common/Loading";
 

@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, MarkerClusterer } from "react-kakao-maps-sdk";
-
-import "../../common/styles/all.css";
 import { Box, useTheme } from "@mui/material";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
@@ -38,8 +36,6 @@ const KeywordSearchMap = () => {
       keyword,
       (data: any, status: any, _pagination: any) => {
         if (status === kakao.maps.services.Status.OK) {
-          // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-          // LatLngBounds 객체에 좌표를 추가합니다
           const bounds = new kakao.maps.LatLngBounds();
           let markers = [];
 
@@ -63,7 +59,6 @@ const KeywordSearchMap = () => {
             })
           );
 
-          // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
           map.setBounds(bounds);
         }
       },
@@ -72,7 +67,7 @@ const KeywordSearchMap = () => {
   }, [map, keyword]);
 
   return (
-    <Map // 로드뷰를 표시할 Container
+    <Map
       center={{
         lat: 37.566826,
         lng: 126.9786567,
@@ -149,10 +144,7 @@ const TotalSearchMap = () => {
 
   const onClusterclick = (_target: any, cluster: any) => {
     const map = mapRef.current;
-    // 현재 지도 레벨에서 1레벨 확대한 레벨
     const level = map.getLevel() - 2;
-
-    // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
     map.setLevel(level, { anchor: cluster.getCenter() });
   };
 
@@ -206,7 +198,7 @@ const TotalSearchMap = () => {
   };
 
   return (
-    <Map // 지도를 표시할 Container
+    <Map
       center={{
         lat: calCenter().centerLat,
         lng: calCenter().centerLng,
@@ -216,7 +208,7 @@ const TotalSearchMap = () => {
         height: "1000px",
         borderRadius: "3rem",
       }}
-      level={13} // 지도의 확대 레벨
+      level={13}
       ref={mapRef}
       isPanto={true}
     >

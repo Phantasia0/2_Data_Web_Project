@@ -1,11 +1,9 @@
 import React from "react";
-import { Typography, Button, Link, Box } from "@mui/material";
+import { Typography, Link, Box } from "@mui/material";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { fontdesign } from "../../theme/fontdesign";
 
 const Home = () => {
-  const { width } = useWindowDimensions();
-
   return (
     <div
       className="home"
@@ -78,36 +76,6 @@ const Home = () => {
           >
             지구, 그리고 우리 모두를 위한 작은 실천
           </Typography>
-          {/* <div
-              style={{
-                position: "absolute",
-                top: "400%",
-                left: "50%",
-                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                backdropFilter: "blur(8px)",
-                borderRadius: "50px",
-                zIndex: 1,
-              }}
-            >
-              <Link
-                href="/front/src/components/Restaurant/Restaurant"
-                underline="none"
-                sx={{ color: "secondary.main" }}
-              >
-                <Button
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    borderRadius: "50px",
-                    color: "secondary.main",
-                    borderColor: "secondary.main",
-                    fontFamily: "Black Han Sans, sans-serif"
-                  }}
-                >
-                  Service
-                </Button>
-              </Link>
-            </div> */}
         </Box>
       </div>
       <div>

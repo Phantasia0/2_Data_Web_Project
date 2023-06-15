@@ -1,6 +1,5 @@
 import { Box, List, Typography } from "@mui/material";
 import React from "react";
-
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import RestaurantItem from "./RestaurantItem";

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";

@@ -5,19 +5,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
-import {
-  TextField,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Snackbar,
-  Box,
-  styled,
-  Link,
-  Typography,
-} from "@mui/material";
+import { Dialog, DialogContent, Snackbar, Box, styled } from "@mui/material";
 
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import LoginModal from "./LoginModal";

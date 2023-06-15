@@ -15,7 +15,7 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
         width: "100%",
         height: "300px",
         border: "1px solid primary.main",
-        borderRadius: "1rem",
+        boxShadow: "none",
       }}
     >
       <Typography
@@ -32,14 +32,6 @@ const ActivityCard: FC<ActivityCardProps> = ({ data }) => {
           whiteSpace: "nowrap",
           fontFamily: "NanumSquareExtraBold, sans-serif",
         }}
-        // sx={{
-        //   fontSize: {xs: "2vw"},
-        //   lineHeight: { xs: "2.2vw" },
-        //   color: "primary.main",
-        //   whiteSpace: "nowrap",
-        //   marginTop: "2vw",
-        //   fontFamily: "NanumSquareExtraBold, sans-serif"
-        // }},
       >
         <p style={{ textAlign: "center" }}>{name}</p>
       </Typography>

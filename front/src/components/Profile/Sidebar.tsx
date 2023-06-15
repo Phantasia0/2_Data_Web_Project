@@ -6,7 +6,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Home,
-  ModeNight,
 } from "@mui/icons-material";
 import {
   Box,
@@ -18,7 +17,6 @@ import {
   ListItemText,
   Snackbar,
   Stack,
-  Switch,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,16 +27,12 @@ import Basket from "../Basket/Basket";
 import BasketPark from "../Basket/BasketPark";
 
 const Sidebar = () => {
-  const { pageNumber, total, isModalVisible } = useSelector(
-    ({ profile }: RootState) => ({
-      pageNumber: profile.pageNumber,
-      total: profile.total,
-      isModalVisible: profile.isModalVisible,
-    })
-  );
+  const { pageNumber, total } = useSelector(({ profile }: RootState) => ({
+    pageNumber: profile.pageNumber,
+    total: profile.total,
+  }));
 
   const dispatch = useDispatch();
-  // const [isModalVisible, setIsModalVisible] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState<any>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<any>("");
   const showModal = () => {
@@ -126,7 +120,10 @@ const Sidebar = () => {
               Next
             </Button>
           </Stack>
-          <ListItem disablePadding sx={{display:"flex", flexDirection:"column", gap:"1rem"}}>
+          <ListItem
+            disablePadding
+            sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             <Basket />
             <BasketPark />
           </ListItem>

@@ -15,7 +15,6 @@ import {
   Typography,
 } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
-import { deleteThisFeed } from "../../features/SocialReducer";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import Button from "@mui/material/Button";

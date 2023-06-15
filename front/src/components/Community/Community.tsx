@@ -1,14 +1,13 @@
 // @ts-nocheck
-import React, { useEffect, useRef, useState } from "react";
-import { Typography, Button, Link, Box, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Typography, Box, Grid } from "@mui/material";
 import LabelCommunity from "./LabelCommunity";
-import FeedCard from "./FeedCard";
 import { fontdesign } from "../../theme/fontdesign";
 
 import { useGetSocialDataQuery } from "../../services/socialApi";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getAllFeed, goNext } from "../../features/SocialReducer";
+import { goNext } from "../../features/SocialReducer";
 import { RootState } from "../../features/configureStore";
 import FeedGrid from "./FeedGrid";
 import { selectCurrentUser } from "../../features/AuthReducer";
@@ -16,19 +15,12 @@ import { debounce } from "lodash";
 import { SKIPCOUNT } from "../../utils/validate";
 import LoadingImage from "../common/Loading";
 
-const category = ["친환경", "비건", "기타"];
-
 const Community = () => {
-  const [loading, setLoading] = useState<boolean>(true);
-
   const dispatch = useDispatch();
-  const { feeds, total, currentPage } = useSelector(
-    ({ social }: RootState) => ({
-      feeds: social.feeds,
-      total: social.total,
-      currentPage: social.currentPage,
-    })
-  );
+  const { total, currentPage } = useSelector(({ social }: RootState) => ({
+    total: social.total,
+    currentPage: social.currentPage,
+  }));
 
   const user = useSelector(selectCurrentUser);
 

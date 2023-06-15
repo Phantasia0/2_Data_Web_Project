@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import {
   Button,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Typography,
   IconButton,
@@ -61,10 +59,7 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
     >
       <DialogTitle>
         {basketItem?.name}
-        <IconButton
-          sx={{ fontSize: "15px", fontWeight: "blod" }}
-          // onClick={handleMyRestaurant}
-        >
+        <IconButton sx={{ fontSize: "15px", fontWeight: "blod" }}>
           <Checkbox
             icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
             checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}

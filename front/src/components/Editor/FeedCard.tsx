@@ -10,17 +10,13 @@ import {
   Avatar,
   Box,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
-  CardMedia,
   Checkbox,
   Grid,
   IconButton,
-  Link,
   Menu,
   MenuItem,
-  Typography,
   Button,
 } from "@mui/material";
 import React, { FC, useEffect, useRef, useState } from "react";
@@ -38,11 +34,7 @@ import { theme } from "../../theme/theme";
 import { useUpdateFeedMutation } from "../../services/feedApi";
 import { updateThisFeed } from "../../features/SocialReducer";
 import LoadingImage from "../common/Loading";
-import { RootState } from "../../features/configureStore";
 
-const sampleURL = {
-  url: "https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-};
 const FeedCard: FC<any> = ({
   data,
   isOwner,
@@ -100,8 +92,6 @@ const FeedCard: FC<any> = ({
     setSnackbarColor("primary.main");
     setSnackbarOpen(true);
     setSnackbarMessage("게시글이 수정되었습니다.");
-    // navigate("/community/f", { replace: true });
-    // navigate(-1, { replace: false });
   };
 
   const handleClickUpdate = (e: any) => {
@@ -159,48 +149,6 @@ const FeedCard: FC<any> = ({
 
     setIsLiked(!isLiked);
   };
-
-  // const analyzingData = (data: any) => {
-  //   const parsedData = JSON.parse(data?.content);
-  //   let url = null;
-  //   // console.log(parsedData);
-  //
-  //   if (Object.keys(parsedData.entityMap).length > 0) {
-  //     const entityKeys = Object.keys(parsedData.entityMap);
-  //     const imageEntities = entityKeys
-  //       .map((key) => parsedData.entityMap[key])
-  //       .filter((entity) => entity.type === "IMAGE");
-  //
-  //     if (imageEntities.length > 0) {
-  //       const firstImageEntity = imageEntities[0];
-  //       const entityData = firstImageEntity.data;
-  //
-  //       url = entityData.url;
-  //       const width = entityData.width;
-  //       const height = entityData.height;
-  //     } else {
-  //       url = sampleURL.url;
-  //     }
-  //   } else {
-  //     url = sampleURL.url;
-  //   }
-  //
-  //   const text =
-  //     parsedData?.blocks[0]?.text.length > 20
-  //       ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
-  //       : parsedData?.blocks[0]?.text;
-  //
-  //   const newData = {
-  //     text: text,
-  //     image: url,
-  //   };
-  //   setAnalyzedData(newData);
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   analyzingData(data);
-  // }, []);
 
   if (loading) {
     return <LoadingImage />;

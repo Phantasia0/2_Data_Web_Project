@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardContent,
   CardMedia,
-  Avatar,
   Grid,
   Link,
   IconButton,

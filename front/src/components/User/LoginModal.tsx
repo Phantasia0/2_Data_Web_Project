@@ -1,33 +1,19 @@
-import React, { useState, FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import {
   TextField,
   Button,
-  Dialog,
   DialogTitle,
-  DialogContent,
   DialogActions,
-  Snackbar,
   Box,
   styled,
-  Link,
   Typography,
 } from "@mui/material";
 
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useInput } from "../../hooks/useInput";
 import { useDispatch } from "react-redux";
-
 import { useLoginMutation } from "../../services/authApiWrapper";
 import { setCredentials } from "../../features/AuthReducer";
-
-const ImageBox = styled(Box)(({ theme }) => ({
-  width: "70%",
-  height: "auto",
-  ml: theme.spacing(2),
-  mb: theme.spacing(2),
-  display: "flex",
-  justifyContent: "center",
-}));
 
 interface LoginModalProps {
   setOpen: (value: any) => void;
