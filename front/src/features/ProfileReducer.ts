@@ -40,6 +40,7 @@ const profileSlice = createSlice({
       state.keyword = null;
       state.filtered = false;
       state.pageNumber = 1;
+      state.total = 12;
     },
     goPage: (state, action: PayloadAction<ProfileState | null>) => {
       state.pageNumber = action?.payload?.pageNumber;

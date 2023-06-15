@@ -60,6 +60,10 @@ const Feed = () => {
   });
 
   useEffect(() => {
+    dispatch(resetData());
+  }, []);
+
+  useEffect(() => {
     if (!keyword) {
       dispatch(resetData());
     }
@@ -77,7 +81,6 @@ const Feed = () => {
 
   useEffect(() => {
     if (snackbarOpen) {
-      console.log("제발 되라");
       refetch();
       dispatch(updateCommentList());
     }

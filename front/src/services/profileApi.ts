@@ -47,8 +47,16 @@ export const profileMutationApi = apiSlice.injectEndpoints({
         };
       },
     }),
+    getRankList: builder.query({
+      query: () => ({
+        url: `/user/rank`,
+      }),
+    }),
   }),
 });
 
-export const { useChangeUserInfoMutation, useChangeUserImageMutation } =
-  profileMutationApi;
+export const {
+  useChangeUserInfoMutation,
+  useChangeUserImageMutation,
+  useGetRankListQuery,
+} = profileMutationApi;

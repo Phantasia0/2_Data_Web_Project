@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
+      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/RankItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/Profile/RankList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/Basket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/Basket.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Basket/BasketPark.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/Rightbar2.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/db/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/db/models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Feed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ProfileReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/profileApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <workItem from="1686179223875" duration="25028000" />
       <workItem from="1686221463675" duration="22271000" />
       <workItem from="1686322496143" duration="140283000" />
-      <workItem from="1686804643463" duration="12976000" />
+      <workItem from="1686804643463" duration="22578000" />
     </task>
     <servers />
   </component>
