@@ -7,7 +7,7 @@ import { selectCurrentUser } from "../../features/AuthReducer";
 import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import Rightbar from "./RightBar";
-import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
+import { Box, createTheme, Grid, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "./Navbar";
 
 const Profile = () => {
@@ -39,27 +39,46 @@ const Profile = () => {
 
   return (
     <div className="Feed-container">
-      <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Box bgcolor="background.default" color="text.primary">
         <Navbar />
-        <Box display="flex" flexDirection={windowWidth < 600 ? "column" : "row"}>
-          {windowWidth < 600 ? (
-            <>
-              <Sidebar />
-              <Feed />
-            </>
-          ) : (
-            <>
-              <Sidebar />
-              <Box flexGrow={1}>
-                <Feed />
-              </Box>
+        <Grid container>
+          <Grid item xs={12} sm={3} md={3} lg={3}>
+            <Sidebar />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Feed />
+          </Grid>
+          {windowWidth > 768 && (
+            <Grid item xs={12} sm={3} md={3} lg={3}>
               <Rightbar />
-            </>
+            </Grid>
           )}
-        </Box>
+        </Grid>
       </Box>
     </div>
   );
 };
 
 export default Profile;
+
+// <div className="Feed-container">
+//     <Box bgcolor={"background.default"} color={"text.primary"}>
+//       <Navbar />
+//       <Box display="flex" flexDirection={windowWidth < 600 ? "column" : "row"}>
+//         {windowWidth < 600 ? (
+//           <>
+//             <Sidebar />
+//             <Feed />
+//           </>
+//         ) : (
+//           <>
+//             <Sidebar />
+//             <Box flexGrow={1}>
+//               <Feed />
+//             </Box>
+//             <Rightbar />
+//           </>
+//         )}
+//       </Box>
+//     </Box>
+//   </div>

@@ -51,15 +51,17 @@ const FeedGrid = ({
   }
 
   return (
-    <Grid container sx={{ display: "flex", justifyContent: "flex-start" }}>
+    <Grid container>
       {feeds?.map((feed: any) => (
-        <FeedCard
-          data={feed}
-          key={feed?._id}
-          setSnackbarOpen={setSnackbarOpen}
-          setSnackbarMessage={setSnackbarMessage}
-          setSnackbarColor={setSnackbarColor}
-        />
+        <Grid item key={feed?._id} xs={12} sm={12} md={6} lg={6} xl={3}>
+          <FeedCard
+            data={feed}
+            key={feed?._id}
+            setSnackbarOpen={setSnackbarOpen}
+            setSnackbarMessage={setSnackbarMessage}
+            setSnackbarColor={setSnackbarColor}
+          />
+        </Grid>
       ))}
       <Snackbar
         open={snackbarOpen}

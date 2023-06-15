@@ -190,100 +190,95 @@ const FeedCard: FC<any> = ({
   }
 
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
-      <Card
-        sx={{
-          margin: 5,
-          border: "1px solid",
-          borderColor: "lightgray",
-          height: "auto",
-        }}
-      >
-        <CardHeader
-          title={thisFeedData?.user?.nickname}
-          avatar={
-            <Avatar
-              sx={{ width: 50, height: 50 }}
-              src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
-            />
-          }
-          action={
-            <IconButton
-              onClick={handleMenuOpen}
-              disabled={thisFeedData?.user?._id !== (user?._id as string)}
-            >
-              {thisFeedData?.user?._id === (user?._id as string) && (
-                <MoreVert />
-              )}
-            </IconButton>
-          }
-          subheader={data.updatedAt.slice(0, 10)}
-        />
-        <Menu
-          anchorEl={menuAnchorEl}
-          open={menuOpen}
-          onClose={handleMenuClose}
-          anchorOrigin={{ vertical: "top", horizontal: "left" }}
-          transformOrigin={{ vertical: "top", horizontal: "left" }}
-        >
-          <MenuItem onClick={handleEdit}>수정</MenuItem>
-          {!keyword && <MenuItem onClick={handleDelete}>삭제</MenuItem>}
-        </Menu>
-        <Link
-          onClick={() => navigate(`/community/feed/${data._id}`)}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardMedia
-            component="img"
-            image={analyzedData?.image}
-            alt="sample"
-            sx={{
-              width: {
-                xs: "400px",
-                sm: "400px",
-                md: "266px",
-                lg: "400px",
-              },
-              height: "200px",
-            }}
+    // <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+    <Card
+      sx={{
+        margin: 5,
+        border: "1px solid",
+        borderColor: "lightgray",
+        height: "auto",
+      }}
+    >
+      <CardHeader
+        title={thisFeedData?.user?.nickname}
+        avatar={
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+            src={`http://localhost:5001/profile/${thisFeedData?.user?.profile}`}
           />
-        </Link>
-        <Typography variant="body2" color="text.secondary">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
-            }}
+        }
+        action={
+          <IconButton
+            onClick={handleMenuOpen}
+            disabled={thisFeedData?.user?._id !== (user?._id as string)}
           >
-            {analyzedData?.text}
-          </Box>
-        </Typography>
-        <CardContent
+            {thisFeedData?.user?._id === (user?._id as string) && <MoreVert />}
+          </IconButton>
+        }
+        subheader={data.updatedAt.slice(0, 10)}
+      />
+      <Menu
+        anchorEl={menuAnchorEl}
+        open={menuOpen}
+        onClose={handleMenuClose}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
+      >
+        <MenuItem onClick={handleEdit}>수정</MenuItem>
+        {!keyword && <MenuItem onClick={handleDelete}>삭제</MenuItem>}
+      </Menu>
+      <Link
+        onClick={() => navigate(`/community/feed/${data._id}`)}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        <CardMedia
+          component="img"
+          image={analyzedData?.image}
+          alt="image"
           sx={{
-            height: "1px",
+            width: "100%",
+            height: 0,
+            paddingTop: "calc(300/400 * 100%)",
+            background: `url('${analyzedData?.image}') center center / cover no-repeat`,
+          }}
+        />
+      </Link>
+      <Typography variant="body2" color="text.secondary">
+        <Box
+          sx={{
             display: "flex",
+            justifyContent: "center",
+            marginTop: "1rem",
           }}
         >
-          <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
-            <Checkbox
-              icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-              checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
-              checked={isLiked}
-              disabled={!user}
-            />
-          </IconButton>
-          <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>
-            {thisFeedData?.likes?.filter((item) => item.value === 1).length}
-          </Box>
+          {analyzedData?.text}
+        </Box>
+      </Typography>
+      <CardContent
+        sx={{
+          height: "1px",
+          display: "flex",
+        }}
+      >
+        <IconButton sx={{ height: "1rem" }} onClick={handleClickLike}>
+          <Checkbox
+            icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
+            checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
+            checked={isLiked}
+            disabled={!user}
+          />
+        </IconButton>
+        <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>
+          {thisFeedData?.likes?.filter((item) => item.value === 1).length}
+        </Box>
 
-          <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
-            <Comment sx={{ fontSize: "1rem" }} />
-          </IconButton>
-          <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
-        </CardContent>
-      </Card>
-    </Grid>
+        <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
+          <Comment sx={{ fontSize: "1rem" }} />
+        </IconButton>
+        <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
+      </CardContent>
+    </Card>
+    // </Grid>
   );
 };
 
