@@ -150,6 +150,72 @@ class Restaurant {
       (contact) => contact.user.toString() === userId
     )[0];
   }
+
+  static async findNotContact({ page, userId }) {
+    const skip = (page - 1) * LIMIT;
+    const match = {};
+
+    const restaurant = await RestaurantModel.aggregate([
+      { $match: match }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $skip: skip },
+      { $limit: LIMIT },
+      {
+        $project: {
+          _id: 1,
+          category: 1,
+          name: 1,
+          region: 1,
+          address: 1,
+          tel: 1,
+          description: 1,
+          latitude: 1,
+          longitude: 1,
+          image: 1,
+          reservation: 1,
+        },
+      },
+    ]);
+
+    const total = await RestaurantModel.countDocuments();
+
+    // region, category 값 가져오기
+    let region, category;
+    region = await RestaurantModel.distinct("region").exec();
+    category = await RestaurantModel.distinct("category").exec();
+
+    return { region, category, restaurant, total };
+  }
+
+  static async findBySearchNotContact({ page, filter, userId }) {
+    const skip = (page - 1) * LIMIT;
+    const restaurant = await RestaurantModel.aggregate([
+      { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+      { $skip: skip },
+      { $limit: LIMIT },
+      {
+        $project: {
+          _id: 1,
+          category: 1,
+          name: 1,
+          region: 1,
+          address: 1,
+          tel: 1,
+          description: 1,
+          latitude: 1,
+          longitude: 1,
+          image: 1,
+          reservation: 1,
+        },
+      },
+    ]);
+
+    const category = await RestaurantModel.distinct("category", filter);
+    const region = await RestaurantModel.distinct("region", filter);
+
+    const total = await RestaurantModel.countDocuments(filter);
+
+    return { restaurant, category, region, total };
+  }
 }
 
 export { Restaurant };

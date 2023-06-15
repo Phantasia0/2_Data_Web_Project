@@ -44,6 +44,49 @@ ParkRouter.get("", getCurrentUser, async function (req, res, next) {
   }
 });
 
+// 공원 리스트 예전
+ParkRouter.get("/contact", getCurrentUser, async function (req, res, next) {
+  try {
+    const { page } = req.query;
+    const userId = req.currentUserId;
+    const data = await parkService.getParkNotContact({ page, userId });
+
+    if (data.errorMessage) {
+      throw new Error(data.errorMessage);
+    }
+
+    res.status(200).send(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// 공원 필터링 리스트(지역, 종류) 예전
+ParkRouter.get(
+  "/search/contact",
+  getCurrentUser,
+  async function (req, res, next) {
+    try {
+      const { page, region } = req.query;
+      const userId = req.currentUserId;
+
+      const data = await parkService.getFilteredParkNotContact({
+        page,
+        region,
+        userId,
+      });
+
+      if (data.errorMessage) {
+        throw new Error(data.errorMessage);
+      }
+
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 // 공원 상세페이지
 ParkRouter.get("/:id", getCurrentUser, async function (req, res, next) {
   try {

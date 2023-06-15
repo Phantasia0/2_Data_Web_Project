@@ -21,6 +21,19 @@ class parkService {
   static async updateContact({ _id, userId }) {
     return await Park.spotContact({ _id, userId });
   }
+
+  static async getParkNotContact({ page, userId }) {
+    if (!page) page = 1;
+    return await Park.findNotContact({ page, userId });
+  }
+
+  static async getFilteredParkNotContact({ page, region, userId }) {
+    if (!page) page = 1;
+    const filter = {};
+    if (region) filter.region = region;
+
+    return await Park.findBySearchNotContact({ page, filter, userId });
+  }
 }
 
 export { parkService };

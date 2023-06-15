@@ -236,15 +236,12 @@ const FeedCard: FC<any> = ({
           <CardMedia
             component="img"
             image={analyzedData?.image}
-            alt="sample"
+            alt="image"
             sx={{
-              width: {
-                xs: "400px",
-                sm: "400px",
-                md: "266px",
-                lg: "400px",
-              },
-              height: "200px",
+              width: "100%",
+              height: 0,
+              paddingTop: "calc(250/ 400 * 100%)",
+              background: `url('${analyzedData?.image}') center center / cover no-repeat`,
             }}
           />
         </Link>

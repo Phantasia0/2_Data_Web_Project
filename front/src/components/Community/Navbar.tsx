@@ -87,7 +87,7 @@ const Navbar = () => {
             sx={{ width: "100%" }}
           />
         </Search>
-        {data && (
+        {user && data ? (
           <Icons>
             {/* <Badge badgeContent={1} color="error">
             <Notifications />
@@ -116,6 +116,13 @@ const Navbar = () => {
               {`좋아요: ${data?.follow}     게시글: ${data?.post}     댓글: ${data?.comment}`}
             </Typography>
           </Icons>
+        ) : (
+          <Typography
+            variant="body1"
+            sx={{ color: "white", fontWeight: "bold", marginRight: "50px" }}
+          >
+            비회원
+          </Typography>
         )}
       </StyledToolbar>
     </AppBar>

@@ -15,6 +15,7 @@ import { selectCurrentUser } from "../../features/AuthReducer";
 import { debounce } from "lodash";
 import { SKIPCOUNT } from "../../utils/validate";
 import LoadingImage from "../common/Loading";
+import Navbar from "./Navbar";
 
 const category = ["친환경", "비건", "기타"];
 
@@ -75,11 +76,12 @@ const Community = () => {
         alignItems: "center",
       }}
     >
-      <div>
+      {/* <Navbar /> */}
+      {/* <div>
         <Typography sx={fontdesign.xsTitle} style={{ marginTop: "4vw" }}>
           Story
         </Typography>
-      </div>
+      </div> */}
       <Box
         sx={{
           display: "flex",
@@ -96,6 +98,7 @@ const Community = () => {
             display: "flex",
             justifyContent: "center",
             marginLeft: "50vw",
+            marginTop: "2vw",
           }}
         >
           {user && <LabelCommunity label={"새 글 작성"} />}
