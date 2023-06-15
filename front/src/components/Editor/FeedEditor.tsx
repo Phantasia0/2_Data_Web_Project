@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import MUIRichTextEditor from "mui-rte";
 import { Box, Button, Snackbar, Typography } from "@mui/material";
 import { useAddFeedMutation } from "../../services/feedApi";
@@ -59,11 +59,11 @@ const FeedEditor = () => {
       parsedData?.blocks[0]?.text.length > 20
         ? `${parsedData?.blocks[0]?.text.slice(0, 20)}...`
         : parsedData?.blocks[0]?.text;
-    // const content = text.replace(/\s/g, "");
-    // if (!content) {
-    //   setSnackbarOpen(true);
-    //   return;
-    // }
+    const content = text.replace(/\s/g, "");
+    if (!content) {
+      setSnackbarOpen(true);
+      return;
+    }
 
     if (story !== "") {
       dispatch(resetCurrentPage(0));
@@ -79,7 +79,6 @@ const FeedEditor = () => {
       }
     }
   };
-
 
   const handleClickPost = (e: any) => {
     // @ts-ignore
@@ -105,8 +104,6 @@ const FeedEditor = () => {
     dispatch(BasketParks.resetSelectedItemId());
     dispatch(Baskets.resetSelectedItemId());
   };
-
-
 
   return (
     <Box
@@ -166,7 +163,7 @@ const FeedEditor = () => {
             <Box sx={{ marginLeft: "2rem" }}>
               {show && <Rightbar2 Type={Type} />}
             </Box>
-            <Box sx={{ marginTop: "2rem", position:"absolute", top:"0" }}>
+            <Box sx={{ marginTop: "2rem", position: "absolute", top: "0" }}>
               {show && (
                 <Button onClick={handleClickCancelRightBar} variant="contained">
                   닫기
@@ -174,7 +171,6 @@ const FeedEditor = () => {
               )}
             </Box>
           </Box>
-          
         </Box>
         <Box sx={{ marginTop: "1rem" }}>
           <Button

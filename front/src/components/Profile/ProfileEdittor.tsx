@@ -205,7 +205,7 @@ const ProfileEditor = ({ setSnackbarOpen, setSnackbarMessage }: any) => {
           </Box>
           <Box>
             <Button variant="contained" type="submit" sx={{ color: "white" }}>
-              프로필 이미지 변경
+              확인
             </Button>
           </Box>
         </form>

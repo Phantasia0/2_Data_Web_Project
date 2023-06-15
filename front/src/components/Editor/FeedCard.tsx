@@ -247,6 +247,7 @@ const FeedCard: FC<any> = ({
             defaultValue={data?.content}
             readOnly={!isOwner}
             onSave={save}
+            toolbar={isOwner}
           />
         </MuiThemeProvider>
         {isOwner && (

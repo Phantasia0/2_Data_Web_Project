@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { addThisItem, setIsClicked } from "../../features/BasketReducer";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
+import { selectCurrentUser } from "../../features/AuthReducer";
 
 const MarkerModal = ({ refetch, basketData }: any) => {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const MarkerModal = ({ refetch, basketData }: any) => {
       // @ts-ignore
       basketItem: basket.item,
     }));
+
+  const user = useSelector(selectCurrentUser);
 
   const [addMyRestaurant, { data, isSuccess, isError, isLoading }] =
     usePutRestaurantIntoBasketMutation();
@@ -50,7 +53,9 @@ const MarkerModal = ({ refetch, basketData }: any) => {
       onClose={handleClose}
       maxWidth="xs"
       fullWidth
-      sx={{ "& .MuiDialogTitle-root": { textAlign: "center" } }}
+      sx={{
+        "& .MuiDialogTitle-root": { textAlign: "center" },
+      }}
     >
       <DialogTitle>{basketItem?.name}</DialogTitle>
       <DialogContent>
@@ -67,20 +72,22 @@ const MarkerModal = ({ refetch, basketData }: any) => {
         <Typography variant="subtitle1">전화번호: {basketItem?.tel}</Typography>
         <Typography variant="subtitle1">지역: {basketItem?.region}</Typography>
       </DialogContent>
-      <DialogActions sx={{ justifyContent: "center" }}>
-        <Button
-          onClick={handleMyRestaurant}
-          color="primary"
-          variant="contained"
-        >
-          {basketData &&
-          basketData?.restaurant?.some(
-            (item: any) => item._id === basketItem._id
-          )
-            ? "찜 취소"
-            : "찜하기"}
-        </Button>
-      </DialogActions>
+      {user && (
+        <DialogActions sx={{ justifyContent: "center" }}>
+          <Button
+            onClick={handleMyRestaurant}
+            color="primary"
+            variant="contained"
+          >
+            {basketData &&
+            basketData?.restaurant?.some(
+              (item: any) => item._id === basketItem._id
+            )
+              ? "찜 취소"
+              : "찜하기"}
+          </Button>
+        </DialogActions>
+      )}
     </Dialog>
   );
 };

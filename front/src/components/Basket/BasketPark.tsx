@@ -9,12 +9,15 @@ import { usePutParkIntoBasketMutation } from "../../services/parksApi";
 import MarkderModalPark from "./MarkderModalPark";
 import { setSelectedItemId } from "../../features/BasketParkReducer";
 import { useDispatch } from "react-redux";
+import { selectCurrentUser } from "../../features/AuthReducer";
 
 const BasketPark = () => {
   const dispatch = useDispatch();
 
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetUserBasketQuery(undefined);
+
+  const user = useSelector(selectCurrentUser);
 
   const [addMyPark] = usePutParkIntoBasketMutation();
 
@@ -47,7 +50,7 @@ const BasketPark = () => {
           {myParkList?.length === 0 ? (
             <Typography
               variant="body1"
-              sx={{ fontSize: { xs: "1.2vw",wordBreak:"keep-all"} }}
+              sx={{ fontSize: { xs: "1.2vw", wordBreak: "keep-all" } }}
               component="span"
               color="secondary.main"
               fontWeight="bold"
@@ -65,7 +68,7 @@ const BasketPark = () => {
                 >
                   <ListItemText
                     primary={item.name}
-                    sx={{wordBreak:"keep-all"}}
+                    sx={{ wordBreak: "keep-all" }}
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
@@ -87,46 +90,51 @@ const BasketPark = () => {
   };
 
   return (
-    <Box
-      sx={{
-        border: "2px solid #ddd",
-        borderRadius: "1rem",
-        marginBottom: "1rem",
-        backgroundColor: "#f5f5f5",
-        maxWidth:'250px',
-        maxHeight: "400px",
-        overflow: "auto",
-        "&::-webkit-scrollbar": {
-          width: "0.5em",
-        },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "transparent",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "transparent",
-        },
-        padding:"0.5rem",
-      }}
-    >
+    <>
+      {user && (
+        <Box
+          sx={{
+            border: "2px solid #ddd",
+            borderRadius: "1rem",
+            marginBottom: "1rem",
+            backgroundColor: "#f5f5f5",
+            maxWidth: "250px",
+            maxHeight: "400px",
+            overflow: "auto",
+            "&::-webkit-scrollbar": {
+              width: "0.5em",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "transparent",
+            },
+            padding: "0.5rem",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: { xs: "1.2vw" },
+              position: "sticky",
+              textAlign: "center",
+              background: "#f5f5f5",
+              zIndex: 999,
+              top: 0,
+              padding: "1rem",
+            }}
+            color="secondary.main"
+            fontWeight="bold"
+          >
+            찜한 공원
+          </Typography>
+          {getItems(myParkList)}
+        </Box>
+      )}
+
       <MarkderModalPark refetch={refetch} basketData={data} />
-      <Typography
-        variant="h6"
-        sx={{
-          fontSize: { xs: "1.2vw" },
-          position: "sticky",
-          textAlign: "center",
-          background: "#f5f5f5",
-          zIndex: 999,
-          top: 0,
-          padding: "1rem",
-        }}
-        color="secondary.main"
-        fontWeight="bold"
-      >
-        찜한 공원
-      </Typography>
-      {getItems(myParkList)}
-    </Box>
+    </>
   );
 };
 

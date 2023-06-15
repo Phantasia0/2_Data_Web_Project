@@ -104,7 +104,7 @@ const FeedCard: FC<any> = ({
     });
 
     setSnackbarColor("primary.main");
-    setSnackbarOpen(true); // 스낵바 상태를 업데이트합니다.
+    setSnackbarOpen(true);
     setSnackbarMessage("게시글이 삭제되었습니다.");
 
     dispatch(deleteThisFeed(data?._id));
@@ -261,6 +261,7 @@ const FeedCard: FC<any> = ({
               icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
               checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
               checked={isLiked}
+              disabled={!user}
             />
           </IconButton>
           <Box sx={{ fontSize: "0.7rem", marginRight: "0.5rem" }}>

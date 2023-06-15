@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
 import { useDispatch } from "react-redux";
 import { setSelectedItemId } from "../../features/BasketReducer";
+import { selectCurrentUser } from "../../features/AuthReducer";
 
 const Basket = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ const Basket = () => {
   const [myRestaurantList, setMyRestaurantList] = useState(
     data?.restaurant.map((item: any) => item.name)
   );
+
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
     setMyRestaurantList(data?.restaurant);
@@ -66,7 +69,7 @@ const Basket = () => {
                 >
                   <ListItemText
                     primary={item.name}
-                    sx={{wordBreak:"keep-all"}}
+                    sx={{ wordBreak: "keep-all" }}
                     primaryTypographyProps={{
                       style: { fontWeight: "bold", textAlign: "center" },
                     }}
@@ -77,7 +80,6 @@ const Basket = () => {
                     sx={{ color: "orange" }}
                   >
                     찜 취소
-                    
                   </Button>
                 </ListItem>
               ))}
@@ -89,45 +91,49 @@ const Basket = () => {
   };
 
   return (
-    <Box
-      sx={{
-        border: "2px solid #ddd",
-        borderRadius: "1rem",
-        marginBottom: "1rem",
-        backgroundColor: "#f5f5f5",
-        maxWidth: "250px",
-        maxHeight: "400px",
-        overflow: "auto",
-        "&::-webkit-scrollbar": {
-          width: "0.5em",
-        },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "transparent",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "transparent",
-        },
-      }}
-    >
+    <>
+      {user && (
+        <Box
+          sx={{
+            border: "2px solid #ddd",
+            borderRadius: "1rem",
+            marginBottom: "1rem",
+            backgroundColor: "#f5f5f5",
+            maxWidth: "250px",
+            maxHeight: "400px",
+            overflow: "auto",
+            "&::-webkit-scrollbar": {
+              width: "0.5em",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "transparent",
+            },
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: { xs: "1.2vw" },
+              position: "sticky",
+              textAlign: "center",
+              background: "#f5f5f5",
+              zIndex: 999,
+              top: 0,
+              padding: "1rem",
+            }}
+            color="secondary.main"
+            fontWeight="bold"
+          >
+            찜한 레스토랑
+          </Typography>
+          {getItems(myRestaurantList)}
+        </Box>
+      )}
       <MarkerModal refetch={refetch} basketData={data} />
-      <Typography
-        variant="h6"
-        sx={{
-          fontSize: { xs: "1.2vw" },
-          position: "sticky",
-          textAlign: "center",
-          background: "#f5f5f5",
-          zIndex: 999,
-          top: 0,
-          padding: "1rem",
-        }}
-        color="secondary.main"
-        fontWeight="bold"
-      >
-        찜한 레스토랑
-      </Typography>
-      {getItems(myRestaurantList)}
-    </Box>
+    </>
   );
 };
 
