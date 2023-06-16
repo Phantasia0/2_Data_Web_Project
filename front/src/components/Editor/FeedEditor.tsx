@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useRef, useState, useEffect } from "react";
 import MUIRichTextEditor from "mui-rte";
 import { Box, Button, Snackbar, Typography } from "@mui/material";

@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import Button from "@mui/material/Button";
 import {
@@ -23,6 +23,7 @@ import {
   useUpdateCommentMutation,
 } from "../../services/commentApi";
 import { useParams } from "react-router-dom";
+import { updateThisFeedComment } from "../../features/SocialReducer";
 
 const CommentCard = ({
   data,
@@ -37,6 +38,7 @@ const CommentCard = ({
   const [isEdit, setIsEdit] = useState(false);
   const [content, setContent] = useState("");
   const { feedId } = useParams();
+  const dispatch = useDispatch();
 
   const [updateComment, { data: updatedData }] = useUpdateCommentMutation();
   const [deleteComment, { data: deletedData }] = useDeleteCommentMutation();
@@ -94,6 +96,12 @@ const CommentCard = ({
       _id: data._id,
     });
     refetch();
+    dispatch(
+      updateThisFeedComment({
+        _id: feedId,
+        commentCount: -1,
+      })
+    );
 
     handleMenuClose();
     setSnackbarColor("primary.main");

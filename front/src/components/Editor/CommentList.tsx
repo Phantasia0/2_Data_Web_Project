@@ -34,6 +34,7 @@ const CommentList = ({
         setSnackbarOpen={setSnackbarOpen}
         setSnackbarMessage={setSnackbarMessage}
         setSnackbarColor={setSnackbarColor}
+        data={data}
       />
       {commentList.map((item) => (
         <Box

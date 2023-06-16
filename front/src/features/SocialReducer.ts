@@ -88,8 +88,16 @@ const socialSlice = createSlice({
       state.currentPage = 1;
     },
     addThisFeed: (state, action: PayloadAction<any>) => {
-      console.log(action?.payload);
       state?.feeds?.unshift(action?.payload);
+    },
+    updateThisFeedComment: (state, action: PayloadAction<any>) => {
+      if (action?.payload !== null) {
+        const feedId = action?.payload?._id;
+        const feedToUpdate = state?.feeds?.find((feed) => feed._id === feedId);
+        if (feedToUpdate) {
+          feedToUpdate.commentCount += action?.payload?.commentCount;
+        }
+      }
     },
   },
 });
@@ -101,6 +109,7 @@ export const {
   goNext,
   resetCurrentPage,
   addThisFeed,
+  updateThisFeedComment,
 } = socialSlice.actions;
 
 export default socialSlice.reducer;

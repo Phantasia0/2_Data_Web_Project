@@ -7,11 +7,11 @@
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Community/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Profile/RightBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/CommentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/CommentList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Editor/FeedEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -84,6 +84,10 @@ const FeedCard: FC<any> = ({
 
   useEffect(() => {
     thisFeedRefetch();
+  }, []);
+
+  useEffect(() => {
+    thisFeedRefetch();
     setIsLiked(thisFeedData?.likeCheck);
   }, [isLiked]);
 

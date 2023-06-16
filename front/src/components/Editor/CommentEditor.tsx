@@ -4,17 +4,20 @@ import { Grid, FormControl, InputBase, Typography } from "@mui/material";
 import { useAddCommentMutation } from "../../services/commentApi";
 import { useParams } from "react-router-dom";
 import { selectCurrentUser } from "../../features/AuthReducer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fontdesign } from "../../theme/fontdesign";
+import { updateThisFeedComment } from "../../features/SocialReducer";
 
 const CommentEditor = ({
   refetch,
   setSnackbarOpen,
   setSnackbarMessage,
   setSnackbarColor,
+  data,
 }: any) => {
   const { feedId } = useParams();
   const [content, setContent] = useState<any>(null);
+  const dispatch = useDispatch();
 
   const user = useSelector(selectCurrentUser);
 
@@ -41,6 +44,14 @@ const CommentEditor = ({
         },
       });
       await refetch();
+      {
+        dispatch(
+          updateThisFeedComment({
+            _id: feedId,
+            commentCount: 1,
+          })
+        );
+      }
       setSnackbarOpen(true);
       setSnackbarColor("primary.main");
       setSnackbarMessage("댓글이 작성되었습니다.");
