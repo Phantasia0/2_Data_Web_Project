@@ -121,7 +121,8 @@ class userService {
     )[0];
 
     if (!validEntries) {
-      const errorMessage = "정보를 불러오지 못했습니다.";
+      let errorMessage = "정보를 불러오지 못했습니다.";
+      if ("profile" in toUpdate) errorMessage = "파일을 업로드해주세요.";
       return { errorMessage };
     }
 

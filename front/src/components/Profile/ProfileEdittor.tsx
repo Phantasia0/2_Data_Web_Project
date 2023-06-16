@@ -10,6 +10,7 @@ import { validateName } from "../../utils/validate";
 import { useDispatch } from "react-redux";
 import { setModalVisible } from "../../features/ProfileReducer";
 import { RootState } from "../../features/configureStore";
+import LoadingImage from "../common/Loading";
 
 const ProfileEditor = ({ setSnackbarOpen, setSnackbarMessage }: any) => {
   const user = useSelector(selectCurrentUser);
@@ -192,13 +193,11 @@ const ProfileEditor = ({ setSnackbarOpen, setSnackbarMessage }: any) => {
                 )}
               </Box>
             </label>
-            {imageUpdateLoading && (
-              <Typography sx={{ marginLeft: "1rem" }}>
-                이미지 로딩중...
-              </Typography>
-            )}
+            {imageUpdateLoading && <LoadingImage />}
             {imageError && (
-              <Typography sx={{ marginLeft: "1rem" }}>{imageError}</Typography>
+              <Typography sx={{ marginLeft: "1rem", color: "red" }}>
+                {imageError}
+              </Typography>
             )}
           </Box>
           <Box>
