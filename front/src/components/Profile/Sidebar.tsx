@@ -120,12 +120,11 @@ const Sidebar = () => {
               Next
             </Button>
           </Stack>
-          <ListItem
-            disablePadding
-            sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          >
-            <Basket />
-            <BasketPark />
+          <ListItem sx={{ p: 2, flexDirection: "column", gap: "1rem" }}>
+            <Box>
+              <Basket />
+              <BasketPark />
+            </Box>
           </ListItem>
         </List>
       </Box>
