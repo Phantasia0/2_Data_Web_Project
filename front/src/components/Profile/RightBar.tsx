@@ -46,7 +46,7 @@ const Rightbar = () => {
               <Avatar
                 key={item?._id}
                 alt={item?._id}
-                src={`http://localhost:5001/profile/${item?.profile}`}
+                src={`http://${window.location.hostname}:5001//profile/${item?.profile}`}
                 className={classes.avatar}
               />
             ))}

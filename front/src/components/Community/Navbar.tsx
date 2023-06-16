@@ -95,7 +95,7 @@ const Navbar = () => {
             <Avatar
               sx={{ width: 50, height: 50 }}
               // @ts-ignore
-              src={`http://localhost:5001/profile/${data?.profile}`}
+              src={`http://${window.location.hostname}:5001/profile/${data?.profile}`}
             />
             <Typography
               variant="body1"
