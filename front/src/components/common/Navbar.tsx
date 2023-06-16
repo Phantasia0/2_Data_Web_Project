@@ -194,7 +194,10 @@ const Navbar = () => {
             <div>
               <CustomMenuItem onClick={handleClose}>
                 <Link
-                  onClick={() => navigate("/about/greenlife")}
+                  onClick={() => {
+                    window.scrollTo({ top: 0 });
+                    navigate("/about/greenlife");
+                  }}
                   underline="none"
                 >
                   <CustomTypography
@@ -213,7 +216,10 @@ const Navbar = () => {
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link
-                  onClick={() => navigate("/about/greenservice")}
+                  onClick={() => {
+                    window.scrollTo({ top: 0 });
+                    navigate("/about/greenservice");
+                  }}
                   underline="none"
                 >
                   <CustomTypography
@@ -232,7 +238,10 @@ const Navbar = () => {
               </CustomMenuItem>
               <CustomMenuItem onClick={handleClose}>
                 <Link
-                  onClick={() => navigate("/about/greenresult")}
+                  onClick={() => {
+                    window.scrollTo({ top: 0 });
+                    navigate("/about/greenresult");
+                  }}
                   underline="none"
                 >
                   <CustomTypography
@@ -252,7 +261,13 @@ const Navbar = () => {
             </div>
           </Menu>
         </CustomTypography>
-        <Link onClick={() => navigate("/restaurant")} underline="none">
+        <Link
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+            navigate("/restaurant");
+          }}
+          underline="none"
+        >
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
@@ -263,7 +278,13 @@ const Navbar = () => {
             RESTAURANT
           </CustomTypography>
         </Link>
-        <Link onClick={() => navigate("/park")} underline="none">
+        <Link
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+            navigate("/park");
+          }}
+          underline="none"
+        >
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
@@ -273,7 +294,13 @@ const Navbar = () => {
             PARK
           </CustomTypography>
         </Link>
-        <Link onClick={() => navigate("/activity")} underline="none">
+        <Link
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+            navigate("/activity");
+          }}
+          underline="none"
+        >
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
@@ -283,7 +310,13 @@ const Navbar = () => {
             ACTIVITY
           </CustomTypography>
         </Link>
-        <Link onClick={() => navigate("/community")} underline="none">
+        <Link
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+            navigate("/community");
+          }}
+          underline="none"
+        >
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
@@ -327,7 +360,13 @@ const Navbar = () => {
             >
               <div>
                 <CustomMenuItem onClick={handleProfileClose}>
-                  <Link onClick={() => navigate("/profile")} underline="none">
+                  <Link
+                    onClick={() => {
+                      window.scrollTo({ top: 0 });
+                      navigate("/profile");
+                    }}
+                    underline="none"
+                  >
                     <CustomTypography
                       sx={{
                         fontSize: "1rem",
