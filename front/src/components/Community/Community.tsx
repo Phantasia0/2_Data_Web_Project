@@ -7,7 +7,7 @@ import { fontdesign } from "../../theme/fontdesign";
 import { useGetSocialDataQuery } from "../../services/socialApi";
 
 import { useSelector, useDispatch } from "react-redux";
-import { goNext } from "../../features/SocialReducer";
+import { goNext, resetCurrentPage } from "../../features/SocialReducer";
 import { RootState } from "../../features/configureStore";
 import FeedGrid from "./FeedGrid";
 import { selectCurrentUser } from "../../features/AuthReducer";
@@ -51,6 +51,10 @@ const Community = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    dispatch(resetCurrentPage());
   }, []);
 
   if (isError) {
