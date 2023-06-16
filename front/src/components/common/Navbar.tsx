@@ -393,7 +393,7 @@ const Navbar = () => {
             </Menu>
           </CustomTypography>
         )}
-        <PrevButton />
+        {currentUrl !== "/" && <PrevButton />}
       </Stack>
       {userAuthOpen && <User setUserAuthOpen={setUserAuthOpen} />}
     </AppBar>

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/Community.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/PrevButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/PrevButton.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
