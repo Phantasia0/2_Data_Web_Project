@@ -9,10 +9,14 @@ import {
   IconButton,
   Checkbox,
 } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { addThisItem, setIsClicked } from "../../features/BasketParkReducer";
-import { usePutParkIntoBasketMutation } from "../../services/parksApi";
+import {
+  useGetParksDataQuery,
+  useGetParksFilteredDataQuery,
+  usePutParkIntoBasketMutation,
+} from "../../services/parksApi";
 import KaKaoParkRoadView from "../Editor/KaKaoParkRoadView";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
@@ -27,7 +31,32 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
       basketItem: basketPark.item,
     }));
 
+  const { region, pageNumber, filtered, pageFilteredNumber } = useSelector(
+    ({ park }: RootState) => ({
+      region: park.region,
+      pageNumber: park.pageNumber,
+      filtered: park.filtered,
+      pageFilteredNumber: park.pageFilteredNumber,
+    }),
+    shallowEqual
+  );
+
   const user = useSelector(selectCurrentUser);
+
+  const { refetch: refetchParksData } = useGetParksDataQuery(
+    pageNumber as number,
+    { skip: !isClicked }
+  );
+
+  const { refetch: refetchFilteredParkData } = useGetParksFilteredDataQuery(
+    {
+      page: pageFilteredNumber,
+      region: region,
+    },
+    {
+      skip: !isClicked,
+    }
+  );
 
   const [addMyRestaurant, { data, isSuccess, isError, isLoading }] =
     usePutParkIntoBasketMutation();
@@ -46,6 +75,11 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
       );
       dispatch(setIsClicked(false));
       refetch();
+      if (filtered) {
+        refetchFilteredParkData();
+      } else {
+        refetchParksData();
+      }
     }
   };
 
@@ -57,18 +91,7 @@ const MarkModalPark = ({ refetch, basketData }: any) => {
       fullWidth
       sx={{ "& .MuiDialogTitle-root": { textAlign: "center" } }}
     >
-      <DialogTitle>
-        {basketItem?.name}
-        <IconButton sx={{ fontSize: "15px", fontWeight: "blod" }}>
-          <Checkbox
-            icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-            checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
-            checked={basketItem?.contactCheck}
-            disabled={false}
-          />
-          {basketItem?.contactCount + "찜"}
-        </IconButton>
-      </DialogTitle>
+      <DialogTitle>{basketItem?.name}</DialogTitle>
       <DialogContent>
         <KaKaoParkRoadView spotData={basketItem} />
         <Typography variant="subtitle1">주소: {basketItem?.address}</Typography>

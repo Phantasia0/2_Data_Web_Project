@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
 import MarkerModal from "./MarkderModal";
-import { useSelector } from "react-redux";
-import { RootState } from "../../features/configureStore";
+import { shallowEqual, useSelector } from "react-redux";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
-import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
+import {
+  useGetRestaurantsDataQuery,
+  useGetRestaurantsFilteredDataQuery,
+  usePutRestaurantIntoBasketMutation,
+} from "../../services/restaurantsApi";
 import { useDispatch } from "react-redux";
 import {
   resetSelectedItemId,
+  setIsClicked,
   setSelectedItemId,
 } from "../../features/BasketReducer";
 import { selectCurrentUser } from "../../features/AuthReducer";
+import { RootState } from "../../features/configureStore";
 
 const Basket = () => {
   const dispatch = useDispatch();
@@ -34,17 +39,63 @@ const Basket = () => {
   useEffect(() => {
     if (!isFetching && isSuccess) {
       const filteredRestaurants = data.restaurant;
-      // .filter((restaurant: any) => items.includes(restaurant._id))
-      // .map((restaurant: any) => restaurant.name);
-
       setMyRestaurantList(filteredRestaurants);
     }
   }, [isFetching, isSuccess]);
 
+  //
+
+  const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
+    useSelector(({ basket }: RootState) => ({
+      // @ts-ignore
+      isClicked: basket.isClicked,
+      // @ts-ignore
+      basketItem: basket.item,
+    }));
+
+  // 새로 추가
+  const { region, foodCategory, filtered, pageNumber, pageFilteredNumber } =
+    useSelector(
+      ({ restaurant }: RootState) => ({
+        region: restaurant.region,
+        foodCategory: restaurant.foodCategory,
+        filtered: restaurant.filtered,
+        pageNumber: restaurant.pageNumber,
+        pageFilteredNumber: restaurant.pageFilteredNumber,
+      }),
+      shallowEqual
+    );
+
+  const { refetch: refetchRestaurantData } = useGetRestaurantsDataQuery(
+    pageNumber as number,
+    { skip: !isClicked }
+  );
+
+  const { refetch: refetchFilteredRestaurantData } =
+    useGetRestaurantsFilteredDataQuery(
+      {
+        page: pageFilteredNumber,
+        region: region,
+        foodCategory: foodCategory,
+      },
+      {
+        skip: !isClicked,
+      }
+    );
+
+  //
+
   const handleDeleteRestaurant = async (item: any) => {
+    dispatch(setIsClicked(true));
     const success = await addMyRestaurant(item._id).unwrap();
     if (success) {
+      dispatch(setIsClicked(false));
       refetch();
+      if (filtered) {
+        refetchFilteredRestaurantData();
+      } else {
+        refetchRestaurantData();
+      }
     }
   };
 

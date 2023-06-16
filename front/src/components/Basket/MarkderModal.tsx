@@ -10,10 +10,14 @@ import {
   IconButton,
   Checkbox,
 } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { addThisItem, setIsClicked } from "../../features/BasketReducer";
-import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
+import {
+  useGetRestaurantsDataQuery,
+  useGetRestaurantsFilteredDataQuery,
+  usePutRestaurantIntoBasketMutation,
+} from "../../services/restaurantsApi";
 import { selectCurrentUser } from "../../features/AuthReducer";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
@@ -27,7 +31,38 @@ const MarkerModal = ({ refetch, basketData }: any) => {
       basketItem: basket.item,
     }));
 
+  // 새로 추가
+  const { region, foodCategory, filtered, pageNumber, pageFilteredNumber } =
+    useSelector(
+      ({ restaurant }: RootState) => ({
+        region: restaurant.region,
+        foodCategory: restaurant.foodCategory,
+        filtered: restaurant.filtered,
+        pageNumber: restaurant.pageNumber,
+        pageFilteredNumber: restaurant.pageFilteredNumber,
+      }),
+      shallowEqual
+    );
+
   const user = useSelector(selectCurrentUser);
+
+  // 새로 추가
+  const { refetch: refetchRestaurantData } = useGetRestaurantsDataQuery(
+    pageNumber as number,
+    { skip: !isClicked }
+  );
+
+  const { refetch: refetchFilteredRestaurantData } =
+    useGetRestaurantsFilteredDataQuery(
+      {
+        page: pageFilteredNumber,
+        region: region,
+        foodCategory: foodCategory,
+      },
+      {
+        skip: !isClicked,
+      }
+    );
 
   const [addMyRestaurant, { data, isSuccess, isError, isLoading }] =
     usePutRestaurantIntoBasketMutation();
@@ -46,6 +81,11 @@ const MarkerModal = ({ refetch, basketData }: any) => {
       );
       dispatch(setIsClicked(false));
       refetch();
+      if (filtered) {
+        refetchFilteredRestaurantData();
+      } else {
+        refetchRestaurantData();
+      }
     }
   };
 
@@ -60,22 +100,7 @@ const MarkerModal = ({ refetch, basketData }: any) => {
         marginTop: 20,
       }}
     >
-      <DialogTitle>
-        {basketItem?.name}{" "}
-        <IconButton
-          sx={{ fontSize: "15px", fontWeight: "blod" }}
-          onClick={handleMyRestaurant}
-        >
-          <Checkbox
-            icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-            checkedIcon={<Favorite sx={{ color: "red", fontSize: "1rem" }} />}
-            checked={basketItem?.contactCheck}
-            disabled={false}
-          />
-          {basketItem?.contactCount + "찜"}
-        </IconButton>
-      </DialogTitle>
-
+      <DialogTitle>{basketItem?.name} </DialogTitle>
       <DialogContent>
         <img
           src={basketItem?.image}

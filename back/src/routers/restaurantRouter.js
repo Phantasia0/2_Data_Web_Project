@@ -32,6 +32,32 @@ restaurantRouter.get(
   }
 );
 
+restaurantRouter.get(
+  "/search/contact",
+  getCurrentUser,
+  async function (req, res, next) {
+    try {
+      const { page, region, category } = req.query;
+      console.log(page);
+      const userId = req.currentUserId;
+      const data = await restaurantService.getFilteredRestaurantNotContact({
+        page,
+        region,
+        category,
+        userId,
+      });
+
+      if (data.errorMessage) {
+        throw new Error(data.errorMessage);
+      }
+
+      res.status(200).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 // 전체 식당 리스트
 restaurantRouter.get("", getCurrentUser, async function (req, res, next) {
   try {
@@ -49,7 +75,7 @@ restaurantRouter.get("", getCurrentUser, async function (req, res, next) {
   }
 });
 
-// 전체 식당리스트 예전
+// 전체 식당 찜 불러오기
 restaurantRouter.get(
   "/contact",
   getCurrentUser,
@@ -57,35 +83,8 @@ restaurantRouter.get(
     try {
       const { page } = req.query;
       const userId = req.currentUserId;
-      const data = await restaurantService.getRestaurantNotContact({
+      const data = await restaurantService.getRestaurantContacts({
         page,
-        userId,
-      });
-
-      if (data.errorMessage) {
-        throw new Error(data.errorMessage);
-      }
-
-      res.status(200).send(data);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-
-// 식당 필터링 리스트(지역, 종류) 예전
-restaurantRouter.get(
-  "/search/contact",
-  getCurrentUser,
-  async function (req, res, next) {
-    try {
-      const { page, region, category } = req.query;
-      console.log(page);
-      const userId = req.currentUserId;
-      const data = await restaurantService.getFilteredRestaurantNotContact({
-        page,
-        region,
-        category,
         userId,
       });
 

@@ -46,26 +46,18 @@ const ParkDetail = () => {
                 }}
               >
                 <span>{data?.name}</span>
-                <IconButton
+                <Typography
                   sx={{
                     fontSize: "15px",
                     fontWeight: "blod",
                     marginLeft: "10px",
                   }}
                 >
-                  <Checkbox
-                    icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
-                    checkedIcon={
-                      <Favorite sx={{ color: "red", fontSize: "1rem" }} />
-                    }
-                    disabled={false}
-                    /* @ts-ignore */
-                    checked={data?.contactCheck}
-                  />
-                  {/* @ts-ignore */}
-                  {data?.contacts.filter((item) => item.value === 1).length +
-                    "찜"}
-                </IconButton>
+                  현재 {/* @ts-ignore */}
+                  {data?.contacts?.filter((item) => item.value === 1).length +
+                    "명"}
+                  이 찜하고 있어요
+                </Typography>
               </Typography>
             }
           />

@@ -7,6 +7,8 @@ import { RootState } from "../../features/configureStore";
 import {
   useGetParksDataQuery,
   useGetParksFilteredDataQuery,
+  useGetParksFilteredNotContactDataQuery,
+  useGetParksNotContactDataQuery,
 } from "../../services/parksApi";
 import { setThisItem } from "../../features/BasketParkReducer";
 
@@ -26,10 +28,12 @@ const KaKaoParkMap = () => {
   );
 
   const { data, error, isLoading, isFetching, isSuccess } =
-    useGetParksDataQuery(pageNumber as number);
-  const { data2 }: any = useGetParksDataQuery((pageNumber as number) + 1);
+    useGetParksNotContactDataQuery(pageNumber as number);
+  const { data2 }: any = useGetParksNotContactDataQuery(
+    (pageNumber as number) + 1
+  );
 
-  const { data: filteredData } = useGetParksFilteredDataQuery(
+  const { data: filteredData } = useGetParksFilteredNotContactDataQuery(
     {
       page: pageFilteredNumber,
       region: region,
@@ -104,7 +108,7 @@ const KaKaoParkMap = () => {
 
   const makeMakerData = () => {
     if (region) {
-      return filteredData?.park?.map((item: any, index) => (
+      return filteredData?.park?.map((item: any, index: any) => (
         <EventMarkerContainer
           index={index}
           key={`${item.lat}-${item.lng}`}
@@ -119,7 +123,7 @@ const KaKaoParkMap = () => {
         />
       ));
     } else {
-      return data?.park.map((item: any, index) => (
+      return data?.park.map((item: any, index: any) => (
         <EventMarkerContainer
           index={index}
           key={`${item.lat}-${item.lng}`}

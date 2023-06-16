@@ -22,34 +22,45 @@ const RightbarVegan = () => {
       shallowEqual
     );
 
-  const { data, error, isLoading, isSuccess } = useGetRestaurantsDataQuery(
-    pageNumber as number
-  );
+  const {
+    data,
+    error,
+    isLoading,
+    isSuccess,
+    refetch: refetchRestaurantData,
+  } = useGetRestaurantsDataQuery(pageNumber as number);
 
-  const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
-    {
-      page: pageFilteredNumber,
-      region: region,
-      foodCategory: foodCategory,
-    },
-    {
-      skip: !region,
-      // @ts-ignore
-      refetchOnArgChange: true,
-    }
-  );
+  const { data: filteredData, refetch: refetchFilteredRestaurantData } =
+    useGetRestaurantsFilteredDataQuery(
+      {
+        page: pageFilteredNumber,
+        region: region,
+        foodCategory: foodCategory,
+      },
+      {
+        skip: !region,
+        // @ts-ignore
+        refetchOnArgChange: true,
+      }
+    );
 
   const getItemList = (filtered: Boolean | undefined) => {
     if (filtered) {
       return filteredData?.restaurant?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem resData={item} />
+          <RestaurantVeganItem
+            resData={item}
+            refetchRestaurantData={refetchFilteredRestaurantData}
+          />
         </div>
       ));
     } else {
       return data?.restaurant?.map((item: any) => (
         <div key={item._id}>
-          <RestaurantVeganItem resData={item} />
+          <RestaurantVeganItem
+            resData={item}
+            refetchRestaurantData={refetchRestaurantData}
+          />
         </div>
       ));
     }

@@ -75,6 +75,7 @@ const FeedCard: FC<any> = ({
     isSuccess: thisFeedSuccess,
     isError: thisFeedError,
     refetch: thisFeedRefetch,
+    isFetching: thisFeedFetching,
   } = useGetFeedQuery(data._id);
 
   const { isModalVisible } = useSelector(({ profile }: RootState) => ({

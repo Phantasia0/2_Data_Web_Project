@@ -26,33 +26,38 @@ const RightbarPark = () => {
   );
   const dispatch = useDispatch();
 
-  const { data, error, isLoading, isSuccess } = useGetParksDataQuery(
-    pageNumber as number
-  );
+  const {
+    data,
+    error,
+    isLoading,
+    isSuccess,
+    refetch: refetchParkData,
+  } = useGetParksDataQuery(pageNumber as number);
 
-  const { data: filteredData } = useGetParksFilteredDataQuery(
-    {
-      page: pageFilteredNumber,
-      region: region,
-    },
-    {
-      skip: !region,
-      // @ts-ignore
-      refetchOnArgChange: true,
-    }
-  );
+  const { data: filteredData, refetch: refetchFilteredParkData } =
+    useGetParksFilteredDataQuery(
+      {
+        page: pageFilteredNumber,
+        region: region,
+      },
+      {
+        skip: !region,
+        // @ts-ignore
+        refetchOnArgChange: true,
+      }
+    );
 
   const getItemList = (filtered: Boolean | undefined) => {
     if (filtered) {
       return filteredData?.park?.map((item: any) => (
         <div key={item._id}>
-          <ParkItem data={item} />
+          <ParkItem data={item} refetchParkData={refetchFilteredParkData} />
         </div>
       ));
     } else {
       return data?.park?.map((item: any) => (
         <div key={item._id}>
-          <ParkItem data={item} />
+          <ParkItem data={item} refetchParkData={refetchParkData} />
         </div>
       ));
     }

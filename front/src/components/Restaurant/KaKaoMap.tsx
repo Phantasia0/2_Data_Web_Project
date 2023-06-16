@@ -5,9 +5,12 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { updateData } from "../../features/RestaurantReducer";
 import {
+  useGetRestaurantNotContactDataQuery,
   useGetRestaurantsDataQuery,
   useGetRestaurantsFilteredDataQuery,
+  useGetRestaurantsFilteredNotContactDataQuery,
 } from "../../services/restaurantsApi";
+// @ts-ignore
 import { setThisItem } from "../../features/BasketReducer";
 
 const { kakao }: any = window;
@@ -106,10 +109,12 @@ const TotalSearchMap = () => {
     );
 
   const { data, error, isLoading, isFetching, isSuccess } =
-    useGetRestaurantsDataQuery(pageNumber as number);
-  const { data2 }: any = useGetRestaurantsDataQuery((pageNumber as number) + 1);
+    useGetRestaurantNotContactDataQuery(pageNumber as number);
+  const { data2 }: any = useGetRestaurantNotContactDataQuery(
+    (pageNumber as number) + 1
+  );
 
-  const { data: filteredData } = useGetRestaurantsFilteredDataQuery(
+  const { data: filteredData } = useGetRestaurantsFilteredNotContactDataQuery(
     {
       page: pageFilteredNumber,
       region: region,
@@ -153,6 +158,7 @@ const TotalSearchMap = () => {
   }
 
   const makeMakerData = () => {
+    console.log("rendered");
     if (region || foodCategory) {
       return filteredData?.restaurant?.map((item: any) => (
         <>

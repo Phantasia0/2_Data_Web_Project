@@ -13,18 +13,37 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { useGetUserBasketQuery } from "../../services/authApiWrapper";
+import { usePutParkIntoBasketMutation } from "../../services/parksApi";
 
-interface ParkItemProps {
-  data: any;
-}
-
-const ParkItem: FC<ParkItemProps> = ({ data }) => {
+const ParkItem = ({ data, refetchParkData }: any) => {
   const { basketItem }: { basketItem: any } = useSelector(
     ({ basketPark }: RootState) => ({
       // @ts-ignore
       basketItem: basketPark.item,
     })
   );
+
+  const {
+    data: basketData,
+    isSuccess: basketSuccess,
+    isError: basketError,
+    isLoading: basketLoading,
+    isFetching: basketFetching,
+    refetch,
+  } = useGetUserBasketQuery(undefined);
+
+  const [addMyPark, { data: ParkData, isSuccess, isError, isLoading }] =
+    usePutParkIntoBasketMutation();
+
+  const handleMyPark = async (e: any) => {
+    e.stopPropagation();
+    const success = await addMyPark(data._id).unwrap();
+    if (success) {
+      refetch();
+      refetchParkData();
+    }
+  };
 
   const boxStyle = {
     backgroundColor: data?._id === basketItem?._id ? "#F3F3F3" : "transparent",
@@ -55,7 +74,10 @@ const ParkItem: FC<ParkItemProps> = ({ data }) => {
                     >
                       {data?.name}
                     </span>
-                    <IconButton sx={{ fontSize: "15px", fontWeight: "blod" }}>
+                    <IconButton
+                      sx={{ fontSize: "15px", fontWeight: "blod" }}
+                      onClick={handleMyPark}
+                    >
                       <Checkbox
                         icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
                         checkedIcon={

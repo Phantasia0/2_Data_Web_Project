@@ -185,37 +185,36 @@ class Restaurant {
 
     return { region, category, restaurant, total };
   }
-
   static async findBySearchNotContact({ page, filter, userId }) {
-    const skip = (page - 1) * LIMIT;
-    const restaurant = await RestaurantModel.aggregate([
-      { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
-      { $skip: skip },
-      { $limit: LIMIT },
-      {
-        $project: {
-          _id: 1,
-          category: 1,
-          name: 1,
-          region: 1,
-          address: 1,
-          tel: 1,
-          description: 1,
-          latitude: 1,
-          longitude: 1,
-          image: 1,
-          reservation: 1,
+      const skip = (page - 1) * LIMIT;
+      const restaurant = await RestaurantModel.aggregate([
+        { $match: filter }, // 필요한 필터 조건을 추가하십시오. 예: { _id: postId }
+        { $skip: skip },
+        { $limit: LIMIT },
+        {
+          $project: {
+            _id: 1,
+            category: 1,
+            name: 1,
+            region: 1,
+            address: 1,
+            tel: 1,
+            description: 1,
+            latitude: 1,
+            longitude: 1,
+            image: 1,
+            reservation: 1,
+          },
         },
-      },
-    ]);
+      ]);
 
-    const category = await RestaurantModel.distinct("category", filter);
-    const region = await RestaurantModel.distinct("region", filter);
+      const category = await RestaurantModel.distinct("category", filter);
+      const region = await RestaurantModel.distinct("region", filter);
 
-    const total = await RestaurantModel.countDocuments(filter);
+      const total = await RestaurantModel.countDocuments(filter);
 
-    return { restaurant, category, region, total };
-  }
+      return { restaurant, category, region, total };
+    }
 }
 
 export { Restaurant };

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Divider,
@@ -11,19 +11,13 @@ import {
   IconButton,
   Checkbox,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
-import { addThisItem } from "../../features/BasketReducer";
+import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 
-interface RestaurantVeganItemProps {
-  resData: any;
-}
-
-const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ resData }) => {
-  const dispatch = useDispatch();
-
+const RestaurantVeganItem = ({ resData, refetchRestaurantData }: any) => {
   const { basketItem }: { basketItem: any } = useSelector(
     ({ basket }: RootState) => ({
       // @ts-ignore
@@ -40,17 +34,24 @@ const RestaurantVeganItem: FC<RestaurantVeganItemProps> = ({ resData }) => {
     borderRadius: "1rem",
   };
 
+  const {
+    data: basketData,
+    isSuccess: basketSuccess,
+    isError: basketError,
+    isLoading: basketLoading,
+    isFetching: basketFetching,
+    refetch,
+  } = useGetUserBasketQuery(undefined);
+
   const [addMyRestaurant, { data, isSuccess, isError, isLoading }] =
     usePutRestaurantIntoBasketMutation();
 
-  const handleMyRestaurant = async () => {
-    const success = await addMyRestaurant(basketItem?._id).unwrap();
+  const handleMyRestaurant = async (e: any) => {
+    e.stopPropagation();
+    const success = await addMyRestaurant(resData._id).unwrap();
     if (success) {
-      dispatch(
-        addThisItem({
-          data: basketItem,
-        })
-      );
+      refetch();
+      refetchRestaurantData();
     }
   };
 

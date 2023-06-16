@@ -18,6 +18,9 @@ export const parksApi = createApi({
     getParksData: builder.query<ParkData, number>({
       query: (page: number) => `/park?page=${page}`,
     }),
+    getParksNotContactData: builder.query<any, number>({
+      query: (page: number) => `/park/contact?page=${page}`,
+    }),
     getParksFilteredData: builder.query<
       ParkData,
       { page?: number | null; region?: string | null }
@@ -44,6 +47,33 @@ export const parksApi = createApi({
         return queryString;
       },
     }),
+    getParksFilteredNotContactData: builder.query<
+      any,
+      { page?: number | null; region?: string | null }
+    >({
+      query: ({ page, region }) => {
+        let queryString = "/park/search/contact";
+
+        if (page) {
+          queryString += `?page=${encodeURIComponent(page)}`;
+        } else {
+          queryString += "?page";
+        }
+
+        if (region) {
+          if (queryString.includes("?")) {
+            queryString += `&region=${encodeURIComponent(region)}`;
+          } else {
+            queryString += `?region=${encodeURIComponent(region)}`;
+          }
+        } else {
+          queryString += "&region";
+        }
+
+        return queryString;
+      },
+    }),
+
     getParkDetailData: builder.query<Park, string>({
       query: (id) => `/park/${id}`,
     }),
@@ -62,4 +92,6 @@ export const {
   useGetParksFilteredDataQuery,
   useGetParkDetailDataQuery,
   usePutParkIntoBasketMutation,
+  useGetParksNotContactDataQuery,
+  useGetParksFilteredNotContactDataQuery,
 } = parksApi;

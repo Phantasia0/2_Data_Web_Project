@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import Button from "@mui/material/Button";
-import { usePutParkIntoBasketMutation } from "../../services/parksApi";
+import {
+  useGetParksDataQuery,
+  useGetParksFilteredDataQuery,
+  usePutParkIntoBasketMutation,
+} from "../../services/parksApi";
 import MarkderModalPark from "./MarkderModalPark";
 import {
   resetSelectedItemId,
@@ -11,6 +15,8 @@ import {
 } from "../../features/BasketParkReducer";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../features/AuthReducer";
+import { RootState } from "../../features/configureStore";
+import { setIsClicked } from "../../features/BasketParkReducer";
 
 const BasketPark = () => {
   const dispatch = useDispatch();
@@ -39,10 +45,50 @@ const BasketPark = () => {
     }
   }, [isFetching, isSuccess]);
 
+  const { isClicked, basketItem }: { isClicked: boolean; basketItem: any } =
+    useSelector(({ basketPark }: RootState) => ({
+      // @ts-ignore
+      isClicked: basketPark.isClicked,
+      // @ts-ignore
+      basketItem: basketPark.item,
+    }));
+
+  const { region, pageNumber, filtered, pageFilteredNumber } = useSelector(
+    ({ park }: RootState) => ({
+      region: park.region,
+      pageNumber: park.pageNumber,
+      filtered: park.filtered,
+      pageFilteredNumber: park.pageFilteredNumber,
+    }),
+    shallowEqual
+  );
+
+  const { refetch: refetchParksData } = useGetParksDataQuery(
+    pageNumber as number,
+    { skip: !isClicked }
+  );
+
+  const { refetch: refetchFilteredParkData } = useGetParksFilteredDataQuery(
+    {
+      page: pageFilteredNumber,
+      region: region,
+    },
+    {
+      skip: !isClicked,
+    }
+  );
+
   const handleDeletePark = async (item: any) => {
+    dispatch(setIsClicked(true));
     const success = await addMyPark(item._id).unwrap();
     if (success) {
+      dispatch(setIsClicked(false));
       refetch();
+      if (filtered) {
+        refetchFilteredParkData();
+      } else {
+        refetchParksData();
+      }
     }
   };
 

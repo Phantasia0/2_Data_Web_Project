@@ -18,6 +18,9 @@ export const restaurantsApi = createApi({
     getRestaurantsData: builder.query<RestaurantData, number>({
       query: (page: number) => `/restaurant?page=${page}`,
     }),
+    getRestaurantNotContactData: builder.query<any, number>({
+      query: (page: number) => `/restaurant/contact?page=${page}`,
+    }),
     getRestaurantsFilteredData: builder.query<
       RestaurantData,
       {
@@ -28,6 +31,45 @@ export const restaurantsApi = createApi({
     >({
       query: ({ region, foodCategory, page }) => {
         let queryString = "/restaurant/search";
+
+        if (page) {
+          queryString += `?page=${encodeURIComponent(page)}`;
+        } else {
+          queryString += "?page";
+        }
+
+        if (region) {
+          if (queryString.includes("?")) {
+            queryString += `&region=${encodeURIComponent(region)}`;
+          } else {
+            queryString += `?region=${encodeURIComponent(region)}`;
+          }
+        } else {
+          queryString += "&region";
+        }
+        if (foodCategory) {
+          if (queryString.includes("?")) {
+            queryString += `&category=${encodeURIComponent(foodCategory)}`;
+          } else {
+            queryString += `?category=${encodeURIComponent(foodCategory)}`;
+          }
+        } else {
+          queryString += "&category";
+        }
+
+        return queryString;
+      },
+    }),
+    getRestaurantsFilteredNotContactData: builder.query<
+      any,
+      {
+        region?: string | null;
+        foodCategory?: string | null;
+        page?: number | null;
+      }
+    >({
+      query: ({ region, foodCategory, page }) => {
+        let queryString = "/restaurant/search/contact";
 
         if (page) {
           queryString += `?page=${encodeURIComponent(page)}`;
@@ -87,6 +129,8 @@ export const {
   useGetRestaurantsFilteredDataQuery,
   useGetRestaurantDetailDataQuery,
   usePutRestaurantIntoBasketMutation,
+  useGetRestaurantNotContactDataQuery,
+  useGetRestaurantsFilteredNotContactDataQuery,
 } = restaurantsApi;
 
 export const { useGetDetailDataQuery } = kakaoApi;
