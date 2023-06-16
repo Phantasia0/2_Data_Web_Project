@@ -2,8 +2,10 @@ import React from "react";
 import { Typography, Link, Box } from "@mui/material";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { fontdesign } from "../../theme/fontdesign";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="home"
@@ -115,9 +117,12 @@ const Home = () => {
           />
           <Typography sx={fontdesign.xsText}>
             <Link
-              href="/front/src/components/Restaurant/Restaurant"
               underline="none"
               sx={{ color: "info.main" }}
+              onClick={() => {
+                window.scrollTo({ top: 0 });
+                navigate("/restaurant");
+              }}
             >
               비건 레스토랑
             </Link>
@@ -133,9 +138,12 @@ const Home = () => {
           />
           <Typography sx={fontdesign.xsText}>
             <Link
-              href="/front/src/components/Restaurant/Restaurant"
               underline="none"
               sx={{ color: "info.main" }}
+              onClick={() => {
+                window.scrollTo({ top: 0 });
+                navigate("/park");
+              }}
             >
               자연에서의 시간
             </Link>
