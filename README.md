@@ -62,10 +62,10 @@ GreenLife
 ![image](./front/src/assets/readmeimages/3-5-4.png)
 ![image](./front/src/assets/readmeimages/3-5-5.png)
 ![image](./front/src/assets/readmeimages/3-5-6.png)  
-**마이페이지 추가 예정** 
+![image](./front/src/assets/readmeimages/3-5-7.png)  
 - 미디어쿼리   
    - 반응형 디자인 수행    
-![image](./front/src/assets/readmeimages/3-5-7.png) 
+![image](./front/src/assets/readmeimages/3-5-8.png) 
 ## 4. 개발과정 
 ### 4-1. 기술스택   
 프론트 **추가 예정**   
