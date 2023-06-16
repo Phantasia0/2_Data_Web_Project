@@ -76,19 +76,29 @@ const FeedCard: FC<any> = ({
     isError: thisFeedError,
     refetch: thisFeedRefetch,
     isFetching: thisFeedFetching,
-  } = useGetFeedQuery(data._id);
+  } = useGetFeedQuery(data._id, {
+    skip: false,
+    refetchOnMountOrArgChange: true,
+  });
 
   const { isModalVisible } = useSelector(({ profile }: RootState) => ({
     isModalVisible: profile.isModalVisible,
   }));
 
-  useEffect(() => {
-    thisFeedRefetch();
-  }, []);
+  // useEffect(() => {
+  //   thisFeedRefetch();
+  // }, []);
 
   useEffect(() => {
-    thisFeedRefetch();
-    setIsLiked(thisFeedData?.likeCheck);
+    // thisFeedRefetch();
+    // setIsLiked(thisFeedData?.likeCheck);
+    const refetchFeed = async () => {
+      const success = await thisFeedRefetch().unwrap();
+      if (success) {
+        setIsLiked(thisFeedData?.likeCheck);
+      }
+    };
+    refetchFeed();
   }, [isLiked]);
 
   const handleMenuOpen = (event: any) => {

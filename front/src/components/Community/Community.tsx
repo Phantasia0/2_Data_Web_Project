@@ -28,7 +28,7 @@ const Community = () => {
   const { data, isSuccess, isError, isLoading, isFetching, refetch } =
     useGetSocialDataQuery(currentPage, {
       skip: currentPage > Math.floor((total as number) / SKIPCOUNT) + 1,
-      refetchOnMountOrArgChange: true,
+      refetchOnMountOrArgChange: false,
     });
 
   const handleScroll = () => {
@@ -36,7 +36,7 @@ const Community = () => {
     const triggerPosition = scrollHeight - clientHeight - 1;
     if (scrollTop >= triggerPosition) {
       dispatch(goNext(1));
-      const scrollY = window.innerHeight + window.scrollY - 50;
+      const scrollY = window.innerHeight + window.scrollY - 100;
       window.scrollTo({ top: scrollY });
     }
   };
@@ -72,12 +72,6 @@ const Community = () => {
         alignItems: "center",
       }}
     >
-      {/* <Navbar /> */}
-      {/* <div>
-        <Typography sx={fontdesign.xsTitle} style={{ marginTop: "4vw" }}>
-          Story
-        </Typography>
-      </div> */}
       <Box
         sx={{
           display: "flex",
