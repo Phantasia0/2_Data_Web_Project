@@ -81,7 +81,7 @@ const Rightbar2: FC<any> = ({
   }
 
   return (
-    <Box position="fixed" marginTop={4}>
+    <Box marginTop={4}>
       <Box
         sx={{
           width: "100%",

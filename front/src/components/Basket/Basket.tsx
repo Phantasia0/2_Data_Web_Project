@@ -109,7 +109,7 @@ const Basket = () => {
           {myRestaurantList?.length === 0 ? (
             <Typography
               variant="body1"
-              sx={{ fontSize: { xs: "1.2vw" } }}
+              sx={{ fontSize: { xs: "1.2vw", wordBreak: "keep-all" } }}
               component="span"
               color="secondary.main"
               fontWeight="bold"
