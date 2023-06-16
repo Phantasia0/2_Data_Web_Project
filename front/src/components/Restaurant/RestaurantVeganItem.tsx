@@ -16,6 +16,7 @@ import { RootState } from "../../features/configureStore";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { usePutRestaurantIntoBasketMutation } from "../../services/restaurantsApi";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
+import { selectCurrentUser } from "../../features/AuthReducer";
 
 const RestaurantVeganItem = ({ resData, refetchRestaurantData }: any) => {
   const { basketItem }: { basketItem: any } = useSelector(
@@ -24,6 +25,7 @@ const RestaurantVeganItem = ({ resData, refetchRestaurantData }: any) => {
       basketItem: basket.item,
     })
   );
+  const user = useSelector(selectCurrentUser);
 
   const boxStyle = {
     backgroundColor:
@@ -86,6 +88,7 @@ const RestaurantVeganItem = ({ resData, refetchRestaurantData }: any) => {
                     <IconButton
                       sx={{ fontSize: "15px", fontWeight: "blod" }}
                       onClick={handleMyRestaurant}
+                      disabled={!user}
                     >
                       <Checkbox
                         icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
@@ -93,7 +96,6 @@ const RestaurantVeganItem = ({ resData, refetchRestaurantData }: any) => {
                           <Favorite sx={{ color: "red", fontSize: "1rem" }} />
                         }
                         checked={resData?.contactCheck}
-                        disabled={false}
                       />
                       {resData?.contactCount + "찜"}
                     </IconButton>

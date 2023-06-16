@@ -15,6 +15,7 @@ import { RootState } from "../../features/configureStore";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useGetUserBasketQuery } from "../../services/authApiWrapper";
 import { usePutParkIntoBasketMutation } from "../../services/parksApi";
+import { selectCurrentUser } from "../../features/AuthReducer";
 
 const ParkItem = ({ data, refetchParkData }: any) => {
   const { basketItem }: { basketItem: any } = useSelector(
@@ -23,6 +24,7 @@ const ParkItem = ({ data, refetchParkData }: any) => {
       basketItem: basketPark.item,
     })
   );
+  const user = useSelector(selectCurrentUser);
 
   const {
     data: basketData,
@@ -77,6 +79,7 @@ const ParkItem = ({ data, refetchParkData }: any) => {
                     <IconButton
                       sx={{ fontSize: "15px", fontWeight: "blod" }}
                       onClick={handleMyPark}
+                      disabled={!user}
                     >
                       <Checkbox
                         icon={<FavoriteBorder sx={{ fontSize: "1rem" }} />}
@@ -84,7 +87,6 @@ const ParkItem = ({ data, refetchParkData }: any) => {
                           <Favorite sx={{ color: "red", fontSize: "1rem" }} />
                         }
                         checked={data?.contactCheck}
-                        disabled={false}
                       />
                       {data?.contactCount + "찜"}
                     </IconButton>
