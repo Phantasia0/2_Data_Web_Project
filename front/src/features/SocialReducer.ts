@@ -7,6 +7,7 @@ interface SocialState {
   total?: number;
   deletedFeeds?: any[];
   currentPage?: number;
+  commentUpdated?: any;
 }
 
 const initialState: SocialState = {
@@ -14,6 +15,7 @@ const initialState: SocialState = {
   total: 0,
   deletedFeeds: [],
   currentPage: 1,
+  commentUpdated: false,
 };
 
 const socialSlice = createSlice({
@@ -93,9 +95,13 @@ const socialSlice = createSlice({
     updateThisFeedComment: (state, action: PayloadAction<any>) => {
       if (action?.payload !== null) {
         const feedId = action?.payload?._id;
+        state.commentUpdated = true;
         const feedToUpdate = state?.feeds?.find((feed) => feed._id === feedId);
         if (feedToUpdate) {
+          // @ts-ignore
           feedToUpdate.commentCount += action?.payload?.commentCount;
+          // @ts-ignore
+          state.commentUpdated = false;
         }
       }
     },

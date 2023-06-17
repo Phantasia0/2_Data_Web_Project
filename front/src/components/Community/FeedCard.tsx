@@ -49,9 +49,17 @@ const FeedCard: FC<any> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [isLiked, setIsLiked] = useState(Boolean(data?.likeCheck));
+  const [commentCount, setCommentCount] = useState(Boolean(data?.commentCount));
+
   const { keyword } = useSelector(
     ({ profile }): RootState => ({
       keyword: profile.keyword,
+    })
+  );
+
+  const { commentUpdated } = useSelector(
+    ({ social }): RootState => ({
+      commentUpdated: social.commentUpdated,
     })
   );
 
@@ -95,11 +103,12 @@ const FeedCard: FC<any> = ({
     const refetchFeed = async () => {
       const success = await thisFeedRefetch().unwrap();
       if (success) {
+        setCommentCount(thisFeedData?.comments.length);
         setIsLiked(thisFeedData?.likeCheck);
       }
     };
     refetchFeed();
-  }, [isLiked]);
+  }, [isLiked, commentUpdated]);
 
   const handleMenuOpen = (event: any) => {
     setMenuOpen(true);
@@ -283,7 +292,10 @@ const FeedCard: FC<any> = ({
         <IconButton sx={{ height: "1rem", marginRight: "0.5rem" }}>
           <Comment sx={{ fontSize: "1rem" }} />
         </IconButton>
-        <Box sx={{ fontSize: "0.7rem" }}> {data.commentCount || 0}</Box>
+        <Box sx={{ fontSize: "0.7rem" }}>
+          {" "}
+          {commentCount || data?.commentCount}
+        </Box>
       </CardContent>
     </Card>
   );
