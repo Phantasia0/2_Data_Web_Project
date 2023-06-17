@@ -11,7 +11,7 @@ import {
   Link,
 } from "@mui/material";
 
-import { useGetDetailDataQuery } from "../../services/restaurantsApi";
+import { useGetDetailDataQuery } from "../../services/kakaoApi";
 import { useParams } from "react-router-dom";
 import Rating from "./Rating";
 import LoadingImage from "../common/Loading";
@@ -34,6 +34,26 @@ const RestaurantKeywordDetail = () => {
     category,
     tags,
     openHour,
+  }: {
+    placenamefull: string;
+    mainphotourl: string;
+    phonenum: string;
+    homepage: string;
+    tags: string[];
+    address: {
+      region: {
+        fullname: string;
+      };
+    };
+    openHour: {
+      periodList: {
+        timeList: {
+          timeSE: string;
+          dayOfWeek: string;
+        }[];
+      }[];
+    };
+    category: { cate1name: string };
   } = data.basicInfo;
 
   return (

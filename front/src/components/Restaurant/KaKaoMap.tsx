@@ -6,14 +6,18 @@ import { RootState } from "../../features/configureStore";
 import { updateData } from "../../features/RestaurantReducer";
 import {
   useGetRestaurantNotContactDataQuery,
-  useGetRestaurantsDataQuery,
-  useGetRestaurantsFilteredDataQuery,
   useGetRestaurantsFilteredNotContactDataQuery,
 } from "../../services/restaurantsApi";
 // @ts-ignore
 import { setThisItem } from "../../features/BasketReducer";
 
-const { kakao }: any = window;
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
+const { kakao } = window;
 
 const KeywordSearchMap = () => {
   const dispatch = useDispatch();
@@ -69,12 +73,11 @@ const KeywordSearchMap = () => {
     );
   }, [map, keyword]);
 
+  const SEOUL_CENTER_POSITION = { lat: 37.566826, lng: 126.9786567 };
+
   return (
     <Map
-      center={{
-        lat: 37.566826,
-        lng: 126.9786567,
-      }}
+      center={SEOUL_CENTER_POSITION}
       style={{
         width: "100%",
         height: "1000px",

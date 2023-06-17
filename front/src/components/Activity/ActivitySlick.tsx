@@ -6,6 +6,7 @@ import { useTheme, Box } from "@mui/material";
 import ActivityCard from "./ActivityCard";
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../features/configureStore";
+import { Activity } from "../../models/activity.model";
 
 interface ActivitySlick {
   category: string;
@@ -14,9 +15,9 @@ interface ActivitySlick {
 
 const ActivitySlick: FC<ActivitySlick> = ({ category, autoplay }) => {
   const theme = useTheme();
-  const { datas } = useSelector(
+  const { dataObject } = useSelector(
     ({ activity }: RootState) => ({
-      datas: activity.datas,
+      dataObject: activity.dataObject,
     }),
     shallowEqual
   );
@@ -70,8 +71,8 @@ const ActivitySlick: FC<ActivitySlick> = ({ category, autoplay }) => {
     >
       <h2>{category}</h2>
       <Slider {...settings}>
-        {datas &&
-          datas[category]?.map((item) => (
+        {dataObject &&
+          dataObject[category]?.map((item: Activity) => (
             <div key={item._id}>
               <ActivityCard data={item} />
             </div>

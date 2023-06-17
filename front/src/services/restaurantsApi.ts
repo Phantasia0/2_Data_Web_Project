@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RestaurantData, Restaurant } from "../models/restaurant.model";
+import { API_BASE_URL } from "./constant";
 
 export const restaurantsApi = createApi({
   reducerPath: "restaurantsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${window.location.hostname}:5001/`,
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
       // @ts-ignore
       const token = sessionStorage.getItem("user");
@@ -112,18 +113,6 @@ export const restaurantsApi = createApi({
   }),
 });
 
-export const kakaoApi = createApi({
-  reducerPath: "kakaoApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: `http://${window.location.hostname}:5001/`,
-  }),
-  endpoints: (builder) => ({
-    getDetailData: builder.query<any, string>({
-      query: (id) => `/kakao/${id}`,
-    }),
-  }),
-});
-
 export const {
   useGetRestaurantsDataQuery,
   useGetRestaurantsFilteredDataQuery,
@@ -132,5 +121,3 @@ export const {
   useGetRestaurantNotContactDataQuery,
   useGetRestaurantsFilteredNotContactDataQuery,
 } = restaurantsApi;
-
-export const { useGetDetailDataQuery } = kakaoApi;

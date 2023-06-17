@@ -112,10 +112,10 @@ const Sidebar = () => {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    debounceOnChangeKeyword(event.target.value);
+    handleChangeKeyword(event.target.value);
   };
 
-  const debounceKeywordSearch = (keyword: string) => {
+  const dispatchKeywordSearch = (keyword: string) => {
     dispatch(
       searchKeyword({
         keyword: keyword,
@@ -125,8 +125,8 @@ const Sidebar = () => {
 
   const DEBOUNCE_DELAY: number = 300;
 
-  const debounceOnChangeKeyword = useCallback(
-    debounce(debounceKeywordSearch, DEBOUNCE_DELAY),
+  const handleChangeKeyword = useCallback(
+    debounce(dispatchKeywordSearch, DEBOUNCE_DELAY),
     []
   );
 
@@ -138,6 +138,27 @@ const Sidebar = () => {
       })
     );
   }, [dispatch, selectedRegion, selectedFood]);
+
+  const handleRegionListItemClick = (region: string) => {
+    setSelectedRegion(region);
+    setAnchorEl(null);
+    setSelectedFood(null);
+    dispatch(resetFood());
+  };
+
+  const handleFoodCategoryListItemClick = (food: string) => {
+    setSelectedFood(food);
+    setAnchorFoodEl(null);
+    dispatch(resetFilterPage());
+  };
+
+  const handleRestetListItemClick = () => {
+    dispatch(resetData());
+    setSelectedFood("");
+    setSelectedRegion("");
+    dispatch(resetItem());
+    setSearchValue("");
+  };
 
   return (
     <Box
@@ -202,12 +223,9 @@ const Sidebar = () => {
                   {regionCategory.map((region) => (
                     <ListItem key={region}>
                       <div
-                        onClick={() => {
-                          setSelectedRegion(region);
-                          setAnchorEl(null);
-                          setSelectedFood(null);
-                          dispatch(resetFood());
-                        }}
+                        onClick={() =>
+                          handleRegionListItemClick(region as string)
+                        }
                       >
                         <CustomTypography
                           style={{
@@ -259,11 +277,9 @@ const Sidebar = () => {
                     foodCategoryList?.map((food) => (
                       <ListItem key={food}>
                         <div
-                          onClick={() => {
-                            setSelectedFood(food);
-                            setAnchorFoodEl(null);
-                            dispatch(resetFilterPage());
-                          }}
+                          onClick={() =>
+                            handleFoodCategoryListItemClick(food as string)
+                          }
                         >
                           <CustomTypography
                             style={{
@@ -282,15 +298,7 @@ const Sidebar = () => {
             </Popover>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => {
-                dispatch(resetData());
-                setSelectedFood("");
-                setSelectedRegion("");
-                dispatch(resetItem());
-                setSearchValue("");
-              }}
-            >
+            <ListItemButton onClick={handleRestetListItemClick}>
               <ListItemIcon>
                 <RestartAlt />
               </ListItemIcon>

@@ -1,16 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ActivityData } from "../models/activity.model";
+import { API_BASE_URL } from "./constant";
 
-export const activitysApi = createApi({
-  reducerPath: "activitysApi",
+export const activitiesApi = createApi({
+  reducerPath: "activitiesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${window.location.hostname}:5001/`,
+    baseUrl: API_BASE_URL,
   }),
   endpoints: (builder) => ({
-    getActivitysData: builder.query<ActivityData, string>({
+    getActivitiesData: builder.query<ActivityData, string>({
       query: (category: string) => `/activity?category=${category}`,
     }),
   }),
 });
 
-export const { useGetActivitysDataQuery } = activitysApi;
+export const { useGetActivitiesDataQuery } = activitiesApi;

@@ -26,17 +26,9 @@ const LabelButton: FC<LabelButtonProps> = ({ label, able }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!isClicked) {
-      dispatch(
-        filterBySelected({
-          category: label,
-        })
-      );
+      dispatch(filterBySelected(label));
     } else {
-      dispatch(
-        removeSelected({
-          category: label,
-        })
-      );
+      dispatch(removeSelected(label));
     }
     setIsClicked(!isClicked);
   };
@@ -49,17 +41,17 @@ const LabelButton: FC<LabelButtonProps> = ({ label, able }) => {
       sx={{
         backgroundColor: isClicked ? "primary.main" : "initial",
         color: isClicked ? "white" : "primary.main",
-        fontWeight : 'bold',
+        fontWeight: "bold",
         "&:hover": !isClicked
           ? {
               backgroundColor: "primary.main",
               color: "white",
-              fontWeight : 'bold',
+              fontWeight: "bold",
             }
           : {
               backgroundColor: "white",
               color: "primary.main",
-              fontWeight : 'bold',
+              fontWeight: "bold",
             },
       }}
     >

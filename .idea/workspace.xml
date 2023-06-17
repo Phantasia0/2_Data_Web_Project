@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84ef8417-2ca6-472a-85c3-50efa660dc98" name="변경" comment="충돌 해결">
+      <change afterPath="$PROJECT_DIR$/front/src/services/constant.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/services/kakaoApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Community/FeedCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/SocialReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/About/AboutGreenLife.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/AboutGreenLife.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/About/Carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/Activity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/ActivitySlick.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Activity/LabelButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Activity/LabelButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/KaKaoMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantKeywordDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/RestaurantKeywordDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/common/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/ActivityReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/ActivityReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/AppState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/AppState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/features/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/features/configureStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/models/activity.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/models/activity.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/activityApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/activityApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/authApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/parksApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/parksApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/profileApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/restaurantsApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +111,7 @@
       <workItem from="1686221463675" duration="22271000" />
       <workItem from="1686322496143" duration="140283000" />
       <workItem from="1686804643463" duration="22578000" />
+      <workItem from="1686983157619" duration="12229000" />
     </task>
     <servers />
   </component>
@@ -118,5 +140,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/front/src/App.tsx</url>
+          <line>45</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

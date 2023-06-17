@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Typography, Box, Grid, Switch, FormControlLabel } from "@mui/material";
-import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import LabelButton from "./LabelButton";
 import ActivitySlick from "./ActivitySlick";
-import { useGetActivitysDataQuery } from "../../services/activityApi";
-import { shallowEqual, useSelector, useDispatch } from "react-redux";
+import { useGetActivitiesDataQuery } from "../../services/activityApi";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../features/configureStore";
 import { updateAllData, updateData } from "../../features/ActivityReducer";
 import { fontdesign } from "../../theme/fontdesign";
 import LoadingImage from "../common/Loading";
-
-const categoryList = ["교통", "전기", "냉/난방", "자원"];
+import {
+  ActivityData,
+  Activity as ActivityModel,
+} from "../../models/activity.model";
 
 const Activity = () => {
   const dispatch = useDispatch();
@@ -21,33 +22,56 @@ const Activity = () => {
       category: activity.category,
       filtered: activity.filtered,
       categories: activity.categories,
-    }),
-    shallowEqual
+    })
   );
 
-  const { data, error, isSuccess, isLoading } = useGetActivitysDataQuery(
+  const { data, isSuccess, isLoading } = useGetActivitiesDataQuery(
     category as string
   );
 
   const [autoplay, setAutoplay] = useState(true);
 
-  useEffect(() => {
+  const selectCurrentActivity = () => {
     if (data && isSuccess && !isChecked && !filtered) {
+      return true;
+    }
+    return false;
+  };
+
+  const whichToUpdateActivity = () => {
+    if (data && isSuccess && isChecked && filtered) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    const validation = selectCurrentActivity();
+
+    if (validation) {
       dispatch(
         updateAllData({
-          categories: [...categoryList],
           data: data?.activity,
+          dataObject: {},
+          categories: [],
+          category: "",
+          filtered: false,
         })
       );
     }
   }, [data, isSuccess, isChecked]);
 
   useEffect(() => {
-    if (data && isSuccess && isChecked && filtered) {
+    const validation = whichToUpdateActivity();
+
+    if (validation) {
       dispatch(
         updateData({
           category: category,
           data: data?.activity,
+          dataObject: {},
+          categories: [],
+          filtered: false,
         })
       );
     }
@@ -85,7 +109,7 @@ const Activity = () => {
             marginTop: "2vw",
           }}
         >
-          {categoryList.map((item) => (
+          {categories?.map((item) => (
             <LabelButton key={item} label={item} able={isChecked} />
           ))}
         </Box>

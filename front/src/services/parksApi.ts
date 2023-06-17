@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ParkData, Park } from "../models/park.model";
+import { API_BASE_URL } from "./constant";
 
 export const parksApi = createApi({
   reducerPath: "parksApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${window.location.hostname}:5001/`,
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
       // @ts-ignore
       const token = sessionStorage.getItem("user");

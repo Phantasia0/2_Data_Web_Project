@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./authApi";
+import { API_BASE_URL } from "./constant";
 
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${window.location.hostname}:5001`,
+    baseUrl: API_BASE_URL,
   }),
   endpoints: (builder) => ({
     getUserFeed: builder.query<any, any>({

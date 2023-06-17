@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AppBar, Typography, Stack, Menu, MenuItem, Link } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
 import Person4Icon from "@mui/icons-material/Person4";
 import User from "../User/User";
@@ -52,6 +52,17 @@ const Navbar = () => {
     // @ts-ignore
     refetchOnArgChange: true,
   });
+
+  const isAbout = useMatch("/about");
+  const isAboutGreenResultMatched = useMatch("/about/greenresult");
+  const isAboutGreenServiceMatched = useMatch("/about/greenservice");
+  const isAboutGreenLife = useMatch("/about/greenlife");
+  const isRestaurant = useMatch("/restaurant");
+  const isPark = useMatch("/park");
+  const isActivity = useMatch("/activity");
+  const isCommunity = useMatch("/community");
+  const isProfile = useMatch("/profile");
+  const isEditor = useMatch("/editor");
 
   useEffect(() => {
     // @ts-ignore
@@ -105,7 +116,6 @@ const Navbar = () => {
   };
 
   const currentUrl = window.location.pathname;
-  const currentPath = currentUrl.split("/");
 
   const handleLogOut = () => {
     dispatch(logOut());
@@ -114,7 +124,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="sticky" color="inherit" sx={{ zIndex: 9999 }}>
+    <AppBar position="sticky" color="inherit" sx={{ zIndex: 99 }}>
       <Typography
         variant="h6"
         component="div"
@@ -161,19 +171,18 @@ const Navbar = () => {
       <Stack
         sx={{
           display: "flex",
-          width: "100%",
+          maxWidth: "1200px",
           flexDirection: "row",
           justifyContent: "space-around",
-          paddingBottom: "10px",
+          paddingBottom: "1rem",
         }}
         onMouseEnter={handleMenuBarHover}
       >
         <CustomTypography
           onMouseEnter={handleAboutMenuOpen}
-          onMouseLeave={handleAboutMenuClose}
           sx={{
             fontSize: "1.2rem",
-            color: currentPath[1] === "about" ? "primary.main" : undefined,
+            color: isAbout && "primary.main",
           }}
         >
           VISION
@@ -181,6 +190,7 @@ const Navbar = () => {
             anchorEl={anchorEl}
             open={aboutMenuOpen}
             onClose={handleAboutMenuClose}
+            onMouseLeave={handleAboutMenuClose}
             anchorOrigin={{
               vertical: "bottom",
               horizontal: "left",
@@ -191,7 +201,7 @@ const Navbar = () => {
             }}
             style={{ marginTop: "0.5rem" }}
           >
-            <div>
+            <div onMouseLeave={handleAboutMenuClose}>
               <CustomMenuItem onClick={handleClose}>
                 <Link
                   onClick={() => {
@@ -203,11 +213,7 @@ const Navbar = () => {
                   <CustomTypography
                     sx={{
                       fontSize: "1rem",
-                      color:
-                        currentPath[1] === "about" &&
-                        currentPath[2] === "greenlife"
-                          ? "primary.main"
-                          : undefined,
+                      color: isAboutGreenLife && "primary.main",
                     }}
                   >
                     필요성
@@ -225,11 +231,7 @@ const Navbar = () => {
                   <CustomTypography
                     sx={{
                       fontSize: "1rem",
-                      color:
-                        currentPath[1] === "about" &&
-                        currentPath[2] === "greenservice"
-                          ? "primary.main"
-                          : undefined,
+                      color: isAboutGreenServiceMatched && "primary.main",
                     }}
                   >
                     서비스
@@ -247,11 +249,7 @@ const Navbar = () => {
                   <CustomTypography
                     sx={{
                       fontSize: "1rem",
-                      color:
-                        currentPath[1] === "about" &&
-                        currentPath[2] === "greenresult"
-                          ? "primary.main"
-                          : undefined,
+                      color: isAboutGreenResultMatched && "primary.main",
                     }}
                   >
                     기대효과
@@ -271,8 +269,7 @@ const Navbar = () => {
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
-              color:
-                currentPath[1] === "restaurant" ? "primary.main" : undefined,
+              color: isRestaurant && "primary.main",
             }}
           >
             RESTAURANT
@@ -288,7 +285,7 @@ const Navbar = () => {
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
-              color: currentPath[1] === "park" ? "primary.main" : undefined,
+              color: isPark && "primary.main",
             }}
           >
             PARK
@@ -304,7 +301,7 @@ const Navbar = () => {
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
-              color: currentPath[1] === "activity" ? "primary.main" : undefined,
+              color: isActivity && "primary.main",
             }}
           >
             ACTIVITY
@@ -320,10 +317,7 @@ const Navbar = () => {
           <CustomTypography
             sx={{
               fontSize: "1.2rem",
-              color:
-                currentPath[1] === "community" || currentPath[1] === "editor"
-                  ? "primary.main"
-                  : undefined,
+              color: (isCommunity || isEditor) && "primary.main",
             }}
           >
             SHARE
@@ -339,7 +333,7 @@ const Navbar = () => {
             onMouseLeave={handleProfileMenuClose}
             sx={{
               fontSize: "1.2rem",
-              color: currentPath[1] === "profile" ? "primary.main" : undefined,
+              color: isProfile && "primary.main",
             }}
           >
             {/* @ts-ignore*/}
@@ -371,10 +365,7 @@ const Navbar = () => {
                       sx={{
                         fontSize: "1rem",
                         backgroundColor: "transparent",
-                        color:
-                          currentPath[1] === "profile"
-                            ? "primary.main"
-                            : undefined,
+                        color: isProfile && "primary.main",
                       }}
                     >
                       My Page
