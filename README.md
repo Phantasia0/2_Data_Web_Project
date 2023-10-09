@@ -10,7 +10,7 @@ GreenLife
 ## 3. 프로젝트 소개
 ### 3-1. 프로젝트 접속 링크
 [배포 URL](http://34.64.46.75/)   
-[최종발표 자료 PPT](https://docs.google.com/presentation/d/1YV54l6qapQ-uVYCQ_cNOaFk39PTqGaLT6Gby0W56l7Q/edit#slide=id.p)
+[최종발표 자료 PPT](https://docs.google.com/presentation/d/1YV54l6qapQ-uVYCQ_cNOaFk39PTqGaLT6Gby0W56l7Q/edit#slide=id.p)  
 [시연영상](https://drive.google.com/file/d/1wU3hx372CeOELcI3KZYaEedWCxPgQ5rI/view?usp=sharing)
 ### 3-2. 개발동기
 - 엘리스 AI트랙 7기 데이터 분석 프로젝트의 주제인 "환경" 관련 데이터를 수집하고 개발을 계획하고자 하였습니다. 온실가스의 주된 원인이 육류 소비량이 매년 증가하는 데이터셋을 보고, 일상 속에서 온실가스 감소를 실천할 수 있는 사이트를 개발하고자 했습니다. Green Life는 육류 소비량 감소를 위한 비건 레스토랑과 도심 속 친환경적인 공원을 소개해주고 SNS 기능을 통해 타인과 공유할 수 있는 웹 사이트입니다.
